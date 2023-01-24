@@ -182,8 +182,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'FORGOT_PASSWORD_BACK_TO_LOGIN_BTN_ON_TAP');
+                    context.pop();
                   },
                   text: FFLocalizations.of(context).getText(
                     'om06q9t1' /* Back to login */,
