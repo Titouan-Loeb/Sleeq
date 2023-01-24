@@ -129,7 +129,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                   ),
                   style: FlutterFlowTheme.of(context).bodyText1,
-                  maxLines: null,
                 ),
               ),
               Padding(

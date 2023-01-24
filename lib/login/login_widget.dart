@@ -163,7 +163,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                       child: TextFormField(
                         controller: emailTextController,
-                        autofocus: true,
                         autofillHints: [AutofillHints.email],
                         obscureText: false,
                         decoration: InputDecoration(

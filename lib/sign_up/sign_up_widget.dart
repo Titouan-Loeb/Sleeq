@@ -154,7 +154,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
                       controller: emailTextController,
-                      autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: FFLocalizations.of(context).getText(
@@ -197,7 +196,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1,
-                      maxLines: null,
                     ),
                   ),
                 ),
