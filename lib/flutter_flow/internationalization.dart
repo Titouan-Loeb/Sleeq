@@ -120,14 +120,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'fr': 'Profil',
     },
-    '1cep88ha': {
-      'en': 'Switch to Dark Mode',
-      'fr': 'Passer en mode sombre',
-    },
-    'f1xrekvd': {
-      'en': 'Switch to Light Mode',
-      'fr': 'Passer en mode lumière',
-    },
     'qcy7r67m': {
       'en': 'Account Settings',
       'fr': 'Paramètres du compte',

@@ -199,13 +199,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                '1cep88ha' /* Switch to Dark Mode */,
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            ),
                             Container(
                               width: 80,
                               height: 40,
@@ -256,6 +251,32 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 ],
                               ),
                             ),
+                            FlutterFlowLanguageSelector(
+                              width: 150,
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dropdownColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dropdownIconColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              borderRadius: 12,
+                              textStyle: GoogleFonts.getFont(
+                                'Lexend',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 13,
+                              ),
+                              hideFlags: false,
+                              flagSize: 24,
+                              flagTextGap: 8,
+                              currentLanguage:
+                                  FFLocalizations.of(context).languageCode,
+                              languages: FFLocalizations.languages(),
+                              onChanged: (lang) =>
+                                  setAppLanguage(context, lang),
+                            ),
                           ],
                         ),
                       ),
@@ -283,12 +304,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'f1xrekvd' /* Switch to Light Mode */,
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            ),
                             Container(
                               width: 80,
                               height: 40,
@@ -338,6 +353,32 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   ),
                                 ],
                               ),
+                            ),
+                            FlutterFlowLanguageSelector(
+                              width: 150,
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dropdownColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dropdownIconColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              borderRadius: 12,
+                              textStyle: GoogleFonts.getFont(
+                                'Lexend',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 13,
+                              ),
+                              hideFlags: false,
+                              flagSize: 24,
+                              flagTextGap: 8,
+                              currentLanguage:
+                                  FFLocalizations.of(context).languageCode,
+                              languages: FFLocalizations.languages(),
+                              onChanged: (lang) =>
+                                  setAppLanguage(context, lang),
                             ),
                           ],
                         ),
@@ -469,48 +510,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: Color(0x3416202A),
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(12),
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: FlutterFlowLanguageSelector(
-                    width: 120,
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    borderColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    dropdownColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    dropdownIconColor: FlutterFlowTheme.of(context).primaryText,
-                    borderRadius: 12,
-                    textStyle: GoogleFonts.getFont(
-                      'Lexend',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 13,
-                    ),
-                    hideFlags: false,
-                    flagSize: 24,
-                    flagTextGap: 8,
-                    currentLanguage: FFLocalizations.of(context).languageCode,
-                    languages: FFLocalizations.languages(),
-                    onChanged: (lang) => setAppLanguage(context, lang),
                   ),
                 ),
               ),
