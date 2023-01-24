@@ -295,8 +295,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed(
+                            'ForgotPassword',
+                            queryParams: {
+                              'defaultEmail': serializeParam(
+                                emailTextController!.text,
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
                         text: FFLocalizations.of(context).getText(
                           '3xzw8qo5' /* Forgot Password? */,

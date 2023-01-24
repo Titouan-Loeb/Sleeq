@@ -1,3 +1,4 @@
+import '../components/nav_bar1_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -92,6 +93,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ],
         centerTitle: false,
         elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: NavBar1Widget(),
+        ),
       ),
     );
   }

@@ -114,37 +114,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Profil',
     },
   },
-  // SignUp
-  {
-    'mcquk0sa': {
-      'en': 'Sign In',
-      'fr': 'S\'identifier',
-    },
-    '3a46tknc': {
-      'en': 'Sign Up',
-      'fr': 'S\'inscrire',
-    },
-    '0ufzn822': {
-      'en': 'Get started by creating an account below.',
-      'fr': 'Commencez par créer un compte ci-dessous.',
-    },
-    'sh35p1k7': {
-      'en': 'Your email address',
-      'fr': 'Votre adresse e-mail',
-    },
-    's3mww27o': {
-      'en': 'Password',
-      'fr': 'Mot de passe',
-    },
-    'hii8oza0': {
-      'en': 'Sign up',
-      'fr': 'S\'inscrire',
-    },
-    'owvuefar': {
-      'en': 'Profile',
-      'fr': 'Profil',
-    },
-  },
   // Settings
   {
     'nrfk05ra': {
@@ -176,36 +145,66 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Se déconnecter',
     },
     'wul94o4l': {
-      'en': '__',
+      'en': 'Settings',
       'fr': '__',
     },
   },
-  // forgotpassword
+  // SignUp
   {
-    '3qi90983': {
-      'en':
-          'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
+    'mcquk0sa': {
+      'en': 'Sign In',
+      'fr': 'S\'identifier',
+    },
+    '3a46tknc': {
+      'en': 'Sign Up',
+      'fr': 'S\'inscrire',
+    },
+    '0ufzn822': {
+      'en': 'Get started by creating an account below.',
+      'fr': 'Commencez par créer un compte ci-dessous.',
+    },
+    'sh35p1k7': {
+      'en': 'Your email address',
+      'fr': 'Votre adresse e-mail',
+    },
+    's3mww27o': {
+      'en': 'Password',
+      'fr': 'Mot de passe',
+    },
+    'hii8oza0': {
+      'en': 'Sign up',
+      'fr': 'S\'inscrire',
+    },
+    'owvuefar': {
+      'en': 'Profile',
+      'fr': 'Profil',
+    },
+  },
+  // ForgotPassword
+  {
+    'e7e8d8i5': {
+      'en': 'Sleeq App',
       'fr': '',
     },
-    '7d14wn8h': {
-      'en': 'Your email address...',
-      'fr': '',
+    'm9ktobmr': {
+      'en': 'Forgot password',
+      'fr': 'S\'identifier',
     },
-    'pskzra1n': {
-      'en': 'Enter your email...',
-      'fr': '',
+    'sjof3rcv': {
+      'en': 'You forgot your password ? Silly goose',
+      'fr': 'Utilisez le formulaire ci-dessous, pour accéder à votre compte.',
     },
-    'b8k1rz1j': {
-      'en': 'Send Link',
-      'fr': '',
+    'dwpe9xab': {
+      'en': 'Your email address',
+      'fr': 'Votre adresse e-mail',
     },
-    'dokajo2z': {
-      'en': 'Forgot Password',
-      'fr': '',
+    '5r67e7rs': {
+      'en': 'Send password reset email',
+      'fr': 'Connexion',
     },
-    'd50f7o0l': {
-      'en': 'Home',
-      'fr': '',
+    'rj6wygs2': {
+      'en': 'Profile',
+      'fr': 'Profil',
     },
   },
   // Miscellaneous

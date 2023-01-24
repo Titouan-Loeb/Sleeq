@@ -116,10 +116,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                             builder: (context) => ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: CachedNetworkImage(
-                                imageUrl: valueOrDefault<String>(
-                                  currentUserPhoto,
-                                  'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-                                ),
+                                imageUrl: currentUserPhoto != null &&
+                                        currentUserPhoto != ''
+                                    ? currentUserPhoto
+                                    : 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
                                 width: 100,
                                 height: 100,
                                 fit: BoxFit.cover,
@@ -136,7 +136,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           children: [
                             AuthUserStreamWidget(
                               builder: (context) => Text(
-                                currentUserDisplayName,
+                                currentUserDisplayName != null &&
+                                        currentUserDisplayName != ''
+                                    ? currentUserDisplayName
+                                    : currentUserEmail,
                                 style: FlutterFlowTheme.of(context).title3,
                               ),
                             ),
