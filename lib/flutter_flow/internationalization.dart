@@ -182,6 +182,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Save Changes',
       'fr': '',
     },
+    'szqzn9xp': {
+      'en': 'Logout',
+      'fr': 'elaine.edwards@google.com',
+    },
     'wurg3p18': {
       'en': 'Home',
       'fr': '',
