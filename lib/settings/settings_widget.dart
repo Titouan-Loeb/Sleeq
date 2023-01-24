@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
+import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -468,6 +469,48 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ],
                     ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+                child: Container(
+                  width: double.infinity,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 5,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: FlutterFlowLanguageSelector(
+                    width: 120,
+                    backgroundColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    borderColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    dropdownColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    dropdownIconColor: FlutterFlowTheme.of(context).primaryText,
+                    borderRadius: 12,
+                    textStyle: GoogleFonts.getFont(
+                      'Lexend',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 13,
+                    ),
+                    hideFlags: false,
+                    flagSize: 24,
+                    flagTextGap: 8,
+                    currentLanguage: FFLocalizations.of(context).languageCode,
+                    languages: FFLocalizations.languages(),
+                    onChanged: (lang) => setAppLanguage(context, lang),
                   ),
                 ),
               ),
