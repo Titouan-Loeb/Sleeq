@@ -110,33 +110,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Profil',
     },
   },
-  // settingsold
-  {
-    'nrfk05ra': {
-      'en': 'Profile',
-      'fr': 'Profil',
-    },
-    'vdvhgsru': {
-      'en': 'Account Settings',
-      'fr': 'Paramètres du compte',
-    },
-    '2j91mph6': {
-      'en': 'Change Password',
-      'fr': 'Changer le mot de passe',
-    },
-    'yso38d4d': {
-      'en': 'Edit Profile',
-      'fr': 'Editer le profil',
-    },
-    'oox3aaat': {
-      'en': 'Log Out',
-      'fr': 'Se déconnecter',
-    },
-    'wul94o4l': {
-      'en': 'Settings',
-      'fr': 'Paramètres',
-    },
-  },
   // SignUp
   {
     'mcquk0sa': {
@@ -197,15 +170,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Settings
   {
-    'hd9nm444': {
+    'suy6bmps': {
       'en': 'Your Name',
       'fr': '',
     },
-    'od3evrg8': {
+    'oppsunbl': {
       'en': 'Change photo',
       'fr': '',
     },
-    'l2d68gji': {
+    'nak4cbrl': {
       'en': 'Save Changes',
       'fr': '',
     },

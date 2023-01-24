@@ -89,12 +89,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'settingsold',
-              path: 'settingsold',
-              requireAuth: true,
-              builder: (context, params) => SettingsoldWidget(),
-            ),
-            FFRoute(
               name: 'SignUp',
               path: 'signUp',
               builder: (context, params) => SignUpWidget(),
