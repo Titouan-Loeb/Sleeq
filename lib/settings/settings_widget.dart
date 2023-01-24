@@ -87,7 +87,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'vj2ymz7q' /* Settings */,
+                  '3x98uezz' /* Settings */,
                 ),
                 style: FlutterFlowTheme.of(context).title2,
               ),
@@ -674,12 +674,17 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ],
                     ),
-                    Expanded(
-                      child: Align(
-                        alignment: AlignmentDirectional(0, 1),
-                        child: NavBarFlotingWidget(),
+                    if (responsiveVisibility(
+                      context: context,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
+                      Expanded(
+                        child: Align(
+                          alignment: AlignmentDirectional(0, 1),
+                          child: NavBarFlotingWidget(),
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

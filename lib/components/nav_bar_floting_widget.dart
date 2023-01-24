@@ -64,11 +64,12 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       buttonSize: 60,
                       icon: FaIcon(
                         FontAwesomeIcons.home,
-                        color:
-                            'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                    'launch://sleeq.app/'
-                                ? FlutterFlowTheme.of(context).tertiaryColor
-                                : FlutterFlowTheme.of(context).primaryText,
+                        color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
+                                    'launch://sleeq.app/') ||
+                                ('launch://sleeq.app${GoRouter.of(context).location}' ==
+                                    'launch://sleeq.app/homePage')
+                            ? FlutterFlowTheme.of(context).tertiaryColor
+                            : FlutterFlowTheme.of(context).primaryText,
                         size: 25,
                       ),
                       onPressed: () async {
