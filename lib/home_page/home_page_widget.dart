@@ -7,7 +7,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +22,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   bool isMediaUploading = false;
   String uploadedFileUrl = '';
 
-  Completer<List<UsersRecord>>? _firestoreRequestCompleter;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -182,78 +180,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                 ),
               ),
-              AuthUserStreamWidget(
-                builder: (context) => FutureBuilder<List<UsersRecord>>(
-                  future: (_firestoreRequestCompleter ??=
-                          Completer<List<UsersRecord>>()
-                            ..complete(queryUsersRecordOnce(
-                              queryBuilder: (usersRecord) =>
-                                  usersRecord.whereArrayContainsAny(
-                                      'files',
-                                      getFileFirestoreData(
-                                        (currentUserDocument?.files?.toList() ??
-                                            []),
-                                        true,
-                                      )),
-                            )))
-                      .future,
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                          ),
-                        ),
-                      );
-                    }
-                    List<UsersRecord> listViewUsersRecordList = snapshot.data!;
-                    return RefreshIndicator(
-                      onRefresh: () async {
-                        logFirebaseEvent(
-                            'HOME_ListView_6yqkv1xv_ON_PULL_TO_REFRES');
-                        setState(() => _firestoreRequestCompleter = null);
-                        await waitForFirestoreRequestCompleter();
-                      },
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewUsersRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewUsersRecord =
-                              listViewUsersRecordList[listViewIndex];
-                          return Text(
-                            uploadedFileUrl,
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Future waitForFirestoreRequestCompleter({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = _firestoreRequestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
   }
 }
