@@ -44,7 +44,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'dac10pg9' /* Home */,
+                  'h0nf3xmv' /* Home */,
                 ),
                 style: FlutterFlowTheme.of(context).title2,
               ),

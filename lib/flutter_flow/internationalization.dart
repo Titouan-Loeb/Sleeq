@@ -70,7 +70,7 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    'dac10pg9': {
+    'h0nf3xmv': {
       'en': 'Home',
       'fr': '',
     },
@@ -194,7 +194,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Upload file',
       'fr': '',
     },
-    'vj2ymz7q': {
+    '3x98uezz': {
       'en': 'Settings',
       'fr': '',
     },
