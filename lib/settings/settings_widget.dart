@@ -87,7 +87,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'vfbfj53s' /* Settings */,
+                  'vj2ymz7q' /* Settings */,
                 ),
                 style: FlutterFlowTheme.of(context).title2,
               ),
@@ -498,7 +498,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     final usersUpdateData =
                                         createUsersRecordData(
                                       photoUrl: uploadedFileUrl1,
-                                      displayName: yourNameController!.text,
                                     );
                                     await currentUserReference!
                                         .update(usersUpdateData);
