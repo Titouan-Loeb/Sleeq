@@ -1,6 +1,6 @@
 {
-    "name": "SleeqApp",
-    "short_name": "SleeqApp",
+    "name": "Sleeq",
+    "short_name": "Sleeq",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
