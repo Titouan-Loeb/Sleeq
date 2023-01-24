@@ -40,13 +40,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
       ],
     ),
   };
-  bool isMediaUploading1 = false;
-  String uploadedFileUrl1 = '';
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
 
   TextEditingController? yourNameController;
-  bool isMediaUploading2 = false;
-  String uploadedFileUrl2 = '';
-
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -87,7 +84,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
               automaticallyImplyLeading: false,
               title: Text(
                 FFLocalizations.of(context).getText(
-                  '3x98uezz' /* Settings */,
+                  'zh9jqocu' /* Settings */,
                 ),
                 style: FlutterFlowTheme.of(context).title2,
               ),
@@ -460,7 +457,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         selectedMedia.every((m) =>
                                             validateFileFormat(
                                                 m.storagePath, context))) {
-                                      setState(() => isMediaUploading1 = true);
+                                      setState(() => isMediaUploading = true);
                                       var downloadUrls = <String>[];
                                       try {
                                         showUploadMessage(
@@ -480,11 +477,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                       } finally {
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
-                                        isMediaUploading1 = false;
+                                        isMediaUploading = false;
                                       }
                                       if (downloadUrls.length ==
                                           selectedMedia.length) {
-                                        setState(() => uploadedFileUrl1 =
+                                        setState(() => uploadedFileUrl =
                                             downloadUrls.first);
                                         showUploadMessage(context, 'Success!');
                                       } else {
@@ -497,7 +494,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
                                     final usersUpdateData =
                                         createUsersRecordData(
-                                      photoUrl: uploadedFileUrl1,
+                                      photoUrl: uploadedFileUrl,
                                     );
                                     await currentUserReference!
                                         .update(usersUpdateData);
@@ -605,70 +602,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'SETTINGS_PAGE_UPLOAD_FILE_BTN_ON_TAP');
-                              final selectedFile =
-                                  await selectFile(allowedExtensions: ['pdf']);
-                              if (selectedFile != null) {
-                                setState(() => isMediaUploading2 = true);
-                                String? downloadUrl;
-                                try {
-                                  showUploadMessage(
-                                    context,
-                                    'Uploading file...',
-                                    showLoading: true,
-                                  );
-                                  downloadUrl = await uploadData(
-                                      selectedFile.storagePath,
-                                      selectedFile.bytes);
-                                } finally {
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  isMediaUploading2 = false;
-                                }
-                                if (downloadUrl != null) {
-                                  setState(
-                                      () => uploadedFileUrl2 = downloadUrl!);
-                                  showUploadMessage(
-                                    context,
-                                    'Success!',
-                                  );
-                                } else {
-                                  setState(() {});
-                                  showUploadMessage(
-                                    context,
-                                    'Failed to upload file',
-                                  );
-                                  return;
-                                }
-                              }
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '5xq6gjch' /* Upload file */,
-                            ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 60,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'DM Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                  ),
-                              elevation: 4,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
                             ),
                           ),
                         ),
