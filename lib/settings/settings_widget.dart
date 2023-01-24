@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
@@ -25,29 +26,16 @@ class SettingsWidget extends StatefulWidget {
 class _SettingsWidgetState extends State<SettingsWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
+    'containerOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
         MoveEffect(
-          curve: Curves.bounceOut,
+          curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(40, 0),
-          end: Offset(0, 0),
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(-40, 0),
-          end: Offset(0, 0),
+          begin: Offset(0, 0),
+          end: Offset(115, 0),
         ),
       ],
     ),
@@ -204,285 +192,186 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ],
                     ),
-                    if (responsiveVisibility(
-                      context: context,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ))
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (Theme.of(context).brightness == Brightness.light)
-                            InkWell(
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'SETTINGS_PAGE_isLightMode_ON_TAP');
-                                setDarkModeSetting(context, ThemeMode.dark);
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation2'] !=
-                                    null) {
-                                  animationsMap[
-                                          'containerOnActionTriggerAnimation2']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-                              },
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24, 12, 24, 12),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SETTINGS_PAGE_Container_zwq2psio_ON_TAP');
+                                    setDarkModeSetting(
+                                        context, ThemeMode.light);
+                                  },
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? FlutterFlowTheme.of(context)
+                                              .secondaryBackground
+                                          : FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Stack(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0.95, 0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
-                                                child: Icon(
-                                                  Icons.nights_stay,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 20,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.85, 0),
-                                              child: Container(
-                                                width: 36,
-                                                height: 36,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4,
-                                                      color: Color(0x430B0D0F),
-                                                      offset: Offset(0, 2),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  shape: BoxShape.rectangle,
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                animationsMap[
-                                                    'containerOnActionTriggerAnimation1']!,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.light
+                                            ? FlutterFlowTheme.of(context)
+                                                .lineColor
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                        width: 1,
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            15, 0, 0, 0),
-                                        child: FlutterFlowLanguageSelector(
-                                          width: 150,
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          dropdownColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          dropdownIconColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          borderRadius: 12,
-                                          textStyle: GoogleFonts.getFont(
-                                            'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 13,
-                                          ),
-                                          hideFlags: false,
-                                          flagSize: 24,
-                                          flagTextGap: 8,
-                                          currentLanguage:
-                                              FFLocalizations.of(context)
-                                                  .languageCode,
-                                          languages:
-                                              FFLocalizations.languages(),
-                                          onChanged: (lang) =>
-                                              setAppLanguage(context, lang),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.wb_sunny_rounded,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? FlutterFlowTheme.of(context)
+                                                  .primaryText
+                                              : FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          size: 16,
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          if (Theme.of(context).brightness == Brightness.dark)
-                            InkWell(
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'SETTINGS_PAGE_isDarkMode_ON_TAP');
-                                setDarkModeSetting(context, ThemeMode.light);
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation1'] !=
-                                    null) {
-                                  animationsMap[
-                                          'containerOnActionTriggerAnimation1']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-                              },
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24, 12, 24, 12),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SETTINGS_PAGE_Container_41mfg8u8_ON_TAP');
+                                    setDarkModeSetting(context, ThemeMode.dark);
+                                  },
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? FlutterFlowTheme.of(context)
+                                              .secondaryBackground
+                                          : FlutterFlowTheme.of(context)
                                               .primaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Stack(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(-0.9, 0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(8, 2, 0, 0),
-                                                child: Icon(
-                                                  Icons.wb_sunny_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0.9, 0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(15, 0, 0, 0),
-                                                child: Container(
-                                                  width: 36,
-                                                  height: 36,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4,
-                                                        color:
-                                                            Color(0x430B0D0F),
-                                                        offset: Offset(0, 2),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            30),
-                                                    shape: BoxShape.rectangle,
-                                                  ),
-                                                ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation2']!,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? FlutterFlowTheme.of(context)
+                                                .lineColor
+                                            : FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                        width: 1,
                                       ),
-                                      FlutterFlowLanguageSelector(
-                                        width: 150,
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        dropdownColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        dropdownIconColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        borderRadius: 12,
-                                        textStyle: GoogleFonts.getFont(
-                                          'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 13,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.nightlight_round,
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? FlutterFlowTheme.of(context)
+                                                  .primaryText
+                                              : FlutterFlowTheme.of(context)
+                                                  .secondaryText,
+                                          size: 16,
                                         ),
-                                        hideFlags: false,
-                                        flagSize: 24,
-                                        flagTextGap: 8,
-                                        currentLanguage:
-                                            FFLocalizations.of(context)
-                                                .languageCode,
-                                        languages: FFLocalizations.languages(),
-                                        onChanged: (lang) =>
-                                            setAppLanguage(context, lang),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation']!,
                                 ),
                               ),
-                            ),
-                        ],
+                              SizedBox(
+                                height: 20,
+                                child: VerticalDivider(
+                                  thickness: 1,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                                child: FlutterFlowLanguageSelector(
+                                  width: 150,
+                                  backgroundColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  dropdownColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  dropdownIconColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  borderRadius: 12,
+                                  textStyle: GoogleFonts.getFont(
+                                    'Lexend',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 13,
+                                  ),
+                                  hideFlags: false,
+                                  flagSize: 24,
+                                  flagTextGap: 8,
+                                  currentLanguage:
+                                      FFLocalizations.of(context).languageCode,
+                                  languages: FFLocalizations.languages(),
+                                  onChanged: (lang) =>
+                                      setAppLanguage(context, lang),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
+                    ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                           child: TextFormField(
                             controller: yourNameController,
+                            autofillHints: [AutofillHints.name],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
-                                'hd9nm444' /* Your Name */,
+                                'suy6bmps' /* Your Name */,
                               ),
                               labelStyle:
                                   FlutterFlowTheme.of(context).bodyText2,
@@ -524,11 +413,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
-                            maxLines: null,
                           ),
                         ),
                         Row(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
@@ -595,10 +483,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         .update(usersUpdateData);
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'od3evrg8' /* Change photo */,
+                                    'oppsunbl' /* Change photo */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 200,
                                     height: 60,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
@@ -614,7 +501,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2Family),
                                         ),
-                                    elevation: 2,
+                                    elevation: 4,
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
@@ -656,10 +543,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     );
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'l2d68gji' /* Save Changes */,
+                                    'nak4cbrl' /* Save Changes */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 200,
                                     height: 60,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
@@ -675,7 +561,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2Family),
                                         ),
-                                    elevation: 2,
+                                    elevation: 4,
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
@@ -687,6 +573,12 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ],
                         ),
                       ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 1),
+                        child: NavBarFlotingWidget(),
+                      ),
                     ),
                   ],
                 ),

@@ -7,13 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
-  const NavBarFlotingWidget({
-    Key? key,
-    String? pageName,
-  })  : this.pageName = pageName ?? 'home',
-        super(key: key);
-
-  final String pageName;
+  const NavBarFlotingWidget({Key? key}) : super(key: key);
 
   @override
   _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
@@ -137,7 +131,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         logFirebaseEvent(
                             'NAV_BAR_FLOTING_COMP_settings_ICN_ON_TAP');
                         if ('launch://sleeq.app${GoRouter.of(context).location}' !=
-                            widget.pageName) {
+                            'launch://sleeq.app/settings') {
                           context.pushNamed(
                             'Settings',
                             extra: <String, dynamic>{
