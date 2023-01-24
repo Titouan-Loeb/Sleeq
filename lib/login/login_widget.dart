@@ -163,13 +163,33 @@ class _LoginWidgetState extends State<LoginWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                       child: TextFormField(
                         controller: emailTextController,
+                        autofocus: true,
+                        autofillHints: [AutofillHints.email],
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
                             'dhggjgkl' /* Your email address */,
                           ),
-                          labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
+                                fontSize: 14,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
+                              ),
+                          hintStyle: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
+                                fontSize: 14,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
+                              ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
@@ -186,14 +206,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           errorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).customColor3,
                               width: 1,
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: FlutterFlowTheme.of(context).customColor3,
                               width: 1,
                             ),
                             borderRadius: BorderRadius.circular(12),
@@ -205,7 +225,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1,
-                        maxLines: null,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                   ),
@@ -229,13 +249,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                       child: TextFormField(
                         controller: passwordTextController,
+                        autofillHints: [AutofillHints.password],
                         obscureText: !passwordVisibility,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
                             'pbytomsf' /* Password */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                          hintStyle: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText2Family,
+                                fontSize: 12,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText2Family),
+                              ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0x00000000),
@@ -264,9 +294,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
                           contentPadding:
                               EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                           suffixIcon: InkWell(

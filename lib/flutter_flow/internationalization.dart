@@ -182,16 +182,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ForgotPassword
   {
-    'e7e8d8i5': {
-      'en': 'Sleeq App',
-      'fr': '',
-    },
     'm9ktobmr': {
       'en': 'Forgot password',
       'fr': 'S\'identifier',
     },
     'sjof3rcv': {
-      'en': 'You forgot your password ? Silly goose',
+      'en': 'You forgot your password ? Shame.',
       'fr': 'Utilisez le formulaire ci-dessous, pour accéder à votre compte.',
     },
     'dwpe9xab': {
@@ -201,6 +197,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '5r67e7rs': {
       'en': 'Send password reset email',
       'fr': 'Connexion',
+    },
+    'rvnfk7k5': {
+      'en': 'Back to login',
+      'fr': '',
     },
     'rj6wygs2': {
       'en': 'Profile',

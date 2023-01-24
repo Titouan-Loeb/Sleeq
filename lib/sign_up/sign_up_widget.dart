@@ -154,6 +154,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
                       controller: emailTextController,
+                      autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: FFLocalizations.of(context).getText(
