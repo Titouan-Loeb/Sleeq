@@ -199,264 +199,266 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '6hxdkp1s': {
       'en': 'Navigation 01',
-      'fr': '',
+      'fr': 'Navigation 01',
     },
     '70193utb': {
       'en': 'Top Navigation',
-      'fr': '',
+      'fr': 'Navigation supérieure',
     },
     'nelwu3dg': {
       'en':
           'Find some examples of side navigations, copy the elements and use them in your FlutterFlow Projects.',
-      'fr': '',
+      'fr':
+          'Trouvez des exemples de navigations latérales, copiez les éléments et utilisez-les dans vos projets FlutterFlow.',
     },
     '8cvcu2dh': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'j4sbf73p': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     'xqtfuuz8': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     'b210zgu0': {
       'en': 'Quick search...',
-      'fr': '',
+      'fr': 'Recherche rapide...',
     },
     'r4yizsom': {
       'en': 'Andrew D.',
-      'fr': '',
+      'fr': 'André D.',
     },
     '38bphb7q': {
       'en': '@andrewd',
-      'fr': '',
+      'fr': '@andrewd',
     },
     'bbkpyuyu': {
       'en': 'Quick search...',
-      'fr': '',
+      'fr': 'Recherche rapide...',
     },
     'lxs39vt8': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'zoyj3l6e': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     'rk3p06ao': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     '7c444k54': {
       'en': 'Andrew Daniels',
-      'fr': '',
+      'fr': 'Andrew Daniel',
     },
     'a2ah8ycc': {
       'en': '@andrewd',
-      'fr': '',
+      'fr': '@andrewd',
     },
     'r645qa6z': {
       'en': 'Quick search...',
-      'fr': '',
+      'fr': 'Recherche rapide...',
     },
     's7wjimql': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'c2kx3z46': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     'ik90jtob': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     '4tudklk0': {
       'en': 'Andrew Daniels',
-      'fr': '',
+      'fr': 'Andrew Daniel',
     },
     'w74i11w3': {
       'en': '@andrewd',
-      'fr': '',
+      'fr': '@andrewd',
     },
     '05zguy40': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     '2lubq4m9': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     '3o3pdasn': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     'cno9mexz': {
       'en': 'Andrew',
-      'fr': '',
+      'fr': 'André',
     },
     '0aqmnmbl': {
       'en': '@andrewd',
-      'fr': '',
+      'fr': '@andrewd',
     },
     'lushfpiu': {
       'en': 'Side Navigation',
-      'fr': '',
+      'fr': 'Navigation latérale',
     },
     'j8d5yhdr': {
       'en':
           'Find some examples of side navigations, copy the elements and use them in your FlutterFlow Projects.',
-      'fr': '',
+      'fr':
+          'Trouvez des exemples de navigations latérales, copiez les éléments et utilisez-les dans vos projets FlutterFlow.',
     },
     'sgepr3lx': {
       'en': '2',
-      'fr': '',
+      'fr': '2',
     },
     'iaf0g1ei': {
       'en': 'Explore',
-      'fr': '',
+      'fr': 'Explorer',
     },
     'm2yh7ytw': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'nfcx7wt1': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     'em760c22': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     'z3x1ghoh': {
       'en': 'Explore',
-      'fr': '',
+      'fr': 'Explorer',
     },
     'yzy84o5w': {
       'en': '2',
-      'fr': '',
+      'fr': '2',
     },
     'y9hepmty': {
       'en': 'Primary Navigation',
-      'fr': '',
+      'fr': 'Navigation primaire',
     },
     'ja8hkl5y': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'knh365wm': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     'g9xm0cmh': {
       'en': 'Activity',
-      'fr': '',
+      'fr': 'Activité',
     },
     'wtkfmqk4': {
       'en': 'Transactions',
-      'fr': '',
+      'fr': 'Transactions',
     },
     'rut3xogg': {
       'en': 'Spending',
-      'fr': '',
+      'fr': 'Dépenses',
     },
     'xitgpmc9': {
       'en': 'Income',
-      'fr': '',
+      'fr': 'Revenu',
     },
     'edz9etx7': {
       'en': 'Admin',
-      'fr': '',
+      'fr': 'Administrateur',
     },
     'sjmf1m7k': {
       'en': 'Billing & Payments',
-      'fr': '',
+      'fr': 'Facturation et paiements',
     },
     'dh3a9pa1': {
       'en': 'My Account',
-      'fr': '',
+      'fr': 'Mon compte',
     },
     '0d1w71vw': {
       'en': 'Andrew D.',
-      'fr': '',
+      'fr': 'André D.',
     },
     'd6cwv74z': {
       'en': 'Admin',
-      'fr': '',
+      'fr': 'Administrateur',
     },
     'd8kowz6z': {
       'en': 'Light Mode',
-      'fr': '',
+      'fr': 'Mode lumière',
     },
     'cjmw29z3': {
       'en': 'Dark Mode',
-      'fr': '',
+      'fr': 'Mode sombre',
     },
     'z3jdimn7': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'kzjb95uo': {
       'en': 'Chats',
-      'fr': '',
+      'fr': 'Chats',
     },
     '6clflcqq': {
       'en': 'Projects',
-      'fr': '',
+      'fr': 'Projets',
     },
     'cp4ha3lp': {
       'en': 'Explore',
-      'fr': '',
+      'fr': 'Explorer',
     },
     'y3jr09x4': {
       'en': 'Light Mode',
-      'fr': '',
+      'fr': 'Mode lumière',
     },
     'gggxef88': {
       'en': 'Dark Mode',
-      'fr': '',
+      'fr': 'Mode sombre',
     },
     'bm8f5024': {
       'en': 'Andrew D.',
-      'fr': '',
+      'fr': 'André D.',
     },
     'ysnoxodi': {
       'en': 'admin@flutterflow.app',
-      'fr': '',
+      'fr': 'admin@flutterflow.app',
     },
     '01essxer': {
       'en': 'View Profile',
-      'fr': '',
+      'fr': 'Voir le profil',
     },
     'a6dom9av': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
   },
   // Sidebar
   {
     '0xz3kll1': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'bi0afuq9': {
       'en': 'Settings',
-      'fr': '',
+      'fr': 'Paramètres',
     },
     'q8vbp2qt': {
       'en': 'Light Mode',
-      'fr': '',
+      'fr': 'Mode lumière',
     },
     '4fsc1wau': {
       'en': 'Dark Mode',
-      'fr': '',
+      'fr': 'Mode sombre',
     },
     '10py6p4d': {
       'en': 'Logout',
-      'fr': '',
+      'fr': 'Se déconnecter',
     },
   },
   // Miscellaneous
