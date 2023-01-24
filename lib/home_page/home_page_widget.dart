@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     .containsKey(FlutterFlowTheme.of(context).title2Family),
               ),
         ),
-        actions: [],
+        actions: [
+          FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.settings,
+              color: FlutterFlowTheme.of(context).primaryBackground,
+              size: 30,
+            ),
+            onPressed: () async {
+              context.pushNamed('Settings');
+            },
+          ),
+        ],
         centerTitle: false,
         elevation: 2,
       ),

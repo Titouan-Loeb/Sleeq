@@ -114,6 +114,76 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // SignUp
+  {
+    'mcquk0sa': {
+      'en': 'Sign In',
+      'fr': '',
+    },
+    '3a46tknc': {
+      'en': 'Sign Up',
+      'fr': '',
+    },
+    '0ufzn822': {
+      'en': 'Get started by creating an account below.',
+      'fr': '',
+    },
+    'sh35p1k7': {
+      'en': 'Your email address',
+      'fr': '',
+    },
+    's3mww27o': {
+      'en': 'Password',
+      'fr': '',
+    },
+    'hii8oza0': {
+      'en': 'Sign up',
+      'fr': '',
+    },
+    'owvuefar': {
+      'en': 'Profile',
+      'fr': '',
+    },
+  },
+  // Settings
+  {
+    'c2l5i7mo': {
+      'en': 'Profile',
+      'fr': '',
+    },
+    'rtnfjfta': {
+      'en': 'elaine.edwards@google.com',
+      'fr': '',
+    },
+    '09nks8l1': {
+      'en': 'Switch to Dark Mode',
+      'fr': '',
+    },
+    'wesg8zvh': {
+      'en': 'Switch to Light Mode',
+      'fr': '',
+    },
+    'qkxr1fpu': {
+      'en': 'Account Settings',
+      'fr': '',
+    },
+    'oyfgezsr': {
+      'en': 'Change Password',
+      'fr': '',
+    },
+    '6noal7yz': {
+      'en': 'Edit Profile',
+      'fr': '',
+    },
+    '0q0p4qev': {
+      'en': 'Log Out',
+      'fr': '',
+    },
+    'rwj4rps2': {
+      'en': '__',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'p2hrahkk': {
