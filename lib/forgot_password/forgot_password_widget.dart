@@ -183,7 +183,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     print('Button pressed ...');
                   },
                   text: FFLocalizations.of(context).getText(
-                    'rvnfk7k5' /* Back to login */,
+                    'om06q9t1' /* Back to login */,
                   ),
                   icon: Icon(
                     Icons.chevron_left,

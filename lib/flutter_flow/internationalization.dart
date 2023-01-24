@@ -146,7 +146,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wul94o4l': {
       'en': 'Settings',
-      'fr': '__',
+      'fr': 'Paramètres',
     },
   },
   // SignUp
@@ -184,11 +184,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm9ktobmr': {
       'en': 'Forgot password',
-      'fr': 'S\'identifier',
+      'fr': 'Mot de passe oublié',
     },
     'sjof3rcv': {
       'en': 'You forgot your password ? Shame.',
-      'fr': 'Utilisez le formulaire ci-dessous, pour accéder à votre compte.',
+      'fr': 'Vous avez oublié votre mot de passe ? Honte.',
     },
     'dwpe9xab': {
       'en': 'Your email address',
@@ -196,11 +196,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5r67e7rs': {
       'en': 'Send password reset email',
-      'fr': 'Connexion',
+      'fr': 'Envoyer un e-mail de réinitialisation du mot de passe',
     },
-    'rvnfk7k5': {
+    'om06q9t1': {
       'en': 'Back to login',
-      'fr': '',
+      'fr': 'Retour connexion',
     },
     'rj6wygs2': {
       'en': 'Profile',
