@@ -1,4 +1,4 @@
-# SleeqApp
+# Sleeq
 
 A new Flutter project.
 

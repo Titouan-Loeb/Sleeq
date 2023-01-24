@@ -26,6 +26,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordVisibility = false;
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignUp'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -43,7 +44,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
+          padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -62,9 +63,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     InkWell(
                       onTap: () async {
+                        logFirebaseEvent(
+                            'SIGN_UP_PAGE_Container_ludiwph3_ON_TAP');
+
                         context.pushNamed(
                           'Login',
                           extra: <String, dynamic>{
@@ -82,23 +87,19 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         alignment: AlignmentDirectional(-1, 0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'mcquk0sa' /* Sign In */,
-                            ),
-                            style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily:
-                                      FlutterFlowTheme.of(context).title1Family,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .title1Family),
-                                ),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'mcquk0sa' /* Sign In */,
                           ),
+                          style: FlutterFlowTheme.of(context).title1.override(
+                                fontFamily:
+                                    FlutterFlowTheme.of(context).title1Family,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontWeight: FontWeight.normal,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context).title1Family),
+                              ),
                         ),
                       ),
                     ),
@@ -108,14 +109,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       alignment: AlignmentDirectional(-1, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '3a46tknc' /* Sign Up */,
-                          ),
-                          style: FlutterFlowTheme.of(context).title1,
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '3a46tknc' /* Sign Up */,
                         ),
+                        style: FlutterFlowTheme.of(context).title1,
                       ),
                     ),
                   ],
@@ -286,6 +284,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent('SIGN_UP_PAGE_SIGN_UP_BTN_ON_TAP');
                         GoRouter.of(context).prepareAuthEvent();
 
                         final user = await createAccountWithEmail(
@@ -346,6 +345,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         size: 24,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent('SIGN_UP_PAGE_google_ICN_ON_TAP');
                         GoRouter.of(context).prepareAuthEvent();
                         final user = await signInWithGoogle(context);
                         if (user == null) {

@@ -116,19 +116,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Profile',
       'fr': 'Profil',
     },
-    'qcy7r67m': {
+    'vdvhgsru': {
       'en': 'Account Settings',
       'fr': 'Paramètres du compte',
     },
-    'w7kvsp9o': {
+    '2j91mph6': {
       'en': 'Change Password',
       'fr': 'Changer le mot de passe',
     },
-    '3rn07fb7': {
+    'yso38d4d': {
       'en': 'Edit Profile',
       'fr': 'Editer le profil',
     },
-    'o8wbq9z5': {
+    'oox3aaat': {
       'en': 'Log Out',
       'fr': 'Se déconnecter',
     },
@@ -193,6 +193,270 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rj6wygs2': {
       'en': 'Profile',
       'fr': 'Profil',
+    },
+  },
+  // navigation01
+  {
+    '6hxdkp1s': {
+      'en': 'Navigation 01',
+      'fr': '',
+    },
+    '70193utb': {
+      'en': 'Top Navigation',
+      'fr': '',
+    },
+    'nelwu3dg': {
+      'en':
+          'Find some examples of side navigations, copy the elements and use them in your FlutterFlow Projects.',
+      'fr': '',
+    },
+    '8cvcu2dh': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'j4sbf73p': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    'xqtfuuz8': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    'b210zgu0': {
+      'en': 'Quick search...',
+      'fr': '',
+    },
+    'r4yizsom': {
+      'en': 'Andrew D.',
+      'fr': '',
+    },
+    '38bphb7q': {
+      'en': '@andrewd',
+      'fr': '',
+    },
+    'bbkpyuyu': {
+      'en': 'Quick search...',
+      'fr': '',
+    },
+    'lxs39vt8': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'zoyj3l6e': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    'rk3p06ao': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    '7c444k54': {
+      'en': 'Andrew Daniels',
+      'fr': '',
+    },
+    'a2ah8ycc': {
+      'en': '@andrewd',
+      'fr': '',
+    },
+    'r645qa6z': {
+      'en': 'Quick search...',
+      'fr': '',
+    },
+    's7wjimql': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'c2kx3z46': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    'ik90jtob': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    '4tudklk0': {
+      'en': 'Andrew Daniels',
+      'fr': '',
+    },
+    'w74i11w3': {
+      'en': '@andrewd',
+      'fr': '',
+    },
+    '05zguy40': {
+      'en': 'Home',
+      'fr': '',
+    },
+    '2lubq4m9': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    '3o3pdasn': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    'cno9mexz': {
+      'en': 'Andrew',
+      'fr': '',
+    },
+    '0aqmnmbl': {
+      'en': '@andrewd',
+      'fr': '',
+    },
+    'lushfpiu': {
+      'en': 'Side Navigation',
+      'fr': '',
+    },
+    'j8d5yhdr': {
+      'en':
+          'Find some examples of side navigations, copy the elements and use them in your FlutterFlow Projects.',
+      'fr': '',
+    },
+    'sgepr3lx': {
+      'en': '2',
+      'fr': '',
+    },
+    'iaf0g1ei': {
+      'en': 'Explore',
+      'fr': '',
+    },
+    'm2yh7ytw': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'nfcx7wt1': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    'em760c22': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    'z3x1ghoh': {
+      'en': 'Explore',
+      'fr': '',
+    },
+    'yzy84o5w': {
+      'en': '2',
+      'fr': '',
+    },
+    'y9hepmty': {
+      'en': 'Primary Navigation',
+      'fr': '',
+    },
+    'ja8hkl5y': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'knh365wm': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    'g9xm0cmh': {
+      'en': 'Activity',
+      'fr': '',
+    },
+    'wtkfmqk4': {
+      'en': 'Transactions',
+      'fr': '',
+    },
+    'rut3xogg': {
+      'en': 'Spending',
+      'fr': '',
+    },
+    'xitgpmc9': {
+      'en': 'Income',
+      'fr': '',
+    },
+    'edz9etx7': {
+      'en': 'Admin',
+      'fr': '',
+    },
+    'sjmf1m7k': {
+      'en': 'Billing & Payments',
+      'fr': '',
+    },
+    'dh3a9pa1': {
+      'en': 'My Account',
+      'fr': '',
+    },
+    '0d1w71vw': {
+      'en': 'Andrew D.',
+      'fr': '',
+    },
+    'd6cwv74z': {
+      'en': 'Admin',
+      'fr': '',
+    },
+    'd8kowz6z': {
+      'en': 'Light Mode',
+      'fr': '',
+    },
+    'cjmw29z3': {
+      'en': 'Dark Mode',
+      'fr': '',
+    },
+    'z3jdimn7': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'kzjb95uo': {
+      'en': 'Chats',
+      'fr': '',
+    },
+    '6clflcqq': {
+      'en': 'Projects',
+      'fr': '',
+    },
+    'cp4ha3lp': {
+      'en': 'Explore',
+      'fr': '',
+    },
+    'y3jr09x4': {
+      'en': 'Light Mode',
+      'fr': '',
+    },
+    'gggxef88': {
+      'en': 'Dark Mode',
+      'fr': '',
+    },
+    'bm8f5024': {
+      'en': 'Andrew D.',
+      'fr': '',
+    },
+    'ysnoxodi': {
+      'en': 'admin@flutterflow.app',
+      'fr': '',
+    },
+    '01essxer': {
+      'en': 'View Profile',
+      'fr': '',
+    },
+    'a6dom9av': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // Sidebar
+  {
+    '0xz3kll1': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'bi0afuq9': {
+      'en': 'Settings',
+      'fr': '',
+    },
+    'q8vbp2qt': {
+      'en': 'Light Mode',
+      'fr': '',
+    },
+    '4fsc1wau': {
+      'en': 'Dark Mode',
+      'fr': '',
+    },
+    '10py6p4d': {
+      'en': 'Logout',
+      'fr': '',
     },
   },
   // Miscellaneous

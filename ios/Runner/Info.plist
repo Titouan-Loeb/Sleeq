@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SleeqApp</string>
+	<string>Sleeq</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -42,10 +42,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>sleeqapp.com</string>
+        <string>sleeq.app</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>sleeqapp</string>
+        <string>launch</string>
         </array>
         </dict>
     </array>

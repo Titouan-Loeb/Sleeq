@@ -1,3 +1,5 @@
+import '../components/nav_bar_floting_widget.dart';
+import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
-
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -32,6 +34,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Stack(
+            children: [
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+              ))
+                Align(
+                  alignment: AlignmentDirectional(-1, 0),
+                  child: SidebarWidget(
+                    pageAddress: 'homePage',
+                  ),
+                ),
+              if (responsiveVisibility(
+                context: context,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                Align(
+                  alignment: AlignmentDirectional(0, 1),
+                  child: NavBarFlotingWidget(),
+                ),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Text(
+                  valueOrDefault<String>(
+                    'launch://sleeq.app${GoRouter.of(context).location}',
+                    'launch://sleeq.app/',
+                  ),
+                  style: FlutterFlowTheme.of(context).title1.override(
+                        fontFamily: FlutterFlowTheme.of(context).title1Family,
+                        fontWeight: FontWeight.w600,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).title1Family),
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

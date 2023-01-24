@@ -25,6 +25,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
   void initState() {
     super.initState();
     emailTextController = TextEditingController(text: widget.defaultEmail);
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ForgotPassword'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -135,6 +137,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    logFirebaseEvent(
+                        'FORGOT_PASSWORD_SEND_PASSWORD_RESET_EMAI');
                     if (emailTextController!.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
