@@ -89,10 +89,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'Settings',
-              path: 'settings',
+              name: 'settingsold',
+              path: 'settingsold',
               requireAuth: true,
-              builder: (context, params) => SettingsWidget(),
+              builder: (context, params) => SettingsoldWidget(),
             ),
             FFRoute(
               name: 'SignUp',
@@ -107,10 +107,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'navigation01',
-              path: 'navigation01',
+              name: 'Settings',
+              path: 'settings',
               requireAuth: true,
-              builder: (context, params) => Navigation01Widget(),
+              builder: (context, params) => SettingsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
