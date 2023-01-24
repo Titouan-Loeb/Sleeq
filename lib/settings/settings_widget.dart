@@ -83,6 +83,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisSize: MainAxisSize.max,
@@ -177,6 +178,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
             padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 if (Theme.of(context).brightness == Brightness.light)
                   InkWell(
@@ -198,7 +200,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
@@ -251,31 +253,36 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 ],
                               ),
                             ),
-                            FlutterFlowLanguageSelector(
-                              width: 150,
-                              backgroundColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              dropdownColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              dropdownIconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              borderRadius: 12,
-                              textStyle: GoogleFonts.getFont(
-                                'Lexend',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 13,
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                              child: FlutterFlowLanguageSelector(
+                                width: 150,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                dropdownColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                dropdownIconColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                borderRadius: 12,
+                                textStyle: GoogleFonts.getFont(
+                                  'Lexend',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 13,
+                                ),
+                                hideFlags: false,
+                                flagSize: 24,
+                                flagTextGap: 8,
+                                currentLanguage:
+                                    FFLocalizations.of(context).languageCode,
+                                languages: FFLocalizations.languages(),
+                                onChanged: (lang) =>
+                                    setAppLanguage(context, lang),
                               ),
-                              hideFlags: false,
-                              flagSize: 24,
-                              flagTextGap: 8,
-                              currentLanguage:
-                                  FFLocalizations.of(context).languageCode,
-                              languages: FFLocalizations.languages(),
-                              onChanged: (lang) =>
-                                  setAppLanguage(context, lang),
                             ),
                           ],
                         ),
@@ -302,7 +309,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
                               width: 80,
@@ -330,25 +337,30 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(0.9, 0),
-                                    child: Container(
-                                      width: 36,
-                                      height: 36,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4,
-                                            color: Color(0x430B0D0F),
-                                            offset: Offset(0, 2),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(30),
-                                        shape: BoxShape.rectangle,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 0, 0, 0),
+                                      child: Container(
+                                        width: 36,
+                                        height: 36,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4,
+                                              color: Color(0x430B0D0F),
+                                              offset: Offset(0, 2),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                      ).animateOnActionTrigger(
+                                        animationsMap[
+                                            'containerOnActionTriggerAnimation2']!,
                                       ),
-                                    ).animateOnActionTrigger(
-                                      animationsMap[
-                                          'containerOnActionTriggerAnimation2']!,
                                     ),
                                   ),
                                 ],
