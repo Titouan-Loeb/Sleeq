@@ -70,9 +70,13 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    'h0nf3xmv': {
+    'k8d795du': {
+      'en': 'Upload file',
+      'fr': 'Téléverser un fichier',
+    },
+    'iwpjrj8g': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
     'xbzplc4s': {
       'en': 'Home',
@@ -176,31 +180,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'suy6bmps': {
       'en': 'Your Name',
-      'fr': '',
+      'fr': 'votre nom',
     },
     'oppsunbl': {
       'en': 'Change photo',
-      'fr': '',
+      'fr': 'Changer la photo',
     },
     'nak4cbrl': {
       'en': 'Save Changes',
-      'fr': '',
+      'fr': 'Sauvegarder les modifications',
     },
     'szqzn9xp': {
       'en': 'Logout',
-      'fr': 'elaine.edwards@google.com',
+      'fr': 'Se déconnecter',
     },
-    '5xq6gjch': {
-      'en': 'Upload file',
-      'fr': '',
-    },
-    '3x98uezz': {
+    'zh9jqocu': {
       'en': 'Settings',
-      'fr': '',
+      'fr': 'Paramètres',
     },
     'wurg3p18': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
   },
   // newnav
@@ -228,6 +228,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Miscellaneous
   {
+    '7sgbm13u': {
+      'en': '',
+      'fr': '',
+    },
+    'ryi4f0pr': {
+      'en': '',
+      'fr': '',
+    },
     'p2hrahkk': {
       'en': '',
       'fr': '',
