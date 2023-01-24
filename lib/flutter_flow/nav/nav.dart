@@ -98,6 +98,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'settings',
               requireAuth: true,
               builder: (context, params) => SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'forgotpassword',
+              path: 'forgotpassword',
+              requireAuth: true,
+              builder: (context, params) => ForgotpasswordWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

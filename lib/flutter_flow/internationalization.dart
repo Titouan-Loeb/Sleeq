@@ -72,115 +72,139 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'v74sh12i': {
       'en': 'Page Title',
-      'fr': '',
+      'fr': 'Titre de la page',
     },
     'xbzplc4s': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Domicile',
     },
   },
   // Login
   {
     'hagyvfdy': {
       'en': 'Sign In',
-      'fr': '',
+      'fr': 'S\'identifier',
     },
     'otvb196v': {
       'en': 'Sign Up',
-      'fr': '',
+      'fr': 'S\'inscrire',
     },
     'fqk9zngp': {
       'en': 'Use the form below, to access your account.',
-      'fr': '',
+      'fr': 'Utilisez le formulaire ci-dessous, pour accéder à votre compte.',
     },
     'dhggjgkl': {
       'en': 'Your email address',
-      'fr': '',
+      'fr': 'Votre adresse e-mail',
     },
     'pbytomsf': {
       'en': 'Password',
-      'fr': '',
+      'fr': 'Mot de passe',
     },
     '3xzw8qo5': {
       'en': 'Forgot Password?',
-      'fr': '',
+      'fr': 'Mot de passe oublié?',
     },
     'xt2b21lg': {
       'en': 'Login',
-      'fr': '',
+      'fr': 'Connexion',
     },
     'ijynuzje': {
       'en': 'Profile',
-      'fr': '',
+      'fr': 'Profil',
     },
   },
   // SignUp
   {
     'mcquk0sa': {
       'en': 'Sign In',
-      'fr': '',
+      'fr': 'S\'identifier',
     },
     '3a46tknc': {
       'en': 'Sign Up',
-      'fr': '',
+      'fr': 'S\'inscrire',
     },
     '0ufzn822': {
       'en': 'Get started by creating an account below.',
-      'fr': '',
+      'fr': 'Commencez par créer un compte ci-dessous.',
     },
     'sh35p1k7': {
       'en': 'Your email address',
-      'fr': '',
+      'fr': 'Votre adresse e-mail',
     },
     's3mww27o': {
       'en': 'Password',
-      'fr': '',
+      'fr': 'Mot de passe',
     },
     'hii8oza0': {
       'en': 'Sign up',
-      'fr': '',
+      'fr': 'S\'inscrire',
     },
     'owvuefar': {
       'en': 'Profile',
-      'fr': '',
+      'fr': 'Profil',
     },
   },
   // Settings
   {
-    'c2l5i7mo': {
+    'nrfk05ra': {
       'en': 'Profile',
-      'fr': '',
+      'fr': 'Profil',
     },
-    'rtnfjfta': {
-      'en': 'elaine.edwards@google.com',
-      'fr': '',
-    },
-    '09nks8l1': {
+    '1cep88ha': {
       'en': 'Switch to Dark Mode',
-      'fr': '',
+      'fr': 'Passer en mode sombre',
     },
-    'wesg8zvh': {
+    'f1xrekvd': {
       'en': 'Switch to Light Mode',
-      'fr': '',
+      'fr': 'Passer en mode lumière',
     },
-    'qkxr1fpu': {
+    'qcy7r67m': {
       'en': 'Account Settings',
-      'fr': '',
+      'fr': 'Paramètres du compte',
     },
-    'oyfgezsr': {
+    'w7kvsp9o': {
       'en': 'Change Password',
-      'fr': '',
+      'fr': 'Changer le mot de passe',
     },
-    '6noal7yz': {
+    '3rn07fb7': {
       'en': 'Edit Profile',
-      'fr': '',
+      'fr': 'Editer le profil',
     },
-    '0q0p4qev': {
+    'o8wbq9z5': {
       'en': 'Log Out',
+      'fr': 'Se déconnecter',
+    },
+    'wul94o4l': {
+      'en': '__',
+      'fr': '__',
+    },
+  },
+  // forgotpassword
+  {
+    '3qi90983': {
+      'en':
+          'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
       'fr': '',
     },
-    'rwj4rps2': {
-      'en': '__',
+    '7d14wn8h': {
+      'en': 'Your email address...',
+      'fr': '',
+    },
+    'pskzra1n': {
+      'en': 'Enter your email...',
+      'fr': '',
+    },
+    'b8k1rz1j': {
+      'en': 'Send Link',
+      'fr': '',
+    },
+    'dokajo2z': {
+      'en': 'Forgot Password',
+      'fr': '',
+    },
+    'd50f7o0l': {
+      'en': 'Home',
       'fr': '',
     },
   },

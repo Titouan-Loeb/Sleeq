@@ -1,4 +1,5 @@
 import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -49,32 +50,48 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
         ),
         actions: [
-          FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
-            icon: Icon(
-              Icons.settings,
-              color: FlutterFlowTheme.of(context).primaryBackground,
-              size: 30,
-            ),
-            onPressed: () async {
-              context.pushNamed('Settings');
-            },
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              FlutterFlowLanguageSelector(
+                width: 120,
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                borderColor: FlutterFlowTheme.of(context).secondaryBackground,
+                dropdownColor: FlutterFlowTheme.of(context).primaryBackground,
+                dropdownIconColor: Color(0x0014181B),
+                borderRadius: 20,
+                textStyle: GoogleFonts.getFont(
+                  'Lexend',
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13,
+                ),
+                hideFlags: false,
+                flagSize: 24,
+                flagTextGap: 8,
+                currentLanguage: FFLocalizations.of(context).languageCode,
+                languages: FFLocalizations.languages(),
+                onChanged: (lang) => setAppLanguage(context, lang),
+              ),
+              FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 1,
+                buttonSize: 60,
+                icon: Icon(
+                  Icons.settings,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  context.pushNamed('Settings');
+                },
+              ),
+            ],
           ),
         ],
         centerTitle: false,
         elevation: 2,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [],
-          ),
-        ),
       ),
     );
   }

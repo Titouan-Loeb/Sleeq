@@ -27,13 +27,6 @@ class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.projectName;
-    if (value != null) {
-      result
-        ..add('project_name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.description;
     if (value != null) {
       result
@@ -54,6 +47,13 @@ class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
         ..add('time_created')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
+    }
+    value = object.filename;
+    if (value != null) {
+      result
+        ..add('filename')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -83,10 +83,6 @@ class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'project_name':
-          result.projectName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -98,6 +94,10 @@ class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
         case 'time_created':
           result.timeCreated = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
+          break;
+        case 'filename':
+          result.filename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -116,13 +116,13 @@ class _$FilesRecord extends FilesRecord {
   @override
   final DocumentReference<Object?>? owner;
   @override
-  final String? projectName;
-  @override
   final String? description;
   @override
   final DateTime? lastEdited;
   @override
   final DateTime? timeCreated;
+  @override
+  final String? filename;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -131,10 +131,10 @@ class _$FilesRecord extends FilesRecord {
 
   _$FilesRecord._(
       {this.owner,
-      this.projectName,
       this.description,
       this.lastEdited,
       this.timeCreated,
+      this.filename,
       this.ffRef})
       : super._();
 
@@ -150,10 +150,10 @@ class _$FilesRecord extends FilesRecord {
     if (identical(other, this)) return true;
     return other is FilesRecord &&
         owner == other.owner &&
-        projectName == other.projectName &&
         description == other.description &&
         lastEdited == other.lastEdited &&
         timeCreated == other.timeCreated &&
+        filename == other.filename &&
         ffRef == other.ffRef;
   }
 
@@ -162,10 +162,10 @@ class _$FilesRecord extends FilesRecord {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, owner.hashCode), projectName.hashCode),
-                    description.hashCode),
-                lastEdited.hashCode),
-            timeCreated.hashCode),
+                $jc($jc($jc(0, owner.hashCode), description.hashCode),
+                    lastEdited.hashCode),
+                timeCreated.hashCode),
+            filename.hashCode),
         ffRef.hashCode));
   }
 
@@ -173,10 +173,10 @@ class _$FilesRecord extends FilesRecord {
   String toString() {
     return (newBuiltValueToStringHelper(r'FilesRecord')
           ..add('owner', owner)
-          ..add('projectName', projectName)
           ..add('description', description)
           ..add('lastEdited', lastEdited)
           ..add('timeCreated', timeCreated)
+          ..add('filename', filename)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -188,10 +188,6 @@ class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
   DocumentReference<Object?>? _owner;
   DocumentReference<Object?>? get owner => _$this._owner;
   set owner(DocumentReference<Object?>? owner) => _$this._owner = owner;
-
-  String? _projectName;
-  String? get projectName => _$this._projectName;
-  set projectName(String? projectName) => _$this._projectName = projectName;
 
   String? _description;
   String? get description => _$this._description;
@@ -205,6 +201,10 @@ class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
   DateTime? get timeCreated => _$this._timeCreated;
   set timeCreated(DateTime? timeCreated) => _$this._timeCreated = timeCreated;
 
+  String? _filename;
+  String? get filename => _$this._filename;
+  set filename(String? filename) => _$this._filename = filename;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -217,10 +217,10 @@ class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
     final $v = _$v;
     if ($v != null) {
       _owner = $v.owner;
-      _projectName = $v.projectName;
       _description = $v.description;
       _lastEdited = $v.lastEdited;
       _timeCreated = $v.timeCreated;
+      _filename = $v.filename;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -245,10 +245,10 @@ class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
     final _$result = _$v ??
         new _$FilesRecord._(
             owner: owner,
-            projectName: projectName,
             description: description,
             lastEdited: lastEdited,
             timeCreated: timeCreated,
+            filename: filename,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

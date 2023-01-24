@@ -71,7 +71,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            'c2l5i7mo' /* Profile */,
+            'nrfk05ra' /* Profile */,
           ),
           style: FlutterFlowTheme.of(context).title1,
         ),
@@ -116,7 +116,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                             builder: (context) => ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: CachedNetworkImage(
-                                imageUrl: currentUserPhoto,
+                                imageUrl: valueOrDefault<String>(
+                                  currentUserPhoto,
+                                  'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
+                                ),
                                 width: 100,
                                 height: 100,
                                 fit: BoxFit.cover,
@@ -141,9 +144,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'rtnfjfta' /* elaine.edwards@google.com */,
-                                ),
+                                currentUserEmail,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -197,7 +198,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                '09nks8l1' /* Switch to Dark Mode */,
+                                '1cep88ha' /* Switch to Dark Mode */,
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
                             ),
@@ -280,7 +281,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'wesg8zvh' /* Switch to Light Mode */,
+                                'f1xrekvd' /* Switch to Light Mode */,
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
                             ),
@@ -352,7 +353,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'qkxr1fpu' /* Account Settings */,
+                        'qcy7r67m' /* Account Settings */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1,
                     ),
@@ -390,7 +391,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'oyfgezsr' /* Change Password */,
+                              'w7kvsp9o' /* Change Password */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyText2
@@ -447,7 +448,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              '6noal7yz' /* Edit Profile */,
+                              '3rn07fb7' /* Edit Profile */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
@@ -481,7 +482,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         context.goNamedAuth('Login', mounted);
                       },
                       text: FFLocalizations.of(context).getText(
-                        '0q0p4qev' /* Log Out */,
+                        'o8wbq9z5' /* Log Out */,
                       ),
                       options: FFButtonOptions(
                         height: 40,
