@@ -67,10 +67,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     'launch://sleeq.app/',
                   ),
                   style: FlutterFlowTheme.of(context).title1.override(
-                        fontFamily: FlutterFlowTheme.of(context).title1Family,
+                        fontFamily: 'Playfair Display',
                         fontWeight: FontWeight.w600,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).title1Family),
                       ),
                 ),
               ),

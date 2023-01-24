@@ -8,15 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
-enum DeviceSize {
-  mobile,
-  tablet,
-  desktop,
-}
-
 abstract class FlutterFlowTheme {
-  static DeviceSize deviceSize = DeviceSize.mobile;
-
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -33,7 +25,6 @@ abstract class FlutterFlowTheme {
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
   static FlutterFlowTheme of(BuildContext context) {
-    deviceSize = getDeviceSize(context);
     return Theme.of(context).brightness == Brightness.dark
         ? DarkModeTheme()
         : LightModeTheme();
@@ -78,6 +69,8 @@ abstract class FlutterFlowTheme {
   late Color black600;
   late Color tertiary400;
   late Color textColor;
+  late Color primaryBtnTextOld;
+  late Color lineColorOld;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -94,33 +87,18 @@ abstract class FlutterFlowTheme {
   String get bodyText2Family => typography.bodyText2Family;
   TextStyle get bodyText2 => typography.bodyText2;
 
-  Typography get typography => {
-        DeviceSize.mobile: MobileTypography(this),
-        DeviceSize.tablet: TabletTypography(this),
-        DeviceSize.desktop: DesktopTypography(this),
-      }[deviceSize]!;
-}
-
-DeviceSize getDeviceSize(BuildContext context) {
-  final width = MediaQuery.of(context).size.width;
-  if (width < 479) {
-    return DeviceSize.mobile;
-  } else if (width < 991) {
-    return DeviceSize.tablet;
-  } else {
-    return DeviceSize.desktop;
-  }
+  Typography get typography => ThemeTypography(this);
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF928163);
-  late Color secondaryColor = const Color(0xFF14181B);
-  late Color tertiaryColor = const Color(0xFFDCC294);
-  late Color alternate = const Color(0xFFDBE2E7);
+  late Color primaryColor = const Color(0xFFE08E7F);
+  late Color secondaryColor = const Color(0xFFBA695A);
+  late Color tertiaryColor = const Color(0xFF0299FF);
+  late Color alternate = const Color(0xFFE3E7ED);
   late Color primaryBackground = const Color(0xFFF1F4F8);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color primaryText = const Color(0xFF14181B);
-  late Color secondaryText = const Color(0xFF57636C);
+  late Color secondaryText = const Color(0xFF95A1AC);
 
   late Color customColor1 = Color(0xFF2FB73C);
   late Color primaryBtnText = Color(0xFFFFFFFF);
@@ -152,6 +130,8 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color black600 = Color(0xFF090F13);
   late Color tertiary400 = Color(0xFF39D2C0);
   late Color textColor = Color(0xFF1E2429);
+  late Color primaryBtnTextOld = Color(0xFFFFFFFF);
+  late Color lineColorOld = Color(0xFFE0E3E7);
 }
 
 abstract class Typography {
@@ -171,147 +151,35 @@ abstract class Typography {
   TextStyle get bodyText2;
 }
 
-class MobileTypography extends Typography {
-  MobileTypography(this.theme);
+class ThemeTypography extends Typography {
+  ThemeTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Lexend';
+  String get title1Family => 'Playfair Display';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Lexend',
+        'Playfair Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 34,
       );
-  String get title2Family => 'Lexend';
+  String get title2Family => 'Playfair Display';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Lexend',
+        'Playfair Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 28,
       );
-  String get title3Family => 'Lexend';
+  String get title3Family => 'Playfair Display';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Lexend',
+        'Playfair Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Lexend';
+  String get subtitle1Family => 'Playfair Display';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-      );
-  String get subtitle2Family => 'DM Sans';
-  TextStyle get subtitle2 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 16,
-      );
-  String get bodyText1Family => 'DM Sans';
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      );
-  String get bodyText2Family => 'DM Sans';
-  TextStyle get bodyText2 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      );
-}
-
-class TabletTypography extends Typography {
-  TabletTypography(this.theme);
-
-  final FlutterFlowTheme theme;
-
-  String get title1Family => 'Lexend';
-  TextStyle get title1 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 34,
-      );
-  String get title2Family => 'Lexend';
-  TextStyle get title2 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28,
-      );
-  String get title3Family => 'Lexend';
-  TextStyle get title3 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 20,
-      );
-  String get subtitle1Family => 'Lexend';
-  TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-      );
-  String get subtitle2Family => 'DM Sans';
-  TextStyle get subtitle2 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 16,
-      );
-  String get bodyText1Family => 'DM Sans';
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      );
-  String get bodyText2Family => 'DM Sans';
-  TextStyle get bodyText2 => GoogleFonts.getFont(
-        'DM Sans',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      );
-}
-
-class DesktopTypography extends Typography {
-  DesktopTypography(this.theme);
-
-  final FlutterFlowTheme theme;
-
-  String get title1Family => 'Lexend';
-  TextStyle get title1 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 34,
-      );
-  String get title2Family => 'Lexend';
-  TextStyle get title2 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28,
-      );
-  String get title3Family => 'Lexend';
-  TextStyle get title3 => GoogleFonts.getFont(
-        'Lexend',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 20,
-      );
-  String get subtitle1Family => 'Lexend';
-  TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Lexend',
+        'Playfair Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18,
@@ -340,14 +208,14 @@ class DesktopTypography extends Typography {
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF928163);
-  late Color secondaryColor = const Color(0xFF14181B);
-  late Color tertiaryColor = const Color(0xFFDCC294);
+  late Color primaryColor = const Color(0xFF0259FF);
+  late Color secondaryColor = const Color(0xFFBA695A);
+  late Color tertiaryColor = const Color(0xFFE08E7F);
   late Color alternate = const Color(0xFF262D34);
   late Color primaryBackground = const Color(0xFF1A1F24);
   late Color secondaryBackground = const Color(0xFF0F1316);
   late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF95A1AC);
+  late Color secondaryText = const Color(0xFFA5B0BE);
 
   late Color customColor1 = Color(0xFF452FB7);
   late Color primaryBtnText = Color(0xFFFFFFFF);
@@ -379,6 +247,8 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color black600 = Color(0xFF090F13);
   late Color tertiary400 = Color(0xFF39D2C0);
   late Color textColor = Color(0xFF1E2429);
+  late Color primaryBtnTextOld = Color(0xFFFFFFFF);
+  late Color lineColorOld = Color(0xFF22282F);
 }
 
 extension TextStyleHelper on TextStyle {

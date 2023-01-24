@@ -174,12 +174,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                         .primaryColor,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyText2Family),
                                               ),
                                         ),
                                       ),
@@ -233,7 +227,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         color: Theme.of(context).brightness ==
                                                 Brightness.light
                                             ? FlutterFlowTheme.of(context)
-                                                .lineColor
+                                                .lineColorOld
                                             : FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                         width: 1,
@@ -285,7 +279,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         color: Theme.of(context).brightness ==
                                                 Brightness.dark
                                             ? FlutterFlowTheme.of(context)
-                                                .lineColor
+                                                .lineColorOld
                                             : FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                         width: 1,
@@ -548,10 +542,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                           color: Colors.white,
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2Family),
                                         ),
                                     elevation: 4,
                                     borderSide: BorderSide(
@@ -587,10 +577,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         .primaryColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyText2Family),
                                   ),
                             ),
                           ),

@@ -107,13 +107,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                             'otvb196v' /* Sign Up */,
                           ),
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily:
-                                    FlutterFlowTheme.of(context).title1Family,
+                                fontFamily: 'Playfair Display',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 fontWeight: FontWeight.normal,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context).title1Family),
                               ),
                         ),
                       ),
@@ -164,24 +161,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                         labelText: FFLocalizations.of(context).getText(
                           'dhggjgkl' /* Your email address */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context)
-                            .bodyText1
-                            .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 14,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
-                            ),
-                        hintStyle: FlutterFlowTheme.of(context)
-                            .bodyText1
-                            .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText1Family,
-                              fontSize: 14,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
-                            ),
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'DM Sans',
+                                  fontSize: 14,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'DM Sans',
+                                  fontSize: 14,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
@@ -248,15 +237,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                           'pbytomsf' /* Password */,
                         ),
                         labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                        hintStyle: FlutterFlowTheme.of(context)
-                            .bodyText2
-                            .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).bodyText2Family,
-                              fontSize: 12,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText2Family),
-                            ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'DM Sans',
+                                  fontSize: 12,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0x00000000),
@@ -337,12 +322,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).subtitle2Family,
+                              fontFamily: 'DM Sans',
                               color: FlutterFlowTheme.of(context).primaryText,
                               fontSize: 14,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).subtitle2Family),
                               lineHeight: 1,
                             ),
                         elevation: 0,
@@ -375,15 +357,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                         width: 150,
                         height: 50,
                         color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle2
-                            .override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).subtitle2Family,
-                              color: FlutterFlowTheme.of(context).white,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).subtitle2Family),
-                            ),
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'DM Sans',
+                                  color: FlutterFlowTheme.of(context).white,
+                                ),
                         elevation: 5,
                         borderSide: BorderSide(
                           color: Colors.transparent,

@@ -150,8 +150,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                           style: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle2Family,
+                                fontFamily: 'DM Sans',
                                 color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
                                             'launch://sleeq.app/homePage') ||
                                         ('launch://sleeq.app${GoRouter.of(context).location}' ==
@@ -159,9 +158,6 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                     ? FlutterFlowTheme.of(context).primaryColor
                                     : FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .subtitle2Family),
                               ),
                         ),
                       ),
@@ -240,22 +236,17 @@ class _NewnavWidgetState extends State<NewnavWidget>
                           FFLocalizations.of(context).getText(
                             'rdg8q5en' /* Settings */,
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .subtitle2
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle2Family,
-                                color:
-                                    'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                            'launch://sleeq.app/settings'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryColor
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .subtitle2Family),
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'DM Sans',
+                                    color:
+                                        'launch://sleeq.app${GoRouter.of(context).location}' ==
+                                                'launch://sleeq.app/settings'
+                                            ? FlutterFlowTheme.of(context)
+                                                .primaryColor
+                                            : FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                  ),
                         ),
                       ),
                     ],
@@ -334,7 +325,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                   border: Border.all(
                                     color: Theme.of(context).brightness ==
                                             Brightness.light
-                                        ? FlutterFlowTheme.of(context).lineColor
+                                        ? FlutterFlowTheme.of(context)
+                                            .lineColorOld
                                         : FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                     width: 1,
@@ -364,9 +356,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1Family,
+                                              fontFamily: 'DM Sans',
                                               color: Theme.of(context)
                                                           .brightness ==
                                                       Brightness.light
@@ -374,12 +364,6 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                                       .primaryText
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1Family),
                                             ),
                                       ),
                                     ),
@@ -407,7 +391,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                   border: Border.all(
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? FlutterFlowTheme.of(context).lineColor
+                                        ? FlutterFlowTheme.of(context)
+                                            .lineColorOld
                                         : FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                     width: 1,
@@ -437,9 +422,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1Family,
+                                              fontFamily: 'DM Sans',
                                               color: Theme.of(context)
                                                           .brightness ==
                                                       Brightness.dark
@@ -447,12 +430,6 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                                       .primaryText
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1Family),
                                             ),
                                       ),
                                     ),
@@ -471,7 +448,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                   Divider(
                     height: 12,
                     thickness: 2,
-                    color: FlutterFlowTheme.of(context).lineColor,
+                    color: FlutterFlowTheme.of(context).lineColorOld,
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
@@ -535,15 +512,9 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText2
                                           .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText2Family,
+                                            fontFamily: 'DM Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText2Family),
                                           ),
                                     ),
                                   ),
