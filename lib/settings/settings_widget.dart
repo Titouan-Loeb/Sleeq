@@ -40,10 +40,13 @@ class _SettingsWidgetState extends State<SettingsWidget>
       ],
     ),
   };
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
+  bool isMediaUploading1 = false;
+  String uploadedFileUrl1 = '';
 
   TextEditingController? yourNameController;
+  bool isMediaUploading2 = false;
+  String uploadedFileUrl2 = '';
+
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -74,6 +77,25 @@ class _SettingsWidgetState extends State<SettingsWidget>
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: responsiveVisibility(
+        context: context,
+        tabletLandscape: false,
+        desktop: false,
+      )
+          ? AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+              automaticallyImplyLeading: false,
+              title: Text(
+                FFLocalizations.of(context).getText(
+                  'vfbfj53s' /* Settings */,
+                ),
+                style: FlutterFlowTheme.of(context).title2,
+              ),
+              actions: [],
+              centerTitle: true,
+              elevation: 4,
+            )
+          : null,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -438,7 +460,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         selectedMedia.every((m) =>
                                             validateFileFormat(
                                                 m.storagePath, context))) {
-                                      setState(() => isMediaUploading = true);
+                                      setState(() => isMediaUploading1 = true);
                                       var downloadUrls = <String>[];
                                       try {
                                         showUploadMessage(
@@ -458,11 +480,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                       } finally {
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
-                                        isMediaUploading = false;
+                                        isMediaUploading1 = false;
                                       }
                                       if (downloadUrls.length ==
                                           selectedMedia.length) {
-                                        setState(() => uploadedFileUrl =
+                                        setState(() => uploadedFileUrl1 =
                                             downloadUrls.first);
                                         showUploadMessage(context, 'Success!');
                                       } else {
@@ -475,7 +497,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
                                     final usersUpdateData =
                                         createUsersRecordData(
-                                      photoUrl: uploadedFileUrl,
+                                      photoUrl: uploadedFileUrl1,
                                       displayName: yourNameController!.text,
                                     );
                                     await currentUserReference!
@@ -488,8 +510,13 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     height: 60,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
-                                    textStyle:
-                                        FlutterFlowTheme.of(context).subtitle2,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'DM Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                        ),
                                     elevation: 4,
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -539,7 +566,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         .subtitle2
                                         .override(
                                           fontFamily: 'Lexend Deca',
-                                          color: Colors.white,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -578,6 +606,70 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'SETTINGS_PAGE_UPLOAD_FILE_BTN_ON_TAP');
+                              final selectedFile =
+                                  await selectFile(allowedExtensions: ['pdf']);
+                              if (selectedFile != null) {
+                                setState(() => isMediaUploading2 = true);
+                                String? downloadUrl;
+                                try {
+                                  showUploadMessage(
+                                    context,
+                                    'Uploading file...',
+                                    showLoading: true,
+                                  );
+                                  downloadUrl = await uploadData(
+                                      selectedFile.storagePath,
+                                      selectedFile.bytes);
+                                } finally {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  isMediaUploading2 = false;
+                                }
+                                if (downloadUrl != null) {
+                                  setState(
+                                      () => uploadedFileUrl2 = downloadUrl!);
+                                  showUploadMessage(
+                                    context,
+                                    'Success!',
+                                  );
+                                } else {
+                                  setState(() {});
+                                  showUploadMessage(
+                                    context,
+                                    'Failed to upload file',
+                                  );
+                                  return;
+                                }
+                              }
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              '5xq6gjch' /* Upload file */,
+                            ),
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 60,
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'DM Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                  ),
+                              elevation: 4,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
                             ),
                           ),
                         ),
