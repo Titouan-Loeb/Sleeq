@@ -168,18 +168,12 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Outfit',
+                                                fontFamily: 'Lexend',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyText2Family),
                                               ),
                                         ),
                                       ),
@@ -193,7 +187,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                      padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -202,8 +196,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -234,7 +227,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         color: Theme.of(context).brightness ==
                                                 Brightness.light
                                             ? FlutterFlowTheme.of(context)
-                                                .lineColor
+                                                .lineColorOld
                                             : FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                         width: 1,
@@ -286,7 +279,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                         color: Theme.of(context).brightness ==
                                                 Brightness.dark
                                             ? FlutterFlowTheme.of(context)
-                                                .lineColor
+                                                .lineColorOld
                                             : FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                         width: 1,
@@ -364,64 +357,70 @@ class _SettingsWidgetState extends State<SettingsWidget>
                       children: [
                         Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                          child: TextFormField(
-                            controller: yourNameController,
-                            autofillHints: [AutofillHints.name],
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'suy6bmps' /* Your Name */,
-                              ),
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodyText2,
-                              hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              contentPadding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 16),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            child: TextFormField(
+                              controller: yourNameController,
+                              autofillHints: [AutofillHints.name],
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'suy6bmps' /* Your Name */,
+                                ),
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).bodyText2,
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodyText2,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 24, 0, 24),
+                              ),
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
                           ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0, 0.05),
-                              child: Padding(
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 0, 10, 0),
                                 child: FFButtonWidget(
@@ -489,18 +488,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     height: 60,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2Family),
-                                        ),
+                                    textStyle:
+                                        FlutterFlowTheme.of(context).subtitle2,
                                     elevation: 4,
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -509,10 +498,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   ),
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0, 0.05),
-                              child: Padding(
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10, 0, 10, 0),
                                 child: FFButtonWidget(
@@ -556,10 +542,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                           color: Colors.white,
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2Family),
                                         ),
                                     elevation: 4,
                                     borderSide: BorderSide(
@@ -569,8 +551,35 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   ),
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          child: InkWell(
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'SETTINGS_PAGE_Text_el4wl4ty_ON_TAP');
+                              GoRouter.of(context).prepareAuthEvent();
+                              await signOut();
+
+                              context.goNamedAuth('Login', mounted);
+                            },
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'szqzn9xp' /* Logout */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText2
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                             ),
-                          ],
+                          ),
                         ),
                       ],
                     ),

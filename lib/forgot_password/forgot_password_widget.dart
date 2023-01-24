@@ -168,8 +168,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle1Family),
                         ),
                     elevation: 8,
                     borderSide: BorderSide(
@@ -199,13 +197,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     height: 40,
                     color: FlutterFlowTheme.of(context).primaryBackground,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).subtitle2Family,
+                          fontFamily: 'DM Sans',
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     elevation: 0,
                     borderSide: BorderSide(
