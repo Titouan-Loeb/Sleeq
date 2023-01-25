@@ -74,10 +74,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Upload file',
       'fr': 'Téléverser un fichier',
     },
-    'iwpjrj8g': {
-      'en': 'Home',
-      'fr': 'Domicile',
-    },
     'xbzplc4s': {
       'en': 'Home',
       'fr': 'Domicile',
@@ -194,17 +190,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Logout',
       'fr': 'Se déconnecter',
     },
-    'zh9jqocu': {
-      'en': 'Settings',
-      'fr': 'Paramètres',
-    },
     'wurg3p18': {
       'en': 'Home',
       'fr': 'Domicile',
     },
   },
+  // examplePage
+  {
+    'ckfu9ov7': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // newnav
   {
+    'zm79fw7y': {
+      'en': 'SLEEQ',
+      'fr': '',
+    },
+    'ix78nqgk': {
+      'en': 'SLEEQ',
+      'fr': '',
+    },
     '6dt9sj2x': {
       'en': 'Home',
       'fr': 'Domicile',

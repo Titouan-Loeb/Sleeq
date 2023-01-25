@@ -97,10 +97,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               'mcquk0sa' /* Sign In */,
                             ),
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Playfair Display',
+                                  fontFamily:
+                                      FlutterFlowTheme.of(context).title1Family,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .title1Family),
                                 ),
                           ),
                         ),
@@ -307,13 +311,18 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           width: 150,
                           height: 50,
                           color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'DM Sans',
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .subtitle2Family,
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .subtitle2Family),
+                              ),
                           elevation: 3,
                           borderSide: BorderSide(
                             color: Colors.transparent,

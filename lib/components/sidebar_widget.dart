@@ -5,12 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SidebarWidget extends StatefulWidget {
-  const SidebarWidget({
-    Key? key,
-    this.pageAddress,
-  }) : super(key: key);
-
-  final String? pageAddress;
+  const SidebarWidget({Key? key}) : super(key: key);
 
   @override
   _SidebarWidgetState createState() => _SidebarWidgetState();
@@ -34,19 +29,14 @@ class _SidebarWidgetState extends State<SidebarWidget> {
       ),
       child: Container(
         width: 270,
-        height: 800,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4,
-              color: Color(0x33000000),
-              offset: Offset(0, 2),
-            )
-          ],
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(0),
         ),
-        child: NewnavWidget(),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+          child: NewnavWidget(),
+        ),
       ),
     );
   }
