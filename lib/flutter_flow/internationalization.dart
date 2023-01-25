@@ -193,7 +193,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // examplePage
   {
-    'gie0qpp0': {
+    'uoauni7p': {
       'en': 'Home',
       'fr': '',
     },
