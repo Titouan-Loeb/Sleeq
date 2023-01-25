@@ -2,7 +2,6 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
-import '../components/upload_file_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/actions/index.dart' as actions;
@@ -135,7 +134,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         },
                       ),
                     ),
-                    UploadFileButtonWidget(),
                     if (responsiveVisibility(
                       context: context,
                       tabletLandscape: false,
