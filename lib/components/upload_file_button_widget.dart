@@ -29,72 +29,68 @@ class _UploadFileButtonWidgetState extends State<UploadFileButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: AlignmentDirectional(0.08, -0.48),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-        child: FFButtonWidget(
-          onPressed: () async {
-            logFirebaseEvent('UPLOAD_FILE_BUTTON_UPLOAD_FILE_BTN_ON_TA');
-            // Upload File
-            final selectedFile = await selectFile(allowedExtensions: ['pdf']);
-            if (selectedFile != null) {
-              setState(() => isMediaUploading = true);
-              String? downloadUrl;
-              try {
-                showUploadMessage(
-                  context,
-                  'Uploading file...',
-                  showLoading: true,
-                );
-                downloadUrl = await uploadData(
-                    selectedFile.storagePath, selectedFile.bytes);
-              } finally {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                isMediaUploading = false;
-              }
-              if (downloadUrl != null) {
-                setState(() => uploadedFileUrl = downloadUrl!);
-                showUploadMessage(
-                  context,
-                  'Success!',
-                );
-              } else {
-                setState(() {});
-                showUploadMessage(
-                  context,
-                  'Failed to upload file',
-                );
-                return;
-              }
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+      child: FFButtonWidget(
+        onPressed: () async {
+          logFirebaseEvent('UPLOAD_FILE_BUTTON_UPLOAD_FILE_BTN_ON_TA');
+          // Upload File
+          final selectedFile = await selectFile(allowedExtensions: ['pdf']);
+          if (selectedFile != null) {
+            setState(() => isMediaUploading = true);
+            String? downloadUrl;
+            try {
+              showUploadMessage(
+                context,
+                'Uploading file...',
+                showLoading: true,
+              );
+              downloadUrl = await uploadData(
+                  selectedFile.storagePath, selectedFile.bytes);
+            } finally {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              isMediaUploading = false;
             }
+            if (downloadUrl != null) {
+              setState(() => uploadedFileUrl = downloadUrl!);
+              showUploadMessage(
+                context,
+                'Success!',
+              );
+            } else {
+              setState(() {});
+              showUploadMessage(
+                context,
+                'Failed to upload file',
+              );
+              return;
+            }
+          }
 
-            final filesCreateData = createFilesRecordData(
-              owner: currentUserReference,
-              name: uploadedFileUrl,
-              fileUrl: uploadedFileUrl,
-            );
-            await FilesRecord.createDoc(currentUserReference!)
-                .set(filesCreateData);
-          },
-          text: FFLocalizations.of(context).getText(
-            '0nhn733d' /* Upload file */,
-          ),
-          options: FFButtonOptions(
-            width: 130,
-            height: 60,
-            color: FlutterFlowTheme.of(context).primaryColor,
-            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                  fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
-                  color: FlutterFlowTheme.of(context).primaryBtnText,
-                  useGoogleFonts: GoogleFonts.asMap().containsKey(
-                      FlutterFlowTheme.of(context).subtitle2Family),
-                ),
-            elevation: 4,
-            borderSide: BorderSide(
-              color: Colors.transparent,
-              width: 1,
-            ),
+          final filesCreateData = createFilesRecordData(
+            owner: currentUserReference,
+            name: uploadedFileUrl,
+            fileUrl: uploadedFileUrl,
+          );
+          await FilesRecord.createDoc(currentUserReference!)
+              .set(filesCreateData);
+        },
+        text: FFLocalizations.of(context).getText(
+          '0nhn733d' /* Upload file */,
+        ),
+        options: FFButtonOptions(
+          height: 60,
+          color: FlutterFlowTheme.of(context).primaryColor,
+          textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).subtitle2Family),
+              ),
+          elevation: 4,
+          borderSide: BorderSide(
+            color: Colors.transparent,
+            width: 1,
           ),
         ),
       ),

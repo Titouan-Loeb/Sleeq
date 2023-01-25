@@ -193,7 +193,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // examplePage
   {
-    'uoauni7p': {
+    'rc9x2s09': {
       'en': 'Home',
       'fr': '',
     },
@@ -209,7 +209,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'sqxfpkj8': {
       'en': 'SLEEQ',
-      'fr': '',
+      'fr': 'SLEEQ',
     },
     'j8e3h992': {
       'en': 'SLEEQ',
@@ -217,11 +217,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6dt9sj2x': {
       'en': 'Home',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
     'rdg8q5en': {
       'en': 'Settings',
       'fr': 'Paramètres',
+    },
+    'joolq3hb': {
+      'en': 'Upload a file',
+      'fr': '',
     },
     'wzfdn71s': {
       'en': 'Light Mode',
