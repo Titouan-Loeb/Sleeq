@@ -2,11 +2,13 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -97,35 +99,98 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 16, 16, 16),
-                                    child: InkWell(
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'HOME_PAGE_PAGE_Text_86l60g2z_ON_TAP');
-                                        await launchURL(
-                                            listViewFilesRecord.fileUrl!);
-                                      },
-                                      child: Text(
-                                        listViewFilesRecord.fileUrl!,
-                                        maxLines: 2,
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle1
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle1Family,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 16, 16, 16),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            logFirebaseEvent(
+                                                'HOME_PAGE_PAGE_Text_86l60g2z_ON_TAP');
+                                            await launchURL(
+                                                listViewFilesRecord.fileUrl!);
+                                          },
+                                          child: Text(
+                                            listViewFilesRecord.fileUrl!,
+                                            maxLines: 2,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle1
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .subtitle1Family,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .subtitle1Family),
-                                              lineHeight: 1,
-                                            ),
+                                                  lineHeight: 1,
+                                                ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        borderWidth: 1,
+                                        buttonSize: 60,
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor3,
+                                          size: 30,
+                                        ),
+                                        onPressed: () async {
+                                          logFirebaseEvent(
+                                              'HOME_PAGE_PAGE_delete_ICN_ON_TAP');
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title:
+                                                            Text('Delete File'),
+                                                        content: Text(
+                                                            'Are you sure you want to delete this file?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            await listViewFilesRecord.reference
+                                                .delete();
+                                            HapticFeedback.vibrate();
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                      ),
+                                    ],
                                   ),
                                 ),
                               );

@@ -218,7 +218,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'joolq3hb': {
       'en': 'Upload a file',
-      'fr': '',
+      'fr': 'Télécharger un fichier',
     },
     'wzfdn71s': {
       'en': 'Light Mode',
