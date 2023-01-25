@@ -115,21 +115,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 listViewFilesRecord.fileUrl!);
                                           },
                                           child: Text(
-                                            listViewFilesRecord.fileUrl!,
+                                            listViewFilesRecord.fileUrl!
+                                                .maybeHandleOverflow(
+                                                    maxChars: 30),
                                             maxLines: 2,
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle1
+                                                .subtitle2
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .subtitle1Family,
+                                                          .subtitle2Family,
+                                                  fontSize: 14,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle1Family),
+                                                              .subtitle2Family),
                                                   lineHeight: 1,
                                                 ),
                                           ),
