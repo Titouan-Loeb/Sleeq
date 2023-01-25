@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -76,8 +75,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
             if (Theme.of(context).brightness == Brightness.light)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                child: SvgPicture.asset(
-                  'assets/images/sleeq-logo_black.svg',
+                child: Image.asset(
+                  'assets/images/sleeq-logo_black.png',
                   width: 50,
                   height: 50,
                   fit: BoxFit.fitWidth,
@@ -105,8 +104,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
             if (Theme.of(context).brightness == Brightness.dark)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                child: SvgPicture.asset(
-                  'assets/images/sleeq-logo_white.svg',
+                child: Image.asset(
+                  'assets/images/sleeq-logo_white.png',
                   width: 50,
                   fit: BoxFit.fitWidth,
                 ),
