@@ -1,15 +1,22 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/upload_media.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 
 class NewnavWidget extends StatefulWidget {
   const NewnavWidget({Key? key}) : super(key: key);
@@ -35,6 +42,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
       ],
     ),
   };
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
+
+  FilesRecord? fileOutput;
+  AudioPlayer? soundPlayer;
 
   @override
   void initState() {
@@ -307,6 +319,104 @@ class _NewnavWidgetState extends State<NewnavWidget>
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      logFirebaseEvent('NEWNAV_COMP_UPLOAD_A_FILE_BTN_ON_TAP');
+                      var _shouldSetState = false;
+                      final selectedFile =
+                          await selectFile(allowedExtensions: ['pdf']);
+                      if (selectedFile != null) {
+                        setState(() => isMediaUploading = true);
+                        String? downloadUrl;
+                        try {
+                          downloadUrl = await uploadData(
+                              selectedFile.storagePath, selectedFile.bytes);
+                        } finally {
+                          isMediaUploading = false;
+                        }
+                        if (downloadUrl != null) {
+                          setState(() => uploadedFileUrl = downloadUrl!);
+                        } else {
+                          setState(() {});
+                          return;
+                        }
+                      }
+
+                      if (uploadedFileUrl != null && uploadedFileUrl != '') {
+                        HapticFeedback.mediumImpact();
+
+                        final filesCreateData = createFilesRecordData(
+                          fileUrl: uploadedFileUrl,
+                        );
+                        var filesRecordReference =
+                            FilesRecord.createDoc(currentUserReference!);
+                        await filesRecordReference.set(filesCreateData);
+                        fileOutput = FilesRecord.getDocumentFromData(
+                            filesCreateData, filesRecordReference);
+                        _shouldSetState = true;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Uploaded file at url : ${uploadedFileUrl}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyText1Family,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyText1Family),
+                                    lineHeight: 1,
+                                  ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor: Color(0x00000000),
+                          ),
+                        );
+                        soundPlayer ??= AudioPlayer();
+                        if (soundPlayer!.playing) {
+                          await soundPlayer!.stop();
+                        }
+                        soundPlayer!.setVolume(0.85);
+                        soundPlayer!
+                            .setAsset('assets/audios/movie_1_C2K5NH0.mp3')
+                            .then((_) => soundPlayer!.play());
+                      } else {
+                        if (_shouldSetState) setState(() {});
+                        return;
+                      }
+
+                      if (_shouldSetState) setState(() {});
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'joolq3hb' /* Upload a file */,
+                    ),
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 40,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .subtitle2
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).subtitle2Family,
+                            color: Colors.white,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle2Family),
+                          ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                   child: FlutterFlowLanguageSelector(

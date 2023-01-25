@@ -155,6 +155,14 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                         onPressed: () async {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_add_ICN_ON_TAP');
+                          var _shouldSetState = false;
+                          if (animationsMap[
+                                  'iconButtonOnActionTriggerAnimation'] !=
+                              null) {
+                            animationsMap['iconButtonOnActionTriggerAnimation']!
+                                .controller
+                                .forward(from: 0.0);
+                          }
                           final selectedFile =
                               await selectFile(allowedExtensions: ['pdf']);
                           if (selectedFile != null) {
@@ -174,46 +182,53 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                             }
                           }
 
-                          HapticFeedback.mediumImpact();
+                          if (uploadedFileUrl != null &&
+                              uploadedFileUrl != '') {
+                            HapticFeedback.mediumImpact();
 
-                          final filesCreateData = createFilesRecordData(
-                            fileUrl: uploadedFileUrl,
-                          );
-                          var filesRecordReference =
-                              FilesRecord.createDoc(currentUserReference!);
-                          await filesRecordReference.set(filesCreateData);
-                          fileOutput = FilesRecord.getDocumentFromData(
-                              filesCreateData, filesRecordReference);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Uploaded file at url : ${fileOutput!.fileUrl}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyText1Family,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1Family),
-                                      lineHeight: 1,
-                                    ),
+                            final filesCreateData = createFilesRecordData(
+                              fileUrl: uploadedFileUrl,
+                            );
+                            var filesRecordReference =
+                                FilesRecord.createDoc(currentUserReference!);
+                            await filesRecordReference.set(filesCreateData);
+                            fileOutput = FilesRecord.getDocumentFromData(
+                                filesCreateData, filesRecordReference);
+                            _shouldSetState = true;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Uploaded file at url : ${fileOutput!.fileUrl}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family),
+                                        lineHeight: 1,
+                                      ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
                               ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                            ),
-                          );
-                          soundPlayer ??= AudioPlayer();
-                          if (soundPlayer!.playing) {
-                            await soundPlayer!.stop();
+                            );
+                            soundPlayer ??= AudioPlayer();
+                            if (soundPlayer!.playing) {
+                              await soundPlayer!.stop();
+                            }
+                            soundPlayer!.setVolume(0.85);
+                            soundPlayer!
+                                .setAsset('assets/audios/movie_1_C2K5NH0.mp3')
+                                .then((_) => soundPlayer!.play());
+                          } else {
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
-                          soundPlayer!.setVolume(0.85);
-                          soundPlayer!
-                              .setAsset('assets/audios/movie_1_C2K5NH0.mp3')
-                              .then((_) => soundPlayer!.play());
 
-                          setState(() {});
+                          if (_shouldSetState) setState(() {});
                         },
                       ).animateOnActionTrigger(
                         animationsMap['iconButtonOnActionTriggerAnimation']!,
