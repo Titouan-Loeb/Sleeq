@@ -8,7 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
+enum DeviceSize {
+  mobile,
+  tablet,
+  desktop,
+}
+
 abstract class FlutterFlowTheme {
+  static DeviceSize deviceSize = DeviceSize.mobile;
+
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -25,6 +33,7 @@ abstract class FlutterFlowTheme {
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
   static FlutterFlowTheme of(BuildContext context) {
+    deviceSize = getDeviceSize(context);
     return Theme.of(context).brightness == Brightness.dark
         ? DarkModeTheme()
         : LightModeTheme();
@@ -87,7 +96,22 @@ abstract class FlutterFlowTheme {
   String get bodyText2Family => typography.bodyText2Family;
   TextStyle get bodyText2 => typography.bodyText2;
 
-  Typography get typography => ThemeTypography(this);
+  Typography get typography => {
+        DeviceSize.mobile: MobileTypography(this),
+        DeviceSize.tablet: TabletTypography(this),
+        DeviceSize.desktop: DesktopTypography(this),
+      }[deviceSize]!;
+}
+
+DeviceSize getDeviceSize(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  if (width < 479) {
+    return DeviceSize.mobile;
+  } else if (width < 991) {
+    return DeviceSize.tablet;
+  } else {
+    return DeviceSize.desktop;
+  }
 }
 
 class LightModeTheme extends FlutterFlowTheme {
@@ -151,35 +175,147 @@ abstract class Typography {
   TextStyle get bodyText2;
 }
 
-class ThemeTypography extends Typography {
-  ThemeTypography(this.theme);
+class MobileTypography extends Typography {
+  MobileTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Playfair Display';
+  String get title1Family => 'Lexend';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Playfair Display',
+        'Lexend',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 34,
       );
-  String get title2Family => 'Playfair Display';
+  String get title2Family => 'Lexend';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Playfair Display',
+        'Lexend',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 28,
       );
-  String get title3Family => 'Playfair Display';
+  String get title3Family => 'Lexend';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Playfair Display',
+        'Lexend',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Playfair Display';
+  String get subtitle1Family => 'Lexend';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Playfair Display',
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+      );
+  String get subtitle2Family => 'DM Sans';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'DM Sans';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'DM Sans';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14,
+      );
+}
+
+class TabletTypography extends Typography {
+  TabletTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Lexend';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 34,
+      );
+  String get title2Family => 'Lexend';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 28,
+      );
+  String get title3Family => 'Lexend';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Lexend';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+      );
+  String get subtitle2Family => 'DM Sans';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'DM Sans';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'DM Sans';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'DM Sans',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14,
+      );
+}
+
+class DesktopTypography extends Typography {
+  DesktopTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Lexend';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 34,
+      );
+  String get title2Family => 'Lexend';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 28,
+      );
+  String get title3Family => 'Lexend';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Lexend';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Lexend',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18,

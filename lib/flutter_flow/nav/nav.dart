@@ -105,6 +105,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'settings',
               requireAuth: true,
               builder: (context, params) => SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'examplePage',
+              path: 'examplePage',
+              requireAuth: true,
+              builder: (context, params) => ExamplePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -278,13 +284,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/sleeq-text-logo_small.png',
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      fit: BoxFit.contain,
-                    ),
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  child: Image.asset(
+                    'assets/images/sleeq-logo_white.svg',
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;

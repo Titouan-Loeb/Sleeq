@@ -7,8 +7,10 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -28,6 +30,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_PAGE_LOAD');
+      await actions.lockOrientation();
+    });
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -43,25 +51,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: responsiveVisibility(
-        context: context,
-        tabletLandscape: false,
-        desktop: false,
-      )
-          ? AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-              automaticallyImplyLeading: false,
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'iwpjrj8g' /* Home */,
-                ),
-                style: FlutterFlowTheme.of(context).title2,
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 4,
-            )
-          : null,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -74,9 +63,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ))
                 Align(
                   alignment: AlignmentDirectional(-1, 0),
-                  child: SidebarWidget(
-                    pageAddress: 'homePage',
-                  ),
+                  child: SidebarWidget(),
                 ),
               if (responsiveVisibility(
                 context: context,
@@ -88,25 +75,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: NavBarFlotingWidget(),
                 ),
               Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: AlignmentDirectional(0.12, -0.08),
                 child: Text(
                   valueOrDefault<String>(
                     'launch://sleeq.app${GoRouter.of(context).location}',
                     'launch://sleeq.app/',
                   ),
                   style: FlutterFlowTheme.of(context).title1.override(
-                        fontFamily: 'Playfair Display',
+                        fontFamily: FlutterFlowTheme.of(context).title1Family,
                         fontWeight: FontWeight.w600,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).title1Family),
                       ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.03, -0.4),
+                alignment: AlignmentDirectional(0.08, -0.48),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent('HOME_PAGE_PAGE_UPLOAD_FILE_BTN_ON_TAP');
+                      // Upload File
                       final selectedFile =
                           await selectFile(allowedExtensions: ['pdf']);
                       if (selectedFile != null) {
@@ -140,6 +130,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         }
                       }
 
+                      Navigator.pop(context);
+
                       final usersUpdateData = {
                         'files': FieldValue.arrayUnion([
                           getFileFirestoreData(
@@ -168,8 +160,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
                           .override(
-                            fontFamily: 'DM Sans',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).subtitle2Family,
                             color: FlutterFlowTheme.of(context).primaryBtnText,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle2Family),
                           ),
                       elevation: 4,
                       borderSide: BorderSide(

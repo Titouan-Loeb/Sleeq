@@ -168,13 +168,16 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       width: 250,
                       height: 50,
                       color: FlutterFlowTheme.of(context).primaryColor,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle1.override(
-                                fontFamily: 'DM Sans',
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .subtitle1
+                          .override(
+                            fontFamily: 'DM Sans',
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle1Family),
+                          ),
                       elevation: 8,
                       borderSide: BorderSide(
                         color: Colors.transparent,
@@ -202,13 +205,17 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       width: 150,
                       height: 40,
                       color: FlutterFlowTheme.of(context).primaryBackground,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'DM Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .subtitle2
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).subtitle2Family,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle2Family),
+                          ),
                       elevation: 0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
