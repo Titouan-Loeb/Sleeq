@@ -1,27 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'file_struct.dart';
+part of 'files_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<FileStruct> _$fileStructSerializer = new _$FileStructSerializer();
+Serializer<FilesRecord> _$filesRecordSerializer = new _$FilesRecordSerializer();
 
-class _$FileStructSerializer implements StructuredSerializer<FileStruct> {
+class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
   @override
-  final Iterable<Type> types = const [FileStruct, _$FileStruct];
+  final Iterable<Type> types = const [FilesRecord, _$FilesRecord];
   @override
-  final String wireName = 'FileStruct';
+  final String wireName = 'FilesRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, FileStruct object,
+  Iterable<Object?> serialize(Serializers serializers, FilesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'firestoreUtilData',
-      serializers.serialize(object.firestoreUtilData,
-          specifiedType: const FullType(FirestoreUtilData)),
-    ];
+    final result = <Object?>[];
     Object? value;
     value = object.owner;
     if (value != null) {
@@ -31,10 +27,10 @@ class _$FileStructSerializer implements StructuredSerializer<FileStruct> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.fileName;
+    value = object.name;
     if (value != null) {
       result
-        ..add('file_name')
+        ..add('name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -45,13 +41,21 @@ class _$FileStructSerializer implements StructuredSerializer<FileStruct> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.ffRef;
+    if (value != null) {
+      result
+        ..add('Document__Reference__Field')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     return result;
   }
 
   @override
-  FileStruct deserialize(Serializers serializers, Iterable<Object?> serialized,
+  FilesRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new FileStructBuilder();
+    final result = new FilesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -65,18 +69,19 @@ class _$FileStructSerializer implements StructuredSerializer<FileStruct> {
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'file_name':
-          result.fileName = serializers.deserialize(value,
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'file_url':
           result.fileUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'firestoreUtilData':
-          result.firestoreUtilData = serializers.deserialize(value,
-                  specifiedType: const FullType(FirestoreUtilData))!
-              as FirestoreUtilData;
+        case 'Document__Reference__Field':
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -85,122 +90,110 @@ class _$FileStructSerializer implements StructuredSerializer<FileStruct> {
   }
 }
 
-class _$FileStruct extends FileStruct {
+class _$FilesRecord extends FilesRecord {
   @override
   final DocumentReference<Object?>? owner;
   @override
-  final String? fileName;
+  final String? name;
   @override
   final String? fileUrl;
   @override
-  final FirestoreUtilData firestoreUtilData;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$FileStruct([void Function(FileStructBuilder)? updates]) =>
-      (new FileStructBuilder()..update(updates))._build();
+  factory _$FilesRecord([void Function(FilesRecordBuilder)? updates]) =>
+      (new FilesRecordBuilder()..update(updates))._build();
 
-  _$FileStruct._(
-      {this.owner,
-      this.fileName,
-      this.fileUrl,
-      required this.firestoreUtilData})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        firestoreUtilData, r'FileStruct', 'firestoreUtilData');
-  }
+  _$FilesRecord._({this.owner, this.name, this.fileUrl, this.ffRef})
+      : super._();
 
   @override
-  FileStruct rebuild(void Function(FileStructBuilder) updates) =>
+  FilesRecord rebuild(void Function(FilesRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FileStructBuilder toBuilder() => new FileStructBuilder()..replace(this);
+  FilesRecordBuilder toBuilder() => new FilesRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is FileStruct &&
+    return other is FilesRecord &&
         owner == other.owner &&
-        fileName == other.fileName &&
+        name == other.name &&
         fileUrl == other.fileUrl &&
-        firestoreUtilData == other.firestoreUtilData;
+        ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, owner.hashCode), fileName.hashCode), fileUrl.hashCode),
-        firestoreUtilData.hashCode));
+        $jc($jc($jc(0, owner.hashCode), name.hashCode), fileUrl.hashCode),
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'FileStruct')
+    return (newBuiltValueToStringHelper(r'FilesRecord')
           ..add('owner', owner)
-          ..add('fileName', fileName)
+          ..add('name', name)
           ..add('fileUrl', fileUrl)
-          ..add('firestoreUtilData', firestoreUtilData))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class FileStructBuilder implements Builder<FileStruct, FileStructBuilder> {
-  _$FileStruct? _$v;
+class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
+  _$FilesRecord? _$v;
 
   DocumentReference<Object?>? _owner;
   DocumentReference<Object?>? get owner => _$this._owner;
   set owner(DocumentReference<Object?>? owner) => _$this._owner = owner;
 
-  String? _fileName;
-  String? get fileName => _$this._fileName;
-  set fileName(String? fileName) => _$this._fileName = fileName;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   String? _fileUrl;
   String? get fileUrl => _$this._fileUrl;
   set fileUrl(String? fileUrl) => _$this._fileUrl = fileUrl;
 
-  FirestoreUtilData? _firestoreUtilData;
-  FirestoreUtilData? get firestoreUtilData => _$this._firestoreUtilData;
-  set firestoreUtilData(FirestoreUtilData? firestoreUtilData) =>
-      _$this._firestoreUtilData = firestoreUtilData;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  FileStructBuilder() {
-    FileStruct._initializeBuilder(this);
+  FilesRecordBuilder() {
+    FilesRecord._initializeBuilder(this);
   }
 
-  FileStructBuilder get _$this {
+  FilesRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _owner = $v.owner;
-      _fileName = $v.fileName;
+      _name = $v.name;
       _fileUrl = $v.fileUrl;
-      _firestoreUtilData = $v.firestoreUtilData;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(FileStruct other) {
+  void replace(FilesRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$FileStruct;
+    _$v = other as _$FilesRecord;
   }
 
   @override
-  void update(void Function(FileStructBuilder)? updates) {
+  void update(void Function(FilesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  FileStruct build() => _build();
+  FilesRecord build() => _build();
 
-  _$FileStruct _build() {
+  _$FilesRecord _build() {
     final _$result = _$v ??
-        new _$FileStruct._(
-            owner: owner,
-            fileName: fileName,
-            fileUrl: fileUrl,
-            firestoreUtilData: BuiltValueNullFieldError.checkNotNull(
-                firestoreUtilData, r'FileStruct', 'firestoreUtilData'));
+        new _$FilesRecord._(
+            owner: owner, name: name, fileUrl: fileUrl, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

@@ -74,7 +74,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
             if (Theme.of(context).brightness == Brightness.light)
               Text(
                 FFLocalizations.of(context).getText(
-                  'zm79fw7y' /* SLEEQ */,
+                  'sqxfpkj8' /* SLEEQ */,
                 ),
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: FlutterFlowTheme.of(context).title1Family,
@@ -102,7 +102,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
             if (!(Theme.of(context).brightness == Brightness.light))
               Text(
                 FFLocalizations.of(context).getText(
-                  'ix78nqgk' /* SLEEQ */,
+                  'j8e3h992' /* SLEEQ */,
                 ),
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: FlutterFlowTheme.of(context).title1Family,

@@ -70,10 +70,6 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    'k8d795du': {
-      'en': 'Upload file',
-      'fr': 'Téléverser un fichier',
-    },
     'xbzplc4s': {
       'en': 'Home',
       'fr': 'Domicile',
@@ -176,7 +172,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'suy6bmps': {
       'en': 'Your Name',
-      'fr': 'votre nom',
+      'fr': 'Votre Nom',
     },
     'oppsunbl': {
       'en': 'Change photo',
@@ -184,7 +180,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nak4cbrl': {
       'en': 'Save Changes',
-      'fr': 'Sauvegarder les modifications',
+      'fr': 'Sauvegarder',
     },
     'szqzn9xp': {
       'en': 'Logout',
@@ -192,25 +188,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wurg3p18': {
       'en': 'Home',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // examplePage
   {
-    'ckfu9ov7': {
+    'gie0qpp0': {
       'en': 'Home',
       'fr': '',
     },
   },
   // newnav
   {
-    'zm79fw7y': {
+    'sqxfpkj8': {
       'en': 'SLEEQ',
       'fr': '',
     },
-    'ix78nqgk': {
+    'j8e3h992': {
       'en': 'SLEEQ',
-      'fr': '',
+      'fr': 'SLEEQ',
     },
     '6dt9sj2x': {
       'en': 'Home',
@@ -231,6 +227,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ho44eh4t': {
       'en': 'Logout',
       'fr': 'Se déconnecter',
+    },
+  },
+  // UploadFileButton
+  {
+    '0nhn733d': {
+      'en': 'Upload file',
+      'fr': 'Téléverser un fichier',
     },
   },
   // Miscellaneous
