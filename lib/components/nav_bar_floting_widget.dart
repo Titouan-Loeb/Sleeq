@@ -178,8 +178,6 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
 
                           if (uploadedFileUrl != null &&
                               uploadedFileUrl != '') {
-                            HapticFeedback.mediumImpact();
-
                             final filesCreateData = createFilesRecordData(
                               fileUrl: uploadedFileUrl,
                             );
@@ -189,13 +187,14 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                             fileOutput = FilesRecord.getDocumentFromData(
                                 filesCreateData, filesRecordReference);
                             _shouldSetState = true;
+                            HapticFeedback.heavyImpact();
                             soundPlayer ??= AudioPlayer();
                             if (soundPlayer!.playing) {
                               await soundPlayer!.stop();
                             }
-                            soundPlayer!.setVolume(0.85);
+                            soundPlayer!.setVolume(1);
                             soundPlayer!
-                                .setAsset('assets/audios/movie_1_C2K5NH0.mp3')
+                                .setAsset('assets/audios/vine-boom.mp3')
                                 .then((_) => soundPlayer!.play());
                           } else {
                             if (_shouldSetState) setState(() {});
