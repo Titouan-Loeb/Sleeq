@@ -97,6 +97,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Password',
       'fr': 'Mot de passe',
     },
+    'sue81i61': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'wgxgjulr': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'qrcy2ggj': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'nfdvuyyn': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
     '3xzw8qo5': {
       'en': 'Forgot Password?',
       'fr': 'Mot de passe oublié?',

@@ -1,20 +1,17 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/upload_media.dart';
 import 'dart:ui';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({Key? key}) : super(key: key);
@@ -23,51 +20,21 @@ class NavBarFlotingWidget extends StatefulWidget {
   _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
 }
 
-class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'iconButtonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        RotateEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: 0,
-          end: 0.12,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 300.ms,
-          begin: Offset(0, 0),
-          end: Offset(0, -40),
-        ),
-      ],
-    ),
-  };
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  FilesRecord? fileOutput;
+class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
   AudioPlayer? soundPlayer;
+  FilesRecord? fileOutput;
 
   @override
   void initState() {
     super.initState();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Visibility(
       visible: responsiveVisibility(
         context: context,
@@ -157,29 +124,14 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_add_ICN_ON_TAP');
                           var _shouldSetState = false;
-                          final selectedFile =
-                              await selectFile(allowedExtensions: ['pdf']);
-                          if (selectedFile != null) {
-                            setState(() => isMediaUploading = true);
-                            String? downloadUrl;
-                            try {
-                              downloadUrl = await uploadData(
-                                  selectedFile.storagePath, selectedFile.bytes);
-                            } finally {
-                              isMediaUploading = false;
-                            }
-                            if (downloadUrl != null) {
-                              setState(() => uploadedFileUrl = downloadUrl!);
-                            } else {
-                              setState(() {});
-                              return;
-                            }
-                          }
-
-                          if (uploadedFileUrl != null &&
-                              uploadedFileUrl != '') {
+                          await actions.uploadAnyFileType(
+                            context,
+                            (['pdf', 'png', 'jpg', 'docx']).toList(),
+                          );
+                          if (FFAppState().filePath != null &&
+                              FFAppState().filePath != '') {
                             final filesCreateData = createFilesRecordData(
-                              fileUrl: uploadedFileUrl,
+                              fileUrl: FFAppState().filePath,
                             );
                             var filesRecordReference =
                                 FilesRecord.createDoc(currentUserReference!);
@@ -203,8 +155,6 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
 
                           if (_shouldSetState) setState(() {});
                         },
-                      ).animateOnActionTrigger(
-                        animationsMap['iconButtonOnActionTriggerAnimation']!,
                       ),
                       FlutterFlowIconButton(
                         borderColor: Colors.transparent,

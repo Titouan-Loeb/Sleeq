@@ -1,12 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +15,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 
 class NewnavWidget extends StatefulWidget {
   const NewnavWidget({Key? key}) : super(key: key);
@@ -41,11 +41,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
       ],
     ),
   };
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  FilesRecord? fileOutput;
   AudioPlayer? soundPlayer;
+  FilesRecord? fileOutput;
 
   @override
   void initState() {
@@ -62,6 +59,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -324,30 +323,16 @@ class _NewnavWidgetState extends State<NewnavWidget>
                     onPressed: () async {
                       logFirebaseEvent('NEWNAV_COMP_UPLOAD_A_FILE_BTN_ON_TAP');
                       var _shouldSetState = false;
-                      final selectedFile =
-                          await selectFile(allowedExtensions: ['pdf']);
-                      if (selectedFile != null) {
-                        setState(() => isMediaUploading = true);
-                        String? downloadUrl;
-                        try {
-                          downloadUrl = await uploadData(
-                              selectedFile.storagePath, selectedFile.bytes);
-                        } finally {
-                          isMediaUploading = false;
-                        }
-                        if (downloadUrl != null) {
-                          setState(() => uploadedFileUrl = downloadUrl!);
-                        } else {
-                          setState(() {});
-                          return;
-                        }
-                      }
-
-                      if (uploadedFileUrl != null && uploadedFileUrl != '') {
+                      await actions.uploadAnyFileType(
+                        context,
+                        (['pdf', 'png', 'jpg', 'docx', 'heif']).toList(),
+                      );
+                      if (FFAppState().filePath != null &&
+                          FFAppState().filePath != '') {
                         HapticFeedback.heavyImpact();
 
                         final filesCreateData = createFilesRecordData(
-                          fileUrl: uploadedFileUrl,
+                          fileUrl: FFAppState().filePath,
                         );
                         var filesRecordReference =
                             FilesRecord.createDoc(currentUserReference!);
