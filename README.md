@@ -12,6 +12,7 @@ For projects with Firestore integration, you must first run the following comman
 
 ```
 flutter pub get
+flutter pub run flutter_launcher_icons:main
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
