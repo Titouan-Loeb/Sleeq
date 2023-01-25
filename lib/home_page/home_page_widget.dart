@@ -101,22 +101,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16, 16, 16, 16),
-                                    child: Text(
-                                      listViewFilesRecord.fileUrl!
-                                          .maybeHandleOverflow(maxChars: 30),
-                                      maxLines: 2,
-                                      style: FlutterFlowTheme.of(context)
-                                          .subtitle1
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .subtitle1Family,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle1Family),
-                                            lineHeight: 1,
-                                          ),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'HOME_PAGE_PAGE_Text_86l60g2z_ON_TAP');
+                                        await launchURL(
+                                            listViewFilesRecord.fileUrl!);
+                                      },
+                                      child: Text(
+                                        listViewFilesRecord.fileUrl!,
+                                        maxLines: 2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1Family,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle1Family),
+                                              lineHeight: 1,
+                                            ),
+                                      ),
                                     ),
                                   ),
                                 ),
