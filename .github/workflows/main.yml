@@ -32,7 +32,7 @@ jobs:
         with:
           cache: true
           cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
-          flutter-version: '3.0.5'
+          flutter-version: '3.7.0'
       - run: flutter pub get
       - run: flutter build apk --release
       - name: 'Upload Artifact'
