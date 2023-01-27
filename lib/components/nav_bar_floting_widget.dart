@@ -12,7 +12,6 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({Key? key}) : super(key: key);
@@ -38,8 +37,6 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Visibility(
       visible: responsiveVisibility(
         context: context,
@@ -148,8 +145,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                             }
                           }
 
-                          if (FFAppState().filePath != null &&
-                              FFAppState().filePath != '') {
+                          if (uploadedFileUrl != null &&
+                              uploadedFileUrl != '') {
                             HapticFeedback.heavyImpact();
 
                             final fileCreateData = createFileRecordData(
