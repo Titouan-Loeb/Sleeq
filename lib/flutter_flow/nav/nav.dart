@@ -285,9 +285,12 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Container(
                   color: FlutterFlowTheme.of(context).primaryColor,
-                  child: Image.asset(
-                    'assets/images/sleeq-logo_white.svg',
-                    fit: BoxFit.scaleDown,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/sleeq-logo_white.svg',
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 )
               : page;
