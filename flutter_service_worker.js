@@ -4,9 +4,9 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
-"index.html": "f17bb2b9851d5ef70c37597f4945f76c",
-"/": "f17bb2b9851d5ef70c37597f4945f76c",
-"main.dart.js": "041116cd1b2f44a70a6183cedab1c212",
+"index.html": "2e991a5bfe0a4fc5ba3c3cf28e76e1ed",
+"/": "2e991a5bfe0a4fc5ba3c3cf28e76e1ed",
+"main.dart.js": "f05beaf4d0d6d293f7be501f7ab6c411",
 "manifest.json": "7349d672fc374ed7229aa0c64dfcfcf1",
 "favicon.png": "2704101cb06ce66e2000356a312be25c",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
@@ -19,7 +19,7 @@ const RESOURCES = {
 "assets/assets/images/logoTranslation@3x.png": "9f23c53411f68eb7d8051fd58d958a6a",
 "assets/assets/images/sleeq-logo_white.png": "8936969b8e153c7d36bd491a50f1ce2f",
 "assets/assets/images/sleeq-logo_white.svg": "76d7ea73f19020ec6f62a85ab0525ac1",
-"assets/assets/images/app_launcher_icon.png": "f7aa3d6b5ec41159aedc2531eb0bb6a1",
+"assets/assets/images/app_launcher_icon.png": "8936969b8e153c7d36bd491a50f1ce2f",
 "assets/assets/images/sleeq-logo_black.png": "f7aa3d6b5ec41159aedc2531eb0bb6a1",
 "assets/assets/images/favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "assets/assets/images/1024.png": "92abc6bdee365423962f915311ab250c",
