@@ -8,11 +8,18 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /users/{parent}/files/{document} {
+    match /users/{parent}/folders/{document} {
       allow create: if request.auth.uid == parent;
       allow read: if request.auth.uid == parent;
       allow write: if request.auth.uid == parent;
       allow delete: if false;
+    }
+
+    match /file/{document} {
+      allow create: if request.resource.data.owner == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.owner == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.owner == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.owner == /databases/$(database)/documents/users/$(request.auth.uid);
     }
   }
 }

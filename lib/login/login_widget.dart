@@ -250,7 +250,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
                                   return FFLocalizations.of(context).getText(
-                                    'hcrum9q4' /* Field is required */,
+                                    '0oxsulyr' /* Field is required */,
                                   );
                                 }
 
@@ -357,7 +357,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
                                   return FFLocalizations.of(context).getText(
-                                    'v0sxcsl5' /* Field is required */,
+                                    '2heekiw9' /* Field is required */,
                                   );
                                 }
 
