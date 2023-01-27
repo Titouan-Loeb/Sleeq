@@ -63,9 +63,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: StreamBuilder<List<FilesRecord>>(
-                        stream: queryFilesRecord(
-                          parent: currentUserReference,
+                      child: StreamBuilder<List<FileRecord>>(
+                        stream: queryFileRecord(
+                          queryBuilder: (fileRecord) => fileRecord
+                              .where('owner', isEqualTo: currentUserReference),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -81,16 +82,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             );
                           }
-                          List<FilesRecord> listViewFilesRecordList =
+                          List<FileRecord> listViewFileRecordList =
                               snapshot.data!;
                           return ListView.builder(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount: listViewFilesRecordList.length,
+                            itemCount: listViewFileRecordList.length,
                             itemBuilder: (context, listViewIndex) {
-                              final listViewFilesRecord =
-                                  listViewFilesRecordList[listViewIndex];
+                              final listViewFileRecord =
+                                  listViewFileRecordList[listViewIndex];
                               return Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     12, 12, 12, 4),
@@ -115,10 +116,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             logFirebaseEvent(
                                                 'HOME_PAGE_PAGE_Text_86l60g2z_ON_TAP');
                                             await launchURL(
-                                                listViewFilesRecord.fileUrl!);
+                                                listViewFileRecord.fileUrl!);
                                           },
                                           child: Text(
-                                            listViewFilesRecord.fileUrl!
+                                            listViewFileRecord.fileUrl!
                                                 .maybeHandleOverflow(
                                                     maxChars: 30),
                                             maxLines: 2,
@@ -188,7 +189,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            await listViewFilesRecord.reference
+                                            await listViewFileRecord.reference
                                                 .delete();
                                             HapticFeedback.vibrate();
                                           } else {

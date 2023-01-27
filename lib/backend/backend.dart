@@ -6,7 +6,8 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/files_record.dart';
+import 'schema/folders_record.dart';
+import 'schema/file_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -15,7 +16,8 @@ export 'schema/index.dart';
 export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
-export 'schema/files_record.dart';
+export 'schema/folders_record.dart';
+export 'schema/file_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -69,47 +71,47 @@ Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query FilesRecords (as a Stream and as a Future).
-Future<int> queryFilesRecordCount({
+/// Functions to query FoldersRecords (as a Stream and as a Future).
+Future<int> queryFoldersRecordCount({
   DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      FilesRecord.collection(parent),
+      FoldersRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<FilesRecord>> queryFilesRecord({
+Stream<List<FoldersRecord>> queryFoldersRecord({
   DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      FilesRecord.collection(parent),
-      FilesRecord.serializer,
+      FoldersRecord.collection(parent),
+      FoldersRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<FilesRecord>> queryFilesRecordOnce({
+Future<List<FoldersRecord>> queryFoldersRecordOnce({
   DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      FilesRecord.collection(parent),
-      FilesRecord.serializer,
+      FoldersRecord.collection(parent),
+      FoldersRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<FilesRecord>> queryFilesRecordPage({
+Future<FFFirestorePage<FoldersRecord>> queryFoldersRecordPage({
   DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
@@ -117,8 +119,60 @@ Future<FFFirestorePage<FilesRecord>> queryFilesRecordPage({
   required bool isStream,
 }) =>
     queryCollectionPage(
-      FilesRecord.collection(parent),
-      FilesRecord.serializer,
+      FoldersRecord.collection(parent),
+      FoldersRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query FileRecords (as a Stream and as a Future).
+Future<int> queryFileRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      FileRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<FileRecord>> queryFileRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      FileRecord.collection,
+      FileRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<FileRecord>> queryFileRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      FileRecord.collection,
+      FileRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<FileRecord>> queryFileRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      FileRecord.collection,
+      FileRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

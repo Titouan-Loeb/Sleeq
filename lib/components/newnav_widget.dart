@@ -1,11 +1,12 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../custom_code/actions/index.dart' as actions;
+import '../flutter_flow/upload_media.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -41,8 +42,12 @@ class _NewnavWidgetState extends State<NewnavWidget>
       ],
     ),
   };
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
+
+  FileRecord? fileOutput;
+  FoldersRecord? folder;
   AudioPlayer? soundPlayer;
-  FilesRecord? fileOutput;
 
   @override
   void initState() {
@@ -323,35 +328,67 @@ class _NewnavWidgetState extends State<NewnavWidget>
                     onPressed: () async {
                       logFirebaseEvent('NEWNAV_COMP_UPLOAD_A_FILE_BTN_ON_TAP');
                       var _shouldSetState = false;
-                      await actions.uploadAnyFileType(
-                        context,
-                        (['pdf', 'png', 'jpg', 'docx', 'heif']).toList(),
-                      );
+                      final selectedFile =
+                          await selectFile(allowedExtensions: ['pdf']);
+                      if (selectedFile != null) {
+                        setState(() => isMediaUploading = true);
+                        String? downloadUrl;
+                        try {
+                          downloadUrl = await uploadData(
+                              selectedFile.storagePath, selectedFile.bytes);
+                        } finally {
+                          isMediaUploading = false;
+                        }
+                        if (downloadUrl != null) {
+                          setState(() => uploadedFileUrl = downloadUrl!);
+                        } else {
+                          setState(() {});
+                          return;
+                        }
+                      }
+
                       if (FFAppState().filePath != null &&
                           FFAppState().filePath != '') {
                         HapticFeedback.heavyImpact();
-
-                        final filesCreateData = createFilesRecordData(
-                          fileUrl: FFAppState().filePath,
-                        );
-                        var filesRecordReference =
-                            FilesRecord.createDoc(currentUserReference!);
-                        await filesRecordReference.set(filesCreateData);
-                        fileOutput = FilesRecord.getDocumentFromData(
-                            filesCreateData, filesRecordReference);
-                        _shouldSetState = true;
-                        soundPlayer ??= AudioPlayer();
-                        if (soundPlayer!.playing) {
-                          await soundPlayer!.stop();
-                        }
-                        soundPlayer!.setVolume(1);
-                        soundPlayer!
-                            .setAsset('assets/audios/vine-boom.mp3')
-                            .then((_) => soundPlayer!.play());
                       } else {
                         if (_shouldSetState) setState(() {});
                         return;
                       }
+
+                      final fileCreateData = createFileRecordData(
+                        fileUrl: uploadedFileUrl,
+                        owner: currentUserReference,
+                        name: uploadedFileUrl,
+                        created: getCurrentTimestamp,
+                      );
+                      var fileRecordReference = FileRecord.collection.doc();
+                      await fileRecordReference.set(fileCreateData);
+                      fileOutput = FileRecord.getDocumentFromData(
+                          fileCreateData, fileRecordReference);
+                      _shouldSetState = true;
+
+                      final foldersCreateData = {
+                        ...createFoldersRecordData(
+                          owner: currentUserReference,
+                          color: FlutterFlowTheme.of(context).selectorLightPink,
+                          name: 'default',
+                        ),
+                        'files': [fileOutput!.reference],
+                      };
+                      var foldersRecordReference =
+                          FoldersRecord.createDoc(currentUserReference!);
+                      await foldersRecordReference.set(foldersCreateData);
+                      folder = FoldersRecord.getDocumentFromData(
+                          foldersCreateData, foldersRecordReference);
+                      _shouldSetState = true;
+                      soundPlayer ??= AudioPlayer();
+                      if (soundPlayer!.playing) {
+                        await soundPlayer!.stop();
+                      }
+                      soundPlayer!.setVolume(1);
+                      soundPlayer!
+                          .setAsset('assets/audios/vine-boom.mp3')
+                          .then((_) => soundPlayer!.play());
 
                       if (_shouldSetState) setState(() {});
                     },

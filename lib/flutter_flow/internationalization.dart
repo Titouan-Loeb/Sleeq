@@ -97,19 +97,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Password',
       'fr': 'Mot de passe',
     },
-    'sue81i61': {
+    '0oxsulyr': {
       'en': 'Field is required',
       'fr': '',
     },
-    'wgxgjulr': {
+    'q8d3ybbp': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
-    'qrcy2ggj': {
+    '2heekiw9': {
       'en': 'Field is required',
       'fr': '',
     },
-    'nfdvuyyn': {
+    'mjtse7a3': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
@@ -254,13 +254,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ho44eh4t': {
       'en': 'Logout',
       'fr': 'Se déconnecter',
-    },
-  },
-  // UploadFileButton
-  {
-    '0nhn733d': {
-      'en': 'Upload file',
-      'fr': 'Téléverser un fichier',
     },
   },
   // Miscellaneous

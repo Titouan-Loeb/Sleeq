@@ -1,10 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/upload_media.dart';
 import 'dart:ui';
-import '../custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,8 +22,12 @@ class NavBarFlotingWidget extends StatefulWidget {
 }
 
 class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
+
+  FileRecord? fileOutput;
+  FoldersRecord? folder;
   AudioPlayer? soundPlayer;
-  FilesRecord? fileOutput;
 
   @override
   void initState() {
@@ -124,22 +129,57 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_add_ICN_ON_TAP');
                           var _shouldSetState = false;
-                          await actions.uploadAnyFileType(
-                            context,
-                            (['pdf', 'png', 'jpg', 'docx']).toList(),
-                          );
+                          final selectedFile =
+                              await selectFile(allowedExtensions: ['pdf']);
+                          if (selectedFile != null) {
+                            setState(() => isMediaUploading = true);
+                            String? downloadUrl;
+                            try {
+                              downloadUrl = await uploadData(
+                                  selectedFile.storagePath, selectedFile.bytes);
+                            } finally {
+                              isMediaUploading = false;
+                            }
+                            if (downloadUrl != null) {
+                              setState(() => uploadedFileUrl = downloadUrl!);
+                            } else {
+                              setState(() {});
+                              return;
+                            }
+                          }
+
                           if (FFAppState().filePath != null &&
                               FFAppState().filePath != '') {
-                            final filesCreateData = createFilesRecordData(
-                              fileUrl: FFAppState().filePath,
-                            );
-                            var filesRecordReference =
-                                FilesRecord.createDoc(currentUserReference!);
-                            await filesRecordReference.set(filesCreateData);
-                            fileOutput = FilesRecord.getDocumentFromData(
-                                filesCreateData, filesRecordReference);
-                            _shouldSetState = true;
                             HapticFeedback.heavyImpact();
+
+                            final fileCreateData = createFileRecordData(
+                              fileUrl: uploadedFileUrl,
+                              owner: currentUserReference,
+                              name: uploadedFileUrl,
+                              created: getCurrentTimestamp,
+                            );
+                            var fileRecordReference =
+                                FileRecord.collection.doc();
+                            await fileRecordReference.set(fileCreateData);
+                            fileOutput = FileRecord.getDocumentFromData(
+                                fileCreateData, fileRecordReference);
+                            _shouldSetState = true;
+
+                            final foldersCreateData = {
+                              ...createFoldersRecordData(
+                                owner: currentUserReference,
+                                color: FlutterFlowTheme.of(context)
+                                    .selectorLightPink,
+                                name: 'default',
+                              ),
+                              'files': [fileOutput!.reference],
+                            };
+                            var foldersRecordReference =
+                                FoldersRecord.createDoc(currentUserReference!);
+                            await foldersRecordReference.set(foldersCreateData);
+                            folder = FoldersRecord.getDocumentFromData(
+                                foldersCreateData, foldersRecordReference);
+                            _shouldSetState = true;
                             soundPlayer ??= AudioPlayer();
                             if (soundPlayer!.playing) {
                               await soundPlayer!.stop();

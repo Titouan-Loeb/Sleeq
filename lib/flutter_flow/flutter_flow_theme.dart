@@ -80,6 +80,15 @@ abstract class FlutterFlowTheme {
   late Color textColor;
   late Color primaryBtnTextOld;
   late Color lineColorOld;
+  late Color selectorLightPink;
+  late Color selectorDeepChampagne;
+  late Color selectorLemonYellowCrayola;
+  late Color selectorTeaGreen;
+  late Color selectorElectricBlue;
+  late Color selectorBabyBlueEyes;
+  late Color selectorMaximumBluePurple;
+  late Color selectorMauve;
+  late Color selectorBabyPowder;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -156,6 +165,15 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color textColor = Color(0xFF1E2429);
   late Color primaryBtnTextOld = Color(0xFFFFFFFF);
   late Color lineColorOld = Color(0xFFE0E3E7);
+  late Color selectorLightPink = Color(0xFFFFADAD);
+  late Color selectorDeepChampagne = Color(0xFFFFD6A5);
+  late Color selectorLemonYellowCrayola = Color(0xFFFDFFB6);
+  late Color selectorTeaGreen = Color(0xFFCAFFBF);
+  late Color selectorElectricBlue = Color(0xFF9BF6FF);
+  late Color selectorBabyBlueEyes = Color(0xFFA0C4FF);
+  late Color selectorMaximumBluePurple = Color(0xFFBDB2FF);
+  late Color selectorMauve = Color(0xFFFFC6FF);
+  late Color selectorBabyPowder = Color(0xFFFFFFFC);
 }
 
 abstract class Typography {
@@ -385,6 +403,15 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color textColor = Color(0xFF1E2429);
   late Color primaryBtnTextOld = Color(0xFFFFFFFF);
   late Color lineColorOld = Color(0xFF22282F);
+  late Color selectorLightPink = Color(0xFFFFADAD);
+  late Color selectorDeepChampagne = Color(0xFFFFD6A5);
+  late Color selectorLemonYellowCrayola = Color(0xFFFDFFB6);
+  late Color selectorTeaGreen = Color(0xFFCAFFBF);
+  late Color selectorElectricBlue = Color(0xFF9BF6FF);
+  late Color selectorBabyBlueEyes = Color(0xFFA0C4FF);
+  late Color selectorMaximumBluePurple = Color(0xFFBDB2FF);
+  late Color selectorMauve = Color(0xFFFFC6FF);
+  late Color selectorBabyPowder = Color(0xFFFFFFFC);
 }
 
 extension TextStyleHelper on TextStyle {
