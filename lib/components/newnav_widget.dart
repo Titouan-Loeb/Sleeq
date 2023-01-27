@@ -16,7 +16,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 class NewnavWidget extends StatefulWidget {
   const NewnavWidget({Key? key}) : super(key: key);
@@ -64,8 +63,6 @@ class _NewnavWidgetState extends State<NewnavWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -347,8 +344,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         }
                       }
 
-                      if (FFAppState().filePath != null &&
-                          FFAppState().filePath != '') {
+                      if (uploadedFileUrl != null && uploadedFileUrl != '') {
                         HapticFeedback.heavyImpact();
                       } else {
                         if (_shouldSetState) setState(() {});
