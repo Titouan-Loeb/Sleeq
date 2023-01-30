@@ -12,7 +12,7 @@ class FFLocalizations {
   static FFLocalizations of(BuildContext context) =>
       Localizations.of<FFLocalizations>(context, FFLocalizations)!;
 
-  static List<String> languages() => ['en', 'fr'];
+  static List<String> languages() => ['en', 'fr', 'es'];
 
   static late SharedPreferences _prefs;
   static Future initialize() async =>
@@ -35,8 +35,9 @@ class FFLocalizations {
   String getVariableText({
     String? enText = '',
     String? frText = '',
+    String? esText = '',
   }) =>
-      [enText, frText][languageIndex] ?? '';
+      [enText, frText, esText][languageIndex] ?? '';
 }
 
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
@@ -72,6 +73,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'xbzplc4s': {
       'en': 'Home',
+      'es': 'Casa',
       'fr': 'Domicile',
     },
   },
@@ -79,50 +81,62 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'hagyvfdy': {
       'en': 'Sign In',
+      'es': 'Registrarse',
       'fr': 'S\'identifier',
     },
     'otvb196v': {
       'en': 'Sign Up',
+      'es': 'Inscribirse',
       'fr': 'S\'inscrire',
     },
     'fqk9zngp': {
       'en': 'Use the form below, to access your account.',
+      'es': 'Utilice el siguiente formulario para acceder a su cuenta.',
       'fr': 'Utilisez le formulaire ci-dessous, pour accéder à votre compte.',
     },
     'dhggjgkl': {
       'en': 'Your email address',
+      'es': 'Su dirección de correo electrónico',
       'fr': 'Votre adresse e-mail',
     },
     'pbytomsf': {
       'en': 'Password',
+      'es': 'Contraseña',
       'fr': 'Mot de passe',
     },
     '0oxsulyr': {
       'en': 'Field is required',
-      'fr': '',
+      'es': 'Se requiere campo',
+      'fr': 'Champ requis',
     },
     'q8d3ybbp': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     '2heekiw9': {
       'en': 'Field is required',
-      'fr': '',
+      'es': 'Se requiere campo',
+      'fr': 'Champ requis',
     },
     'mjtse7a3': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     '3xzw8qo5': {
       'en': 'Forgot Password?',
+      'es': '¿Has olvidado tu contraseña?',
       'fr': 'Mot de passe oublié?',
     },
     'xt2b21lg': {
       'en': 'Login',
+      'es': 'Acceso',
       'fr': 'Connexion',
     },
     'ijynuzje': {
       'en': 'Profile',
+      'es': 'Perfil',
       'fr': 'Profil',
     },
   },
@@ -130,30 +144,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'mcquk0sa': {
       'en': 'Sign In',
+      'es': 'Registrarse',
       'fr': 'S\'identifier',
     },
     '3a46tknc': {
       'en': 'Sign Up',
+      'es': 'Inscribirse',
       'fr': 'S\'inscrire',
     },
     '0ufzn822': {
       'en': 'Get started by creating an account below.',
+      'es': 'Comience creando una cuenta a continuación.',
       'fr': 'Commencez par créer un compte ci-dessous.',
     },
     'sh35p1k7': {
       'en': 'Your email address',
+      'es': 'Su dirección de correo electrónico',
       'fr': 'Votre adresse e-mail',
     },
     's3mww27o': {
       'en': 'Password',
+      'es': 'Contraseña',
       'fr': 'Mot de passe',
     },
     'hii8oza0': {
       'en': 'Sign up',
+      'es': 'Regístrate',
       'fr': 'S\'inscrire',
     },
     'owvuefar': {
       'en': 'Profile',
+      'es': 'Perfil',
       'fr': 'Profil',
     },
   },
@@ -161,26 +182,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm9ktobmr': {
       'en': 'Forgot password',
+      'es': 'Se te olvidó tu contraseña',
       'fr': 'Mot de passe oublié',
     },
     'sjof3rcv': {
       'en': 'You forgot your password ? Shame.',
+      'es': '¿Olvidaste tu contraseña? Verguenza.',
       'fr': 'Vous avez oublié votre mot de passe ? Honte.',
     },
     'dwpe9xab': {
       'en': 'Your email address',
+      'es': 'Su dirección de correo electrónico',
       'fr': 'Votre adresse e-mail',
     },
     '5r67e7rs': {
       'en': 'Send password reset email',
+      'es': 'Enviar correo electrónico de restablecimiento de contraseña',
       'fr': 'Envoyer un e-mail de réinitialisation du mot de passe',
     },
     'om06q9t1': {
       'en': 'Back to login',
+      'es': 'Atrás para iniciar sesión',
       'fr': 'Retour connexion',
     },
     'rj6wygs2': {
       'en': 'Profile',
+      'es': 'Perfil',
       'fr': 'Profil',
     },
   },
@@ -188,63 +215,76 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'suy6bmps': {
       'en': 'Your Name',
-      'fr': 'Votre Nom',
+      'es': 'Tu nombre',
+      'fr': 'votre nom',
     },
     'oppsunbl': {
       'en': 'Change photo',
+      'es': 'Cambiar foto',
       'fr': 'Changer la photo',
     },
     'nak4cbrl': {
       'en': 'Save Changes',
-      'fr': 'Sauvegarder',
+      'es': 'Guardar cambios',
+      'fr': 'Sauvegarder les modifications',
     },
     'szqzn9xp': {
       'en': 'Logout',
+      'es': 'Cerrar sesión',
       'fr': 'Se déconnecter',
     },
     'wurg3p18': {
       'en': 'Home',
-      'fr': 'Acceuil',
+      'es': 'Casa',
+      'fr': 'Domicile',
     },
   },
   // examplePage
   {
     'rc9x2s09': {
       'en': 'Home',
-      'fr': '',
+      'es': 'Casa',
+      'fr': 'Domicile',
     },
   },
   // folders
   {
     'n0ze2vmk': {
       'en': 'Home',
-      'fr': '',
+      'es': 'Casa',
+      'fr': 'Domicile',
     },
   },
   // newnav
   {
     '6dt9sj2x': {
       'en': 'Home',
+      'es': '',
       'fr': 'Acceuil',
     },
     'rdg8q5en': {
       'en': 'Settings',
+      'es': 'Ajustes',
       'fr': 'Paramètres',
     },
     'joolq3hb': {
       'en': 'Upload a file',
+      'es': 'Cargar un archivo',
       'fr': 'Télécharger un fichier',
     },
     'wzfdn71s': {
       'en': 'Light Mode',
+      'es': 'Modo de luz',
       'fr': 'Mode lumière',
     },
     'b82qzcwq': {
       'en': 'Dark Mode',
+      'es': 'Modo oscuro',
       'fr': 'Mode sombre',
     },
     'ho44eh4t': {
       'en': 'Logout',
+      'es': 'Cerrar sesión',
       'fr': 'Se déconnecter',
     },
   },
@@ -252,104 +292,128 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'loear5wp': {
       'en': 'files',
-      'fr': '',
+      'es': 'archivos',
+      'fr': 'des dossiers',
     },
   },
   // addfileButton
   {
     '2xx3jh7t': {
       'en': 'Add a file',
-      'fr': '',
+      'es': 'Agregar un archivo',
+      'fr': 'Ajouter un fichier',
     },
   },
   // Miscellaneous
   {
     '7sgbm13u': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'ryi4f0pr': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'p2hrahkk': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'vr7e5fdp': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     't8lau5zg': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     '7teyqrg6': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'rfujsja4': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'a5lp0z09': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'h4b5z8jl': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     '3j3qnrq1': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'jf8fqx26': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     '1ctxw08p': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'qvjng9ig': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'gmre537q': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'ukk3b9if': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'e7hu7n1v': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'nrvg4k7n': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'huz9seem': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'nj6nqooq': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     '5cscvx4q': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     '6w7mrlwr': {
       'en': '',
+      'es': '',
       'fr': '',
     },
     'iusbi5eg': {
       'en': '',
+      'es': '',
       'fr': '',
     },
   },
