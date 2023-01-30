@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,12 +9,12 @@ import 'package:google_fonts/google_fonts.dart';
 class FileButtonWidget extends StatefulWidget {
   const FileButtonWidget({
     Key? key,
-    this.fileUrl,
+    this.file,
     this.name,
     this.color,
   }) : super(key: key);
 
-  final String? fileUrl;
+  final FileRecord? file;
   final String? name;
   final Color? color;
 
@@ -46,8 +47,26 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
             color: widget.color,
             size: 80,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
+
+            context.pushNamed(
+              'file',
+              queryParams: {
+                'file': serializeParam(
+                  widget.file,
+                  ParamType.Document,
+                ),
+              }.withoutNulls,
+              extra: <String, dynamic>{
+                'file': widget.file,
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.leftToRight,
+                  duration: Duration(milliseconds: 200),
+                ),
+              },
+            );
           },
         ),
         Text(

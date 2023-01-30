@@ -249,10 +249,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // folders
   {
+    'bm0xrd5q': {
+      'en': 'New',
+      'es': '',
+      'fr': '',
+    },
     'n0ze2vmk': {
       'en': 'Home',
       'es': 'Casa',
       'fr': 'Domicile',
+    },
+  },
+  // file
+  {
+    'jhkngfg4': {
+      'en': 'Home',
+      'es': '',
+      'fr': '',
     },
   },
   // newnav
@@ -288,12 +301,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Se déconnecter',
     },
   },
-  // addfileButton
+  // newButton
   {
-    '2xx3jh7t': {
-      'en': 'Add a file',
-      'es': 'Agregar un archivo',
-      'fr': 'Ajouter un fichier',
+    'qzi76xzy': {
+      'en': 'Folder',
+      'es': '',
+      'fr': '',
+    },
+    's2vy1yu5': {
+      'en': 'File',
+      'es': '',
+      'fr': '',
+    },
+    'jovhek2h': {
+      'en': 'New',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // addModal
+  {
+    '0sduf1oj': {
+      'en': 'Refine the components modal.',
+      'es': '',
+      'fr': '',
+    },
+    '989m7l17': {
+      'en':
+          'FlutterFlow is a visual development platform that allows you to easily create beautiful and responsive user interfaces for your mobile and web applications. With its drag-and-drop interface and pre-built components, you can quickly prototype and build your app without writing any code. \nAdditionally, FlutterFlow\'s real-time preview feature allows you to see your changes in real-time and make adjustments on the fly.',
+      'es': '',
+      'fr': '',
+    },
+    '7ng4b23x': {
+      'en': 'Cancel',
+      'es': '',
+      'fr': '',
+    },
+    'n7o4gvcw': {
+      'en': 'Create Task',
+      'es': '',
+      'fr': '',
     },
   },
   // Miscellaneous

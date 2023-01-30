@@ -120,6 +120,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 path: params.getParam('path', ParamType.DocumentReference,
                     false, ['users', 'folders']),
               ),
+            ),
+            FFRoute(
+              name: 'file',
+              path: 'file',
+              requireAuth: true,
+              asyncParams: {
+                'file': getDoc(['file'], FileRecord.serializer),
+              },
+              builder: (context, params) => FileWidget(
+                file: params.getParam('file', ParamType.Document),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
