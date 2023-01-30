@@ -31,40 +31,43 @@ class _ExamplePageWidgetState extends State<ExamplePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SidebarWidget(),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (responsiveVisibility(
-                      context: context,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ))
-                      Expanded(
-                        child: Align(
-                          alignment: AlignmentDirectional(0, 1),
-                          child: NavBarFlotingWidget(),
-                        ),
-                      ),
-                  ],
-                ),
+    return Title(
+        title: 'examplePage',
+        color: FlutterFlowTheme.of(context).primaryColor,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: SafeArea(
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SidebarWidget(),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (responsiveVisibility(
+                          context: context,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(0, 1),
+                              child: NavBarFlotingWidget(),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

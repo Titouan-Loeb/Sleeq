@@ -76,6 +76,14 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.containingFolder;
+    if (value != null) {
+      result
+        ..add('containing_folder')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -132,6 +140,12 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
           result.fileExtension = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'containing_folder':
+          result.containingFolder = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -163,6 +177,8 @@ class _$FileRecord extends FileRecord {
   @override
   final String? fileExtension;
   @override
+  final DocumentReference<Object?>? containingFolder;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$FileRecord([void Function(FileRecordBuilder)? updates]) =>
@@ -177,6 +193,7 @@ class _$FileRecord extends FileRecord {
       this.size,
       this.fileUrl,
       this.fileExtension,
+      this.containingFolder,
       this.ffRef})
       : super._();
 
@@ -199,6 +216,7 @@ class _$FileRecord extends FileRecord {
         size == other.size &&
         fileUrl == other.fileUrl &&
         fileExtension == other.fileExtension &&
+        containingFolder == other.containingFolder &&
         ffRef == other.ffRef;
   }
 
@@ -210,13 +228,15 @@ class _$FileRecord extends FileRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, name.hashCode), owner.hashCode),
-                                tags.hashCode),
-                            color.hashCode),
-                        created.hashCode),
-                    size.hashCode),
-                fileUrl.hashCode),
-            fileExtension.hashCode),
+                            $jc(
+                                $jc($jc($jc(0, name.hashCode), owner.hashCode),
+                                    tags.hashCode),
+                                color.hashCode),
+                            created.hashCode),
+                        size.hashCode),
+                    fileUrl.hashCode),
+                fileExtension.hashCode),
+            containingFolder.hashCode),
         ffRef.hashCode));
   }
 
@@ -231,6 +251,7 @@ class _$FileRecord extends FileRecord {
           ..add('size', size)
           ..add('fileUrl', fileUrl)
           ..add('fileExtension', fileExtension)
+          ..add('containingFolder', containingFolder)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -272,6 +293,11 @@ class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
   set fileExtension(String? fileExtension) =>
       _$this._fileExtension = fileExtension;
 
+  DocumentReference<Object?>? _containingFolder;
+  DocumentReference<Object?>? get containingFolder => _$this._containingFolder;
+  set containingFolder(DocumentReference<Object?>? containingFolder) =>
+      _$this._containingFolder = containingFolder;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -291,6 +317,7 @@ class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
       _size = $v.size;
       _fileUrl = $v.fileUrl;
       _fileExtension = $v.fileExtension;
+      _containingFolder = $v.containingFolder;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -322,6 +349,7 @@ class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
             size: size,
             fileUrl: fileUrl,
             fileExtension: fileExtension,
+            containingFolder: containingFolder,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

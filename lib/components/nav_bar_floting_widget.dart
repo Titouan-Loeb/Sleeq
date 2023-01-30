@@ -177,6 +177,11 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                             folder = FoldersRecord.getDocumentFromData(
                                 foldersCreateData, foldersRecordReference);
                             _shouldSetState = true;
+
+                            final fileUpdateData = createFileRecordData(
+                              containingFolder: folder!.reference,
+                            );
+                            await fileOutput!.reference.update(fileUpdateData);
                             soundPlayer ??= AudioPlayer();
                             if (soundPlayer!.playing) {
                               await soundPlayer!.stop();

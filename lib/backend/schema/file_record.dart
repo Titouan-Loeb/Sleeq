@@ -27,6 +27,9 @@ abstract class FileRecord implements Built<FileRecord, FileRecordBuilder> {
   @BuiltValueField(wireName: 'file_extension')
   String? get fileExtension;
 
+  @BuiltValueField(wireName: 'containing_folder')
+  DocumentReference? get containingFolder;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -67,6 +70,7 @@ Map<String, dynamic> createFileRecordData({
   double? size,
   String? fileUrl,
   String? fileExtension,
+  DocumentReference? containingFolder,
 }) {
   final firestoreData = serializers.toFirestore(
     FileRecord.serializer,
@@ -79,7 +83,8 @@ Map<String, dynamic> createFileRecordData({
         ..created = created
         ..size = size
         ..fileUrl = fileUrl
-        ..fileExtension = fileExtension,
+        ..fileExtension = fileExtension
+        ..containingFolder = containingFolder,
     ),
   );
 
