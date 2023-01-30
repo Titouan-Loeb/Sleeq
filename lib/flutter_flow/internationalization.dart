@@ -214,16 +214,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // folders
+  {
+    'n0ze2vmk': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // newnav
   {
-    'sqxfpkj8': {
-      'en': 'SLEEQ',
-      'fr': 'SLEEQ',
-    },
-    'j8e3h992': {
-      'en': 'SLEEQ',
-      'fr': 'SLEEQ',
-    },
     '6dt9sj2x': {
       'en': 'Home',
       'fr': 'Acceuil',
@@ -247,6 +246,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ho44eh4t': {
       'en': 'Logout',
       'fr': 'Se déconnecter',
+    },
+  },
+  // fileButton
+  {
+    'loear5wp': {
+      'en': 'files',
+      'fr': '',
+    },
+  },
+  // addfileButton
+  {
+    '2xx3jh7t': {
+      'en': 'Add a file',
+      'fr': '',
     },
   },
   // Miscellaneous

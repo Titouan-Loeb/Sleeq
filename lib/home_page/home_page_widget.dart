@@ -1,15 +1,13 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/folder_button_widget.dart';
 import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -60,15 +58,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: StreamBuilder<List<FileRecord>>(
-                            stream: queryFileRecord(
-                              queryBuilder: (fileRecord) => fileRecord.where(
-                                  'owner',
-                                  isEqualTo: currentUserReference),
+                          child: StreamBuilder<List<FoldersRecord>>(
+                            stream: queryFoldersRecord(
+                              parent: currentUserReference,
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -84,138 +80,51 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 );
                               }
-                              List<FileRecord> listViewFileRecordList =
+                              List<FoldersRecord> gridViewFoldersRecordList =
                                   snapshot.data!;
-                              return ListView.builder(
+                              return GridView.builder(
                                 padding: EdgeInsets.zero,
-                                shrinkWrap: true,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 1,
+                                ),
                                 scrollDirection: Axis.vertical,
-                                itemCount: listViewFileRecordList.length,
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewFileRecord =
-                                      listViewFileRecordList[listViewIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 12, 12, 4),
-                                    child: Card(
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      elevation: 4,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16, 16, 16, 16),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'HOME_PAGE_PAGE_Text_86l60g2z_ON_TAP');
-                                                await launchURL(
-                                                    listViewFileRecord
-                                                        .fileUrl!);
-                                              },
-                                              child: Text(
-                                                listViewFileRecord.fileUrl!
-                                                    .maybeHandleOverflow(
-                                                        maxChars: 30),
-                                                maxLines: 2,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .subtitle2Family,
-                                                          fontSize: 14,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .subtitle2Family),
-                                                          lineHeight: 1,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30,
-                                            borderWidth: 1,
-                                            buttonSize: 60,
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .customColor3,
-                                              size: 30,
-                                            ),
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'HOME_PAGE_PAGE_delete_ICN_ON_TAP');
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Delete File'),
-                                                            content: Text(
-                                                                'Are you sure you want to delete this file?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancel'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Confirm'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                await listViewFileRecord
-                                                    .reference
-                                                    .delete();
+                                itemCount: gridViewFoldersRecordList.length,
+                                itemBuilder: (context, gridViewIndex) {
+                                  final gridViewFoldersRecord =
+                                      gridViewFoldersRecordList[gridViewIndex];
+                                  return InkWell(
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'HOME_PAGE_PAGE_Container_dyymc9dr_ON_TAP');
 
-                                                final foldersUpdateData = {
-                                                  'files':
-                                                      FieldValue.arrayRemove([
-                                                    listViewFileRecord.reference
-                                                  ]),
-                                                };
-                                                await listViewFileRecord
-                                                    .containingFolder!
-                                                    .update(foldersUpdateData);
-                                                HapticFeedback.vibrate();
-                                              } else {
-                                                return;
-                                              }
-                                            },
+                                      context.pushNamed(
+                                        'folders',
+                                        queryParams: {
+                                          'path': serializeParam(
+                                            gridViewFoldersRecord.reference,
+                                            ParamType.DocumentReference,
                                           ),
-                                        ],
-                                      ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.bottomToTop,
+                                            duration:
+                                                Duration(milliseconds: 300),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: FolderButtonWidget(
+                                      key: Key('folderButton_${gridViewIndex}'),
+                                      color: gridViewFoldersRecord.color,
+                                      name: gridViewFoldersRecord.name,
+                                      path: gridViewFoldersRecord.reference,
                                     ),
                                   );
                                 },

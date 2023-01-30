@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../components/sleeq_logo_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -58,16 +59,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Image.asset(
-                          'assets/images/1024.png',
-                          width: 40,
-                          height: 40,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
+                    SleeqLogoWidget(
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      withText: false,
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),

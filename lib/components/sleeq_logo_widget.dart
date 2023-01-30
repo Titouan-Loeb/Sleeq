@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SleeqLogoWidget extends StatefulWidget {
-  const SleeqLogoWidget({Key? key}) : super(key: key);
+  const SleeqLogoWidget({
+    Key? key,
+    this.color,
+    this.withText,
+  }) : super(key: key);
+
+  final Color? color;
+  final bool? withText;
 
   @override
   _SleeqLogoWidgetState createState() => _SleeqLogoWidgetState();
@@ -21,20 +28,33 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-      ),
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset(
-            'assets/images/sleeq-logo_black.png',
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+            child: Icon(
+              FFIcons.ksleeqLogo,
+              color: widget.color,
+              size: 50,
+            ),
           ),
+          if (valueOrDefault<bool>(
+            widget.withText,
+            false,
+          ))
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Icon(
+                FFIcons.ksleeqTextVector,
+                color: widget.color,
+                size: 50,
+              ),
+            ),
         ],
       ),
     );

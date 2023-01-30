@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../components/sleeq_logo_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -68,63 +69,12 @@ class _NewnavWidgetState extends State<NewnavWidget>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            if (Theme.of(context).brightness == Brightness.light)
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                child: Image.asset(
-                  'assets/images/sleeq-logo_black.png',
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            if (Theme.of(context).brightness == Brightness.light)
-              Text(
-                FFLocalizations.of(context).getText(
-                  'sqxfpkj8' /* SLEEQ */,
-                ),
-                style: FlutterFlowTheme.of(context).title1.override(
-                      fontFamily: FlutterFlowTheme.of(context).title1Family,
-                      fontSize: 50,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title1Family),
-                      lineHeight: 1,
-                    ),
-              ),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            if (Theme.of(context).brightness == Brightness.dark)
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                child: Image.asset(
-                  'assets/images/sleeq-logo_white.png',
-                  width: 50,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            if (!(Theme.of(context).brightness == Brightness.light))
-              Text(
-                FFLocalizations.of(context).getText(
-                  'j8e3h992' /* SLEEQ */,
-                ),
-                style: FlutterFlowTheme.of(context).title1.override(
-                      fontFamily: FlutterFlowTheme.of(context).title1Family,
-                      fontSize: 50,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).title1Family),
-                      lineHeight: 1,
-                    ),
-              ),
-          ],
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+          child: SleeqLogoWidget(
+            color: FlutterFlowTheme.of(context).primaryText,
+            withText: true,
+          ),
         ),
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),

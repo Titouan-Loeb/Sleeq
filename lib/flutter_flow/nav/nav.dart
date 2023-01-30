@@ -111,6 +111,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'examplePage',
               requireAuth: true,
               builder: (context, params) => ExamplePageWidget(),
+            ),
+            FFRoute(
+              name: 'folders',
+              path: 'folder',
+              requireAuth: true,
+              builder: (context, params) => FoldersWidget(
+                path: params.getParam('path', ParamType.DocumentReference,
+                    false, ['users', 'folders']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
