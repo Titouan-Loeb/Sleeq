@@ -47,8 +47,25 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
             color: widget.color,
             size: 80,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_TAP');
+
+            context.pushNamed(
+              'folders',
+              queryParams: {
+                'path': serializeParam(
+                  widget.path,
+                  ParamType.DocumentReference,
+                ),
+              }.withoutNulls,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.bottomToTop,
+                  duration: Duration(milliseconds: 300),
+                ),
+              },
+            );
           },
         ),
         SelectionArea(
