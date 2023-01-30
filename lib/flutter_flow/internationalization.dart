@@ -288,14 +288,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Se déconnecter',
     },
   },
-  // fileButton
-  {
-    'loear5wp': {
-      'en': 'files',
-      'es': 'archivos',
-      'fr': 'des dossiers',
-    },
-  },
   // addfileButton
   {
     '2xx3jh7t': {
