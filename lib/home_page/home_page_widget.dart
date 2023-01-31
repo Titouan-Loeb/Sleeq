@@ -96,36 +96,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 itemBuilder: (context, gridViewIndex) {
                                   final gridViewFoldersRecord =
                                       gridViewFoldersRecordList[gridViewIndex];
-                                  return InkWell(
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'HOME_PAGE_PAGE_Container_dyymc9dr_ON_TAP');
-
-                                      context.pushNamed(
-                                        'folders',
-                                        queryParams: {
-                                          'path': serializeParam(
-                                            gridViewFoldersRecord.reference,
-                                            ParamType.DocumentReference,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.bottomToTop,
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                          ),
-                                        },
-                                      );
-                                    },
-                                    child: FolderButtonWidget(
-                                      key: Key('folderButton_${gridViewIndex}'),
-                                      color: gridViewFoldersRecord.color,
-                                      name: gridViewFoldersRecord.name,
-                                      path: gridViewFoldersRecord.reference,
-                                    ),
+                                  return FolderButtonWidget(
+                                    key: Key('folderButton_${gridViewIndex}'),
+                                    color: gridViewFoldersRecord.color,
+                                    name: gridViewFoldersRecord.name,
+                                    path: gridViewFoldersRecord.reference,
                                   );
                                 },
                               );

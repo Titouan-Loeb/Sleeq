@@ -1,8 +1,7 @@
 import '../backend/backend.dart';
-import '../components/addfile_button_widget.dart';
+import '../components/add_modal_widget.dart';
 import '../components/file_button_widget.dart';
 import '../components/folder_button_widget.dart';
-import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -63,6 +62,42 @@ class _FoldersWidgetState extends State<FoldersWidget> {
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () async {
+                  logFirebaseEvent('FOLDERS_FloatingActionButton_24kvid75_ON');
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    isDismissible: false,
+                    enableDrag: false,
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: AddModalWidget(),
+                      );
+                    },
+                  ).then((value) => setState(() {}));
+                },
+                backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+                icon: Icon(
+                  Icons.add_circle,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                ),
+                elevation: 8,
+                label: Text(
+                  FFLocalizations.of(context).getText(
+                    'bm0xrd5q' /* New */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'DM Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontWeight: FontWeight.bold,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText1Family),
+                      ),
+                ),
+              ),
               appBar: responsiveVisibility(
                 context: context,
                 tabletLandscape: false,
@@ -74,9 +109,14 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                       automaticallyImplyLeading: true,
                       title: Text(
                         foldersFoldersRecord.name!,
-                        style: FlutterFlowTheme.of(context).title1,
+                        style: FlutterFlowTheme.of(context).title2,
                       ),
-                      actions: [],
+                      actions: [
+                        Container(
+                          height: 200,
+                          decoration: BoxDecoration(),
+                        ),
+                      ],
                       centerTitle: true,
                       elevation: 4,
                     )
@@ -109,6 +149,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                       mainAxisSpacing: 10,
                                       childAspectRatio: 1,
                                     ),
+                                    primary: false,
                                     scrollDirection: Axis.vertical,
                                     itemCount: items.length,
                                     itemBuilder: (context, itemsIndex) {
@@ -168,6 +209,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                       mainAxisSpacing: 10,
                                       childAspectRatio: 1,
                                     ),
+                                    primary: false,
                                     scrollDirection: Axis.vertical,
                                     itemCount: files.length,
                                     itemBuilder: (context, filesIndex) {
@@ -196,14 +238,13 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                           return FileButtonWidget(
                                             key:
                                                 Key('fileButton_${filesIndex}'),
-                                            fileUrl:
-                                                fileButtonFileRecord.fileUrl,
                                             name: fileButtonFileRecord.name,
                                             color: valueOrDefault<Color>(
                                               fileButtonFileRecord.color,
                                               FlutterFlowTheme.of(context)
                                                   .secondaryText,
                                             ),
+                                            file: fileButtonFileRecord,
                                           );
                                         },
                                       );
@@ -212,15 +253,6 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                 },
                               ),
                             ),
-                            AddfileButtonWidget(
-                              currentFolder: widget.path,
-                            ),
-                            if (responsiveVisibility(
-                              context: context,
-                              tabletLandscape: false,
-                              desktop: false,
-                            ))
-                              NavBarFlotingWidget(),
                           ],
                         ),
                       ),
