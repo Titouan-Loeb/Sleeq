@@ -88,7 +88,6 @@ abstract class FlutterFlowTheme {
   late Color selectorBabyBlueEyes;
   late Color selectorMaximumBluePurple;
   late Color selectorMauve;
-  late Color selectorBabyPowder;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -173,7 +172,6 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color selectorBabyBlueEyes = Color(0xFFA0C4FF);
   late Color selectorMaximumBluePurple = Color(0xFFBDB2FF);
   late Color selectorMauve = Color(0xFFFFC6FF);
-  late Color selectorBabyPowder = Color(0xFFFFFFFC);
 }
 
 abstract class Typography {
@@ -411,7 +409,6 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color selectorBabyBlueEyes = Color(0xFFA0C4FF);
   late Color selectorMaximumBluePurple = Color(0xFFBDB2FF);
   late Color selectorMauve = Color(0xFFFFC6FF);
-  late Color selectorBabyPowder = Color(0xFFFFFFFC);
 }
 
 extension TextStyleHelper on TextStyle {

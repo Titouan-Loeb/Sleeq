@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 
 class AddfileButtonWidget extends StatefulWidget {
   const AddfileButtonWidget({
@@ -40,6 +41,8 @@ class _AddfileButtonWidgetState extends State<AddfileButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FlutterFlowIconButton(
       borderColor: Colors.transparent,
       borderRadius: 30,

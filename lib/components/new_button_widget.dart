@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class NewButtonWidget extends StatefulWidget {
   const NewButtonWidget({Key? key}) : super(key: key);
@@ -23,13 +24,15 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FlutterFlowDropDown<String>(
       options: [
         FFLocalizations.of(context).getText(
-          'qzi76xzy' /* Folder */,
+          'ggrfcuui' /* Folder */,
         ),
         FFLocalizations.of(context).getText(
-          's2vy1yu5' /* File */,
+          'rzjrnhhh' /* File */,
         )
       ],
       onChanged: (val) async {
@@ -70,7 +73,7 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
                 .containsKey(FlutterFlowTheme.of(context).bodyText1Family),
           ),
       hintText: FFLocalizations.of(context).getText(
-        'jovhek2h' /* New */,
+        'blyhydr0' /* New */,
       ),
       icon: Icon(
         Icons.add_circle,
