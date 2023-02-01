@@ -317,15 +317,14 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               ),
                               ColorDialWidget(
                                 allowedColors: [
-                                  Color(0xFFe06666),
-                                  Color(0xFFf6b26b),
-                                  Color(0xFFffd966),
-                                  Color(0xFF93c47d),
-                                  Color(0xFF76a5af),
-                                  Color(0xFF6d9eeb),
-                                  Color(0xFF6fa8dc),
-                                  Color(0xFF8e7cc3),
-                                  Color(0xFFc27ba0)
+                                  Color.fromARGB(255, 255, 100, 255),
+                                  Color.fromARGB(255, 123, 100, 255),
+                                  Color.fromARGB(255, 5, 101, 255),
+                                  Color.fromARGB(255, 100, 242, 255),
+                                  Color.fromARGB(255, 100, 255, 69),
+                                  Color.fromARGB(255, 250, 255, 100),
+                                  Color.fromARGB(255, 255, 185, 99),
+                                  Color.fromARGB(255, 255, 100, 100)
                                 ].toList(),
                               ),
                             ],

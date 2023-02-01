@@ -113,6 +113,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FoldersWidget(
                 path: params.getParam('path', ParamType.DocumentReference,
                     false, ['users', 'folders']),
+                name: params.getParam('name', ParamType.String),
+                color: params.getParam('color', ParamType.Color),
               ),
             ),
             FFRoute(
