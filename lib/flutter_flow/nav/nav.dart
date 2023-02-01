@@ -126,7 +126,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'file',
               requireAuth: true,
               asyncParams: {
-                'file': getDoc(['file'], FileRecord.serializer),
+                'file': getDoc(['users', 'files'], FilesRecord.serializer),
               },
               builder: (context, params) => FileWidget(
                 file: params.getParam('file', ParamType.Document),

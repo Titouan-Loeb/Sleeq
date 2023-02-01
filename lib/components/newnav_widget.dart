@@ -1,22 +1,16 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../components/sleeq_logo_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_language_selector.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 
 class NewnavWidget extends StatefulWidget {
@@ -43,12 +37,6 @@ class _NewnavWidgetState extends State<NewnavWidget>
       ],
     ),
   };
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  FileRecord? fileOutput;
-  FoldersRecord? folder;
-  AudioPlayer? soundPlayer;
 
   @override
   void initState() {
@@ -272,104 +260,37 @@ class _NewnavWidgetState extends State<NewnavWidget>
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      logFirebaseEvent('NEWNAV_COMP_UPLOAD_A_FILE_BTN_ON_TAP');
-                      var _shouldSetState = false;
-                      final selectedFile =
-                          await selectFile(allowedExtensions: ['pdf']);
-                      if (selectedFile != null) {
-                        setState(() => isMediaUploading = true);
-                        String? downloadUrl;
-                        try {
-                          downloadUrl = await uploadData(
-                              selectedFile.storagePath, selectedFile.bytes);
-                        } finally {
-                          isMediaUploading = false;
-                        }
-                        if (downloadUrl != null) {
-                          setState(() => uploadedFileUrl = downloadUrl!);
-                        } else {
-                          setState(() {});
-                          return;
-                        }
-                      }
-
-                      if (uploadedFileUrl != null && uploadedFileUrl != '') {
-                        HapticFeedback.heavyImpact();
-                      } else {
-                        if (_shouldSetState) setState(() {});
-                        return;
-                      }
-
-                      final fileCreateData = createFileRecordData(
-                        fileUrl: uploadedFileUrl,
-                        owner: currentUserReference,
-                        name: uploadedFileUrl,
-                        created: getCurrentTimestamp,
-                      );
-                      var fileRecordReference = FileRecord.collection.doc();
-                      await fileRecordReference.set(fileCreateData);
-                      fileOutput = FileRecord.getDocumentFromData(
-                          fileCreateData, fileRecordReference);
-                      _shouldSetState = true;
-
-                      final foldersCreateData = {
-                        ...createFoldersRecordData(
-                          owner: currentUserReference,
-                          color: FlutterFlowTheme.of(context).selectorLightPink,
-                          name: 'default',
-                        ),
-                        'files': [fileOutput!.reference],
-                      };
-                      var foldersRecordReference =
-                          FoldersRecord.createDoc(currentUserReference!);
-                      await foldersRecordReference.set(foldersCreateData);
-                      folder = FoldersRecord.getDocumentFromData(
-                          foldersCreateData, foldersRecordReference);
-                      _shouldSetState = true;
-
-                      final fileUpdateData = createFileRecordData(
-                        containingFolder: folder!.reference,
-                      );
-                      await fileOutput!.reference.update(fileUpdateData);
-                      soundPlayer ??= AudioPlayer();
-                      if (soundPlayer!.playing) {
-                        await soundPlayer!.stop();
-                      }
-                      soundPlayer!.setVolume(1);
-                      soundPlayer!
-                          .setAsset('assets/audios/vine-boom.mp3')
-                          .then((_) => soundPlayer!.play());
-
-                      if (_shouldSetState) setState(() {});
-                    },
-                    text: FFLocalizations.of(context).getText(
-                      'joolq3hb' /* Upload a file */,
-                    ),
-                    options: FFButtonOptions(
-                      width: double.infinity,
-                      height: 40,
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      textStyle: FlutterFlowTheme.of(context)
-                          .subtitle2
-                          .override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).subtitle2Family,
-                            color: Colors.white,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).subtitle2Family),
-                          ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
+                if (false)
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'joolq3hb' /* Upload a file */,
                       ),
-                      borderRadius: BorderRadius.circular(12),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 40,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .subtitle2
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).subtitle2Family,
+                              color: Colors.white,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).subtitle2Family),
+                            ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
-                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                   child: FlutterFlowLanguageSelector(

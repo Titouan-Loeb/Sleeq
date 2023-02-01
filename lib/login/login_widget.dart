@@ -520,6 +520,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         .primaryText,
                                     size: 24,
                                   ),
+                                  showLoadingIndicator: true,
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'LOGIN_PAGE_google_ICN_ON_TAP');

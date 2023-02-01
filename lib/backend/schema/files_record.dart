@@ -4,28 +4,23 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'file_record.g.dart';
+part 'files_record.g.dart';
 
-abstract class FileRecord implements Built<FileRecord, FileRecordBuilder> {
-  static Serializer<FileRecord> get serializer => _$fileRecordSerializer;
-
-  String? get name;
+abstract class FilesRecord implements Built<FilesRecord, FilesRecordBuilder> {
+  static Serializer<FilesRecord> get serializer => _$filesRecordSerializer;
 
   DocumentReference? get owner;
 
-  String? get tags;
+  String? get name;
 
   Color? get color;
 
-  DateTime? get created;
+  BuiltList<String>? get tags;
 
-  double? get size;
+  DateTime? get created;
 
   @BuiltValueField(wireName: 'file_url')
   String? get fileUrl;
-
-  @BuiltValueField(wireName: 'file_extension')
-  String? get fileExtension;
 
   @BuiltValueField(wireName: 'containing_folder')
   DocumentReference? get containingFolder;
@@ -34,56 +29,57 @@ abstract class FileRecord implements Built<FileRecord, FileRecordBuilder> {
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(FileRecordBuilder builder) => builder
+  DocumentReference get parentReference => reference.parent.parent!;
+
+  static void _initializeBuilder(FilesRecordBuilder builder) => builder
     ..name = ''
-    ..tags = ''
-    ..size = 0.0
-    ..fileUrl = ''
-    ..fileExtension = '';
+    ..tags = ListBuilder()
+    ..fileUrl = '';
 
-  static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('file');
+  static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
+      parent != null
+          ? parent.collection('files')
+          : FirebaseFirestore.instance.collectionGroup('files');
 
-  static Stream<FileRecord> getDocument(DocumentReference ref) => ref
+  static DocumentReference createDoc(DocumentReference parent) =>
+      parent.collection('files').doc();
+
+  static Stream<FilesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<FileRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<FilesRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  FileRecord._();
-  factory FileRecord([void Function(FileRecordBuilder) updates]) = _$FileRecord;
+  FilesRecord._();
+  factory FilesRecord([void Function(FilesRecordBuilder) updates]) =
+      _$FilesRecord;
 
-  static FileRecord getDocumentFromData(
+  static FilesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createFileRecordData({
-  String? name,
+Map<String, dynamic> createFilesRecordData({
   DocumentReference? owner,
-  String? tags,
+  String? name,
   Color? color,
   DateTime? created,
-  double? size,
   String? fileUrl,
-  String? fileExtension,
   DocumentReference? containingFolder,
 }) {
   final firestoreData = serializers.toFirestore(
-    FileRecord.serializer,
-    FileRecord(
+    FilesRecord.serializer,
+    FilesRecord(
       (f) => f
-        ..name = name
         ..owner = owner
-        ..tags = tags
+        ..name = name
         ..color = color
+        ..tags = null
         ..created = created
-        ..size = size
         ..fileUrl = fileUrl
-        ..fileExtension = fileExtension
         ..containingFolder = containingFolder,
     ),
   );

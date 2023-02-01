@@ -75,6 +75,14 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
+    value = object.rootFolder;
+    if (value != null) {
+      result
+        ..add('root_folder')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -129,6 +137,12 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.isSubscriber = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
           break;
+        case 'root_folder':
+          result.rootFolder = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -160,6 +174,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final bool? isSubscriber;
   @override
+  final DocumentReference<Object?>? rootFolder;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -174,6 +190,7 @@ class _$UsersRecord extends UsersRecord {
       this.phoneNumber,
       this.occupiedSize,
       this.isSubscriber,
+      this.rootFolder,
       this.ffRef})
       : super._();
 
@@ -196,6 +213,7 @@ class _$UsersRecord extends UsersRecord {
         phoneNumber == other.phoneNumber &&
         occupiedSize == other.occupiedSize &&
         isSubscriber == other.isSubscriber &&
+        rootFolder == other.rootFolder &&
         ffRef == other.ffRef;
   }
 
@@ -208,14 +226,16 @@ class _$UsersRecord extends UsersRecord {
                     $jc(
                         $jc(
                             $jc(
-                                $jc($jc(0, email.hashCode),
-                                    displayName.hashCode),
-                                photoUrl.hashCode),
-                            uid.hashCode),
-                        createdTime.hashCode),
-                    phoneNumber.hashCode),
-                occupiedSize.hashCode),
-            isSubscriber.hashCode),
+                                $jc(
+                                    $jc($jc(0, email.hashCode),
+                                        displayName.hashCode),
+                                    photoUrl.hashCode),
+                                uid.hashCode),
+                            createdTime.hashCode),
+                        phoneNumber.hashCode),
+                    occupiedSize.hashCode),
+                isSubscriber.hashCode),
+            rootFolder.hashCode),
         ffRef.hashCode));
   }
 
@@ -230,6 +250,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('phoneNumber', phoneNumber)
           ..add('occupiedSize', occupiedSize)
           ..add('isSubscriber', isSubscriber)
+          ..add('rootFolder', rootFolder)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -270,6 +291,11 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   bool? get isSubscriber => _$this._isSubscriber;
   set isSubscriber(bool? isSubscriber) => _$this._isSubscriber = isSubscriber;
 
+  DocumentReference<Object?>? _rootFolder;
+  DocumentReference<Object?>? get rootFolder => _$this._rootFolder;
+  set rootFolder(DocumentReference<Object?>? rootFolder) =>
+      _$this._rootFolder = rootFolder;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -289,6 +315,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _phoneNumber = $v.phoneNumber;
       _occupiedSize = $v.occupiedSize;
       _isSubscriber = $v.isSubscriber;
+      _rootFolder = $v.rootFolder;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -320,6 +347,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             phoneNumber: phoneNumber,
             occupiedSize: occupiedSize,
             isSubscriber: isSubscriber,
+            rootFolder: rootFolder,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

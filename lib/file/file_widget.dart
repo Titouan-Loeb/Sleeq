@@ -13,7 +13,7 @@ class FileWidget extends StatefulWidget {
     this.file,
   }) : super(key: key);
 
-  final FileRecord? file;
+  final FilesRecord? file;
 
   @override
   _FileWidgetState createState() => _FileWidgetState();
@@ -56,7 +56,12 @@ class _FileWidgetState extends State<FileWidget> {
                   automaticallyImplyLeading: true,
                   title: Text(
                     widget.file!.name!,
-                    style: FlutterFlowTheme.of(context).title2,
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: FlutterFlowTheme.of(context).title2Family,
+                          color: Colors.white,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).title2Family),
+                        ),
                   ),
                   actions: [],
                   centerTitle: true,

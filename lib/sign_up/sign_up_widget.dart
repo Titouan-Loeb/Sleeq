@@ -1,9 +1,11 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../components/sleeq_logo_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,9 +19,11 @@ class SignUpWidget extends StatefulWidget {
 }
 
 class _SignUpWidgetState extends State<SignUpWidget> {
+  FoldersRecord? folder;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
+  FoldersRecord? folderGoogle;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -313,7 +317,27 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 return;
                               }
 
+                              final foldersCreateData = createFoldersRecordData(
+                                owner: currentUserReference,
+                                parentFolder: currentUserDocument!.rootFolder,
+                              );
+                              var foldersRecordReference =
+                                  FoldersRecord.createDoc(
+                                      currentUserReference!);
+                              await foldersRecordReference
+                                  .set(foldersCreateData);
+                              folder = FoldersRecord.getDocumentFromData(
+                                  foldersCreateData, foldersRecordReference);
+
+                              final usersUpdateData = createUsersRecordData(
+                                rootFolder: folder!.reference,
+                              );
+                              await currentUserReference!
+                                  .update(usersUpdateData);
+
                               context.goNamedAuth('HomePage', mounted);
+
+                              setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
                               'hii8oza0' /* Sign up */,
@@ -363,6 +387,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               color: FlutterFlowTheme.of(context).primaryText,
                               size: 24,
                             ),
+                            showLoadingIndicator: true,
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_google_ICN_ON_TAP');
@@ -372,7 +397,27 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 return;
                               }
 
+                              final foldersCreateData = createFoldersRecordData(
+                                owner: currentUserReference,
+                                parentFolder: currentUserDocument!.rootFolder,
+                              );
+                              var foldersRecordReference =
+                                  FoldersRecord.createDoc(
+                                      currentUserReference!);
+                              await foldersRecordReference
+                                  .set(foldersCreateData);
+                              folderGoogle = FoldersRecord.getDocumentFromData(
+                                  foldersCreateData, foldersRecordReference);
+
+                              final usersUpdateData = createUsersRecordData(
+                                rootFolder: folderGoogle!.reference,
+                              );
+                              await currentUserReference!
+                                  .update(usersUpdateData);
+
                               context.goNamedAuth('HomePage', mounted);
+
+                              setState(() {});
                             },
                           ),
                         ),

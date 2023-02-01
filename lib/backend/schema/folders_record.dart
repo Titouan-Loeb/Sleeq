@@ -18,6 +18,9 @@ abstract class FoldersRecord
 
   BuiltList<DocumentReference>? get folders;
 
+  @BuiltValueField(wireName: 'parent_folder')
+  DocumentReference? get parentFolder;
+
   BuiltList<DocumentReference>? get files;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -61,6 +64,7 @@ Map<String, dynamic> createFoldersRecordData({
   DocumentReference? owner,
   Color? color,
   String? name,
+  DocumentReference? parentFolder,
 }) {
   final firestoreData = serializers.toFirestore(
     FoldersRecord.serializer,
@@ -70,6 +74,7 @@ Map<String, dynamic> createFoldersRecordData({
         ..color = color
         ..name = name
         ..folders = null
+        ..parentFolder = parentFolder
         ..files = null,
     ),
   );

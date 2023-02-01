@@ -52,6 +52,14 @@ class _$FoldersRecordSerializer implements StructuredSerializer<FoldersRecord> {
                   DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
+    value = object.parentFolder;
+    if (value != null) {
+      result
+        ..add('parent_folder')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.files;
     if (value != null) {
       result
@@ -106,6 +114,12 @@ class _$FoldersRecordSerializer implements StructuredSerializer<FoldersRecord> {
                     DocumentReference, const [const FullType.nullable(Object)])
               ]))! as BuiltList<Object?>);
           break;
+        case 'parent_folder':
+          result.parentFolder = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'files':
           result.files.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
@@ -136,6 +150,8 @@ class _$FoldersRecord extends FoldersRecord {
   @override
   final BuiltList<DocumentReference<Object?>>? folders;
   @override
+  final DocumentReference<Object?>? parentFolder;
+  @override
   final BuiltList<DocumentReference<Object?>>? files;
   @override
   final DocumentReference<Object?>? ffRef;
@@ -144,7 +160,13 @@ class _$FoldersRecord extends FoldersRecord {
       (new FoldersRecordBuilder()..update(updates))._build();
 
   _$FoldersRecord._(
-      {this.owner, this.color, this.name, this.folders, this.files, this.ffRef})
+      {this.owner,
+      this.color,
+      this.name,
+      this.folders,
+      this.parentFolder,
+      this.files,
+      this.ffRef})
       : super._();
 
   @override
@@ -162,6 +184,7 @@ class _$FoldersRecord extends FoldersRecord {
         color == other.color &&
         name == other.name &&
         folders == other.folders &&
+        parentFolder == other.parentFolder &&
         files == other.files &&
         ffRef == other.ffRef;
   }
@@ -170,8 +193,12 @@ class _$FoldersRecord extends FoldersRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, owner.hashCode), color.hashCode), name.hashCode),
-                folders.hashCode),
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, owner.hashCode), color.hashCode),
+                        name.hashCode),
+                    folders.hashCode),
+                parentFolder.hashCode),
             files.hashCode),
         ffRef.hashCode));
   }
@@ -183,6 +210,7 @@ class _$FoldersRecord extends FoldersRecord {
           ..add('color', color)
           ..add('name', name)
           ..add('folders', folders)
+          ..add('parentFolder', parentFolder)
           ..add('files', files)
           ..add('ffRef', ffRef))
         .toString();
@@ -211,6 +239,11 @@ class FoldersRecordBuilder
   set folders(ListBuilder<DocumentReference<Object?>>? folders) =>
       _$this._folders = folders;
 
+  DocumentReference<Object?>? _parentFolder;
+  DocumentReference<Object?>? get parentFolder => _$this._parentFolder;
+  set parentFolder(DocumentReference<Object?>? parentFolder) =>
+      _$this._parentFolder = parentFolder;
+
   ListBuilder<DocumentReference<Object?>>? _files;
   ListBuilder<DocumentReference<Object?>> get files =>
       _$this._files ??= new ListBuilder<DocumentReference<Object?>>();
@@ -232,6 +265,7 @@ class FoldersRecordBuilder
       _color = $v.color;
       _name = $v.name;
       _folders = $v.folders?.toBuilder();
+      _parentFolder = $v.parentFolder;
       _files = $v.files?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
@@ -262,6 +296,7 @@ class FoldersRecordBuilder
               color: color,
               name: name,
               folders: _folders?.build(),
+              parentFolder: parentFolder,
               files: _files?.build(),
               ffRef: ffRef);
     } catch (_) {
@@ -269,6 +304,7 @@ class FoldersRecordBuilder
       try {
         _$failedField = 'folders';
         _folders?.build();
+
         _$failedField = 'files';
         _files?.build();
       } catch (e) {

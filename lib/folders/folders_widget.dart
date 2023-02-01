@@ -225,8 +225,8 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                     itemCount: files.length,
                                     itemBuilder: (context, filesIndex) {
                                       final filesItem = files[filesIndex];
-                                      return FutureBuilder<FileRecord>(
-                                        future: FileRecord.getDocumentOnce(
+                                      return FutureBuilder<FilesRecord>(
+                                        future: FilesRecord.getDocumentOnce(
                                             filesItem),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -244,18 +244,18 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                               ),
                                             );
                                           }
-                                          final fileButtonFileRecord =
+                                          final fileButtonFilesRecord =
                                               snapshot.data!;
                                           return FileButtonWidget(
                                             key:
                                                 Key('fileButton_${filesIndex}'),
-                                            name: fileButtonFileRecord.name,
+                                            name: fileButtonFilesRecord.name,
                                             color: valueOrDefault<Color>(
-                                              fileButtonFileRecord.color,
+                                              fileButtonFilesRecord.color,
                                               FlutterFlowTheme.of(context)
                                                   .secondaryText,
                                             ),
-                                            file: fileButtonFileRecord,
+                                            file: fileButtonFilesRecord,
                                           );
                                         },
                                       );
