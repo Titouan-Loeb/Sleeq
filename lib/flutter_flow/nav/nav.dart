@@ -107,12 +107,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsWidget(),
             ),
             FFRoute(
-              name: 'examplePage',
-              path: 'examplePage',
-              requireAuth: true,
-              builder: (context, params) => ExamplePageWidget(),
-            ),
-            FFRoute(
               name: 'folders',
               path: 'folder',
               requireAuth: true,
@@ -120,6 +114,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 path: params.getParam('path', ParamType.DocumentReference,
                     false, ['users', 'folders']),
               ),
+            ),
+            FFRoute(
+              name: 'examplePage',
+              path: 'examplePage',
+              requireAuth: true,
+              builder: (context, params) => ExamplePageWidget(),
             ),
             FFRoute(
               name: 'file',

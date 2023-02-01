@@ -1,11 +1,11 @@
 import '../backend/backend.dart';
-import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_pdf_viewer.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class FileWidget extends StatefulWidget {
   const FileWidget({
@@ -38,6 +38,8 @@ class _FileWidgetState extends State<FileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'file',
         color: FlutterFlowTheme.of(context).primaryColor,
@@ -69,34 +71,11 @@ class _FileWidgetState extends State<FileWidget> {
                 children: [
                   SidebarWidget(),
                   Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
-                            child: FlutterFlowPdfViewer(
-                              networkPath: widget.file!.fileUrl!,
-                              width: MediaQuery.of(context).size.width,
-                              horizontalScroll: false,
-                            ),
-                          ),
-                        ),
-                        if (responsiveVisibility(
-                          context: context,
-                          tabletLandscape: false,
-                          desktop: false,
-                        ))
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0, 1),
-                              child: NavBarFlotingWidget(),
-                            ),
-                          ),
-                      ],
+                    child: FlutterFlowPdfViewer(
+                      networkPath: widget.file!.fileUrl!,
+                      width: double.infinity,
+                      height: double.infinity,
+                      horizontalScroll: false,
                     ),
                   ),
                 ],

@@ -17,6 +17,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
@@ -73,6 +74,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'Settings',
         color: FlutterFlowTheme.of(context).primaryColor,

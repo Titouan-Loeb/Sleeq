@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class FoldersWidget extends StatefulWidget {
   const FoldersWidget({
@@ -40,6 +41,8 @@ class _FoldersWidgetState extends State<FoldersWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<FoldersRecord>(
       stream: FoldersRecord.getDocument(widget.path!),
       builder: (context, snapshot) {
@@ -87,7 +90,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                 elevation: 8,
                 label: Text(
                   FFLocalizations.of(context).getText(
-                    'bm0xrd5q' /* New */,
+                    '7kml26ln' /* New */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'DM Sans',
@@ -109,7 +112,13 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                       automaticallyImplyLeading: true,
                       title: Text(
                         foldersFoldersRecord.name!,
-                        style: FlutterFlowTheme.of(context).title2,
+                        style: FlutterFlowTheme.of(context).title2.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).title2Family,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).title2Family),
+                            ),
                       ),
                       actions: [
                         Container(

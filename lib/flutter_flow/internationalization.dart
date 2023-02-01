@@ -104,6 +104,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Contraseña',
       'fr': 'Mot de passe',
     },
+    '3xzw8qo5': {
+      'en': 'Forgot Password?',
+      'es': '¿Has olvidado tu contraseña?',
+      'fr': 'Mot de passe oublié?',
+    },
+    'xt2b21lg': {
+      'en': 'Login',
+      'es': 'Acceso',
+      'fr': 'Connexion',
+    },
     '0oxsulyr': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
@@ -123,16 +133,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
-    },
-    '3xzw8qo5': {
-      'en': 'Forgot Password?',
-      'es': '¿Has olvidado tu contraseña?',
-      'fr': 'Mot de passe oublié?',
-    },
-    'xt2b21lg': {
-      'en': 'Login',
-      'es': 'Acceso',
-      'fr': 'Connexion',
     },
     'ijynuzje': {
       'en': 'Profile',
@@ -239,17 +239,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Domicile',
     },
   },
-  // examplePage
-  {
-    'rc9x2s09': {
-      'en': 'Home',
-      'es': 'Casa',
-      'fr': 'Domicile',
-    },
-  },
   // folders
   {
-    'bm0xrd5q': {
+    '7kml26ln': {
       'en': 'New',
       'es': '',
       'fr': '',
@@ -260,9 +252,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Domicile',
     },
   },
+  // examplePage
+  {
+    'rc9x2s09': {
+      'en': 'Home',
+      'es': 'Casa',
+      'fr': 'Domicile',
+    },
+  },
   // file
   {
-    'jhkngfg4': {
+    'frc8wftl': {
       'en': 'Home',
       'es': '',
       'fr': '',
@@ -303,17 +303,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // newButton
   {
-    'qzi76xzy': {
+    'ggrfcuui': {
       'en': 'Folder',
       'es': '',
       'fr': '',
     },
-    's2vy1yu5': {
+    'rzjrnhhh': {
       'en': 'File',
       'es': '',
       'fr': '',
     },
-    'jovhek2h': {
+    'blyhydr0': {
       'en': 'New',
       'es': '',
       'fr': '',
@@ -321,24 +321,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // addModal
   {
-    '0sduf1oj': {
-      'en': 'Refine the components modal.',
+    's5gbcfow': {
+      'en': 'Add a new item',
       'es': '',
       'fr': '',
     },
-    '989m7l17': {
-      'en':
-          'FlutterFlow is a visual development platform that allows you to easily create beautiful and responsive user interfaces for your mobile and web applications. With its drag-and-drop interface and pre-built components, you can quickly prototype and build your app without writing any code. \nAdditionally, FlutterFlow\'s real-time preview feature allows you to see your changes in real-time and make adjustments on the fly.',
+    'fqrx409d': {
+      'en': 'Folder',
+      'es': 'Modo de luz',
+      'fr': 'Mode lumière',
+    },
+    'pzkk6o4a': {
+      'en': 'File',
+      'es': 'Modo oscuro',
+      'fr': 'Mode sombre',
+    },
+    'vb8p8k2k': {
+      'en': 'File name',
       'es': '',
       'fr': '',
     },
-    '7ng4b23x': {
+    't1jrn4o0': {
+      'en': '[file.pdf]',
+      'es': '',
+      'fr': '',
+    },
+    'j7nwknqr': {
       'en': 'Cancel',
-      'es': '',
-      'fr': '',
-    },
-    'n7o4gvcw': {
-      'en': 'Create Task',
       'es': '',
       'fr': '',
     },

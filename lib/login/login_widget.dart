@@ -9,6 +9,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -45,6 +46,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'Login',
         color: FlutterFlowTheme.of(context).primaryColor,
@@ -150,7 +153,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     Form(
                       key: formKey,
-                      autovalidateMode: AutovalidateMode.always,
+                      autovalidateMode: AutovalidateMode.disabled,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -378,142 +381,163 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'LOGIN_PAGE_FORGOT_PASSWORD?_BTN_ON_TAP');
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_PAGE_FORGOT_PASSWORD?_BTN_ON_TAP');
 
-                              context.pushNamed(
-                                'ForgotPassword',
-                                queryParams: {
-                                  'defaultEmail': serializeParam(
-                                    emailTextController!.text,
-                                    ParamType.String,
+                                    context.pushNamed(
+                                      'ForgotPassword',
+                                      queryParams: {
+                                        'defaultEmail': serializeParam(
+                                          emailTextController!.text,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '3xzw8qo5' /* Forgot Password? */,
                                   ),
-                                }.withoutNulls,
-                              );
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '3xzw8qo5' /* Forgot Password? */,
-                            ),
-                            options: FFButtonOptions(
-                              width: 180,
-                              height: 50,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .subtitle2Family,
+                                  options: FFButtonOptions(
+                                    width: 180,
+                                    height: 50,
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .subtitle2Family),
-                                    lineHeight: 1,
+                                        .primaryBackground,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 14,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2Family),
+                                          lineHeight: 1,
+                                        ),
+                                    elevation: 0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
                                   ),
-                              elevation: 0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
+                                ),
+                                FFButtonWidget(
+                                  onPressed: (emailTextController!.text ==
+                                                  null ||
+                                              emailTextController!.text ==
+                                                  '') ||
+                                          (passwordTextController!.text ==
+                                                  null ||
+                                              passwordTextController!.text ==
+                                                  '')
+                                      ? null
+                                      : () async {
+                                          logFirebaseEvent(
+                                              'LOGIN_PAGE_LOGIN_BTN_ON_TAP');
+                                          if (formKey.currentState == null ||
+                                              !formKey.currentState!
+                                                  .validate()) {
+                                            return;
+                                          }
+
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+
+                                          final user = await signInWithEmail(
+                                            context,
+                                            emailTextController!.text,
+                                            passwordTextController!.text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          context.goNamedAuth(
+                                              'HomePage', mounted);
+                                        },
+                                  text: FFLocalizations.of(context).getText(
+                                    'xt2b21lg' /* Login */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: 150,
+                                    height: 50,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family,
+                                          color: FlutterFlowTheme.of(context)
+                                              .white,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2Family),
+                                        ),
+                                    elevation: 5,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    disabledColor: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          FFButtonWidget(
-                            onPressed: (emailTextController!.text == null ||
-                                        emailTextController!.text == '') ||
-                                    (passwordTextController!.text == null ||
-                                        passwordTextController!.text == '')
-                                ? null
-                                : () async {
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 50,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.google,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24,
+                                  ),
+                                  onPressed: () async {
                                     logFirebaseEvent(
-                                        'LOGIN_PAGE_LOGIN_BTN_ON_TAP');
+                                        'LOGIN_PAGE_google_ICN_ON_TAP');
                                     GoRouter.of(context).prepareAuthEvent();
-
-                                    final user = await signInWithEmail(
-                                      context,
-                                      emailTextController!.text,
-                                      passwordTextController!.text,
-                                    );
+                                    final user =
+                                        await signInWithGoogle(context);
                                     if (user == null) {
                                       return;
                                     }
 
                                     context.goNamedAuth('HomePage', mounted);
                                   },
-                            text: FFLocalizations.of(context).getText(
-                              'xt2b21lg' /* Login */,
-                            ),
-                            options: FFButtonOptions(
-                              width: 150,
-                              height: 50,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .subtitle2Family,
-                                    color: FlutterFlowTheme.of(context).white,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .subtitle2Family),
-                                  ),
-                              elevation: 5,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                                ),
                               ),
-                              disabledColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                            ),
+                            ],
                           ),
                         ],
                       ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                          child: FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 30,
-                            borderWidth: 1,
-                            buttonSize: 50,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            icon: FaIcon(
-                              FontAwesomeIcons.google,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24,
-                            ),
-                            onPressed: () async {
-                              logFirebaseEvent('LOGIN_PAGE_google_ICN_ON_TAP');
-                              GoRouter.of(context).prepareAuthEvent();
-                              final user = await signInWithGoogle(context);
-                              if (user == null) {
-                                return;
-                              }
-
-                              context.goNamedAuth('HomePage', mounted);
-                            },
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),
