@@ -61,6 +61,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SleeqLogoWidget(
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -136,18 +137,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                       child: Row(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Expanded(
-                            child: SelectionArea(
-                                child: AutoSizeText(
-                              FFLocalizations.of(context).getText(
-                                'fqk9zngp' /* Use the form below, to access ... */,
-                              ),
-                              maxLines: 2,
-                              style: FlutterFlowTheme.of(context).bodyText2,
-                            )),
-                          ),
+                          SelectionArea(
+                              child: AutoSizeText(
+                            FFLocalizations.of(context).getText(
+                              'fqk9zngp' /* Use the form below, to access ... */,
+                            ),
+                            maxLines: 2,
+                            style: FlutterFlowTheme.of(context).bodyText2,
+                          )),
                         ],
                       ),
                     ),
