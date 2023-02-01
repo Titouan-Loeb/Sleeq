@@ -77,7 +77,9 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                     builder: (context) {
                       return Padding(
                         padding: MediaQuery.of(context).viewInsets,
-                        child: AddModalWidget(),
+                        child: AddModalWidget(
+                          currentFolder: widget.path,
+                        ),
                       );
                     },
                   ).then((value) => setState(() {}));
