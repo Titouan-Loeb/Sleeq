@@ -117,7 +117,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                         style: FlutterFlowTheme.of(context).title2.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).title2Family,
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: Colors.white,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context).title2Family),
                             ),

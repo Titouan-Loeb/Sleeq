@@ -64,8 +64,8 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
-                  transitionType: PageTransitionType.bottomToTop,
-                  duration: Duration(milliseconds: 300),
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 200),
                 ),
               },
             );
