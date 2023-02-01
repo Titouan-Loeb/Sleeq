@@ -113,6 +113,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FoldersWidget(
                 path: params.getParam('path', ParamType.DocumentReference,
                     false, ['users', 'folders']),
+                name: params.getParam('name', ParamType.String),
+                color: params.getParam('color', ParamType.Color),
               ),
             ),
             FFRoute(
@@ -126,7 +128,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'file',
               requireAuth: true,
               asyncParams: {
-                'file': getDoc(['file'], FileRecord.serializer),
+                'file': getDoc(['users', 'files'], FilesRecord.serializer),
               },
               builder: (context, params) => FileWidget(
                 file: params.getParam('file', ParamType.Document),
@@ -305,12 +307,9 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Container(
                   color: FlutterFlowTheme.of(context).primaryColor,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/sleeq-logo_white.svg',
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      fit: BoxFit.contain,
-                    ),
+                  child: Image.asset(
+                    'assets/images/sleeq-logo_white.svg',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

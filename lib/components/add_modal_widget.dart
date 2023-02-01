@@ -30,22 +30,26 @@ class _AddModalWidgetState extends State<AddModalWidget> {
   bool isMediaUploading = false;
   String uploadedFileUrl = '';
 
-  FileRecord? fileOutput;
+  FoldersRecord? newFolder;
+  FilesRecord? fileOut;
   AudioPlayer? soundPlayer;
-  TextEditingController? textController;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
   final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
-    textController?.dispose();
+    textController1?.dispose();
+    textController2?.dispose();
     super.dispose();
   }
 
@@ -84,9 +88,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
                         child: AutoSizeText(
-                          FFLocalizations.of(context).getText(
-                            's5gbcfow' /* Add a new item */,
-                          ),
+                          'Add a new ${FFAppState().isEditingFolder ? 'folder' : 'file'}',
                           style: FlutterFlowTheme.of(context).title3,
                         ),
                       ),
@@ -252,7 +254,81 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                         child: Form(
                           key: formKey2,
                           autovalidateMode: AutovalidateMode.always,
-                          child: Container(),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextFormField(
+                                controller: textController1,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'sn3q0avy' /* Folder name */,
+                                  ),
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'r4n3gt7h' /* [folder name] */,
+                                  ),
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                  errorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                  focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                              ColorDialWidget(
+                                allowedColors: [
+                                  Color.fromARGB(255, 255, 100, 255),
+                                  Color.fromARGB(255, 123, 100, 255),
+                                  Color.fromARGB(255, 5, 101, 255),
+                                  Color.fromARGB(255, 100, 242, 255),
+                                  Color.fromARGB(255, 100, 255, 69),
+                                  Color.fromARGB(255, 250, 255, 100),
+                                  Color.fromARGB(255, 255, 185, 99),
+                                  Color.fromARGB(255, 255, 100, 100)
+                                ].toList(),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     if (!FFAppState().isEditingFolder)
@@ -266,7 +342,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextFormField(
-                                controller: textController,
+                                controller: textController2,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -324,14 +400,14 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               ),
                               ColorDialWidget(
                                 allowedColors: [
-                                  Color(0xFFFFC6FF),
-                                  Color(0xFFBDB2FF),
-                                  Color(0xFFA0C4FF),
-                                  Color(0xFF9BF6FF),
-                                  Color(0xFFCAFFBF),
-                                  Color(0xFFFDFFB6),
-                                  Color(0xFFFFD6A5),
-                                  Color(0xFFFFADAD)
+                                  Color.fromARGB(255, 255, 100, 255),
+                                  Color.fromARGB(255, 123, 100, 255),
+                                  Color.fromARGB(255, 5, 101, 255),
+                                  Color.fromARGB(255, 100, 242, 255),
+                                  Color.fromARGB(255, 100, 255, 69),
+                                  Color.fromARGB(255, 250, 255, 100),
+                                  Color.fromARGB(255, 255, 185, 99),
+                                  Color.fromARGB(255, 255, 100, 100)
                                 ].toList(),
                               ),
                             ],
@@ -378,72 +454,93 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                           logFirebaseEvent('ADD_MODAL_COMP__BTN_ON_TAP');
                           var _shouldSetState = false;
                           if (FFAppState().isEditingFolder) {
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-
-                          final selectedFile =
-                              await selectFile(allowedExtensions: ['pdf']);
-                          if (selectedFile != null) {
-                            setState(() => isMediaUploading = true);
-                            String? downloadUrl;
-                            try {
-                              downloadUrl = await uploadData(
-                                  selectedFile.storagePath, selectedFile.bytes);
-                            } finally {
-                              isMediaUploading = false;
-                            }
-                            if (downloadUrl != null) {
-                              setState(() => uploadedFileUrl = downloadUrl!);
-                            } else {
-                              setState(() {});
-                              return;
-                            }
-                          }
-
-                          if (uploadedFileUrl != null &&
-                              uploadedFileUrl != '') {
-                            HapticFeedback.heavyImpact();
-
-                            final fileCreateData = createFileRecordData(
-                              fileUrl: uploadedFileUrl,
+                            final foldersCreateData = createFoldersRecordData(
                               owner: currentUserReference,
-                              name: textController!.text,
-                              created: getCurrentTimestamp,
-                              containingFolder: widget.currentFolder,
-                              tags: '',
                               color: FFAppState().selectedColor,
+                              name: textController1!.text,
+                              parentFolder: widget.currentFolder,
                             );
-                            var fileRecordReference =
-                                FileRecord.collection.doc();
-                            await fileRecordReference.set(fileCreateData);
-                            fileOutput = FileRecord.getDocumentFromData(
-                                fileCreateData, fileRecordReference);
+                            var foldersRecordReference =
+                                FoldersRecord.createDoc(currentUserReference!);
+                            await foldersRecordReference.set(foldersCreateData);
+                            newFolder = FoldersRecord.getDocumentFromData(
+                                foldersCreateData, foldersRecordReference);
                             _shouldSetState = true;
 
                             final foldersUpdateData = {
-                              'files': FieldValue.arrayUnion(
-                                  [fileOutput!.reference]),
+                              'folders':
+                                  FieldValue.arrayUnion([newFolder!.reference]),
                             };
                             await widget.currentFolder!
                                 .update(foldersUpdateData);
-                            soundPlayer ??= AudioPlayer();
-                            if (soundPlayer!.playing) {
-                              await soundPlayer!.stop();
-                            }
-                            soundPlayer!.setVolume(1);
-                            soundPlayer!
-                                .setAsset('assets/audios/vine-boom.mp3')
-                                .then((_) => soundPlayer!.play());
-
-                            Navigator.pop(context);
+                            _shouldSetState = true;
                           } else {
+                            final selectedFile =
+                                await selectFile(allowedExtensions: ['pdf']);
+                            if (selectedFile != null) {
+                              setState(() => isMediaUploading = true);
+                              String? downloadUrl;
+                              try {
+                                downloadUrl = await uploadData(
+                                    selectedFile.storagePath,
+                                    selectedFile.bytes);
+                              } finally {
+                                isMediaUploading = false;
+                              }
+                              if (downloadUrl != null) {
+                                setState(() => uploadedFileUrl = downloadUrl!);
+                              } else {
+                                setState(() {});
+                                return;
+                              }
+                            }
+
+                            if (uploadedFileUrl != null &&
+                                uploadedFileUrl != '') {
+                              HapticFeedback.heavyImpact();
+
+                              final filesCreateData = createFilesRecordData(
+                                fileUrl: uploadedFileUrl,
+                                owner: currentUserReference,
+                                name: textController2!.text,
+                                created: getCurrentTimestamp,
+                                containingFolder: widget.currentFolder,
+                                color: FFAppState().selectedColor,
+                              );
+                              var filesRecordReference =
+                                  FilesRecord.createDoc(currentUserReference!);
+                              await filesRecordReference.set(filesCreateData);
+                              fileOut = FilesRecord.getDocumentFromData(
+                                  filesCreateData, filesRecordReference);
+                              _shouldSetState = true;
+
+                              final foldersUpdateData = {
+                                'files':
+                                    FieldValue.arrayUnion([fileOut!.reference]),
+                              };
+                              await widget.currentFolder!
+                                  .update(foldersUpdateData);
+                              soundPlayer ??= AudioPlayer();
+                              if (soundPlayer!.playing) {
+                                await soundPlayer!.stop();
+                              }
+                              soundPlayer!.setVolume(1);
+                              soundPlayer!
+                                  .setAsset('assets/audios/vine-boom.mp3')
+                                  .then((_) => soundPlayer!.play());
+
+                              Navigator.pop(context);
+                            } else {
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
+
                             if (_shouldSetState) setState(() {});
                             return;
                           }
 
-                          if (_shouldSetState) setState(() {});
-                          return;
+                          HapticFeedback.heavyImpact();
+                          Navigator.pop(context);
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFAppState().isEditingFolder

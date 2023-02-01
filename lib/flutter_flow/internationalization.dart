@@ -71,6 +71,11 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
+    '48yqj92v': {
+      'en': 'New',
+      'es': 'Nuevo',
+      'fr': 'Nouveau',
+    },
     'xbzplc4s': {
       'en': 'Home',
       'es': 'Casa',
@@ -226,7 +231,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'nak4cbrl': {
       'en': 'Save Changes',
       'es': 'Guardar cambios',
-      'fr': 'Sauvegarder les modifications',
+      'fr': 'Sauvegarder',
     },
     'szqzn9xp': {
       'en': 'Logout',
@@ -243,8 +248,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '7kml26ln': {
       'en': 'New',
-      'es': '',
-      'fr': '',
+      'es': 'Nuevo',
+      'fr': 'Nouveau',
     },
     'n0ze2vmk': {
       'en': 'Home',
@@ -264,8 +269,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'frc8wftl': {
       'en': 'Home',
-      'es': '',
-      'fr': '',
+      'es': 'Casa',
+      'fr': 'Domicile',
     },
   },
   // newnav
@@ -305,51 +310,56 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ggrfcuui': {
       'en': 'Folder',
-      'es': '',
-      'fr': '',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
     },
     'rzjrnhhh': {
       'en': 'File',
-      'es': '',
-      'fr': '',
+      'es': 'Archivo',
+      'fr': 'Dossier',
     },
     'blyhydr0': {
       'en': 'New',
-      'es': '',
-      'fr': '',
+      'es': 'Nuevo',
+      'fr': 'Nouveau',
     },
   },
   // addModal
   {
-    's5gbcfow': {
-      'en': 'Add a new item',
-      'es': '',
-      'fr': '',
-    },
     'fqrx409d': {
       'en': 'Folder',
-      'es': 'Modo de luz',
-      'fr': 'Mode lumière',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
     },
     'pzkk6o4a': {
       'en': 'File',
-      'es': 'Modo oscuro',
-      'fr': 'Mode sombre',
+      'es': 'Archivo',
+      'fr': 'Dossier',
+    },
+    'sn3q0avy': {
+      'en': 'Folder name',
+      'es': 'Nombre de la carpeta',
+      'fr': 'Nom de dossier',
+    },
+    'r4n3gt7h': {
+      'en': '[folder name]',
+      'es': '[nombre de la carpeta]',
+      'fr': '[nom de dossier]',
     },
     'vb8p8k2k': {
       'en': 'File name',
-      'es': '',
-      'fr': '',
+      'es': 'Nombre del archivo',
+      'fr': 'Nom de fichier',
     },
     't1jrn4o0': {
       'en': '[file.pdf]',
-      'es': '',
-      'fr': '',
+      'es': '[archivo.pdf]',
+      'fr': '[fichier.pdf]',
     },
     'j7nwknqr': {
       'en': 'Cancel',
-      'es': '',
-      'fr': '',
+      'es': 'Cancelar',
+      'fr': 'Annuler',
     },
   },
   // Miscellaneous

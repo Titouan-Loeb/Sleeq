@@ -3,7 +3,7 @@ import 'package:from_css_color/from_css_color.dart';
 
 import 'users_record.dart';
 import 'folders_record.dart';
-import 'file_record.dart';
+import 'files_record.dart';
 
 import 'index.dart';
 
@@ -16,7 +16,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
 @SerializersFor(const [
   UsersRecord,
   FoldersRecord,
-  FileRecord,
+  FilesRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

@@ -31,6 +31,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   @BuiltValueField(wireName: 'is_subscriber')
   bool? get isSubscriber;
 
+  @BuiltValueField(wireName: 'root_folder')
+  DocumentReference? get rootFolder;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -74,6 +77,7 @@ Map<String, dynamic> createUsersRecordData({
   String? phoneNumber,
   double? occupiedSize,
   bool? isSubscriber,
+  DocumentReference? rootFolder,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -86,7 +90,8 @@ Map<String, dynamic> createUsersRecordData({
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
         ..occupiedSize = occupiedSize
-        ..isSubscriber = isSubscriber,
+        ..isSubscriber = isSubscriber
+        ..rootFolder = rootFolder,
     ),
   );
 

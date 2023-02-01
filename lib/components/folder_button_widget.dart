@@ -60,12 +60,20 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                   widget.path,
                   ParamType.DocumentReference,
                 ),
+                'name': serializeParam(
+                  widget.name,
+                  ParamType.String,
+                ),
+                'color': serializeParam(
+                  widget.color,
+                  ParamType.Color,
+                ),
               }.withoutNulls,
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
-                  transitionType: PageTransitionType.bottomToTop,
-                  duration: Duration(milliseconds: 300),
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 200),
                 ),
               },
             );

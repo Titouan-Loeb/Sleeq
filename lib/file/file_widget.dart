@@ -13,7 +13,7 @@ class FileWidget extends StatefulWidget {
     this.file,
   }) : super(key: key);
 
-  final FileRecord? file;
+  final FilesRecord? file;
 
   @override
   _FileWidgetState createState() => _FileWidgetState();
@@ -46,23 +46,22 @@ class _FileWidgetState extends State<FileWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: responsiveVisibility(
-            context: context,
-            tabletLandscape: false,
-            desktop: false,
-          )
-              ? AppBar(
-                  backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-                  automaticallyImplyLeading: true,
-                  title: Text(
-                    widget.file!.name!,
-                    style: FlutterFlowTheme.of(context).title2,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            automaticallyImplyLeading: true,
+            title: Text(
+              widget.file!.name!,
+              style: FlutterFlowTheme.of(context).title2.override(
+                    fontFamily: FlutterFlowTheme.of(context).title2Family,
+                    color: Colors.white,
+                    useGoogleFonts: GoogleFonts.asMap()
+                        .containsKey(FlutterFlowTheme.of(context).title2Family),
                   ),
-                  actions: [],
-                  centerTitle: true,
-                  elevation: 4,
-                )
-              : null,
+            ),
+            actions: [],
+            centerTitle: true,
+            elevation: 4,
+          ),
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),

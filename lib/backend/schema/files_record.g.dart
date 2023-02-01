@@ -1,31 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'file_record.dart';
+part of 'files_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<FileRecord> _$fileRecordSerializer = new _$FileRecordSerializer();
+Serializer<FilesRecord> _$filesRecordSerializer = new _$FilesRecordSerializer();
 
-class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
+class _$FilesRecordSerializer implements StructuredSerializer<FilesRecord> {
   @override
-  final Iterable<Type> types = const [FileRecord, _$FileRecord];
+  final Iterable<Type> types = const [FilesRecord, _$FilesRecord];
   @override
-  final String wireName = 'FileRecord';
+  final String wireName = 'FilesRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, FileRecord object,
+  Iterable<Object?> serialize(Serializers serializers, FilesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.name;
-    if (value != null) {
-      result
-        ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.owner;
     if (value != null) {
       result
@@ -34,10 +27,10 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.tags;
+    value = object.name;
     if (value != null) {
       result
-        ..add('tags')
+        ..add('name')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -48,6 +41,14 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
         ..add(
             serializers.serialize(value, specifiedType: const FullType(Color)));
     }
+    value = object.tags;
+    if (value != null) {
+      result
+        ..add('tags')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     value = object.created;
     if (value != null) {
       result
@@ -55,24 +56,10 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.size;
-    if (value != null) {
-      result
-        ..add('size')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
-    }
     value = object.fileUrl;
     if (value != null) {
       result
         ..add('file_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.fileExtension;
-    if (value != null) {
-      result
-        ..add('file_extension')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -96,9 +83,9 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
   }
 
   @override
-  FileRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
+  FilesRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new FileRecordBuilder();
+    final result = new FilesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -106,38 +93,32 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'owner':
           result.owner = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'tags':
-          result.tags = serializers.deserialize(value,
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'color':
           result.color = serializers.deserialize(value,
               specifiedType: const FullType(Color)) as Color?;
           break;
+        case 'tags':
+          result.tags.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
+          break;
         case 'created':
           result.created = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
-        case 'size':
-          result.size = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
-          break;
         case 'file_url':
           result.fileUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'file_extension':
-          result.fileExtension = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'containing_folder':
@@ -159,63 +140,55 @@ class _$FileRecordSerializer implements StructuredSerializer<FileRecord> {
   }
 }
 
-class _$FileRecord extends FileRecord {
-  @override
-  final String? name;
+class _$FilesRecord extends FilesRecord {
   @override
   final DocumentReference<Object?>? owner;
   @override
-  final String? tags;
+  final String? name;
   @override
   final Color? color;
   @override
+  final BuiltList<String>? tags;
+  @override
   final DateTime? created;
   @override
-  final double? size;
-  @override
   final String? fileUrl;
-  @override
-  final String? fileExtension;
   @override
   final DocumentReference<Object?>? containingFolder;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$FileRecord([void Function(FileRecordBuilder)? updates]) =>
-      (new FileRecordBuilder()..update(updates))._build();
+  factory _$FilesRecord([void Function(FilesRecordBuilder)? updates]) =>
+      (new FilesRecordBuilder()..update(updates))._build();
 
-  _$FileRecord._(
-      {this.name,
-      this.owner,
-      this.tags,
+  _$FilesRecord._(
+      {this.owner,
+      this.name,
       this.color,
+      this.tags,
       this.created,
-      this.size,
       this.fileUrl,
-      this.fileExtension,
       this.containingFolder,
       this.ffRef})
       : super._();
 
   @override
-  FileRecord rebuild(void Function(FileRecordBuilder) updates) =>
+  FilesRecord rebuild(void Function(FilesRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FileRecordBuilder toBuilder() => new FileRecordBuilder()..replace(this);
+  FilesRecordBuilder toBuilder() => new FilesRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is FileRecord &&
-        name == other.name &&
+    return other is FilesRecord &&
         owner == other.owner &&
-        tags == other.tags &&
+        name == other.name &&
         color == other.color &&
+        tags == other.tags &&
         created == other.created &&
-        size == other.size &&
         fileUrl == other.fileUrl &&
-        fileExtension == other.fileExtension &&
         containingFolder == other.containingFolder &&
         ffRef == other.ffRef;
   }
@@ -227,71 +200,56 @@ class _$FileRecord extends FileRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc($jc(0, name.hashCode), owner.hashCode),
-                                    tags.hashCode),
-                                color.hashCode),
-                            created.hashCode),
-                        size.hashCode),
-                    fileUrl.hashCode),
-                fileExtension.hashCode),
+                        $jc($jc($jc(0, owner.hashCode), name.hashCode),
+                            color.hashCode),
+                        tags.hashCode),
+                    created.hashCode),
+                fileUrl.hashCode),
             containingFolder.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'FileRecord')
-          ..add('name', name)
+    return (newBuiltValueToStringHelper(r'FilesRecord')
           ..add('owner', owner)
-          ..add('tags', tags)
+          ..add('name', name)
           ..add('color', color)
+          ..add('tags', tags)
           ..add('created', created)
-          ..add('size', size)
           ..add('fileUrl', fileUrl)
-          ..add('fileExtension', fileExtension)
           ..add('containingFolder', containingFolder)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
-  _$FileRecord? _$v;
-
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
+class FilesRecordBuilder implements Builder<FilesRecord, FilesRecordBuilder> {
+  _$FilesRecord? _$v;
 
   DocumentReference<Object?>? _owner;
   DocumentReference<Object?>? get owner => _$this._owner;
   set owner(DocumentReference<Object?>? owner) => _$this._owner = owner;
 
-  String? _tags;
-  String? get tags => _$this._tags;
-  set tags(String? tags) => _$this._tags = tags;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   Color? _color;
   Color? get color => _$this._color;
   set color(Color? color) => _$this._color = color;
 
+  ListBuilder<String>? _tags;
+  ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
+  set tags(ListBuilder<String>? tags) => _$this._tags = tags;
+
   DateTime? _created;
   DateTime? get created => _$this._created;
   set created(DateTime? created) => _$this._created = created;
 
-  double? _size;
-  double? get size => _$this._size;
-  set size(double? size) => _$this._size = size;
-
   String? _fileUrl;
   String? get fileUrl => _$this._fileUrl;
   set fileUrl(String? fileUrl) => _$this._fileUrl = fileUrl;
-
-  String? _fileExtension;
-  String? get fileExtension => _$this._fileExtension;
-  set fileExtension(String? fileExtension) =>
-      _$this._fileExtension = fileExtension;
 
   DocumentReference<Object?>? _containingFolder;
   DocumentReference<Object?>? get containingFolder => _$this._containingFolder;
@@ -302,21 +260,19 @@ class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  FileRecordBuilder() {
-    FileRecord._initializeBuilder(this);
+  FilesRecordBuilder() {
+    FilesRecord._initializeBuilder(this);
   }
 
-  FileRecordBuilder get _$this {
+  FilesRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _name = $v.name;
       _owner = $v.owner;
-      _tags = $v.tags;
+      _name = $v.name;
       _color = $v.color;
+      _tags = $v.tags?.toBuilder();
       _created = $v.created;
-      _size = $v.size;
       _fileUrl = $v.fileUrl;
-      _fileExtension = $v.fileExtension;
       _containingFolder = $v.containingFolder;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -325,32 +281,43 @@ class FileRecordBuilder implements Builder<FileRecord, FileRecordBuilder> {
   }
 
   @override
-  void replace(FileRecord other) {
+  void replace(FilesRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$FileRecord;
+    _$v = other as _$FilesRecord;
   }
 
   @override
-  void update(void Function(FileRecordBuilder)? updates) {
+  void update(void Function(FilesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  FileRecord build() => _build();
+  FilesRecord build() => _build();
 
-  _$FileRecord _build() {
-    final _$result = _$v ??
-        new _$FileRecord._(
-            name: name,
-            owner: owner,
-            tags: tags,
-            color: color,
-            created: created,
-            size: size,
-            fileUrl: fileUrl,
-            fileExtension: fileExtension,
-            containingFolder: containingFolder,
-            ffRef: ffRef);
+  _$FilesRecord _build() {
+    _$FilesRecord _$result;
+    try {
+      _$result = _$v ??
+          new _$FilesRecord._(
+              owner: owner,
+              name: name,
+              color: color,
+              tags: _tags?.build(),
+              created: created,
+              fileUrl: fileUrl,
+              containingFolder: containingFolder,
+              ffRef: ffRef);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'tags';
+        _tags?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'FilesRecord', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
