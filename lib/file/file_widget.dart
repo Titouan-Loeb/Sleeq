@@ -6,6 +6,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'file_model.dart';
+export 'file_model.dart';
 
 class FileWidget extends StatefulWidget {
   const FileWidget({
@@ -20,18 +22,24 @@ class FileWidget extends StatefulWidget {
 }
 
 class _FileWidgetState extends State<FileWidget> {
-  final _unfocusNode = FocusNode();
+  late FileModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => FileModel());
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'file'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -68,7 +76,11 @@ class _FileWidgetState extends State<FileWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => setState(() {}),
+                    child: SidebarWidget(),
+                  ),
                   Expanded(
                     child: FlutterFlowPdfViewer(
                       networkPath: widget.file!.fileUrl!,

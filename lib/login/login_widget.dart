@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'login_model.dart';
+export 'login_model.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -19,28 +21,27 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  TextEditingController? emailTextController;
-  TextEditingController? passwordTextController;
-  late bool passwordVisibility;
-  final _unfocusNode = FocusNode();
+  late LoginModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailTextController = TextEditingController();
-    passwordTextController = TextEditingController();
-    passwordVisibility = false;
+    _model = createModel(context, () => LoginModel());
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
+    _model.emailTextController = TextEditingController();
+    _model.passwordTextController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailTextController?.dispose();
-    passwordTextController?.dispose();
     super.dispose();
   }
 
@@ -63,9 +64,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SleeqLogoWidget(
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      withText: false,
+                    wrapWithModel(
+                      model: _model.sleeqLogoModel,
+                      updateCallback: () => setState(() {}),
+                      child: SleeqLogoWidget(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        withText: false,
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
@@ -151,7 +156,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     Form(
-                      key: formKey,
+                      key: _model.formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -177,9 +182,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                                 child: TextFormField(
-                                  controller: emailTextController,
+                                  controller: _model.emailTextController,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    'emailTextController',
+                                    '_model.emailTextController',
                                     Duration(milliseconds: 100),
                                     () => setState(() {}),
                                   ),
@@ -253,20 +258,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        '0oxsulyr' /* Field is required */,
-                                      );
-                                    }
-
-                                    if (!RegExp(kTextValidatorEmailRegex)
-                                        .hasMatch(val)) {
-                                      return 'Has to be a valid email address.';
-                                    }
-                                    return null;
-                                  },
+                                  validator: _model.emailTextControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
@@ -292,14 +285,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                                 child: TextFormField(
-                                  controller: passwordTextController,
+                                  controller: _model.passwordTextController,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    'passwordTextController',
+                                    '_model.passwordTextController',
                                     Duration(milliseconds: 100),
                                     () => setState(() {}),
                                   ),
                                   autofillHints: [AutofillHints.password],
-                                  obscureText: !passwordVisibility,
+                                  obscureText: !_model.passwordVisibility,
                                   decoration: InputDecoration(
                                     labelText:
                                         FFLocalizations.of(context).getText(
@@ -352,12 +345,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             20, 24, 20, 24),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
-                                        () => passwordVisibility =
-                                            !passwordVisibility,
+                                        () => _model.passwordVisibility =
+                                            !_model.passwordVisibility,
                                       ),
                                       focusNode: FocusNode(skipTraversal: true),
                                       child: Icon(
-                                        passwordVisibility
+                                        _model.passwordVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
                                         color: Color(0xFF757575),
@@ -366,16 +359,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                   ),
                                   style: FlutterFlowTheme.of(context).bodyText1,
-                                  validator: (val) {
-                                    if (val == null || val.isEmpty) {
-                                      return FFLocalizations.of(context)
-                                          .getText(
-                                        '2heekiw9' /* Field is required */,
-                                      );
-                                    }
-
-                                    return null;
-                                  },
+                                  validator: _model
+                                      .passwordTextControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
@@ -396,7 +382,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       'ForgotPassword',
                                       queryParams: {
                                         'defaultEmail': serializeParam(
-                                          emailTextController!.text,
+                                          _model.emailTextController.text,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
@@ -433,31 +419,32 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                 ),
                                 FFButtonWidget(
-                                  onPressed: (emailTextController!.text ==
+                                  onPressed: (_model.emailTextController.text ==
                                                   null ||
-                                              emailTextController!.text ==
+                                              _model.emailTextController.text ==
                                                   '') ||
-                                          (passwordTextController!.text ==
+                                          (_model.passwordTextController.text ==
                                                   null ||
-                                              passwordTextController!.text ==
+                                              _model.passwordTextController
+                                                      .text ==
                                                   '')
                                       ? null
                                       : () async {
                                           logFirebaseEvent(
                                               'LOGIN_PAGE_LOGIN_BTN_ON_TAP');
-                                          if (formKey.currentState == null ||
-                                              !formKey.currentState!
+                                          if (_model.formKey.currentState ==
+                                                  null ||
+                                              !_model.formKey.currentState!
                                                   .validate()) {
                                             return;
                                           }
-
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
 
                                           final user = await signInWithEmail(
                                             context,
-                                            emailTextController!.text,
-                                            passwordTextController!.text,
+                                            _model.emailTextController.text,
+                                            _model.passwordTextController.text,
                                           );
                                           if (user == null) {
                                             return;

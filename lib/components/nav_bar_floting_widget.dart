@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'nav_bar_floting_model.dart';
+export 'nav_bar_floting_model.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({Key? key}) : super(key: key);
@@ -15,11 +17,27 @@ class NavBarFlotingWidget extends StatefulWidget {
 }
 
 class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
+  late NavBarFlotingModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => NavBarFlotingModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
   }
 
   @override

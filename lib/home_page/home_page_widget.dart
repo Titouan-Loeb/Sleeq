@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'home_page_model.dart';
+export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -20,24 +22,30 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  final _unfocusNode = FocusNode();
+  late HomePageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => HomePageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_PAGE_LOAD');
       await actions.lockOrientation();
     });
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -96,7 +104,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => setState(() {}),
+                    child: SidebarWidget(),
+                  ),
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -163,7 +175,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 snapshot.data!;
                                             return FolderButtonWidget(
                                               key: Key(
-                                                  'folderButton_${itemIndex}'),
+                                                  'Keydyy_${itemIndex}_of_${item.length}'),
                                               color: folderButtonFoldersRecord
                                                   .color,
                                               name: folderButtonFoldersRecord
@@ -187,7 +199,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               tabletLandscape: false,
                               desktop: false,
                             ))
-                          NavBarFlotingWidget(),
+                          wrapWithModel(
+                            model: _model.navBarFlotingModel,
+                            updateCallback: () => setState(() {}),
+                            child: NavBarFlotingWidget(),
+                          ),
                       ],
                     ),
                   ),

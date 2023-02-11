@@ -12,6 +12,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'newnav_model.dart';
+export 'newnav_model.dart';
 
 class NewnavWidget extends StatefulWidget {
   const NewnavWidget({Key? key}) : super(key: key);
@@ -22,6 +24,8 @@ class NewnavWidget extends StatefulWidget {
 
 class _NewnavWidgetState extends State<NewnavWidget>
     with TickerProviderStateMixin {
+  late NewnavModel _model;
+
   final animationsMap = {
     'containerOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -39,8 +43,16 @@ class _NewnavWidgetState extends State<NewnavWidget>
   };
 
   @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => NewnavModel());
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -49,6 +61,13 @@ class _NewnavWidgetState extends State<NewnavWidget>
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -62,9 +81,13 @@ class _NewnavWidgetState extends State<NewnavWidget>
       children: [
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-          child: SleeqLogoWidget(
-            color: FlutterFlowTheme.of(context).primaryText,
-            withText: true,
+          child: wrapWithModel(
+            model: _model.sleeqLogoModel,
+            updateCallback: () => setState(() {}),
+            child: SleeqLogoWidget(
+              color: FlutterFlowTheme.of(context).primaryText,
+              withText: true,
+            ),
           ),
         ),
         Padding(

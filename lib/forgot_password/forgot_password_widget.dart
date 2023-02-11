@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'forgot_password_model.dart';
+export 'forgot_password_model.dart';
 
 class ForgotPasswordWidget extends StatefulWidget {
   const ForgotPasswordWidget({
@@ -19,23 +21,28 @@ class ForgotPasswordWidget extends StatefulWidget {
 }
 
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
-  TextEditingController? emailTextController;
-  final _unfocusNode = FocusNode();
+  late ForgotPasswordModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailTextController = TextEditingController(text: widget.defaultEmail);
+    _model = createModel(context, () => ForgotPasswordModel());
+
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ForgotPassword'});
+    _model.emailTextController =
+        TextEditingController(text: widget.defaultEmail);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailTextController?.dispose();
     super.dispose();
   }
 
@@ -101,7 +108,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                       child: TextFormField(
-                        controller: emailTextController,
+                        controller: _model.emailTextController,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
@@ -144,6 +151,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1,
+                        validator: _model.emailTextControllerValidator
+                            .asValidator(context),
                       ),
                     ),
                     Padding(
@@ -152,7 +161,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'FORGOT_PASSWORD_SEND_PASSWORD_RESET_EMAI');
-                          if (emailTextController!.text.isEmpty) {
+                          if (_model.emailTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -163,7 +172,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             return;
                           }
                           await resetPassword(
-                            email: emailTextController!.text,
+                            email: _model.emailTextController.text,
                             context: context,
                           );
                           await Future.delayed(
