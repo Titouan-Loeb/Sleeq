@@ -42,26 +42,31 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-        shape: BoxShape.circle,
-      ),
-      child: FlutterFlowIconButton(
-        borderRadius: 30,
-        buttonSize: 60,
-        fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-        icon: Icon(
-          Icons.arrow_back_ios_outlined,
-          color: FlutterFlowTheme.of(context).primaryText,
-          size: 30,
+    return Material(
+      color: Colors.transparent,
+      elevation: 8,
+      shape: const CircleBorder(),
+      child: ClipOval(
+        child: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            shape: BoxShape.circle,
+          ),
+          child: FlutterFlowIconButton(
+            buttonSize: 50,
+            icon: Icon(
+              Icons.arrow_back_ios_outlined,
+              color: FlutterFlowTheme.of(context).primaryText,
+              size: 30,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
+              context.pop();
+            },
+          ),
         ),
-        onPressed: () async {
-          logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
-          context.pop();
-        },
       ),
     );
   }

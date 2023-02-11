@@ -1,7 +1,5 @@
 import '../backend/backend.dart';
 import '../components/add_modal_widget.dart';
-import '../components/file_button_widget.dart';
-import '../components/folder_button_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
