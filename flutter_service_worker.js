@@ -4,15 +4,16 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
-"index.html": "1c212673d52a00ee6fd4b618ad2f0e41",
-"/": "1c212673d52a00ee6fd4b618ad2f0e41",
-"main.dart.js": "712afde75672f821fa255c436101ddf5",
+"sleeq-text-logo_small.png": "ea7bbbfbef7e27c7f0247d721c019a9c",
+"index.html": "30a0add41db32311bd01a7c07510f7b4",
+"/": "30a0add41db32311bd01a7c07510f7b4",
+"main.dart.js": "62e03daa378ddf75088949020dd59929",
 "manifest.json": "7349d672fc374ed7229aa0c64dfcfcf1",
 "favicon.png": "2704101cb06ce66e2000356a312be25c",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "assets/FontManifest.json": "05113ef49ecb655fb4fc9fd4063c6ee2",
-"assets/NOTICES": "b4fb83ceeb020f7828ddb4fb91f2e03f",
+"assets/NOTICES": "67b8d29538e3b9c847ecdfe5b29b32b4",
 "assets/fonts/MaterialIcons-Regular.otf": "e7069dfd19b331be16bed984668fe080",
 "assets/assets/pdfs/favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "assets/assets/rive_animations/favicon.png": "5dcef449791fa27946b3d35ad8803796",
@@ -34,6 +35,7 @@ const RESOURCES = {
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/profiling/canvaskit.wasm": "371bc4e204443b0d5e774d64a046eb99",
 "canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
+"1024.png": "92abc6bdee365423962f915311ab250c",
 "version.json": "d12bf1ac33f329dac5f57b6b2649821f"
 };
 
