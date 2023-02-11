@@ -18,6 +18,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'settings_model.dart';
+export 'settings_model.dart';
 
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
@@ -28,6 +30,11 @@ class SettingsWidget extends StatefulWidget {
 
 class _SettingsWidgetState extends State<SettingsWidget>
     with TickerProviderStateMixin {
+  late SettingsModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
   final animationsMap = {
     'containerOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -43,16 +50,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
       ],
     ),
   };
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  TextEditingController? yourNameController;
-  final _unfocusNode = FocusNode();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => SettingsModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Settings'});
+    _model.yourNameController = TextEditingController();
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -60,15 +65,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
       this,
     );
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Settings'});
-    yourNameController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    yourNameController?.dispose();
     super.dispose();
   }
 
@@ -88,7 +92,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => setState(() {}),
+                    child: SidebarWidget(),
+                  ),
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -453,7 +461,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: TextFormField(
-                                  controller: yourNameController,
+                                  controller: _model.yourNameController,
                                   autofillHints: [AutofillHints.name],
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -503,6 +511,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             20, 24, 0, 24),
                                   ),
                                   style: FlutterFlowTheme.of(context).bodyText1,
+                                  validator: _model.yourNameControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
@@ -531,8 +541,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             selectedMedia.every((m) =>
                                                 validateFileFormat(
                                                     m.storagePath, context))) {
-                                          setState(
-                                              () => isMediaUploading = true);
+                                          setState(() =>
+                                              _model.isMediaUploading = true);
+                                          var selectedUploadedFiles =
+                                              <FFUploadedFile>[];
                                           var downloadUrls = <String>[];
                                           try {
                                             showUploadMessage(
@@ -540,6 +552,20 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                               'Uploading file...',
                                               showLoading: true,
                                             );
+                                            selectedUploadedFiles =
+                                                selectedMedia
+                                                    .map((m) => FFUploadedFile(
+                                                          name: m.storagePath
+                                                              .split('/')
+                                                              .last,
+                                                          bytes: m.bytes,
+                                                          height: m.dimensions
+                                                              ?.height,
+                                                          width: m.dimensions
+                                                              ?.width,
+                                                        ))
+                                                    .toList();
+
                                             downloadUrls = (await Future.wait(
                                               selectedMedia.map(
                                                 (m) async => await uploadData(
@@ -552,12 +578,18 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                           } finally {
                                             ScaffoldMessenger.of(context)
                                                 .hideCurrentSnackBar();
-                                            isMediaUploading = false;
+                                            _model.isMediaUploading = false;
                                           }
-                                          if (downloadUrls.length ==
-                                              selectedMedia.length) {
-                                            setState(() => uploadedFileUrl =
-                                                downloadUrls.first);
+                                          if (selectedUploadedFiles.length ==
+                                                  selectedMedia.length &&
+                                              downloadUrls.length ==
+                                                  selectedMedia.length) {
+                                            setState(() {
+                                              _model.uploadedLocalFile =
+                                                  selectedUploadedFiles.first;
+                                              _model.uploadedFileUrl =
+                                                  downloadUrls.first;
+                                            });
                                             showUploadMessage(
                                                 context, 'Success!');
                                           } else {
@@ -570,7 +602,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
                                         final usersUpdateData =
                                             createUsersRecordData(
-                                          photoUrl: uploadedFileUrl,
+                                          photoUrl: _model.uploadedFileUrl,
                                         );
                                         await currentUserReference!
                                             .update(usersUpdateData);
@@ -616,7 +648,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
                                         final usersUpdateData =
                                             createUsersRecordData(
-                                          displayName: yourNameController!.text,
+                                          displayName:
+                                              _model.yourNameController.text,
                                         );
                                         await currentUserReference!
                                             .update(usersUpdateData);
@@ -715,7 +748,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           Expanded(
                             child: Align(
                               alignment: AlignmentDirectional(0, 1),
-                              child: NavBarFlotingWidget(),
+                              child: wrapWithModel(
+                                model: _model.navBarFlotingModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarFlotingWidget(),
+                              ),
                             ),
                           ),
                       ],

@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'folder_button_model.dart';
+export 'folder_button_model.dart';
 
 class FolderButtonWidget extends StatefulWidget {
   const FolderButtonWidget({
@@ -24,11 +26,27 @@ class FolderButtonWidget extends StatefulWidget {
 }
 
 class _FolderButtonWidgetState extends State<FolderButtonWidget> {
+  late FolderButtonModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => FolderButtonModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -42,7 +60,6 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
       children: [
         FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30,
           borderWidth: 1,
           buttonSize: 100,
           icon: Icon(

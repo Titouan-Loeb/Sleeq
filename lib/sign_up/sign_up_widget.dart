@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'sign_up_model.dart';
+export 'sign_up_model.dart';
 
 class SignUpWidget extends StatefulWidget {
   const SignUpWidget({Key? key}) : super(key: key);
@@ -19,29 +21,27 @@ class SignUpWidget extends StatefulWidget {
 }
 
 class _SignUpWidgetState extends State<SignUpWidget> {
-  FoldersRecord? folder;
-  TextEditingController? emailTextController;
-  TextEditingController? passwordTextController;
-  late bool passwordVisibility;
-  FoldersRecord? folderGoogle;
-  final _unfocusNode = FocusNode();
+  late SignUpModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    emailTextController = TextEditingController();
-    passwordTextController = TextEditingController();
-    passwordVisibility = false;
+    _model = createModel(context, () => SignUpModel());
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignUp'});
+    _model.emailTextController = TextEditingController();
+    _model.passwordTextController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    emailTextController?.dispose();
-    passwordTextController?.dispose();
     super.dispose();
   }
 
@@ -63,9 +63,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    SleeqLogoWidget(
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      withText: false,
+                    wrapWithModel(
+                      model: _model.sleeqLogoModel,
+                      updateCallback: () => setState(() {}),
+                      child: SleeqLogoWidget(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        withText: false,
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
@@ -166,7 +170,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                           child: TextFormField(
-                            controller: emailTextController,
+                            controller: _model.emailTextController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
@@ -210,6 +214,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   20, 24, 20, 24),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.emailTextControllerValidator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -233,8 +239,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                           child: TextFormField(
-                            controller: passwordTextController,
-                            obscureText: !passwordVisibility,
+                            controller: _model.passwordTextController,
+                            obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
                                 's3mww27o' /* Password */,
@@ -277,12 +283,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   20, 24, 20, 24),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                  () =>
-                                      passwordVisibility = !passwordVisibility,
+                                  () => _model.passwordVisibility =
+                                      !_model.passwordVisibility,
                                 ),
                                 focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
-                                  passwordVisibility
+                                  _model.passwordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: FlutterFlowTheme.of(context)
@@ -292,6 +298,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.passwordTextControllerValidator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -310,8 +318,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
                               final user = await createAccountWithEmail(
                                 context,
-                                emailTextController!.text,
-                                passwordTextController!.text,
+                                _model.emailTextController.text,
+                                _model.passwordTextController.text,
                               );
                               if (user == null) {
                                 return;
@@ -326,11 +334,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                       currentUserReference!);
                               await foldersRecordReference
                                   .set(foldersCreateData);
-                              folder = FoldersRecord.getDocumentFromData(
+                              _model.folder = FoldersRecord.getDocumentFromData(
                                   foldersCreateData, foldersRecordReference);
 
                               final usersUpdateData = createUsersRecordData(
-                                rootFolder: folder!.reference,
+                                rootFolder: _model.folder!.reference,
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
@@ -406,11 +414,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                       currentUserReference!);
                               await foldersRecordReference
                                   .set(foldersCreateData);
-                              folderGoogle = FoldersRecord.getDocumentFromData(
-                                  foldersCreateData, foldersRecordReference);
+                              _model.folderGoogle =
+                                  FoldersRecord.getDocumentFromData(
+                                      foldersCreateData,
+                                      foldersRecordReference);
 
                               final usersUpdateData = createUsersRecordData(
-                                rootFolder: folderGoogle!.reference,
+                                rootFolder: _model.folderGoogle!.reference,
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);

@@ -4,6 +4,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'new_button_model.dart';
+export 'new_button_model.dart';
 
 class NewButtonWidget extends StatefulWidget {
   const NewButtonWidget({Key? key}) : super(key: key);
@@ -13,13 +15,27 @@ class NewButtonWidget extends StatefulWidget {
 }
 
 class _NewButtonWidgetState extends State<NewButtonWidget> {
-  String? dropDownValue;
+  late NewButtonModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => NewButtonModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -36,9 +52,9 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
         )
       ],
       onChanged: (val) async {
-        setState(() => dropDownValue = val);
+        setState(() => _model.dropDownValue = val);
         logFirebaseEvent('NEW_BUTTON_DropDown_e4z2ya0e_ON_FORM_WID');
-        if (dropDownValue == 'folder') {
+        if (_model.dropDownValue == 'folder') {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(

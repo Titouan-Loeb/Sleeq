@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'example_page_model.dart';
+export 'example_page_model.dart';
 
 class ExamplePageWidget extends StatefulWidget {
   const ExamplePageWidget({Key? key}) : super(key: key);
@@ -14,18 +16,24 @@ class ExamplePageWidget extends StatefulWidget {
 }
 
 class _ExamplePageWidgetState extends State<ExamplePageWidget> {
-  final _unfocusNode = FocusNode();
+  late ExamplePageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => ExamplePageModel());
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'examplePage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -46,7 +54,11 @@ class _ExamplePageWidgetState extends State<ExamplePageWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => setState(() {}),
+                    child: SidebarWidget(),
+                  ),
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -61,7 +73,11 @@ class _ExamplePageWidgetState extends State<ExamplePageWidget> {
                           Expanded(
                             child: Align(
                               alignment: AlignmentDirectional(0, 1),
-                              child: NavBarFlotingWidget(),
+                              child: wrapWithModel(
+                                model: _model.navBarFlotingModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarFlotingWidget(),
+                              ),
                             ),
                           ),
                       ],

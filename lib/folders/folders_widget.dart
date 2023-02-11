@@ -5,10 +5,13 @@ import '../components/folder_button_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'folders_model.dart';
+export 'folders_model.dart';
 
 class FoldersWidget extends StatefulWidget {
   const FoldersWidget({
@@ -27,18 +30,24 @@ class FoldersWidget extends StatefulWidget {
 }
 
 class _FoldersWidgetState extends State<FoldersWidget> {
-  final _unfocusNode = FocusNode();
+  late FoldersModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => FoldersModel());
+
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'folders'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -115,7 +124,11 @@ class _FoldersWidgetState extends State<FoldersWidget> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SidebarWidget(),
+                  wrapWithModel(
+                    model: _model.sidebarModel,
+                    updateCallback: () => setState(() {}),
+                    child: SidebarWidget(),
+                  ),
                   Expanded(
                     child: StreamBuilder<FoldersRecord>(
                       stream: FoldersRecord.getDocument(widget.path!),
@@ -140,123 +153,138 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final items =
-                                      columnFoldersRecord.folders!.toList();
-                                  return GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 10,
-                                      mainAxisSpacing: 10,
-                                      childAspectRatio: 1,
-                                    ),
-                                    primary: false,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: items.length,
-                                    itemBuilder: (context, itemsIndex) {
-                                      final itemsItem = items[itemsIndex];
-                                      return FutureBuilder<FoldersRecord>(
-                                        future: FoldersRecord.getDocumentOnce(
-                                            itemsItem),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50,
-                                                height: 50,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryColor,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          final folderButtonFoldersRecord =
-                                              snapshot.data!;
-                                          return FolderButtonWidget(
-                                            key: Key(
-                                                'folderButton_${itemsIndex}'),
-                                            color: valueOrDefault<Color>(
-                                              folderButtonFoldersRecord.color,
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                            ),
-                                            name:
-                                                folderButtonFoldersRecord.name,
-                                            path: folderButtonFoldersRecord
-                                                .reference,
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: double.infinity,
+                                child: custom_widgets.ResponsiveGrid(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: double.infinity,
+                                  folders:
+                                      columnFoldersRecord.folders!.toList(),
+                                  files: columnFoldersRecord.files!.toList(),
+                                ),
                               ),
                             ),
-                            Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final files =
-                                      columnFoldersRecord.files!.toList();
-                                  return GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 10,
-                                      mainAxisSpacing: 10,
-                                      childAspectRatio: 1,
-                                    ),
-                                    primary: false,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: files.length,
-                                    itemBuilder: (context, filesIndex) {
-                                      final filesItem = files[filesIndex];
-                                      return FutureBuilder<FilesRecord>(
-                                        future: FilesRecord.getDocumentOnce(
-                                            filesItem),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50,
-                                                height: 50,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryColor,
+                            if (false)
+                              Expanded(
+                                child: Builder(
+                                  builder: (context) {
+                                    final item =
+                                        columnFoldersRecord.folders!.toList();
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 10,
+                                        mainAxisSpacing: 10,
+                                        childAspectRatio: 1,
+                                      ),
+                                      primary: false,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: item.length,
+                                      itemBuilder: (context, itemIndex) {
+                                        final itemItem = item[itemIndex];
+                                        return FutureBuilder<FoldersRecord>(
+                                          future: FoldersRecord.getDocumentOnce(
+                                              itemItem),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                  ),
                                                 ),
+                                              );
+                                            }
+                                            final folderButtonFoldersRecord =
+                                                snapshot.data!;
+                                            return FolderButtonWidget(
+                                              key: Key(
+                                                  'Key5v8_${itemIndex}_of_${item.length}'),
+                                              color: valueOrDefault<Color>(
+                                                folderButtonFoldersRecord.color,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
                                               ),
+                                              name: folderButtonFoldersRecord
+                                                  .name,
+                                              path: folderButtonFoldersRecord
+                                                  .reference,
                                             );
-                                          }
-                                          final fileButtonFilesRecord =
-                                              snapshot.data!;
-                                          return FileButtonWidget(
-                                            key:
-                                                Key('fileButton_${filesIndex}'),
-                                            name: fileButtonFilesRecord.name,
-                                            color: valueOrDefault<Color>(
-                                              fileButtonFilesRecord.color,
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                            ),
-                                            file: fileButtonFilesRecord,
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
+                            if (false)
+                              Expanded(
+                                child: Builder(
+                                  builder: (context) {
+                                    final files =
+                                        columnFoldersRecord.files!.toList();
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 10,
+                                        mainAxisSpacing: 10,
+                                        childAspectRatio: 1,
+                                      ),
+                                      primary: false,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: files.length,
+                                      itemBuilder: (context, filesIndex) {
+                                        final filesItem = files[filesIndex];
+                                        return FutureBuilder<FilesRecord>(
+                                          future: FilesRecord.getDocumentOnce(
+                                              filesItem),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            final fileButtonFilesRecord =
+                                                snapshot.data!;
+                                            return FileButtonWidget(
+                                              key: Key(
+                                                  'Keypde_${filesIndex}_of_${files.length}'),
+                                              name: fileButtonFilesRecord.name,
+                                              color: valueOrDefault<Color>(
+                                                fileButtonFilesRecord.color,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                              ),
+                                              file: fileButtonFilesRecord,
+                                            );
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
                           ],
                         );
                       },
