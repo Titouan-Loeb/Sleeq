@@ -125,14 +125,11 @@ class _ResponsiveGridState extends State<ResponsiveGrid> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
-    return Expanded(
-        child: ResponsiveGridList(
-            desiredItemWidth: 100,
-            minSpacing: 10,
-            shrinkWrap: true,
-            scroll: true,
-            children: createWidgetList()));
+    return ResponsiveGridList(
+        desiredItemWidth: 100,
+        minSpacing: 10,
+        shrinkWrap: true,
+        scroll: true,
+        children: createWidgetList());
   }
 }
