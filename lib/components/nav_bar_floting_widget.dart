@@ -104,8 +104,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   'launch://sleeq.app/') &&
                               ('launch://sleeq.app${GoRouter.of(context).location}' !=
                                   'launch://sleeq.app/homePage')) {
-                            context.pushNamed(
-                              'HomePage',
+                            context.goNamed(
+                              'DemoPage',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
