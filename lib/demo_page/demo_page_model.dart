@@ -1,7 +1,3 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../components/add_modal_widget.dart';
-import '../components/folder_button_widget.dart';
 import '../components/nav_bar_floting_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -12,7 +8,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomePageModel extends FlutterFlowModel {
+class DemoPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // Model for Sidebar component.

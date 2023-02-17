@@ -36,6 +36,7 @@ class SignUpModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    sleeqLogoModel.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
   }

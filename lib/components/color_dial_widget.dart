@@ -38,7 +38,7 @@ class _ColorDialWidgetState extends State<ColorDialWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

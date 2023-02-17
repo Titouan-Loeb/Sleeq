@@ -65,7 +65,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

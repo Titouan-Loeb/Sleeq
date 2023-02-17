@@ -1,5 +1,6 @@
 import '../backend/backend.dart';
 import '../components/add_modal_widget.dart';
+import '../components/breadcrumbs_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -98,24 +99,26 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                   ),
             ),
           ),
-          appBar: AppBar(
-            backgroundColor: widget.color != null
-                ? widget.color
-                : FlutterFlowTheme.of(context).primaryColor,
-            automaticallyImplyLeading: true,
-            title: Text(
-              widget.name!,
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: FlutterFlowTheme.of(context).title2Family,
-                    color: Colors.white,
-                    useGoogleFonts: GoogleFonts.asMap()
-                        .containsKey(FlutterFlowTheme.of(context).title2Family),
+          appBar: false
+              ? AppBar(
+                  backgroundColor: widget.color != null
+                      ? widget.color
+                      : FlutterFlowTheme.of(context).primaryColor,
+                  automaticallyImplyLeading: true,
+                  title: Text(
+                    widget.name!,
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: FlutterFlowTheme.of(context).title2Family,
+                          color: Colors.white,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).title2Family),
+                        ),
                   ),
-            ),
-            actions: [],
-            centerTitle: true,
-            elevation: 4,
-          ),
+                  actions: [],
+                  centerTitle: true,
+                  elevation: 4,
+                )
+              : null,
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -150,6 +153,17 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
+                              child: wrapWithModel(
+                                model: _model.breadcrumbsModel,
+                                updateCallback: () => setState(() {}),
+                                child: BreadcrumbsWidget(
+                                  pageName: widget.name,
+                                ),
+                              ),
+                            ),
                             Expanded(
                               child: Container(
                                 width: MediaQuery.of(context).size.width,

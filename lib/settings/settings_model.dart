@@ -43,7 +43,9 @@ class SettingsModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    sidebarModel.dispose();
     yourNameController?.dispose();
+    navBarFlotingModel.dispose();
   }
 
   /// Additional helper methods are added here.

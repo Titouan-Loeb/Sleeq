@@ -49,7 +49,9 @@ class AddModalModel extends FlutterFlowModel {
 
   void dispose() {
     textController1?.dispose();
+    colorDialModel1.dispose();
     textController2?.dispose();
+    colorDialModel2.dispose();
   }
 
   /// Additional helper methods are added here.

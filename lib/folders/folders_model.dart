@@ -1,5 +1,6 @@
 import '../backend/backend.dart';
 import '../components/add_modal_widget.dart';
+import '../components/breadcrumbs_widget.dart';
 import '../components/sidebar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -14,14 +15,20 @@ class FoldersModel extends FlutterFlowModel {
 
   // Model for Sidebar component.
   late SidebarModel sidebarModel;
+  // Model for breadcrumbs component.
+  late BreadcrumbsModel breadcrumbsModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sidebarModel = createModel(context, () => SidebarModel());
+    breadcrumbsModel = createModel(context, () => BreadcrumbsModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    sidebarModel.dispose();
+    breadcrumbsModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 
