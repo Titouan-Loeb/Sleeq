@@ -5,8 +5,8 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "flutter.js": "1cfe996e845b3a8a33f57607e8b09ee4",
 "sleeq-text-logo_small.png": "ea7bbbfbef7e27c7f0247d721c019a9c",
-"index.html": "f355a3963ef48de712ced5d40b6dcbbb",
-"/": "f355a3963ef48de712ced5d40b6dcbbb",
+"index.html": "5e29a573a39579b8c2aad7b57285f467",
+"/": "5e29a573a39579b8c2aad7b57285f467",
 "main.dart.js": "e60636930fcda038547f5bc9f5c99f17",
 "manifest.json": "7349d672fc374ed7229aa0c64dfcfcf1",
 "favicon.png": "2704101cb06ce66e2000356a312be25c",
