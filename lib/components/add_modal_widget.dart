@@ -42,14 +42,14 @@ class _AddModalWidgetState extends State<AddModalWidget> {
     super.initState();
     _model = createModel(context, () => AddModalModel());
 
-    _model.textController1 = TextEditingController();
-    _model.textController2 = TextEditingController();
+    _model.textController1 ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }
@@ -490,7 +490,6 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             };
                             await widget.currentFolder!
                                 .update(foldersUpdateData1);
-                            _shouldSetState = true;
                           } else {
                             final selectedFile =
                                 await selectFile(allowedExtensions: ['pdf']);

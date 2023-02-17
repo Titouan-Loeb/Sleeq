@@ -32,8 +32,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     _model = createModel(context, () => SignUpModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignUp'});
-    _model.emailTextController = TextEditingController();
-    _model.passwordTextController = TextEditingController();
+    _model.emailTextController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -343,7 +343,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               await currentUserReference!
                                   .update(usersUpdateData);
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('DemoPage', mounted);
 
                               setState(() {});
                             },
@@ -425,7 +425,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               await currentUserReference!
                                   .update(usersUpdateData);
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('DemoPage', mounted);
 
                               setState(() {});
                             },

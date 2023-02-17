@@ -21,7 +21,10 @@ class ExamplePageModel extends FlutterFlowModel {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    sidebarModel.dispose();
+    navBarFlotingModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

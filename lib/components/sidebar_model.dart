@@ -17,7 +17,9 @@ class SidebarModel extends FlutterFlowModel {
     newnavModel = createModel(context, () => NewnavModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    newnavModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

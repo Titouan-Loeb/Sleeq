@@ -7,3 +7,4 @@ export 'settings/settings_widget.dart' show SettingsWidget;
 export 'folders/folders_widget.dart' show FoldersWidget;
 export 'example_page/example_page_widget.dart' show ExamplePageWidget;
 export 'file/file_widget.dart' show FileWidget;
+export 'demo_page/demo_page_widget.dart' show DemoPageWidget;

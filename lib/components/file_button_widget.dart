@@ -44,7 +44,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

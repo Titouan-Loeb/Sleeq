@@ -57,7 +57,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
     _model = createModel(context, () => SettingsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Settings'});
-    _model.yourNameController = TextEditingController();
+    _model.yourNameController ??= TextEditingController();
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -483,8 +483,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                        color: Color(0x00000000),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),

@@ -32,8 +32,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     _model = createModel(context, () => LoginModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
-    _model.emailTextController = TextEditingController();
-    _model.passwordTextController = TextEditingController();
+    _model.emailTextController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -451,7 +451,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           }
 
                                           context.goNamedAuth(
-                                              'HomePage', mounted);
+                                              'DemoPage', mounted);
                                         },
                                   text: FFLocalizations.of(context).getText(
                                     'xt2b21lg' /* Login */,
@@ -517,7 +517,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       return;
                                     }
 
-                                    context.goNamedAuth('HomePage', mounted);
+                                    context.goNamedAuth('DemoPage', mounted);
                                   },
                                 ),
                               ),

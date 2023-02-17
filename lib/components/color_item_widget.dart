@@ -37,7 +37,7 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

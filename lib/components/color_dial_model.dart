@@ -38,7 +38,16 @@ class ColorDialModel extends FlutterFlowModel {
     colorItemModel8 = createModel(context, () => ColorItemModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    colorItemModel1.dispose();
+    colorItemModel2.dispose();
+    colorItemModel3.dispose();
+    colorItemModel4.dispose();
+    colorItemModel5.dispose();
+    colorItemModel6.dispose();
+    colorItemModel7.dispose();
+    colorItemModel8.dispose();
+  }
 
   /// Additional helper methods are added here.
 

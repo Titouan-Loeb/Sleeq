@@ -33,7 +33,7 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }
@@ -44,22 +44,22 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
 
     return Material(
       color: Colors.transparent,
-      elevation: 8,
+      elevation: 6,
       shape: const CircleBorder(),
       child: ClipOval(
         child: Container(
-          width: 50,
-          height: 50,
+          width: 35,
+          height: 35,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             shape: BoxShape.circle,
           ),
           child: FlutterFlowIconButton(
-            buttonSize: 50,
+            buttonSize: 30,
             icon: Icon(
               Icons.arrow_back_ios_outlined,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 30,
+              size: 17,
             ),
             onPressed: () async {
               logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
