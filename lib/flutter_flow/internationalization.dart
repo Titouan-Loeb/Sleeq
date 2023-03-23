@@ -357,6 +357,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'fr': 'Rénitialiser le mot de passe',
     },
+    '9b4oun0p': {
+      'en':
+          'You are going to reset your password. You will reveive a link to your email address to define a new password. Are you sure you wan tot continue?',
+      'es': '',
+      'fr': '',
+    },
     'zp5l6n6u': {
       'en': 'Home',
       'es': 'Casa',
@@ -488,7 +494,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // RenameFolderDialog
   {
     'qhcwqbb9': {
-      'en': '[Some hint text...]',
+      'en': 'change folder name',
       'es': '',
       'fr': '',
     },
@@ -498,12 +504,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // newnavSmall
+  // confirmPopup
   {
-    'f2b85cbh': {
-      'en': 'Upload a file',
-      'es': 'Cargar un archivo',
-      'fr': 'Télécharger un fichier',
+    '0s5jhiue': {
+      'en': 'Confirm',
+      'es': '',
+      'fr': '',
+    },
+    'gt53ckuv': {
+      'en': 'Cancel',
+      'es': '',
+      'fr': '',
     },
   },
   // Miscellaneous

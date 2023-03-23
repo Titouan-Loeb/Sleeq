@@ -60,6 +60,24 @@ class FFAppState extends ChangeNotifier {
   void removeAtIndexFromSelectedFolders(int _index) {
     _selectedFolders.removeAt(_index);
   }
+
+  List<DocumentReference> _selecteFiles = [];
+  List<DocumentReference> get selecteFiles => _selecteFiles;
+  set selecteFiles(List<DocumentReference> _value) {
+    _selecteFiles = _value;
+  }
+
+  void addToSelecteFiles(DocumentReference _value) {
+    _selecteFiles.add(_value);
+  }
+
+  void removeFromSelecteFiles(DocumentReference _value) {
+    _selecteFiles.remove(_value);
+  }
+
+  void removeAtIndexFromSelecteFiles(int _index) {
+    _selecteFiles.removeAt(_index);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

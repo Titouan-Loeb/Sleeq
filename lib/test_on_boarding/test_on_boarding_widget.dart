@@ -1,3 +1,4 @@
+import '/components/sleeq_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -54,27 +55,39 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (Theme.of(context).brightness == Brightness.dark)
-                      Image.network(
-                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/skelaton-skreens-0qzrnm/assets/vqv7qh90o0x6/logo_white.png',
-                        width: 200.0,
-                        height: 100.0,
-                        fit: BoxFit.fitHeight,
-                      ),
-                    if (!(Theme.of(context).brightness == Brightness.dark))
-                      SvgPicture.asset(
-                        'assets/images/sleeq_text_vector.svg',
-                        width: 200.0,
-                        height: 100.0,
-                        fit: BoxFit.contain,
-                      ),
-                  ],
+                child: wrapWithModel(
+                  model: _model.sleeqLogoModel,
+                  updateCallback: () => setState(() {}),
+                  child: SleeqLogoWidget(
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    withText: true,
+                  ),
                 ),
               ),
+              if (false)
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (Theme.of(context).brightness == Brightness.dark)
+                        Image.network(
+                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/skelaton-skreens-0qzrnm/assets/vqv7qh90o0x6/logo_white.png',
+                          width: 200.0,
+                          height: 100.0,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      if (!(Theme.of(context).brightness == Brightness.dark))
+                        SvgPicture.asset(
+                          'assets/images/sleeq_text_vector.svg',
+                          width: 200.0,
+                          height: 100.0,
+                          fit: BoxFit.contain,
+                        ),
+                    ],
+                  ),
+                ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [

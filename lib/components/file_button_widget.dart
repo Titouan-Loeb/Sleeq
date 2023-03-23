@@ -61,37 +61,64 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
           height: 100.0,
           child: Stack(
             children: [
-              FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 0.0,
-                borderWidth: 1.0,
-                buttonSize: 100.0,
-                icon: FaIcon(
-                  FontAwesomeIcons.solidFileAlt,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 80.0,
-                ),
-                onPressed: () async {
-                  logFirebaseEvent('FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
-
-                  context.pushNamed(
-                    'file',
-                    queryParams: {
-                      'file': serializeParam(
-                        widget.file,
-                        ParamType.Document,
-                      ),
-                    }.withoutNulls,
-                    extra: <String, dynamic>{
-                      'file': widget.file,
-                      kTransitionInfoKey: TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.leftToRight,
-                        duration: Duration(milliseconds: 200),
-                      ),
-                    },
-                  );
+              InkWell(
+                onLongPress: () async {
+                  logFirebaseEvent('FILE_BUTTON_solidFileAlt_ICN_ON_LONG_PRE');
+                  FFAppState().update(() {
+                    FFAppState().isSelectionMode = true;
+                    FFAppState().addToSelecteFiles(widget.file!.reference);
+                  });
                 },
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 0.0,
+                  borderWidth: 1.0,
+                  buttonSize: 100.0,
+                  icon: FaIcon(
+                    FontAwesomeIcons.solidFileAlt,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 80.0,
+                  ),
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
+                    if (FFAppState().isSelectionMode) {
+                      if (FFAppState()
+                          .selecteFiles
+                          .contains(widget.file!.reference)) {
+                        setState(() {
+                          FFAppState()
+                              .removeFromSelecteFiles(widget.file!.reference);
+                        });
+                        return;
+                      } else {
+                        setState(() {
+                          FFAppState()
+                              .addToSelecteFiles(widget.file!.reference);
+                        });
+                        return;
+                      }
+                    } else {
+                      context.pushNamed(
+                        'file',
+                        queryParams: {
+                          'file': serializeParam(
+                            widget.file,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'file': widget.file,
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.leftToRight,
+                            duration: Duration(milliseconds: 200),
+                          ),
+                        },
+                      );
+                    }
+                  },
+                ),
               ),
               Align(
                 alignment: AlignmentDirectional(-0.75, -0.85),
@@ -104,6 +131,26 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                   ),
                 ),
               ),
+              if (FFAppState().isSelectionMode &&
+                  FFAppState().selecteFiles.contains(widget.file!.reference))
+                Align(
+                  alignment: AlignmentDirectional(1.0, -0.9),
+                  child: Icon(
+                    Icons.check_circle_rounded,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    size: 30.0,
+                  ),
+                ),
+              if (FFAppState().isSelectionMode &&
+                  !FFAppState().selecteFiles.contains(widget.file!.reference))
+                Align(
+                  alignment: AlignmentDirectional(1.0, -0.9),
+                  child: Icon(
+                    Icons.check_circle_outline_rounded,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    size: 30.0,
+                  ),
+                ),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import '/components/sleeq_logo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -11,14 +12,20 @@ import 'package:provider/provider.dart';
 class TestOnBoardingModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for sleeqLogo component.
+  late SleeqLogoModel sleeqLogoModel;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    sleeqLogoModel = createModel(context, () => SleeqLogoModel());
+  }
 
-  void dispose() {}
+  void dispose() {
+    sleeqLogoModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

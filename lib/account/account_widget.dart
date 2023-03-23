@@ -1,5 +1,6 @@
 import '/auth/auth_util.dart';
 import '/components/back_button_widget.dart';
+import '/components/confirm_popup_widget.dart';
 import '/components/nav_bar_floting_widget.dart';
 import '/components/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -482,25 +483,31 @@ class _AccountWidgetState extends State<AccountWidget>
                                 onPressed: () async {
                                   logFirebaseEvent(
                                       'ACCOUNT_PAGE_RESET_PASSWORD_BTN_ON_TAP');
-                                  if (currentUserEmail.isEmpty) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Email required!',
-                                        ),
-                                      ),
-                                    );
-                                    return;
-                                  }
-                                  await resetPassword(
-                                    email: currentUserEmail,
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    isDismissible: false,
+                                    enableDrag: false,
                                     context: context,
-                                  );
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.of(context).viewInsets,
+                                        child: ConfirmPopupWidget(
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            '9b4oun0p' /* You are going to reset your pa... */,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   '4ffv07yn' /* Reset password */,
                                 ),
                                 options: FFButtonOptions(
+                                  width: 170.0,
                                   height: 60.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),

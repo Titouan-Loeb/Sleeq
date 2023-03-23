@@ -49,7 +49,6 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: double.infinity,
       height: 50.0,
       decoration: BoxDecoration(),
       child: Row(

@@ -161,6 +161,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                   _model.updatePage(() {
                     FFAppState().selectedFolders = [];
                     FFAppState().isSelectionMode = false;
+                    FFAppState().selecteFiles = [];
                   });
                 },
               ),
