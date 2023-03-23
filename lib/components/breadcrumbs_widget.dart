@@ -1,6 +1,7 @@
-import '../components/back_button_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/components/back_button_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,11 +11,13 @@ export 'breadcrumbs_model.dart';
 class BreadcrumbsWidget extends StatefulWidget {
   const BreadcrumbsWidget({
     Key? key,
-    String? pageName,
-  })  : this.pageName = pageName ?? '/',
+    this.folderNames,
+    bool? isHomeScreen,
+  })  : this.isHomeScreen = isHomeScreen ?? true,
         super(key: key);
 
-  final String pageName;
+  final List<String>? folderNames;
+  final bool isHomeScreen;
 
   @override
   _BreadcrumbsWidgetState createState() => _BreadcrumbsWidgetState();
@@ -51,16 +54,41 @@ class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        wrapWithModel(
-          model: _model.backButtonModel,
-          updateCallback: () => setState(() {}),
-          child: BackButtonWidget(),
+        Stack(
+          children: [
+            if (!widget.isHomeScreen)
+              wrapWithModel(
+                model: _model.backButtonModel,
+                updateCallback: () => setState(() {}),
+                child: BackButtonWidget(),
+              ),
+            if (widget.isHomeScreen)
+              Container(
+                width: 35.0,
+                height: 35.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.home_filled,
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  size: 24.0,
+                ),
+              ),
+          ],
         ),
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-          child: Text(
-            widget.pageName,
-            style: FlutterFlowTheme.of(context).title3,
+        Expanded(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+            child: Container(
+              width: double.infinity,
+              height: 35.0,
+              child: custom_widgets.Breadcrumbs(
+                width: double.infinity,
+                height: 35.0,
+                folderList: widget.folderNames!.toList(),
+              ),
+            ),
           ),
         ),
       ],

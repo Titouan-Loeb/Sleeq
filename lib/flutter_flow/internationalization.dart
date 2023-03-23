@@ -255,30 +255,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Settings
   {
-    'suy6bmps': {
-      'en': 'Your Name',
-      'es': 'Tu nombre',
-      'fr': 'votre nom',
+    '8bi0er89': {
+      'en': 'Settings',
+      'es': '',
+      'fr': 'Paramètres',
     },
-    'oppsunbl': {
-      'en': 'Change photo',
-      'es': 'Cambiar foto',
-      'fr': 'Changer la photo',
+    '7ehz86gs': {
+      'en': 'Profile',
+      'es': '',
+      'fr': 'Profil',
     },
-    'nak4cbrl': {
-      'en': 'Save Changes',
-      'es': 'Guardar cambios',
-      'fr': 'Sauvegarder',
-    },
-    'szqzn9xp': {
-      'en': 'Logout',
-      'es': 'Cerrar sesión',
-      'fr': 'Se déconnecter',
+    '9rby2k2i': {
+      'en': 'Account',
+      'es': '',
+      'fr': 'Compte',
     },
     'wurg3p18': {
       'en': 'Home',
       'es': 'Casa',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // folders
@@ -291,7 +286,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'n0ze2vmk': {
       'en': 'Home',
       'es': 'Casa',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // examplePage
@@ -310,12 +305,95 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Domicile',
     },
   },
-  // DemoPage
+  // TestOnBoarding
   {
-    'i8577mwi': {
+    'izm7zh7t': {
+      'en': 'Store documents',
+      'es': '',
+      'fr': 'Stocker vos documents',
+    },
+    'fr6bdly0': {
+      'en': 'A way to store any type of your documents.',
+      'es': '',
+      'fr': 'Un moyen de stocker tout type de documents.',
+    },
+    'l6t1c76m': {
+      'en': 'Retrieve Documents',
+      'es': '',
+      'fr': 'Accéder à vos documents',
+    },
+    'g3lblqub': {
+      'en': 'access to all your documents anywhere and on any devices.',
+      'es': '',
+      'fr': 'Accéder à vos documents partout et sur tout vos appareils.',
+    },
+    '583of6kn': {
+      'en': 'For any situation',
+      'es': '',
+      'fr': 'Dans toutes les situations',
+    },
+    'fq1sirxh': {
+      'en':
+          'Retrieve your documents for your travels, your payments, your mobility, and more!',
+      'es': '',
+      'fr':
+          'Accéder à vos documents de voyage, pour vos paiements, votre mobilité et autres!',
+    },
+    'f6g0wm12': {
+      'en': 'Continue',
+      'es': '',
+      'fr': 'Continuer',
+    },
+  },
+  // Account
+  {
+    'cqkkoltm': {
+      'en': 'Account',
+      'es': '',
+      'fr': 'Compte',
+    },
+    '4ffv07yn': {
+      'en': 'Reset password',
+      'es': '',
+      'fr': 'Rénitialiser le mot de passe',
+    },
+    'zp5l6n6u': {
       'en': 'Home',
       'es': 'Casa',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
+    },
+  },
+  // Profile
+  {
+    'ny0ab5ej': {
+      'en': 'Profile',
+      'es': '',
+      'fr': 'Profil',
+    },
+    'r5sbc1ic': {
+      'en': 'Your Name',
+      'es': 'Tu nombre',
+      'fr': 'votre nom',
+    },
+    'zcqg28jj': {
+      'en': 'Change photo',
+      'es': 'Cambiar foto',
+      'fr': 'Changer la photo',
+    },
+    'zldhyf21': {
+      'en': 'Save Changes',
+      'es': 'Guardar cambios',
+      'fr': 'Sauvegarder',
+    },
+    '8z9vjqdr': {
+      'en': 'Logout',
+      'es': 'Cerrar sesión',
+      'fr': 'Se déconnecter',
+    },
+    'r41az8sf': {
+      'en': 'Home',
+      'es': 'Casa',
+      'fr': 'Acceuil',
     },
   },
   // newnav
@@ -349,24 +427,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Logout',
       'es': 'Cerrar sesión',
       'fr': 'Se déconnecter',
-    },
-  },
-  // newButton
-  {
-    'ggrfcuui': {
-      'en': 'Folder',
-      'es': 'Carpeta',
-      'fr': 'Dossier',
-    },
-    'rzjrnhhh': {
-      'en': 'File',
-      'es': 'Archivo',
-      'fr': 'Dossier',
-    },
-    'blyhydr0': {
-      'en': 'New',
-      'es': 'Nuevo',
-      'fr': 'Nouveau',
     },
   },
   // addModal
@@ -405,6 +465,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancel',
       'es': 'Cancelar',
       'fr': 'Annuler',
+    },
+  },
+  // newButton
+  {
+    'ggrfcuui': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'rzjrnhhh': {
+      'en': 'File',
+      'es': 'Archivo',
+      'fr': 'Dossier',
+    },
+    'blyhydr0': {
+      'en': 'New',
+      'es': 'Nuevo',
+      'fr': 'Nouveau',
+    },
+  },
+  // RenameFolderDialog
+  {
+    'qhcwqbb9': {
+      'en': '[Some hint text...]',
+      'es': '',
+      'fr': '',
+    },
+    'kds0ysdx': {
+      'en': 'OK',
+      'es': '',
+      'fr': '',
     },
   },
   // Miscellaneous

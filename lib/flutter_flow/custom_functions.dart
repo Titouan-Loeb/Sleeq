@@ -29,3 +29,11 @@ dynamic mergeFolderAndItems(
   }
   return newList;
 }
+
+List<String> addFolderToList(
+  List<String> myList,
+  String newElement,
+) {
+  myList.add(newElement);
+  return myList;
+}

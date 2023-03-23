@@ -69,13 +69,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? DemoPageWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : TestOnBoardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? DemoPageWidget() : LoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? HomePageWidget()
+              : TestOnBoardingWidget(),
           routes: [
             FFRoute(
               name: 'HomePage',
@@ -111,10 +112,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'folder',
               requireAuth: true,
               builder: (context, params) => FoldersWidget(
-                path: params.getParam('path', ParamType.DocumentReference,
-                    false, ['users', 'folders']),
-                name: params.getParam('name', ParamType.String),
-                color: params.getParam('color', ParamType.Color),
+                currentFolder: params.getParam('currentFolder',
+                    ParamType.DocumentReference, false, ['users', 'folders']),
+                folderNames: params.getParam<String>(
+                    'folderNames', ParamType.String, true),
               ),
             ),
             FFRoute(
@@ -135,14 +136,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'DemoPage',
-              path: 'demoPage',
+              name: 'TestOnBoarding',
+              path: 'testOnBoarding',
+              builder: (context, params) => TestOnBoardingWidget(),
+            ),
+            FFRoute(
+              name: 'Account',
+              path: 'account',
               requireAuth: true,
-              builder: (context, params) => DemoPageWidget(),
+              builder: (context, params) => AccountWidget(),
+            ),
+            FFRoute(
+              name: 'Profile',
+              path: 'profile',
+              requireAuth: true,
+              builder: (context, params) => ProfileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
-        ).toRoute(appStateNotifier),
-      ],
+        ),
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );
 
@@ -188,6 +200,16 @@ extension NavigationExtensions on BuildContext {
               queryParams: queryParams,
               extra: extra,
             );
+
+  void safePop() {
+    // If there is only one route on the stack, navigate to the initial
+    // page instead of popping.
+    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+      go('/');
+    } else {
+      pop();
+    }
+  }
 }
 
 extension GoRouterExtensions on GoRouter {
@@ -199,6 +221,7 @@ extension GoRouterExtensions on GoRouter {
           : appState.updateNotifyOnAuthChange(false);
   bool shouldRedirect(bool ignoreRedirect) =>
       !ignoreRedirect && appState.hasRedirect();
+  void clearRedirectLocation() => appState.clearRedirectLocation();
   void setRedirectLocationIfUnset(String location) =>
       (routerDelegate.refreshListenable as AppStateNotifier)
           .updateNotifyOnAuthChange(false);
@@ -298,7 +321,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/login';
+            return '/testOnBoarding';
           }
           return null;
         },

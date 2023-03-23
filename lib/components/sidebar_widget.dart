@@ -1,6 +1,6 @@
-import '../components/newnav_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/components/newnav_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -49,13 +49,13 @@ class _SidebarWidgetState extends State<SidebarWidget> {
         tablet: false,
       ),
       child: Container(
-        width: 270,
+        width: 270.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.circular(0),
+          borderRadius: BorderRadius.circular(0.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
           child: wrapWithModel(
             model: _model.newnavModel,
             updateCallback: () => setState(() {}),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/lat_lng.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -34,6 +35,30 @@ class FFAppState extends ChangeNotifier {
   bool get isEditingFolder => _isEditingFolder;
   set isEditingFolder(bool _value) {
     _isEditingFolder = _value;
+  }
+
+  bool _isSelectionMode = false;
+  bool get isSelectionMode => _isSelectionMode;
+  set isSelectionMode(bool _value) {
+    _isSelectionMode = _value;
+  }
+
+  List<DocumentReference> _selectedFolders = [];
+  List<DocumentReference> get selectedFolders => _selectedFolders;
+  set selectedFolders(List<DocumentReference> _value) {
+    _selectedFolders = _value;
+  }
+
+  void addToSelectedFolders(DocumentReference _value) {
+    _selectedFolders.add(_value);
+  }
+
+  void removeFromSelectedFolders(DocumentReference _value) {
+    _selectedFolders.remove(_value);
+  }
+
+  void removeAtIndexFromSelectedFolders(int _index) {
+    _selectedFolders.removeAt(_index);
   }
 }
 

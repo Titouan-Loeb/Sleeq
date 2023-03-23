@@ -1,6 +1,6 @@
-import '../components/color_item_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/components/color_item_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -48,8 +48,8 @@ class _ColorDialWidgetState extends State<ColorDialWidget> {
     context.watch<FFAppState>();
 
     return Wrap(
-      spacing: 0,
-      runSpacing: 0,
+      spacing: 0.0,
+      runSpacing: 0.0,
       alignment: WrapAlignment.start,
       crossAxisAlignment: WrapCrossAlignment.start,
       direction: Axis.horizontal,

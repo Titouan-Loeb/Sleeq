@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,25 +44,28 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
 
     return Material(
       color: Colors.transparent,
-      elevation: 6,
+      elevation: 4.0,
       shape: const CircleBorder(),
       child: ClipOval(
         child: Container(
-          width: 35,
-          height: 35,
+          width: 35.0,
+          height: 35.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             shape: BoxShape.circle,
           ),
           child: FlutterFlowIconButton(
-            buttonSize: 30,
+            buttonSize: 35.0,
             icon: Icon(
               Icons.arrow_back_ios_outlined,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 17,
+              size: 17.0,
             ),
             onPressed: () async {
               logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
+              setState(() {
+                FFAppState().selectedFolders = [];
+              });
               context.pop();
             },
           ),

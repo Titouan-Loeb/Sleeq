@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -51,42 +51,43 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
         desktop: false,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+        padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
         child: Container(
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                blurRadius: 12,
+                blurRadius: 12.0,
                 color: Color(0x33000000),
-                offset: Offset(0, 5),
+                offset: Offset(0.0, 5.0),
               )
             ],
-            borderRadius: BorderRadius.circular(40),
+            borderRadius: BorderRadius.circular(40.0),
           ),
           child: ClipRRect(
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 2,
-                sigmaY: 2,
+                sigmaX: 2.0,
+                sigmaY: 2.0,
               ),
               child: Container(
                 width: double.infinity,
-                height: 70,
+                height: 70.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(40.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FlutterFlowIconButton(
                         borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 60,
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
                         icon: FaIcon(
                           FontAwesomeIcons.home,
                           color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
@@ -95,7 +96,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       'launch://sleeq.app/homePage')
                               ? FlutterFlowTheme.of(context).tertiaryColor
                               : FlutterFlowTheme.of(context).primaryText,
-                          size: 25,
+                          size: 25.0,
                         ),
                         onPressed: () async {
                           logFirebaseEvent(
@@ -105,7 +106,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               ('launch://sleeq.app${GoRouter.of(context).location}' !=
                                   'launch://sleeq.app/homePage')) {
                             context.goNamed(
-                              'DemoPage',
+                              'HomePage',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
@@ -119,14 +120,14 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       ),
                       FlutterFlowIconButton(
                         borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 50,
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 50.0,
                         fillColor: FlutterFlowTheme.of(context).tertiaryColor,
                         icon: Icon(
                           Icons.add,
                           color: FlutterFlowTheme.of(context).primaryText,
-                          size: 35,
+                          size: 35.0,
                         ),
                         showLoadingIndicator: true,
                         onPressed: () {
@@ -135,9 +136,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                       ),
                       FlutterFlowIconButton(
                         borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 60,
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
                         icon: Icon(
                           Icons.settings,
                           color:
@@ -145,7 +146,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       'launch://sleeq.app/settings'
                                   ? FlutterFlowTheme.of(context).tertiaryColor
                                   : FlutterFlowTheme.of(context).primaryText,
-                          size: 30,
+                          size: 30.0,
                         ),
                         onPressed: () async {
                           logFirebaseEvent(
