@@ -127,7 +127,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         icon: Icon(
                           Icons.add,
                           color: FlutterFlowTheme.of(context).primaryText,
-                          size: 35.0,
+                          size: 30.0,
                         ),
                         showLoadingIndicator: true,
                         onPressed: () {

@@ -61,7 +61,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 50.0,
-              fillColor: FlutterFlowTheme.of(context).primaryColor,
+              fillColor: FlutterFlowTheme.of(context).tertiaryColor,
               icon: Icon(
                 Icons.drive_file_move,
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -90,7 +90,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 50.0,
-                fillColor: FlutterFlowTheme.of(context).primaryColor,
+                fillColor: FlutterFlowTheme.of(context).tertiaryColor,
                 icon: Icon(
                   Icons.file_download,
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -120,7 +120,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 50.0,
-                fillColor: FlutterFlowTheme.of(context).primaryColor,
+                fillColor: FlutterFlowTheme.of(context).tertiaryColor,
                 icon: Icon(
                   Icons.delete_outlined,
                   color: FlutterFlowTheme.of(context).primaryText,

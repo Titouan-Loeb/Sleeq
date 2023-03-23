@@ -498,6 +498,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // newnavSmall
+  {
+    'f2b85cbh': {
+      'en': 'Upload a file',
+      'es': 'Cargar un archivo',
+      'fr': 'Télécharger un fichier',
+    },
+  },
   // Miscellaneous
   {
     '7sgbm13u': {
