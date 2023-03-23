@@ -1,7 +1,7 @@
-import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,19 +57,19 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 100.0,
+          height: 100.0,
           child: Stack(
             children: [
               FlutterFlowIconButton(
                 borderColor: Colors.transparent,
-                borderRadius: 0,
-                borderWidth: 1,
-                buttonSize: 100,
+                borderRadius: 0.0,
+                borderWidth: 1.0,
+                buttonSize: 100.0,
                 icon: FaIcon(
                   FontAwesomeIcons.solidFileAlt,
                   color: FlutterFlowTheme.of(context).primaryText,
-                  size: 80,
+                  size: 80.0,
                 ),
                 onPressed: () async {
                   logFirebaseEvent('FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
@@ -96,8 +96,8 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
               Align(
                 alignment: AlignmentDirectional(-0.75, -0.85),
                 child: Container(
-                  width: 20,
-                  height: 20,
+                  width: 20.0,
+                  height: 20.0,
                   decoration: BoxDecoration(
                     color: widget.color,
                     shape: BoxShape.circle,

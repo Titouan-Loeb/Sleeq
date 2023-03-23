@@ -1,5 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -50,18 +50,18 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
 
     return Container(
       width: double.infinity,
-      height: 50,
+      height: 50.0,
       decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
             child: Icon(
               FFIcons.ksleeqLogo,
               color: widget.color,
-              size: 50,
+              size: 50.0,
             ),
           ),
           if (valueOrDefault<bool>(
@@ -69,11 +69,11 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
             false,
           ))
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Icon(
                 FFIcons.ksleeqTextVector,
                 color: widget.color,
-                size: 50,
+                size: 50.0,
               ),
             ),
         ],

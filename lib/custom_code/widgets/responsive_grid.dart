@@ -1,10 +1,10 @@
 // Automatic FlutterFlow imports
-import '../../backend/backend.dart';
-import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
-import '../actions/index.dart'; // Imports custom actions
-import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
+import '/custom_code/actions/index.dart'; // Imports custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -21,12 +21,14 @@ class ResponsiveGrid extends StatefulWidget {
     this.height,
     required this.folders,
     required this.files,
+    required this.folderNamesList,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final List<DocumentReference> folders;
   final List<DocumentReference> files;
+  final List<String> folderNamesList;
 
   @override
   _ResponsiveGridState createState() => _ResponsiveGridState();
@@ -75,6 +77,7 @@ class _ResponsiveGridState extends State<ResponsiveGrid> {
           ),
           name: folderButtonFoldersRecord.name,
           path: folderButtonFoldersRecord.reference,
+          previousFolderNames: widget.folderNamesList,
         );
       },
     );

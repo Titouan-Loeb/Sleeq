@@ -1,5 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +47,7 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
       child: InkWell(
         onTap: () async {
           logFirebaseEvent('COLOR_ITEM_Container_vpbc6x5c_ON_TAP');
@@ -65,7 +65,7 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
               color: FFAppState().selectedColor == widget.color
                   ? FlutterFlowTheme.of(context).primaryText
                   : Color(0x00000000),
-              width: 2,
+              width: 2.0,
             ),
           ),
         ),

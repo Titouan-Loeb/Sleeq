@@ -1,10 +1,10 @@
-import '../auth/auth_util.dart';
-import '../components/sleeq_logo_widget.dart';
-import '../flutter_flow/flutter_flow_animations.dart';
-import '../flutter_flow/flutter_flow_language_selector.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/components/sleeq_logo_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_language_selector.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +35,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0, 0),
-          end: Offset(115, 0),
+          begin: Offset(0.0, 0.0),
+          end: Offset(115.0, 0.0),
         ),
       ],
     ),
@@ -80,7 +80,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
           child: wrapWithModel(
             model: _model.sleeqLogoModel,
             updateCallback: () => setState(() {}),
@@ -91,7 +91,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
           child: InkWell(
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
@@ -117,22 +117,23 @@ class _NewnavWidgetState extends State<NewnavWidget>
             },
             child: Container(
               width: double.infinity,
-              height: 50,
+              height: 50.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(0),
+                borderRadius: BorderRadius.circular(0.0),
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 8, 16, 8),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
                       child: Container(
-                        width: 4,
-                        height: 100,
+                        width: 4.0,
+                        height: 100.0,
                         decoration: BoxDecoration(
                           color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
                                       'launch://sleeq.app/homePage') ||
@@ -141,10 +142,10 @@ class _NewnavWidgetState extends State<NewnavWidget>
                               ? FlutterFlowTheme.of(context).primaryColor
                               : Colors.transparent,
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0),
-                            bottomRight: Radius.circular(4),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(4),
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(4.0),
+                            topLeft: Radius.circular(0.0),
+                            topRight: Radius.circular(4.0),
                           ),
                         ),
                       ),
@@ -157,10 +158,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                   'launch://sleeq.app/')
                           ? FlutterFlowTheme.of(context).primaryColor
                           : FlutterFlowTheme.of(context).secondaryText,
-                      size: 28,
+                      size: 28.0,
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '6dt9sj2x' /* Home */,
@@ -186,7 +188,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
           child: InkWell(
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
@@ -206,22 +208,23 @@ class _NewnavWidgetState extends State<NewnavWidget>
             },
             child: Container(
               width: double.infinity,
-              height: 50,
+              height: 50.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.0),
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 8, 16, 8),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
                       child: Container(
-                        width: 4,
-                        height: 100,
+                        width: 4.0,
+                        height: 100.0,
                         decoration: BoxDecoration(
                           color: valueOrDefault<Color>(
                             'launch://sleeq.app${GoRouter.of(context).location}' ==
@@ -231,10 +234,10 @@ class _NewnavWidgetState extends State<NewnavWidget>
                             FlutterFlowTheme.of(context).primaryColor,
                           ),
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0),
-                            bottomRight: Radius.circular(4),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(4),
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(4.0),
+                            topLeft: Radius.circular(0.0),
+                            topRight: Radius.circular(4.0),
                           ),
                         ),
                       ),
@@ -246,10 +249,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                   'launch://sleeq.app/settings'
                               ? FlutterFlowTheme.of(context).primaryColor
                               : FlutterFlowTheme.of(context).secondaryText,
-                      size: 28,
+                      size: 28.0,
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'rdg8q5en' /* Settings */,
@@ -277,7 +281,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -285,7 +289,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
               children: [
                 if (false)
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                     child: FFButtonWidget(
                       onPressed: () {
                         print('Button pressed ...');
@@ -295,7 +300,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,
-                        height: 40,
+                        height: 40.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
@@ -308,14 +317,14 @@ class _NewnavWidgetState extends State<NewnavWidget>
                             ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
                   ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                   child: FlutterFlowLanguageSelector(
                     width: double.infinity,
                     backgroundColor:
@@ -325,32 +334,33 @@ class _NewnavWidgetState extends State<NewnavWidget>
                     dropdownColor:
                         FlutterFlowTheme.of(context).secondaryBackground,
                     dropdownIconColor: FlutterFlowTheme.of(context).primaryText,
-                    borderRadius: 12,
+                    borderRadius: 12.0,
                     textStyle: GoogleFonts.getFont(
                       'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
                       fontWeight: FontWeight.normal,
-                      fontSize: 13,
+                      fontSize: 13.0,
                     ),
                     hideFlags: false,
-                    flagSize: 24,
-                    flagTextGap: 8,
+                    flagSize: 24.0,
+                    flagTextGap: 8.0,
                     currentLanguage: FFLocalizations.of(context).languageCode,
                     languages: FFLocalizations.languages(),
                     onChanged: (lang) => setAppLanguage(context, lang),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                   child: Container(
                     width: double.infinity,
-                    height: 50,
+                    height: 50.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -362,8 +372,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                               setDarkModeSetting(context, ThemeMode.light);
                             },
                             child: Container(
-                              width: 115,
-                              height: 100,
+                              width: 115.0,
+                              height: 100.0,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).brightness ==
                                         Brightness.light
@@ -371,7 +381,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                         .secondaryBackground
                                     : FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10.0),
                                 border: Border.all(
                                   color: Theme.of(context).brightness ==
                                           Brightness.light
@@ -379,7 +389,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                           .lineColorOld
                                       : FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                  width: 1,
+                                  width: 1.0,
                                 ),
                               ),
                               child: Row(
@@ -394,11 +404,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                             .primaryText
                                         : FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                    size: 16,
+                                    size: 16.0,
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        4, 0, 0, 0),
+                                        4.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'wzfdn71s' /* Light Mode */,
@@ -434,8 +444,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                               setDarkModeSetting(context, ThemeMode.dark);
                             },
                             child: Container(
-                              width: 115,
-                              height: 100,
+                              width: 115.0,
+                              height: 100.0,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).brightness ==
                                         Brightness.dark
@@ -443,7 +453,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                         .secondaryBackground
                                     : FlutterFlowTheme.of(context)
                                         .primaryBackground,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10.0),
                                 border: Border.all(
                                   color: Theme.of(context).brightness ==
                                           Brightness.dark
@@ -451,7 +461,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                           .lineColorOld
                                       : FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                  width: 1,
+                                  width: 1.0,
                                 ),
                               ),
                               child: Row(
@@ -466,11 +476,11 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                             .primaryText
                                         : FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                    size: 16,
+                                    size: 16.0,
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        4, 0, 0, 0),
+                                        4.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'b82qzcwq' /* Dark Mode */,
@@ -507,32 +517,33 @@ class _NewnavWidgetState extends State<NewnavWidget>
                   ),
                 ),
                 Divider(
-                  height: 12,
-                  thickness: 2,
+                  height: 12.0,
+                  thickness: 2.0,
                   color: FlutterFlowTheme.of(context).lineColorOld,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       AuthUserStreamWidget(
                         builder: (context) => ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(50.0),
                           child: CachedNetworkImage(
                             imageUrl: currentUserPhoto != null &&
                                     currentUserPhoto != ''
                                 ? currentUserPhoto
                                 : 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-                            width: 44,
-                            height: 44,
+                            width: 44.0,
+                            height: 44.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -553,16 +564,19 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                 style: FlutterFlowTheme.of(context).bodyText2,
                               )),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'NEWNAV_COMP_Text_bbgazute_ON_TAP');
                                     GoRouter.of(context).prepareAuthEvent();
                                     await signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
 
-                                    context.goNamedAuth('Login', mounted);
+                                    context.goNamedAuth(
+                                        'TestOnBoarding', mounted);
                                   },
                                   child: Text(
                                     FFLocalizations.of(context).getText(

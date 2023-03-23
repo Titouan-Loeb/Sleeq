@@ -1,12 +1,15 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../components/add_modal_widget.dart';
-import '../components/folder_button_widget.dart';
-import '../components/nav_bar_floting_widget.dart';
-import '../components/sidebar_widget.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../custom_code/actions/index.dart' as actions;
+import '/auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/add_modal_widget.dart';
+import '/components/breadcrumbs_widget.dart';
+import '/components/edit_bar_widget.dart';
+import '/components/nav_bar_floting_widget.dart';
+import '/components/sidebar_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,42 +63,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          floatingActionButton: FloatingActionButton.extended(
-            onPressed: () async {
-              logFirebaseEvent('HOME_FloatingActionButton_yjr8ax35_ON_TA');
-              await showModalBottomSheet(
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                isDismissible: false,
-                enableDrag: false,
-                context: context,
-                builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
-                    child: AddModalWidget(
-                      currentFolder: currentUserDocument!.rootFolder,
-                    ),
-                  );
-                },
-              ).then((value) => setState(() {}));
-            },
-            backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
-            icon: Icon(
-              Icons.add_circle,
-              color: FlutterFlowTheme.of(context).primaryText,
-            ),
-            elevation: 8,
-            label: Text(
-              FFLocalizations.of(context).getText(
-                '48yqj92v' /* New */,
+          floatingActionButton: Visibility(
+            visible: !FFAppState().isSelectionMode,
+            child: FloatingActionButton.extended(
+              onPressed: () async {
+                logFirebaseEvent('HOME_FloatingActionButton_yjr8ax35_ON_TA');
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  isDismissible: false,
+                  enableDrag: false,
+                  context: context,
+                  builder: (context) {
+                    return Padding(
+                      padding: MediaQuery.of(context).viewInsets,
+                      child: AddModalWidget(
+                        currentFolder: currentUserDocument!.rootFolder,
+                      ),
+                    );
+                  },
+                ).then((value) => setState(() {}));
+              },
+              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              icon: Icon(
+                Icons.add_circle,
+                color: FlutterFlowTheme.of(context).primaryText,
               ),
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'DM Sans',
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    fontWeight: FontWeight.bold,
-                    useGoogleFonts: GoogleFonts.asMap().containsKey(
-                        FlutterFlowTheme.of(context).bodyText1Family),
-                  ),
+              elevation: 8.0,
+              label: Text(
+                FFLocalizations.of(context).getText(
+                  '48yqj92v' /* New */,
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: 'DM Sans',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyText1Family),
+                    ),
+              ),
             ),
           ),
           body: SafeArea(
@@ -110,99 +116,98 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     child: SidebarWidget(),
                   ),
                   Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Stack(
                       children: [
-                        Expanded(
-                          child: AuthUserStreamWidget(
-                            builder: (context) => StreamBuilder<FoldersRecord>(
-                              stream: FoldersRecord.getDocument(
-                                  currentUserDocument!.rootFolder!),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 0.0),
+                              child: wrapWithModel(
+                                model: _model.breadcrumbsModel,
+                                updateCallback: () => setState(() {}),
+                                updateOnChange: true,
+                                child: BreadcrumbsWidget(
+                                  isHomeScreen: true,
+                                  folderNames: List.generate(
+                                      random_data.randomInteger(0, 0),
+                                      (index) => random_data.randomName(
+                                          true, true)).toList(),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: AuthUserStreamWidget(
+                                builder: (context) =>
+                                    StreamBuilder<FoldersRecord>(
+                                  stream: FoldersRecord.getDocument(
+                                      currentUserDocument!.rootFolder!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final responsiveGridFoldersRecord =
+                                        snapshot.data!;
+                                    return Container(
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      child: custom_widgets.ResponsiveGrid(
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        folders: responsiveGridFoldersRecord
+                                            .folders!
+                                            .toList(),
+                                        files: responsiveGridFoldersRecord
+                                            .files!
+                                            .toList(),
+                                        folderNamesList: List.generate(
+                                            random_data.randomInteger(0, 0),
+                                            (index) => random_data.randomName(
+                                                true, true)).toList(),
                                       ),
-                                    ),
-                                  );
-                                }
-                                final gridViewFoldersRecord = snapshot.data!;
-                                return Builder(
-                                  builder: (context) {
-                                    final item =
-                                        gridViewFoldersRecord.folders!.toList();
-                                    return GridView.builder(
-                                      padding: EdgeInsets.zero,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 3,
-                                        crossAxisSpacing: 10,
-                                        mainAxisSpacing: 10,
-                                        childAspectRatio: 1,
-                                      ),
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: item.length,
-                                      itemBuilder: (context, itemIndex) {
-                                        final itemItem = item[itemIndex];
-                                        return FutureBuilder<FoldersRecord>(
-                                          future: FoldersRecord.getDocumentOnce(
-                                              itemItem),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryColor,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            final folderButtonFoldersRecord =
-                                                snapshot.data!;
-                                            return FolderButtonWidget(
-                                              key: Key(
-                                                  'Keydyy_${itemIndex}_of_${item.length}'),
-                                              color: folderButtonFoldersRecord
-                                                  .color,
-                                              name: folderButtonFoldersRecord
-                                                  .name,
-                                              path: folderButtonFoldersRecord
-                                                  .reference,
-                                            );
-                                          },
-                                        );
-                                      },
                                     );
                                   },
-                                );
-                              },
+                                ),
+                              ),
                             ),
-                          ),
+                            if (false &&
+                                responsiveVisibility(
+                                  context: context,
+                                  tabletLandscape: false,
+                                  desktop: false,
+                                ))
+                              wrapWithModel(
+                                model: _model.navBarFlotingModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarFlotingWidget(),
+                              ),
+                          ],
                         ),
-                        if (false &&
-                            responsiveVisibility(
-                              context: context,
-                              tabletLandscape: false,
-                              desktop: false,
-                            ))
-                          wrapWithModel(
-                            model: _model.navBarFlotingModel,
-                            updateCallback: () => setState(() {}),
-                            child: NavBarFlotingWidget(),
+                        if (FFAppState().isSelectionMode)
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 1.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 12.0),
+                              child: wrapWithModel(
+                                model: _model.editBarModel,
+                                updateCallback: () => setState(() {}),
+                                child: EditBarWidget(),
+                              ),
+                            ),
                           ),
                       ],
                     ),

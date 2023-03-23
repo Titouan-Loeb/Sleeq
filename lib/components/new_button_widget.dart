@@ -1,6 +1,7 @@
-import '../flutter_flow/flutter_flow_drop_down.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +44,8 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
     context.watch<FFAppState>();
 
     return FlutterFlowDropDown<String>(
+      controller: _model.dropDownController ??=
+          FormFieldController<String>(null),
       options: [
         FFLocalizations.of(context).getText(
           'ggrfcuui' /* Folder */,
@@ -93,14 +96,14 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
       ),
       icon: Icon(
         Icons.add_circle,
-        size: 40,
+        size: 40.0,
       ),
       fillColor: FlutterFlowTheme.of(context).primaryColor,
-      elevation: 2,
+      elevation: 2.0,
       borderColor: Colors.transparent,
-      borderWidth: 0,
-      borderRadius: 8,
-      margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
+      borderWidth: 0.0,
+      borderRadius: 8.0,
+      margin: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 4.0),
       hidesUnderline: true,
     );
   }
