@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
-import '../../components/breadcrumb_element_widget.dart';
+import '../../components/navigation/breadcrumbs/sub_elements/breadcrumb_element/breadcrumb_element_widget.dart';
 
 class Breadcrumbs extends StatefulWidget {
   const Breadcrumbs({
@@ -70,7 +70,7 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
       },
       divider: Icon(
         Icons.chevron_right,
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
       ),
     );
   }

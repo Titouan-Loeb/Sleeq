@@ -116,7 +116,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'xbzplc4s': {
       'en': 'Home',
       'es': 'Casa',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // Login
@@ -257,17 +257,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '8bi0er89': {
       'en': 'Settings',
-      'es': '',
+      'es': 'Ajustes',
       'fr': 'Paramètres',
     },
     '7ehz86gs': {
       'en': 'Profile',
-      'es': '',
+      'es': 'Perfil',
       'fr': 'Profil',
     },
     '9rby2k2i': {
       'en': 'Account',
-      'es': '',
+      'es': 'Cuenta',
       'fr': 'Compte',
     },
     'wurg3p18': {
@@ -349,31 +349,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cqkkoltm': {
       'en': 'Account',
-      'es': '',
+      'es': 'Cuenta',
       'fr': 'Compte',
+    },
+    'eakvdt9z': {
+      'en': 'Subscription plan',
+      'es': 'plan de suscripción',
+      'fr': 'Formule d\'abonnement',
     },
     '4ffv07yn': {
       'en': 'Reset password',
-      'es': '',
-      'fr': 'Rénitialiser le mot de passe',
+      'es': 'Restablecer la contraseña',
+      'fr': 'Réinitialiser le mot de passe',
     },
-    '9b4oun0p': {
-      'en':
-          'You are going to reset your password. You will reveive a link to your email address to define a new password. Are you sure you wan tot continue?',
-      'es': '',
-      'fr': '',
+    'vo5wj9ol': {
+      'en': 'Delete account',
+      'es': 'Borrar cuenta',
+      'fr': 'Supprimer le compte',
     },
     'zp5l6n6u': {
-      'en': 'Home',
-      'es': 'Casa',
-      'fr': 'Acceuil',
+      'en': 'Settings',
+      'es': 'Ajustes',
+      'fr': 'Paramètres',
     },
   },
   // Profile
   {
     'ny0ab5ej': {
       'en': 'Profile',
-      'es': '',
+      'es': 'Perfil',
       'fr': 'Profil',
     },
     'r5sbc1ic': {
@@ -397,16 +401,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Se déconnecter',
     },
     'r41az8sf': {
-      'en': 'Home',
+      'en': 'Settings',
       'es': 'Casa',
       'fr': 'Acceuil',
+    },
+  },
+  // PlanSelection
+  {
+    'etkn3ot2': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+    },
+  },
+  // Memo
+  {
+    '87ckfjne': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // newnav
   {
     '6dt9sj2x': {
       'en': 'Home',
-      'es': '',
+      'es': 'Casa',
       'fr': 'Acceuil',
     },
     'rdg8q5en': {
@@ -445,7 +465,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'pzkk6o4a': {
       'en': 'File',
       'es': 'Archivo',
-      'fr': 'Dossier',
+      'fr': 'Fichier',
     },
     'sn3q0avy': {
       'en': 'Folder name',
@@ -483,7 +503,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rzjrnhhh': {
       'en': 'File',
       'es': 'Archivo',
-      'fr': 'Dossier',
+      'fr': 'Fichier',
     },
     'blyhydr0': {
       'en': 'New',
@@ -495,26 +515,1470 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'qhcwqbb9': {
       'en': 'change folder name',
-      'es': '',
-      'fr': '',
+      'es': 'cambiar el nombre de la carpeta',
+      'fr': 'changer le nom du dossier',
     },
     'kds0ysdx': {
-      'en': 'OK',
-      'es': '',
-      'fr': '',
+      'en': 'Confirm',
+      'es': 'Confirmar',
+      'fr': 'Confirmer',
     },
   },
-  // confirmPopup
+  // resetPasswordPopup
   {
-    '0s5jhiue': {
-      'en': 'Confirm',
-      'es': '',
-      'fr': '',
+    '6yzjenu9': {
+      'en':
+          'You are going to reset your password. You will reveive a link to your email address to define a new password. Are you sure you wan tot continue?',
+      'es':
+          'Vas a restablecer tu contraseña. Recibirá un enlace a su dirección de correo electrónico para definir una nueva contraseña. ¿Estás seguro de que quieres continuar?',
+      'fr':
+          'Vous êtes sur le point de réinitialiser votre mot de passe. Vous recevrez un lien vers votre adresse email pour définir un nouveau mot de passe. Voulez-vous vraiment continuer ?',
     },
-    'gt53ckuv': {
+    't9ut0v9p': {
+      'en': 'Confirm',
+      'es': 'Confirmar',
+      'fr': 'Confirmer',
+    },
+    'zommix2i': {
       'en': 'Cancel',
-      'es': '',
-      'fr': '',
+      'es': 'Cancelar',
+      'fr': 'Annuler',
+    },
+  },
+  // deleteAccountPopup
+  {
+    'u1s9gb89': {
+      'en':
+          'You are going to delete your account. You will loose every document saved on this account. Are you sure you wan tot continue?',
+      'es':
+          'Vas a eliminar tu cuenta. Perderá todos los documentos guardados en esta cuenta. ¿Estás seguro de que quieres continuar?',
+      'fr':
+          'Vous êtes sur le point de supprimer votre compte. Vous perdrez tous les documents enregistrés sur ce compte. Voulez-vous vraiment continuer ?',
+    },
+    '8k8mcj7g': {
+      'en': 'Confirm',
+      'es': 'Confirmar',
+      'fr': 'Confirmer',
+    },
+    '20zuwi5m': {
+      'en': 'Cancel',
+      'es': 'Cancelar',
+      'fr': 'Annuler',
+    },
+  },
+  // PremiumPlanWidget
+  {
+    'wszriotl': {
+      'en': 'Sleeq Starter',
+      'es': 'Arrancador elegante',
+      'fr': 'Démarreur élégant',
+    },
+    '4rajon4b': {
+      'en': 'To discover Sleeq',
+      'es': 'Para descubrir Sleeq',
+      'fr': 'Pour découvrir Sleeq',
+    },
+    '8t5z5mb2': {
+      'en': 'Free',
+      'es': 'Gratis',
+      'fr': 'Gratuit',
+    },
+    'o6ckrkk7': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'lfwhoe3f': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    'sad5z4i4': {
+      'en': 'You can store up to 50 documents',
+      'es': 'Puede almacenar hasta 50 documentos',
+      'fr': 'Vous pouvez stocker jusqu\'à 50 documents',
+    },
+    '68clqyq9': {
+      'en': '50',
+      'es': '50',
+      'fr': '50',
+    },
+    '8w5xedmx': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    'yb9wz2vc': {
+      'en': 'Your documents can weigh up to 5 MB each',
+      'es': 'Tus documentos pueden pesar hasta 5 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 5 Mo chacun',
+    },
+    'd0v2otpl': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    '4x4gjabo': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'e9v9j74e': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    '10p2rw7v': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    'pic8v1y0': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    '9anzvjk1': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    '29is3om7': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'fpboc445': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'ieu222cg': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'p5mm061p': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    'b5m39m8j': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    'xzt8xhue': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    'eebhi0sm': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    '2wtmltbr': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    'mlb6waad': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'vqhzst3f': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'a29pwlsz': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    'xcjxosiq': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    'y2qj1noi': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'nyykm8u8': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'qufqp7tj': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'io0mi4cj': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    'bpbbm6wl': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    'x1brjyyg': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    'd5hauf5b': {
+      'en': 'You only have access to the default categories',
+      'es': 'Solo tienes acceso a las categorías predeterminadas',
+      'fr': 'Vous n\'avez accès qu\'aux catégories par défaut',
+    },
+    'jlc4kmb0': {
+      'en': 'Default',
+      'es': 'Por defecto',
+      'fr': 'Défaut',
+    },
+    '59gdkv6i': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    '0jf6bl68': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    '89az1hd7': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    'tjmhlsuw': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanStarter
+  {
+    'fp935rcz': {
+      'en': 'Sleeq Starter',
+      'es': 'Arrancador elegante',
+      'fr': 'Démarreur élégant',
+    },
+    'dg89lsg2': {
+      'en': 'To discover Sleeq',
+      'es': 'Para descubrir Sleeq',
+      'fr': 'Pour découvrir Sleeq',
+    },
+    'ic1dy8nm': {
+      'en': 'Free',
+      'es': 'Gratis',
+      'fr': 'Gratuit',
+    },
+    'ughm3d26': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'v1l58n13': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    'qx0f5cez': {
+      'en': 'You can store up to 50 documents',
+      'es': 'Puede almacenar hasta 50 documentos',
+      'fr': 'Vous pouvez stocker jusqu\'à 50 documents',
+    },
+    'efwqajeu': {
+      'en': '50',
+      'es': '50',
+      'fr': '50',
+    },
+    's3b57yn8': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    'oat9dg9z': {
+      'en': 'Your documents can weigh up to 5 MB each',
+      'es': 'Tus documentos pueden pesar hasta 5 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 5 Mo chacun',
+    },
+    'kcqdjcow': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    'pfm33szy': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'b20kcrn9': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    'lm3gfmhr': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    '5qq2fp7e': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    '2719e7v5': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    'v4kfhhbg': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'isjwh9iw': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '94k6qg9i': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'hz1h1il8': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    '9y3y4dz4': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    '79vvaz6t': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    'd256rrvh': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    'nujgw3s8': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    'wg6ohby7': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'w2siv5ep': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'jfxwhvz6': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    'pf68lbmm': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    'qoo51h08': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'gi13s1g6': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'a3a3w3oa': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'wn1wsesm': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    '4aw39xdb': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    'drhhlq0t': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    '35skgmd7': {
+      'en': 'You only have access to the default categories',
+      'es': 'Solo tienes acceso a las categorías predeterminadas',
+      'fr': 'Vous n\'avez accès qu\'aux catégories par défaut',
+    },
+    '5x0ddgo9': {
+      'en': 'Default',
+      'es': 'Por defecto',
+      'fr': 'Défaut',
+    },
+    'a4bhykzt': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    'ebfjw0sy': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    'q0pgfmx4': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    'w7hr1p51': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanOpen
+  {
+    'b4jn9bha': {
+      'en': 'Sleeq Open',
+      'es': 'Elegante abierto',
+      'fr': 'Sleeq ouvert',
+    },
+    '61mzqpdg': {
+      'en': 'Unlock the full experience',
+      'es': 'Desbloquea la experiencia completa',
+      'fr': 'Débloquez l\'expérience complète',
+    },
+    'zk9xb0w0': {
+      'en': '14.99 € per month',
+      'es': '14,99 € al mes',
+      'fr': '14,99 € par mois',
+    },
+    'pvdrd7ch': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'dka100fn': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    'obbaumkr': {
+      'en': 'You can store as many documents as desired',
+      'es': 'Puede almacenar tantos documentos como desee',
+      'fr': 'Vous pouvez stocker autant de documents que vous le souhaitez',
+    },
+    'hj77cnkj': {
+      'en': '∞',
+      'es': '∞',
+      'fr': '∞',
+    },
+    '58x4vrlf': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    '4pa4hi28': {
+      'en': 'Your documents can weigh up to 100 MB each',
+      'es': 'Tus documentos pueden pesar hasta 100 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 100 Mo chacun',
+    },
+    'bz0f9xv9': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    'gie9ruzr': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'b6gvdeb4': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    'duzazgdm': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    'bzyoln4t': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    'd3b2k42e': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    'l4yfa6xk': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'k0lf19cl': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'vl2i1l17': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'ngqru57y': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    'mo327zsy': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    '5kfiiclg': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    '8w9e2tv8': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    '2ja7c6ur': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    '1vfv7yth': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '9hdefl1j': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'xxf0kc0t': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    '8ve2ka4m': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    'hshs3fv2': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'y0mwige5': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'rf73hlkl': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'w4mrohhg': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    '1bbj009t': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    'pym4d8ws': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    'gljwxayp': {
+      'en':
+          'You have access to the default categories and you can create unlimited custom categories',
+      'es':
+          'Tiene acceso a las categorías predeterminadas y puede crear categorías personalizadas ilimitadas',
+      'fr':
+          'Vous avez accès aux catégories par défaut et vous pouvez créer un nombre illimité de catégories personnalisées',
+    },
+    '7cg9f2xu': {
+      'en': '∞ Custom',
+      'es': '∞ Personalizado',
+      'fr': '∞ Personnalisé',
+    },
+    'yongpki4': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    'jiupgtt5': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    '63gpveu4': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    'hdhbyr9w': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanFamily
+  {
+    'bo4f0xl2': {
+      'en': 'Sleeq Family',
+      'es': 'Familia elegante',
+      'fr': 'Famille Sleeq',
+    },
+    '5cp455ub': {
+      'en': 'For 4 members of the family',
+      'es': 'Para 4 miembros de la familia',
+      'fr': 'Pour 4 membres de la famille',
+    },
+    'lj5paxa8': {
+      'en': '19.99 € per month',
+      'es': '19,99 € al mes',
+      'fr': '19,99 € par mois',
+    },
+    '1a9x2awl': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    '9zxh3k8s': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    '8dpf80z4': {
+      'en': 'Each member can store 75 documents',
+      'es': 'Cada miembro puede almacenar 75 documentos',
+      'fr': 'Chaque membre peut stocker 75 documents',
+    },
+    '56wdwv00': {
+      'en': '75 x 4 ',
+      'es': '75x4',
+      'fr': '75 × 4',
+    },
+    '2bbuugnk': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    'av9dkv0f': {
+      'en': 'Your documents can weigh up to 5 MB each',
+      'es': 'Tus documentos pueden pesar hasta 5 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 5 Mo chacun',
+    },
+    'jr29we1u': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    'powwvta6': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    '4k3zq5gk': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    '5ugj395m': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    'rv928oc3': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    'kexupvum': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    'czfx1lv6': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'qgb1hmcj': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '56gywn16': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'jgd99lpe': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    'm323y3vi': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    'kjlr1k0c': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    'cbhqgow9': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    'jcvzav3q': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    'kdcja81a': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'rbhvua7o': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'jw7rayt2': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    'csbvace6': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    '53wn8d6j': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'f0w3tscc': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'm5wqqpj8': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'cx25aiuy': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    '7d4qwul7': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    '3pv97cg1': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    'r6f36kww': {
+      'en':
+          'You have access to the default categories and you can create unlimited custom categories',
+      'es':
+          'Tiene acceso a las categorías predeterminadas y puede crear categorías personalizadas ilimitadas',
+      'fr':
+          'Vous avez accès aux catégories par défaut et vous pouvez créer un nombre illimité de catégories personnalisées',
+    },
+    'gg5wwb31': {
+      'en': '∞ Custom',
+      'es': '∞ Personalizado',
+      'fr': '∞ Personnalisé',
+    },
+    '0xjtg3gk': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    '1gu2ypr8': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    'gflz1pwh': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    'c0tpfyn5': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanPlus
+  {
+    '3bmwaqdo': {
+      'en': 'Sleeq Plus',
+      'es': 'elegante más',
+      'fr': 'Sleeq Plus',
+    },
+    'un4s5v2h': {
+      'en': 'For storage fans',
+      'es': 'Para ventiladores de almacenamiento',
+      'fr': 'Pour les ventilateurs de stockage',
+    },
+    'hwl466l9': {
+      'en': '10.99 € per month',
+      'es': '10,99 € al mes',
+      'fr': '10,99 € par mois',
+    },
+    'c7sw9r7d': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'y1jfj8f2': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    'xgbxty2i': {
+      'en': 'You can store as many documents as desired',
+      'es': 'Puede almacenar tantos documentos como desee',
+      'fr': 'Vous pouvez stocker autant de documents que vous le souhaitez',
+    },
+    'xyhqlqp4': {
+      'en': '∞',
+      'es': '∞',
+      'fr': '∞',
+    },
+    'zojsbwug': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    'fzp2waka': {
+      'en': 'Your documents can weigh up to 50 MB each',
+      'es': 'Tus documentos pueden pesar hasta 50 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 50 Mo chacun',
+    },
+    'u6enclmq': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    '5h3a9jj2': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'pevy9qwl': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    '6rgevgae': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    'ndemd64w': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    '1bp1m3aj': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    '5f4v1b7g': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'x7mlky96': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'o20ryzgf': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'qbords3x': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    '9ehfx6qs': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    '04j6sacv': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    '3yzb3g7m': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    'an9ij6vt': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    'zhfb9fuj': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '7slc315w': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    '7jds73k6': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    'yjp7honc': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    '719sr3dv': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'rpog2rsf': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'va46hbu0': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'px1f63ym': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    '23fdnpjv': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    '5mo9tety': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    'tkdvz9vq': {
+      'en':
+          'You have access to the default categories and you can create unlimited custom categories',
+      'es':
+          'Tiene acceso a las categorías predeterminadas y puede crear categorías personalizadas ilimitadas',
+      'fr':
+          'Vous avez accès aux catégories par défaut et vous pouvez créer un nombre illimité de catégories personnalisées',
+    },
+    'escze8pn': {
+      'en': '∞ Custom',
+      'es': '∞ Personalizado',
+      'fr': '∞ Personnalisé',
+    },
+    'rh95gb3q': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    'ospfoqvv': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    'brss592u': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    '6bojlfsb': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanArchive
+  {
+    're3qvhr4': {
+      'en': 'Sleeq Archive',
+      'es': 'Archivo Sleeq',
+      'fr': 'Archives Sleeq',
+    },
+    'r5g5f2lz': {
+      'en': 'Decent storage for a small price',
+      'es': 'Almacenamiento decente por un pequeño precio',
+      'fr': 'Stockage décent pour un petit prix',
+    },
+    '2b1lz4ye': {
+      'en': '4.99 € per month',
+      'es': '4,99 € al mes',
+      'fr': '4,99 € par mois',
+    },
+    'vj8fbnmz': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'ug3oa3jk': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    'drjdhz61': {
+      'en': 'You can store up to 75 documents',
+      'es': 'Puede almacenar hasta 75 documentos',
+      'fr': 'Vous pouvez stocker jusqu\'à 75 documents',
+    },
+    'l44xqb9s': {
+      'en': '75',
+      'es': '75',
+      'fr': '75',
+    },
+    '0zsr1nrw': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    '5croalt7': {
+      'en': 'Your documents can weigh up to 20 MB each',
+      'es': 'Tus documentos pueden pesar hasta 20 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 20 Mo chacun',
+    },
+    'vgwduac3': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    'jbk7glc8': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'euze2v5a': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    'ks70ydqf': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    '3azx0u2x': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    '0s0wclvb': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    '92fnqc1f': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'm3z6fclk': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '2jnbi3st': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'ncmbarke': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    'p7a79qcz': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    'avnxvq63': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    'dv9f17rt': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    '5bk7nrji': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    'v4xbu2xt': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'lvwe4utf': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    'cuefj49n': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    'wvpv9n67': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    '77qnp8cg': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    'my5st8f4': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    'iqllvw56': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    'kddue9ok': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    '43izaoi3': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    '7b7e09j6': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    '0c6q1mfe': {
+      'en':
+          'You have access to the default categories and you can create 5 custom categories',
+      'es':
+          'Tiene acceso a las categorías predeterminadas y puede crear 5 categorías personalizadas',
+      'fr':
+          'Vous avez accès aux catégories par défaut et vous pouvez créer 5 catégories personnalisées',
+    },
+    'zg1fj66z': {
+      'en': '5 Customs',
+      'es': '5 Aduanas',
+      'fr': '5 Douanes',
+    },
+    'xttatbp2': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    'yrhf8jfc': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    '6wzoo91e': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    '11awx8jd': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // PlanStudent
+  {
+    'bb7id06n': {
+      'en': 'Sleeq Student',
+      'es': 'estudiante elegante',
+      'fr': 'Étudiant élégant',
+    },
+    'c31nowtx': {
+      'en': 'Many features for a small price',
+      'es': 'Muchas características por un pequeño precio',
+      'fr': 'De nombreuses fonctionnalités pour un petit prix',
+    },
+    '5tex9jfw': {
+      'en': '14.99 € per month',
+      'es': '14,99 € al mes',
+      'fr': '14,99 € par mois',
+    },
+    'mxwifify': {
+      'en': 'Category',
+      'es': 'Categoría',
+      'fr': 'Catégorie',
+    },
+    'd9b1odoq': {
+      'en': 'Included documents',
+      'es': 'Documentos incluidos',
+      'fr': 'Documents inclus',
+    },
+    '7vil3t1d': {
+      'en': 'You can store up to 100 documents',
+      'es': 'Puede almacenar hasta 100 documentos',
+      'fr': 'Vous pouvez stocker jusqu\'à 100 documents',
+    },
+    'yqf4zs3l': {
+      'en': '100',
+      'es': '100',
+      'fr': '100',
+    },
+    'k9lumfq7': {
+      'en': 'Max document size',
+      'es': 'Tamaño máximo de documento',
+      'fr': 'Taille maximale du document',
+    },
+    '0anlw2m2': {
+      'en': 'Your documents can weigh up to 5 MB each',
+      'es': 'Tus documentos pueden pesar hasta 5 MB cada uno',
+      'fr': 'Vos documents peuvent peser jusqu\'à 5 Mo chacun',
+    },
+    '7yt49vaz': {
+      'en': 'Access from',
+      'es': 'Acceso desde',
+      'fr': 'Accès depuis',
+    },
+    '4wkelm0f': {
+      'en': 'Smartphone',
+      'es': 'teléfono inteligente',
+      'fr': 'Téléphone intelligent',
+    },
+    'pbeh9iii': {
+      'en': 'Access and upload you documents from a smartphone',
+      'es': 'Acceda y cargue sus documentos desde un teléfono inteligente',
+      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+    },
+    'ebv8n144': {
+      'en': '5 MD',
+      'es': '5 MD',
+      'fr': '5 MD',
+    },
+    '6cgo24rs': {
+      'en': 'Computer',
+      'es': 'Computadora',
+      'fr': 'Ordinateur',
+    },
+    '7sovou5s': {
+      'en': 'Access and upload you documents from a computer',
+      'es': 'Acceda y cargue sus documentos desde una computadora',
+      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+    },
+    'k5ag7fe4': {
+      'en': 'Import from',
+      'es': 'Importar de',
+      'fr': 'Importer de',
+    },
+    'rllvs78e': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    '1m2xj6oh': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    '1gglv62l': {
+      'en': 'Camera',
+      'es': 'Cámara',
+      'fr': 'Caméra',
+    },
+    'vtx2ue6m': {
+      'en': 'Import documents using the camera',
+      'es': 'Importar documentos usando la cámara',
+      'fr': 'Importer des documents à l\'aide de l\'appareil photo',
+    },
+    'kf8jmc47': {
+      'en': 'Optical Character Recognition ',
+      'es': 'Reconocimiento óptico de caracteres',
+      'fr': 'Reconnaissance optique de caractères',
+    },
+    's4wqv3pq': {
+      'en': 'Apply optical character recognition on your documents ',
+      'es': 'Aplique el reconocimiento óptico de caracteres en sus documentos',
+      'fr':
+          'Appliquez la reconnaissance optique des caractères sur vos documents',
+    },
+    '5uaipt2p': {
+      'en': 'Export to',
+      'es': 'Exportar a',
+      'fr': 'Exporter vers',
+    },
+    '74uaefdp': {
+      'en': 'Folder',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
+    'fceqwbsp': {
+      'en': 'Import documents from your folder',
+      'es': 'Importa documentos desde tu carpeta',
+      'fr': 'Importer des documents depuis votre dossier',
+    },
+    '3fxzcrbv': {
+      'en': 'Email',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
+    },
+    '56rz3w7u': {
+      'en': 'Export documents to your emails',
+      'es': 'Exportar documentos a sus correos electrónicos',
+      'fr': 'Exportez des documents vers vos e-mails',
+    },
+    'ts1o86nv': {
+      'en': 'Calender ',
+      'es': 'Calandrar',
+      'fr': 'Calandre',
+    },
+    '97wruv5e': {
+      'en': 'Export your documents to your calender',
+      'es': 'Exporta tus documentos a tu calendario',
+      'fr': 'Exportez vos documents vers votre calendrier',
+    },
+    '8uhhwx1v': {
+      'en': 'Wallet',
+      'es': 'Billetera',
+      'fr': 'Portefeuille',
+    },
+    '5gep6hdl': {
+      'en': 'Export your documents to your wallet',
+      'es': 'Exporta tus documentos a tu monedero',
+      'fr': 'Exportez vos documents vers votre portefeuille',
+    },
+    'myngt3bx': {
+      'en': 'Personalization',
+      'es': 'Personalización',
+      'fr': 'Personnalisation',
+    },
+    'ojswo6eu': {
+      'en': 'Document Categories',
+      'es': 'Categorías de documentos',
+      'fr': 'Catégories de documents',
+    },
+    '6t59bewu': {
+      'en':
+          'You have access to the default categories and you can create 5 custom categories',
+      'es':
+          'Tiene acceso a las categorías predeterminadas y puede crear 5 categorías personalizadas',
+      'fr':
+          'Vous avez accès aux catégories par défaut et vous pouvez créer 5 catégories personnalisées',
+    },
+    'g1li076p': {
+      'en': '5 Customs',
+      'es': '5 Aduanas',
+      'fr': '5 Douanes',
+    },
+    'ifwb6dya': {
+      'en': 'Customization',
+      'es': 'personalización',
+      'fr': 'Personnalisation',
+    },
+    'v1c2kqpt': {
+      'en': 'You can customize and organize your folder as desired',
+      'es': 'Puede personalizar y organizar su carpeta como desee',
+      'fr':
+          'Vous pouvez personnaliser et organiser votre dossier comme vous le souhaitez',
+    },
+    'kyu1zfnx': {
+      'en': 'Widget',
+      'es': 'Widget',
+      'fr': 'Widget',
+    },
+    'etldstjk': {
+      'en': 'You get Sleeq widget for your home screen',
+      'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
+      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
     },
   },
   // Miscellaneous
@@ -610,6 +2074,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'nj6nqooq': {
+      'en': '',
+      'es': '',
+      'fr': '',
+    },
+    'v8sb7u0m': {
       'en': '',
       'es': '',
       'fr': '',
