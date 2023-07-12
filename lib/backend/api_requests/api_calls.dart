@@ -57,7 +57,7 @@ class CreatePaymentLinkCall {
 /// Start Feedback Group Code
 
 class FeedbackGroup {
-  static String baseUrl = 'https://formspree.io/f/';
+  static String baseUrl = 'https://formspree.io/';
   static Map<String, String> headers = {};
   static BugReportCall bugReportCall = BugReportCall();
 }
@@ -68,7 +68,6 @@ class BugReportCall {
     String? title = '',
     String? description = '',
     String? steps = '',
-    String? screenshot = '',
     bool? wantsFollowUp,
     String? priority = '',
     String? userPlatform = '',
@@ -79,14 +78,13 @@ class BugReportCall {
   "title": "${title}",
   "description": "${description}",
   "steps": "${steps}",
-  "screenshot": "${screenshot}",
   "wantsFollowUp": ${wantsFollowUp},
   "priority": "${priority}",
   "platform": "${userPlatform}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Bug report',
-      apiUrl: '${FeedbackGroup.baseUrl}xjvqvpza',
+      apiUrl: '${FeedbackGroup.baseUrl}f/xjvqvpza',
       callType: ApiCallType.POST,
       headers: {
         ...FeedbackGroup.headers,

@@ -17,6 +17,8 @@ class FolderButtonWidget extends StatefulWidget {
     required this.name,
     required this.path,
     required this.previousFolderNames,
+    this.document,
+    this.folderDocument,
   })  : this.color = color ?? const Color(0xFFFF0000),
         super(key: key);
 
@@ -24,6 +26,8 @@ class FolderButtonWidget extends StatefulWidget {
   final String? name;
   final DocumentReference? path;
   final List<String>? previousFolderNames;
+  final DocumentReference? document;
+  final DocumentReference? folderDocument;
 
   @override
   _FolderButtonWidgetState createState() => _FolderButtonWidgetState();
@@ -69,6 +73,27 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
+              onDoubleTap: () async {
+                logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_DOUB');
+                logFirebaseEvent('IconButton_bottom_sheet');
+                await showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Color(0x00000000),
+                  enableDrag: false,
+                  context: context,
+                  builder: (context) {
+                    return Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: RenameFolderDialogWidget(
+                        folderId: widget.folderDocument,
+                        isFolder: true,
+                        name: widget.name!,
+                      ),
+                    );
+                  },
+                ).then((value) => setState(() {}));
+              },
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_LONG');
                 logFirebaseEvent('IconButton_update_app_state');
@@ -142,42 +167,16 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                 },
               ),
             ),
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onLongPress: () async {
-                logFirebaseEvent('FOLDER_BUTTON_Text_t15wzz6l_ON_LONG_PRES');
-                logFirebaseEvent('Text_bottom_sheet');
-                await showModalBottomSheet(
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  barrierColor: Color(0x00000000),
-                  enableDrag: false,
-                  context: context,
-                  builder: (context) {
-                    return Padding(
-                      padding: MediaQuery.viewInsetsOf(context),
-                      child: RenameFolderDialogWidget(
-                        folderId: widget.path,
-                        isFolder: true,
-                      ),
-                    );
-                  },
-                ).then((value) => setState(() {}));
-              },
-              child: Text(
-                widget.name!,
-                maxLines: 1,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).bodyMediumFamily),
-                    ),
-              ),
+            Text(
+              widget.name!,
+              maxLines: 1,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w500,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyMediumFamily),
+                  ),
             ),
           ],
         ),

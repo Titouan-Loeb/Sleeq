@@ -1,7 +1,9 @@
 import '/backend/backend.dart';
+import '/components/popups/rename_folder_dialog/rename_folder_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,79 +56,106 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
     context.watch<FFAppState>();
 
     return Column(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           width: 100.0,
           height: 100.0,
           child: Stack(
             children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onLongPress: () async {
-                  logFirebaseEvent('FILE_BUTTON_solidFileAlt_ICN_ON_LONG_PRE');
-                  logFirebaseEvent('IconButton_update_app_state');
-                  FFAppState().update(() {
-                    FFAppState().isSelectionMode = true;
-                    FFAppState().addToSelecteFiles(widget.file!.reference);
-                  });
-                },
-                child: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 0.0,
-                  borderWidth: 1.0,
-                  buttonSize: 100.0,
-                  icon: FaIcon(
-                    FontAwesomeIcons.solidFileAlt,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 80.0,
-                  ),
-                  onPressed: () async {
+              Builder(
+                builder: (context) => InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onDoubleTap: () async {
                     logFirebaseEvent(
-                        'FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
-                    if (FFAppState().isSelectionMode) {
-                      if (FFAppState()
-                          .selecteFiles
-                          .contains(widget.file!.reference)) {
-                        logFirebaseEvent('IconButton_update_app_state');
-                        setState(() {
-                          FFAppState()
-                              .removeFromSelecteFiles(widget.file!.reference);
-                        });
-                        return;
-                      } else {
-                        logFirebaseEvent('IconButton_update_app_state');
-                        setState(() {
-                          FFAppState()
-                              .addToSelecteFiles(widget.file!.reference);
-                        });
-                        return;
-                      }
-                    } else {
-                      logFirebaseEvent('IconButton_navigate_to');
-
-                      context.pushNamed(
-                        'file',
-                        queryParameters: {
-                          'file': serializeParam(
-                            widget.file,
-                            ParamType.Document,
+                        'FILE_BUTTON_solidFileAlt_ICN_ON_DOUBLE_T');
+                    logFirebaseEvent('IconButton_alert_dialog');
+                    await showAlignedDialog(
+                      context: context,
+                      isGlobal: true,
+                      avoidOverflow: false,
+                      targetAnchor: AlignmentDirectional(0.0, 0.0)
+                          .resolve(Directionality.of(context)),
+                      followerAnchor: AlignmentDirectional(0.0, 0.0)
+                          .resolve(Directionality.of(context)),
+                      builder: (dialogContext) {
+                        return Material(
+                          color: Colors.transparent,
+                          child: RenameFolderDialogWidget(
+                            fileId: widget.file!.reference,
+                            isFolder: false,
+                            name: widget.name!,
                           ),
-                        }.withoutNulls,
-                        extra: <String, dynamic>{
-                          'file': widget.file,
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.leftToRight,
-                            duration: Duration(milliseconds: 200),
-                          ),
-                        },
-                      );
-                    }
+                        );
+                      },
+                    ).then((value) => setState(() {}));
                   },
+                  onLongPress: () async {
+                    logFirebaseEvent(
+                        'FILE_BUTTON_solidFileAlt_ICN_ON_LONG_PRE');
+                    logFirebaseEvent('IconButton_update_app_state');
+                    FFAppState().update(() {
+                      FFAppState().isSelectionMode = true;
+                      FFAppState().addToSelecteFiles(widget.file!.reference);
+                    });
+                  },
+                  child: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 0.0,
+                    borderWidth: 1.0,
+                    buttonSize: 100.0,
+                    icon: FaIcon(
+                      FontAwesomeIcons.solidFileAlt,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 80.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'FILE_BUTTON_COMP_solidFileAlt_ICN_ON_TAP');
+                      if (FFAppState().isSelectionMode) {
+                        if (FFAppState()
+                            .selecteFiles
+                            .contains(widget.file!.reference)) {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          setState(() {
+                            FFAppState()
+                                .removeFromSelecteFiles(widget.file!.reference);
+                          });
+                          return;
+                        } else {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          setState(() {
+                            FFAppState()
+                                .addToSelecteFiles(widget.file!.reference);
+                          });
+                          return;
+                        }
+                      } else {
+                        logFirebaseEvent('IconButton_navigate_to');
+
+                        context.pushNamed(
+                          'file',
+                          queryParameters: {
+                            'file': serializeParam(
+                              widget.file,
+                              ParamType.Document,
+                            ),
+                          }.withoutNulls,
+                          extra: <String, dynamic>{
+                            'file': widget.file,
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.leftToRight,
+                              duration: Duration(milliseconds: 200),
+                            ),
+                          },
+                        );
+                      }
+                    },
+                  ),
                 ),
               ),
               Align(

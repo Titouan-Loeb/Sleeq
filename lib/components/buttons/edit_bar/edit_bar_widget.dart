@@ -144,19 +144,11 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 ),
                 onPressed: () async {
                   logFirebaseEvent('EDIT_BAR_COMP_file_copy_ICN_ON_TAP');
-                  logFirebaseEvent('IconButton_bottom_sheet');
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    enableDrag: false,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.viewInsetsOf(context),
-                        child: NavigationTreeWidget(),
-                      );
-                    },
-                  ).then((value) => setState(() {}));
+                  logFirebaseEvent('IconButton_update_app_state');
+                  _model.updatePage(() {
+                    FFAppState().pastingMode = true;
+                    FFAppState().isSelectionMode = false;
+                  });
                 },
               ),
             ),

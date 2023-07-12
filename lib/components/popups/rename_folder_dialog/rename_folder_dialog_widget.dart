@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -17,11 +16,13 @@ class RenameFolderDialogWidget extends StatefulWidget {
     this.folderId,
     this.fileId,
     this.isFolder,
+    required this.name,
   }) : super(key: key);
 
   final DocumentReference? folderId;
   final DocumentReference? fileId;
   final bool? isFolder;
+  final String? name;
 
   @override
   _RenameFolderDialogWidgetState createState() =>
@@ -42,7 +43,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
     super.initState();
     _model = createModel(context, () => RenameFolderDialogModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??= TextEditingController(text: widget.name);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -64,8 +65,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
         child: Container(
           width: double.infinity,
           constraints: BoxConstraints(
-            maxWidth: 500.0,
-            maxHeight: 200.0,
+            maxWidth: 600.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -74,138 +74,143 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
               color: FlutterFlowTheme.of(context).lineColor,
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.close,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
-                ),
-                onPressed: () async {
-                  logFirebaseEvent('RENAME_FOLDER_DIALOG_close_ICN_ON_TAP');
-                  logFirebaseEvent('IconButton_bottom_sheet');
-                  Navigator.pop(context);
-                },
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Container(
-                  width: 200.0,
-                  child: TextFormField(
-                    controller: _model.textController,
-                    autofocus: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: FFLocalizations.of(context).getText(
-                        'qhcwqbb9' /* change folder name */,
-                      ),
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
-                      ),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      '62s1el54' /* Rename */,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator:
-                        _model.textControllerValidator.asValidator(context),
+                    style: FlutterFlowTheme.of(context).headlineMedium,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    logFirebaseEvent('RENAME_FOLDER_DIALOG_CONFIRM_BTN_ON_TAP');
-                    if (widget.isFolder!) {
-                      logFirebaseEvent('Button_backend_call');
-
-                      await widget.folderId!.update(createFoldersRecordData(
-                        name: _model.textController.text,
-                      ));
-                      logFirebaseEvent('Button_close_dialog,_drawer,_etc');
-                      Navigator.pop(context);
-                      return;
-                    } else {
-                      logFirebaseEvent('Button_backend_call');
-
-                      await widget.fileId!.update(createFilesRecordData(
-                        name: _model.textController.text,
-                      ));
-                      logFirebaseEvent('Button_close_dialog,_drawer,_etc');
-                      Navigator.pop(context);
-                      return;
-                    }
-                  },
-                  text: FFLocalizations.of(context).getText(
-                    'kds0ysdx' /* Confirm */,
-                  ),
-                  options: FFButtonOptions(
-                    width: 130.0,
-                    height: 40.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).titleSmallFamily,
-                          color: Colors.white,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).titleSmallFamily),
-                        ),
-                    elevation: 2.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'gx7f6c8b' /* Enter the new name below */,
                     ),
-                    borderRadius: BorderRadius.circular(8.0),
+                    style: GoogleFonts.getFont(
+                      'DM Sans',
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                    child: TextFormField(
+                      controller: _model.textController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).accent1,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primary,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyLargeFamily,
+                            fontSize: 20.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyLargeFamily),
+                          ),
+                      validator:
+                          _model.textControllerValidator.asValidator(context),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(1.0, 1.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'RENAME_FOLDER_DIALOG_CONFIRM_BTN_ON_TAP');
+                      if (widget.isFolder!) {
+                        logFirebaseEvent('Button_backend_call');
+
+                        await widget.folderId!.update(createFoldersRecordData(
+                          name: _model.textController.text,
+                        ));
+                        logFirebaseEvent('Button_close_dialog,_drawer,_etc');
+                        Navigator.pop(context);
+                        return;
+                      } else {
+                        logFirebaseEvent('Button_backend_call');
+
+                        await widget.fileId!.update(createFilesRecordData(
+                          name: _model.textController.text,
+                        ));
+                        logFirebaseEvent('Button_close_dialog,_drawer,_etc');
+                        Navigator.pop(context);
+                        return;
+                      }
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'kds0ysdx' /* Confirm */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 130.0,
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: Colors.white,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).titleSmallFamily),
+                          ),
+                      elevation: 2.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
+            ),
           ),
         ),
       ),

@@ -4,6 +4,7 @@ import '/components/buttons/edit_bar/edit_bar_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
+import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
@@ -35,6 +36,8 @@ class HomePageModel extends FlutterFlowModel {
   late NavBarFlotingModel navBarFlotingModel;
   // Model for newButton component.
   late NewButtonModel newButtonModel;
+  // Model for pasteBar component.
+  late PasteBarModel pasteBarModel;
 
   /// Initialization and disposal methods.
 
@@ -44,6 +47,7 @@ class HomePageModel extends FlutterFlowModel {
     editBarModel = createModel(context, () => EditBarModel());
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
     newButtonModel = createModel(context, () => NewButtonModel());
+    pasteBarModel = createModel(context, () => PasteBarModel());
   }
 
   void dispose() {
@@ -53,6 +57,7 @@ class HomePageModel extends FlutterFlowModel {
     editBarModel.dispose();
     navBarFlotingModel.dispose();
     newButtonModel.dispose();
+    pasteBarModel.dispose();
   }
 
   /// Action blocks are added here.

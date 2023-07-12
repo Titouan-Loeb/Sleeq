@@ -752,7 +752,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                     'Button_navigate_to');
 
                                                 context.pushNamed(
-                                                  'feedback',
+                                                  'bugReport',
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
                                                         TransitionInfo(

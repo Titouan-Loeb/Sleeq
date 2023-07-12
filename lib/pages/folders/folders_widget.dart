@@ -3,6 +3,7 @@ import '/components/buttons/edit_bar/edit_bar_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
+import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
@@ -365,6 +366,19 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                   child: NavBarFlotingWidget(
                                     canAddFile: true,
                                     currentFolder: widget.currentFolder,
+                                  ),
+                                ),
+                              ),
+                            if (FFAppState().pastingMode)
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: wrapWithModel(
+                                    model: _model.pasteBarModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: PasteBarWidget(),
                                   ),
                                 ),
                               ),

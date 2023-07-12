@@ -390,8 +390,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '75lt2syf': {
       'en': 'Report a bug',
-      'es': 'Enviar comentarios',
-      'fr': 'Envoyer des commentaires',
+      'es': 'Reportar un error',
+      'fr': 'Signaler un bug',
     },
     'zp5l6n6u': {
       'en': 'Settings',
@@ -690,99 +690,101 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // bugReport
   {
     'zezqvldl': {
-      'en': 'Feedback Form',
+      'en': 'Bug report form',
       'es': 'Formulario de comentarios',
       'fr': 'Formulaire de commentaires',
     },
-    'erdj4jbq': {
+    'ipxg64jq': {
       'en': 'Enter title',
-      'es': '',
-      'fr': '',
+      'es': 'Introduce el título',
+      'fr': 'Entrez le titre',
     },
-    'wl5uf2lq': {
+    'edv6fzu8': {
       'en': 'Bug Description',
-      'es': '',
-      'fr': '',
+      'es': 'Descripción del error',
+      'fr': 'Description du bogue',
     },
-    'k8tedie9': {
+    'ap7gnrbf': {
       'en': 'Enter bug description...',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca la descripción del error...',
+      'fr': 'Entrez la description du bogue...',
     },
-    '6c4ciizb': {
+    't6mqh36z': {
       'en': 'Steps to reproduce',
-      'es': '',
-      'fr': '',
+      'es': 'pasos para reproducir',
+      'fr': 'Étapes à reproduire',
     },
-    'v6lw567x': {
+    'ygq00bnb': {
       'en': '1 - Open the app\n2 - Upload a file\n3 - Phone explodes',
-      'es': '',
-      'fr': '',
+      'es':
+          '1 - Abre la aplicación\n2 - Sube un archivo\n3 - El teléfono explota',
+      'fr':
+          '1 - Ouvrez l\'application\n2 - Télécharger un fichier\n3 - Le téléphone explose',
     },
-    'vllvxz5x': {
-      'en': 'Upload Screenshot',
-      'es': '',
-      'fr': '',
-    },
-    '20sof0wn': {
+    'xb00grmv': {
       'en': 'Priority',
-      'es': '',
-      'fr': '',
+      'es': 'Prioridad',
+      'fr': 'Priorité',
     },
-    'ggp205ok': {
+    'qp87fhb6': {
+      'en': 'Low',
+      'es': 'Bajo',
+      'fr': 'Faible',
+    },
+    'gr2kdfkg': {
+      'en': 'Medium',
+      'es': 'Medio',
+      'fr': 'Moyen',
+    },
+    'qt3ecft4': {
+      'en': 'High',
+      'es': 'Alto',
+      'fr': 'Haut',
+    },
+    'vhw17l2r': {
       'en': 'Low',
       'es': '',
       'fr': '',
     },
-    'vntu8mgq': {
-      'en': 'Medium',
-      'es': '',
-      'fr': '',
-    },
-    'tk73g4je': {
-      'en': 'High',
-      'es': '',
-      'fr': '',
-    },
-    'h8naaiqh': {
+    'bbphpqhx': {
       'en': 'Notify me of bug fixing progress',
-      'es': '',
-      'fr': '',
+      'es': 'Notificarme del progreso de corrección de errores',
+      'fr': 'M\'avertir de l\'avancement de la correction des bogues',
     },
     'enbd6m6b': {
       'en': 'Submit',
       'es': 'Entregar',
       'fr': 'Soumettre',
     },
-    'atdb69tb': {
+    'utj1v8yv': {
       'en': 'Field is required',
-      'es': '',
-      'fr': '',
+      'es': 'Se requiere campo',
+      'fr': 'Champ requis',
     },
-    '3od8gfyn': {
+    'j2zpgopp': {
       'en': 'Please choose an option from the dropdown',
-      'es': '',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
-    '7r1d999l': {
+    'dirnw166': {
       'en': 'Field is required',
-      'es': '',
-      'fr': '',
+      'es': 'Se requiere campo',
+      'fr': 'Champ requis',
     },
-    'd4ilnoo4': {
+    'vj0xplg2': {
       'en': 'Please choose an option from the dropdown',
-      'es': '',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
-    's9imrmll': {
+    'qil3j9od': {
       'en': 'Field is required',
-      'es': '',
-      'fr': '',
+      'es': 'Se requiere campo',
+      'fr': 'Champ requis',
     },
-    'xwghkbbc': {
+    '7gjegoou': {
       'en': 'Please choose an option from the dropdown',
-      'es': '',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
   },
   // newnav
@@ -858,10 +860,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // RenameFolderDialog
   {
-    'qhcwqbb9': {
-      'en': 'change folder name',
-      'es': 'cambiar el nombre de la carpeta',
-      'fr': 'changer le nom du dossier',
+    '62s1el54': {
+      'en': 'Rename',
+      'es': 'Rebautizar',
+      'fr': 'Renommer',
+    },
+    'gx7f6c8b': {
+      'en': 'Enter the new name below',
+      'es': 'Introduzca el nuevo nombre a continuación',
+      'fr': 'Entrez le nouveau nom ci-dessous',
+    },
+    'vqnpk0nj': {
+      'en': '',
+      'es': 'Etiqueta aquí...',
+      'fr': 'Étiquette ici...',
     },
     'kds0ysdx': {
       'en': 'Confirm',
@@ -2359,11 +2371,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Miscellaneous
   {
-    'j2dxl22u': {
-      'en': 'Label here...',
-      'es': '',
-      'fr': '',
-    },
     '7sgbm13u': {
       'en': '',
       'es': '',

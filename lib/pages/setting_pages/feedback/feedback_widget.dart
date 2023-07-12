@@ -56,7 +56,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -278,7 +278,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                       ],
                     ),
                     Row(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -291,7 +291,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.normal,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -326,52 +326,54 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          TextFormField(
-                            controller: _model.textController1,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'bri2xpoq' /* Reason for not considering pre... */,
-                              ),
-                              hintText: FFLocalizations.of(context).getText(
-                                '5085jd2h' /* Enter reason here... */,
-                              ),
-                              hintStyle: FlutterFlowTheme.of(context).bodyLarge,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  width: 2.0,
+                          if (!_model.switchValue!)
+                            TextFormField(
+                              controller: _model.textController1,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFLocalizations.of(context).getText(
+                                  'bri2xpoq' /* Reason for not considering pre... */,
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
+                                hintText: FFLocalizations.of(context).getText(
+                                  '5085jd2h' /* Enter reason here... */,
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodyLarge,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
                               ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              maxLines: 3,
+                              validator: _model.textController1Validator
+                                  .asValidator(context),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                            maxLines: 3,
-                            validator: _model.textController1Validator
-                                .asValidator(context),
-                          ),
                           TextFormField(
                             controller: _model.textController2,
                             obscureText: false,

@@ -139,6 +139,12 @@ class FFAppState extends ChangeNotifier {
     _currentFolder = _value;
   }
 
+  bool _pastingMode = false;
+  bool get pastingMode => _pastingMode;
+  set pastingMode(bool _value) {
+    _pastingMode = _value;
+  }
+
   final _homegridManager = FutureRequestManager<FoldersRecord>();
   Future<FoldersRecord> homegrid({
     String? uniqueQueryKey,

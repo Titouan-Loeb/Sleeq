@@ -1,14 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +62,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                 autovalidateMode: AutovalidateMode.always,
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -79,7 +76,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'zezqvldl' /* Feedback Form */,
+                              'zezqvldl' /* Bug report form */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
@@ -98,10 +95,11 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                       ),
                       TextFormField(
                         controller: _model.textController1,
+                        autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'erdj4jbq' /* Enter title */,
+                            'ipxg64jq' /* Enter title */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -146,22 +144,21 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'wl5uf2lq' /* Bug Description */,
+                              'edv6fzu8' /* Bug Description */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
-                                  fontSize: 20.0,
+                                  fontSize: 14.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              'k8tedie9' /* Enter bug description... */,
+                              'ap7gnrbf' /* Enter bug description... */,
                             ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyLarge,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -193,6 +190,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                           maxLines: 5,
+                          minLines: 2,
                           validator: _model.textController2Validator
                               .asValidator(context),
                         ),
@@ -205,24 +203,23 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              '6c4ciizb' /* Steps to reproduce */,
+                              't6mqh36z' /* Steps to reproduce */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
-                                  fontSize: 20.0,
+                                  fontSize: 14.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              'v6lw567x' /* 1 - Open the app
+                              'ygq00bnb' /* 1 - Open the app
 2 - Upload a ... */
                               ,
                             ),
-                            hintStyle: FlutterFlowTheme.of(context).bodyLarge,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,
@@ -252,8 +249,18 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                fontSize: 14.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                           maxLines: 5,
+                          minLines: 2,
                           validator: _model.textController3Validator
                               .asValidator(context),
                         ),
@@ -267,110 +274,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'vllvxz5x' /* Upload Screenshot */,
-                              ),
-                              style: FlutterFlowTheme.of(context).headlineSmall,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 8.0),
-                              child: FlutterFlowIconButton(
-                                borderRadius: 30.0,
-                                buttonSize: 40.0,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                icon: Icon(
-                                  Icons.attach_file_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
-                                ),
-                                showLoadingIndicator: true,
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'BUG_REPORT_attach_file_rounded_ICN_ON_TA');
-                                  logFirebaseEvent(
-                                      'IconButton_upload_media_to_firebase');
-                                  final selectedMedia = await selectMedia(
-                                    mediaSource: MediaSource.photoGallery,
-                                    multiImage: false,
-                                  );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isDataUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
-
-                                    var downloadUrls = <String>[];
-                                    try {
-                                      showUploadMessage(
-                                        context,
-                                        'Uploading file...',
-                                        showLoading: true,
-                                      );
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                                blurHash: m.blurHash,
-                                              ))
-                                          .toList();
-
-                                      downloadUrls = (await Future.wait(
-                                        selectedMedia.map(
-                                          (m) async => await uploadData(
-                                              m.storagePath, m.bytes),
-                                        ),
-                                      ))
-                                          .where((u) => u != null)
-                                          .map((u) => u!)
-                                          .toList();
-                                    } finally {
-                                      ScaffoldMessenger.of(context)
-                                          .hideCurrentSnackBar();
-                                      _model.isDataUploading = false;
-                                    }
-                                    if (selectedUploadedFiles.length ==
-                                            selectedMedia.length &&
-                                        downloadUrls.length ==
-                                            selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                        _model.uploadedFileUrl =
-                                            downloadUrls.first;
-                                      });
-                                      showUploadMessage(context, 'Success!');
-                                    } else {
-                                      setState(() {});
-                                      showUploadMessage(
-                                          context, 'Failed to upload data');
-                                      return;
-                                    }
-                                  }
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                '20sof0wn' /* Priority */,
+                                'xb00grmv' /* Priority */,
                               ),
                               style: FlutterFlowTheme.of(context).headlineSmall,
                             ),
@@ -378,13 +282,13 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                               child: FlutterFlowChoiceChips(
                                 options: [
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'ggp205ok' /* Low */,
+                                    'qp87fhb6' /* Low */,
                                   )),
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'vntu8mgq' /* Medium */,
+                                    'gr2kdfkg' /* Medium */,
                                   )),
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'tk73g4je' /* High */,
+                                    'qt3ecft4' /* High */,
                                   ))
                                 ],
                                 onChanged: (val) => setState(
@@ -434,11 +338,16 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                 chipSpacing: 12.0,
                                 rowSpacing: 12.0,
                                 multiselect: false,
+                                initialized: _model.choiceChipsValue != null,
                                 alignment: WrapAlignment.start,
                                 controller:
                                     _model.choiceChipsValueController ??=
                                         FormFieldController<List<String>>(
-                                  [],
+                                  [
+                                    FFLocalizations.of(context).getText(
+                                      'vhw17l2r' /* Low */,
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
@@ -471,7 +380,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   0.0, 0.0, 0.0, 8.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'h8naaiqh' /* Notify me of bug fixing progre... */,
+                                  'bbphpqhx' /* Notify me of bug fixing progre... */,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -496,7 +405,6 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   title: _model.textController1.text,
                                   description: _model.textController2.text,
                                   steps: _model.textController3.text,
-                                  screenshot: _model.uploadedFileUrl,
                                   wantsFollowUp: _model.switchValue,
                                   priority: _model.choiceChipsValue,
                                   userPlatform: () {

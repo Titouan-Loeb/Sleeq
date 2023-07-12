@@ -1,14 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +23,7 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'atdb69tb' /* Field is required */,
+        'utj1v8yv' /* Field is required */,
       );
     }
 
@@ -39,7 +36,7 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '7r1d999l' /* Field is required */,
+        'dirnw166' /* Field is required */,
       );
     }
 
@@ -52,17 +49,12 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController3Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        's9imrmll' /* Field is required */,
+        'qil3j9od' /* Field is required */,
       );
     }
 
     return null;
   }
-
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
 
   // State field(s) for ChoiceChips widget.
   String? choiceChipsValue;

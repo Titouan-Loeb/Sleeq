@@ -3,6 +3,7 @@ import '/components/buttons/edit_bar/edit_bar_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
+import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
@@ -33,6 +34,8 @@ class FoldersModel extends FlutterFlowModel {
   late EditBarModel editBarModel;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
+  // Model for pasteBar component.
+  late PasteBarModel pasteBarModel;
   // Model for newButton component.
   late NewButtonModel newButtonModel;
 
@@ -43,6 +46,7 @@ class FoldersModel extends FlutterFlowModel {
     breadcrumbsModel = createModel(context, () => BreadcrumbsModel());
     editBarModel = createModel(context, () => EditBarModel());
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
+    pasteBarModel = createModel(context, () => PasteBarModel());
     newButtonModel = createModel(context, () => NewButtonModel());
   }
 
@@ -52,6 +56,7 @@ class FoldersModel extends FlutterFlowModel {
     breadcrumbsModel.dispose();
     editBarModel.dispose();
     navBarFlotingModel.dispose();
+    pasteBarModel.dispose();
     newButtonModel.dispose();
   }
 
