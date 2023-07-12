@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -10,8 +11,8 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:provider/provider.dart';
-import '../../components/folder_button_widget.dart';
-import '../../components/file_button_widget.dart';
+import '../../components/buttons/folder_button/folder_button_widget.dart';
+import '../../components/buttons/file_button/file_button_widget.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class ResponsiveGrid extends StatefulWidget {
@@ -63,7 +64,7 @@ class _ResponsiveGridState extends State<ResponsiveGrid> {
               width: 50,
               height: 50,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );
@@ -95,7 +96,7 @@ class _ResponsiveGridState extends State<ResponsiveGrid> {
               width: 50,
               height: 50,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
               ),
             ),
           );

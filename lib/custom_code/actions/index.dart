@@ -1,2 +1,2 @@
 export 'lock_orientation.dart' show lockOrientation;
-export 'navigate_back_until.dart' show navigateBackUntil;
+export 'delete_selected_documents.dart' show deleteSelectedDocuments;
