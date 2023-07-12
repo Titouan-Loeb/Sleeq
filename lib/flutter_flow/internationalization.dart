@@ -373,15 +373,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'plan de suscripción',
       'fr': 'Formule d\'abonnement',
     },
-    '4ffv07yn': {
-      'en': 'Reset password',
-      'es': 'Restablecer la contraseña',
-      'fr': 'Réinitialiser le mot de passe',
-    },
     'vo5wj9ol': {
       'en': 'Delete account',
       'es': 'Borrar cuenta',
       'fr': 'Supprimer le compte',
+    },
+    '4ffv07yn': {
+      'en': 'Reset password',
+      'es': 'Restablecer la contraseña',
+      'fr': 'Réinitialiser le mot de passe',
     },
     'nc10hive': {
       'en': 'Send feedback',
@@ -694,57 +694,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Formulario de comentarios',
       'fr': 'Formulaire de commentaires',
     },
-    'oioc8hxs': {
+    'erdj4jbq': {
       'en': 'Enter title',
       'es': '',
       'fr': '',
     },
-    'wmrrsmf6': {
+    'wl5uf2lq': {
       'en': 'Bug Description',
       'es': '',
       'fr': '',
     },
-    '38y31tt0': {
+    'k8tedie9': {
       'en': 'Enter bug description...',
       'es': '',
       'fr': '',
     },
-    'y77a2lsp': {
+    '6c4ciizb': {
       'en': 'Steps to reproduce',
       'es': '',
       'fr': '',
     },
-    '39wcsyu9': {
+    'v6lw567x': {
       'en': '1 - Open the app\n2 - Upload a file\n3 - Phone explodes',
       'es': '',
       'fr': '',
     },
-    '4vwbugpv': {
+    'vllvxz5x': {
       'en': 'Upload Screenshot',
       'es': '',
       'fr': '',
     },
-    'p7ngh8ou': {
+    '20sof0wn': {
       'en': 'Priority',
       'es': '',
       'fr': '',
     },
-    'u2jyt38b': {
+    'ggp205ok': {
       'en': 'Low',
       'es': '',
       'fr': '',
     },
-    'qjwb1x9x': {
+    'vntu8mgq': {
       'en': 'Medium',
       'es': '',
       'fr': '',
     },
-    'gt3hx7gp': {
+    'tk73g4je': {
       'en': 'High',
       'es': '',
       'fr': '',
     },
-    'xzwcjtce': {
+    'h8naaiqh': {
       'en': 'Notify me of bug fixing progress',
       'es': '',
       'fr': '',
@@ -754,32 +754,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Entregar',
       'fr': 'Soumettre',
     },
-    '2fnz6jk8': {
+    'atdb69tb': {
       'en': 'Field is required',
       'es': '',
       'fr': '',
     },
-    '5acqnu2p': {
+    '3od8gfyn': {
       'en': 'Please choose an option from the dropdown',
       'es': '',
       'fr': '',
     },
-    'dnyjldkd': {
+    '7r1d999l': {
       'en': 'Field is required',
       'es': '',
       'fr': '',
     },
-    '5qqkebdd': {
+    'd4ilnoo4': {
       'en': 'Please choose an option from the dropdown',
       'es': '',
       'fr': '',
     },
-    'iyy8m67t': {
+    's9imrmll': {
       'en': 'Field is required',
       'es': '',
       'fr': '',
     },
-    '89a1nzdt': {
+    'xwghkbbc': {
       'en': 'Please choose an option from the dropdown',
       'es': '',
       'fr': '',
@@ -2359,7 +2359,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Miscellaneous
   {
-    'gbf72djn': {
+    'j2dxl22u': {
       'en': 'Label here...',
       'es': '',
       'fr': '',

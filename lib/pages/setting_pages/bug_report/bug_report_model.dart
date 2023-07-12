@@ -26,7 +26,7 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '2fnz6jk8' /* Field is required */,
+        'atdb69tb' /* Field is required */,
       );
     }
 
@@ -39,7 +39,7 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'dnyjldkd' /* Field is required */,
+        '7r1d999l' /* Field is required */,
       );
     }
 
@@ -52,7 +52,7 @@ class BugReportModel extends FlutterFlowModel {
   String? _textController3Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'iyy8m67t' /* Field is required */,
+        's9imrmll' /* Field is required */,
       );
     }
 

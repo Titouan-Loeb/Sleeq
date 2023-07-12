@@ -101,7 +101,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'oioc8hxs' /* Enter title */,
+                            'erdj4jbq' /* Enter title */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -146,7 +146,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'wmrrsmf6' /* Bug Description */,
+                              'wl5uf2lq' /* Bug Description */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -159,7 +159,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                           .bodyMediumFamily),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              '38y31tt0' /* Enter bug description... */,
+                              'k8tedie9' /* Enter bug description... */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).bodyLarge,
                             enabledBorder: OutlineInputBorder(
@@ -205,7 +205,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'y77a2lsp' /* Steps to reproduce */,
+                              '6c4ciizb' /* Steps to reproduce */,
                             ),
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -218,7 +218,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                           .bodyMediumFamily),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
-                              '39wcsyu9' /* 1 - Open the app
+                              'v6lw567x' /* 1 - Open the app
 2 - Upload a ... */
                               ,
                             ),
@@ -267,7 +267,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                '4vwbugpv' /* Upload Screenshot */,
+                                'vllvxz5x' /* Upload Screenshot */,
                               ),
                               style: FlutterFlowTheme.of(context).headlineSmall,
                             ),
@@ -370,7 +370,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'p7ngh8ou' /* Priority */,
+                                '20sof0wn' /* Priority */,
                               ),
                               style: FlutterFlowTheme.of(context).headlineSmall,
                             ),
@@ -378,13 +378,13 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                               child: FlutterFlowChoiceChips(
                                 options: [
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'u2jyt38b' /* Low */,
+                                    'ggp205ok' /* Low */,
                                   )),
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'qjwb1x9x' /* Medium */,
+                                    'vntu8mgq' /* Medium */,
                                   )),
                                   ChipData(FFLocalizations.of(context).getText(
-                                    'gt3hx7gp' /* High */,
+                                    'tk73g4je' /* High */,
                                   ))
                                 ],
                                 onChanged: (val) => setState(
@@ -471,7 +471,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   0.0, 0.0, 0.0, 8.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'xzwcjtce' /* Notify me of bug fixing progre... */,
+                                  'h8naaiqh' /* Notify me of bug fixing progre... */,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
