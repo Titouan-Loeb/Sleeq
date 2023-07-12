@@ -93,12 +93,13 @@ class _NewnavWidgetState extends State<NewnavWidget>
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
           child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
-              if (('launch://sleeq.app${GoRouter.of(context).location}' !=
-                      'launch://sleeq.app/homePage') ||
-                  ('launch://sleeq.app${GoRouter.of(context).location}' !=
-                      'launch://sleeq.app/')) {
+              if (FFAppState().currentPage != 'HomePage') {
                 context.pushNamed(
                   'HomePage',
                   extra: <String, dynamic>{
@@ -135,10 +136,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         width: 4.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                      'launch://sleeq.app/homePage') ||
-                                  ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                      'launch://sleeq.app/')
+                          color: FFAppState().currentPage == 'HomePage'
                               ? FlutterFlowTheme.of(context).primary
                               : Colors.transparent,
                           borderRadius: BorderRadius.only(
@@ -152,10 +150,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                     ),
                     Icon(
                       Icons.home_filled,
-                      color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                  'launch://sleeq.app/homePage') ||
-                              ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                  'launch://sleeq.app/')
+                      color: FFAppState().currentPage == 'HomePage'
                           ? FlutterFlowTheme.of(context).primary
                           : FlutterFlowTheme.of(context).secondaryText,
                       size: 28.0,
@@ -170,10 +165,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).titleSmallFamily,
-                              color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                          'launch://sleeq.app/homePage') ||
-                                      ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                          'launch://sleeq.app/')
+                              color: FFAppState().currentPage == 'HomePage'
                                   ? FlutterFlowTheme.of(context).primary
                                   : FlutterFlowTheme.of(context).secondaryText,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
@@ -191,10 +183,13 @@ class _NewnavWidgetState extends State<NewnavWidget>
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
           child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
-              if ('launch://sleeq.app${GoRouter.of(context).location}' !=
-                  'launch://sleeq.app/settings') {
+              if (FFAppState().currentPage != 'Settings') {
                 context.pushNamed(
                   'Settings',
                   extra: <String, dynamic>{
@@ -228,8 +223,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         height: 100.0,
                         decoration: BoxDecoration(
                           color: valueOrDefault<Color>(
-                            'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                    'launch://sleeq.app/settings'
+                            FFAppState().currentPage == 'Settings'
                                 ? FlutterFlowTheme.of(context).primary
                                 : Colors.transparent,
                             FlutterFlowTheme.of(context).primary,
@@ -245,11 +239,9 @@ class _NewnavWidgetState extends State<NewnavWidget>
                     ),
                     Icon(
                       Icons.settings,
-                      color:
-                          'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                  'launch://sleeq.app/settings'
-                              ? FlutterFlowTheme.of(context).primary
-                              : FlutterFlowTheme.of(context).secondaryText,
+                      color: FFAppState().currentPage == 'Settings'
+                          ? FlutterFlowTheme.of(context).primary
+                          : FlutterFlowTheme.of(context).secondaryText,
                       size: 28.0,
                     ),
                     Padding(
@@ -262,12 +254,9 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).titleSmallFamily,
-                              color:
-                                  'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                          'launch://sleeq.app/settings'
-                                      ? FlutterFlowTheme.of(context).primary
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                              color: FFAppState().currentPage == 'Settings'
+                                  ? FlutterFlowTheme.of(context).primary
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .titleSmallFamily),
@@ -369,6 +358,10 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
                                   'NEWNAV_COMP_Container_qi7oooxg_ON_TAP');
@@ -441,6 +434,10 @@ class _NewnavWidgetState extends State<NewnavWidget>
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
                                   'NEWNAV_COMP_Container_dfq5jmd1_ON_TAP');
@@ -571,6 +568,10 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'NEWNAV_COMP_Text_bbgazute_ON_TAP');
@@ -580,7 +581,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                         .clearRedirectLocation();
 
                                     context.goNamedAuth(
-                                        'TestOnBoarding', mounted);
+                                        'TestOnBoarding', context.mounted);
                                   },
                                   child: Text(
                                     FFLocalizations.of(context).getText(

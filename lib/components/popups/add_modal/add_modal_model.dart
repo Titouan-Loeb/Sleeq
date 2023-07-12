@@ -11,7 +11,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 
 class AddModalModel extends FlutterFlowModel {
@@ -38,7 +37,6 @@ class AddModalModel extends FlutterFlowModel {
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   FilesRecord? fileOut;
-  AudioPlayer? soundPlayer;
 
   /// Initialization and disposal methods.
 
@@ -54,6 +52,7 @@ class AddModalModel extends FlutterFlowModel {
     colorDialModel2.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

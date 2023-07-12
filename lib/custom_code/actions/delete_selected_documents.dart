@@ -8,9 +8,18 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future navigateBackUntil(BuildContext context, int numberOfPages) async {
-  int count = 0;
-  if (numberOfPages > 0) {
-    Navigator.popUntil(context, (route) => count++ == numberOfPages);
+Future deleteSelectedDocuments(
+  List<DocumentReference> folders,
+  List<DocumentReference> files,
+  DocumentReference currentFolder,
+) async {
+  while (folders.isNotEmpty) {
+    folders[0].delete();
+    folders.removeAt(0);
+  }
+
+  while (files.isNotEmpty) {
+    files[0].delete();
+    files.removeAt(0);
   }
 }

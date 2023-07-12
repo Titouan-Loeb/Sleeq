@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 class LoginModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // Model for sleeqLogo component.
   late SleeqLogoModel sleeqLogoModel;
@@ -57,11 +58,13 @@ class LoginModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     sleeqLogoModel.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

@@ -86,7 +86,7 @@ class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
               child: custom_widgets.Breadcrumbs(
                 width: double.infinity,
                 height: 35.0,
-                folderList: widget.folderNames!.toList(),
+                folderList: widget.folderNames!,
               ),
             ),
           ),

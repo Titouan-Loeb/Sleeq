@@ -108,10 +108,10 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    '48yqj92v': {
-      'en': 'New',
-      'es': 'Nuevo',
-      'fr': 'Nouveau',
+    'yjm0b1dl': {
+      'en': 'Grid View',
+      'es': 'Cadrícula',
+      'fr': 'Grille',
     },
     'xbzplc4s': {
       'en': 'Home',
@@ -270,6 +270,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Cuenta',
       'fr': 'Compte',
     },
+    '9z09qn2f': {
+      'en': 'About Sleeq',
+      'es': 'Sobre Sleeq',
+      'fr': 'A propos de Sleeq',
+    },
     'wurg3p18': {
       'en': 'Home',
       'es': 'Casa',
@@ -278,10 +283,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // folders
   {
-    '7kml26ln': {
-      'en': 'New',
-      'es': 'Nuevo',
-      'fr': 'Nouveau',
+    'w9d5ah2c': {
+      'en': 'Grid View',
+      'es': '',
+      'fr': '',
     },
     'n0ze2vmk': {
       'en': 'Home',
@@ -309,39 +314,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'izm7zh7t': {
       'en': 'Store documents',
-      'es': '',
-      'fr': 'Stocker vos documents',
+      'es': 'Almacene sus documentos',
+      'fr': 'Stockez vos documents',
     },
     'fr6bdly0': {
       'en': 'A way to store any type of your documents.',
-      'es': '',
+      'es': 'Una forma de almacenar todo tipo de documentos.',
       'fr': 'Un moyen de stocker tout type de documents.',
     },
     'l6t1c76m': {
       'en': 'Retrieve Documents',
-      'es': '',
-      'fr': 'Accéder à vos documents',
+      'es': 'Acceda a sus documentos',
+      'fr': 'Accédez à vos documents',
     },
     'g3lblqub': {
       'en': 'access to all your documents anywhere and on any devices.',
-      'es': '',
-      'fr': 'Accéder à vos documents partout et sur tout vos appareils.',
+      'es': 'Acceda a sus documentos desde cualquier lugar y dispositivo.',
+      'fr': 'Accédez à vos documents partout et sur tout vos appareils.',
     },
     '583of6kn': {
       'en': 'For any situation',
-      'es': '',
+      'es': 'En todas las situaciones',
       'fr': 'Dans toutes les situations',
     },
     'fq1sirxh': {
       'en':
           'Retrieve your documents for your travels, your payments, your mobility, and more!',
-      'es': '',
+      'es':
+          'Acceda a sus documentos de viaje, para pagos, movilidad y mucho más.',
       'fr':
           'Accéder à vos documents de voyage, pour vos paiements, votre mobilité et autres!',
     },
     'f6g0wm12': {
       'en': 'Continue',
-      'es': '',
+      'es': 'Continuar',
       'fr': 'Continuer',
     },
   },
@@ -352,6 +358,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Cuenta',
       'fr': 'Compte',
     },
+    'py7rjozc': {
+      'en': 'Storage',
+      'es': 'almacenamiento',
+      'fr': 'Stockage',
+    },
+    'kxhmi35j': {
+      'en': '0 MB / 250 MB',
+      'es': '0 MB / 250 MB',
+      'fr': '0 MB / 250 MB',
+    },
     'eakvdt9z': {
       'en': 'Subscription plan',
       'es': 'plan de suscripción',
@@ -361,6 +377,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Reset password',
       'es': 'Restablecer la contraseña',
       'fr': 'Réinitialiser le mot de passe',
+    },
+    'gr36s6e9': {
+      'en': 'Send feedback',
+      'es': 'Borrar cuenta',
+      'fr': 'Supprimer le compte',
     },
     'vo5wj9ol': {
       'en': 'Delete account',
@@ -408,6 +429,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PlanSelection
   {
+    'tq6yi8cb': {
+      'en': 'Subscribe',
+      'es': 'Suscríbase',
+      'fr': 'S\'abonner',
+    },
     'etkn3ot2': {
       'en': 'Home',
       'es': 'Hogar',
@@ -420,6 +446,239 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
+    },
+  },
+  // AboutSleeq
+  {
+    'ywfrk2c5': {
+      'en': 'About Sleeq',
+      'es': 'Perfil',
+      'fr': 'Profil',
+    },
+    'qojrk86o': {
+      'en': 'Our Project',
+      'es': 'Nuestro Proyecto',
+      'fr': 'Notre Projet',
+    },
+    '0filyxh2': {
+      'en':
+          'We are a team of 9 developers incubated at EPITECH (Paris Graduate School of Digital Innovation).\nSleeq originated within our Masters program and has been continiously in development since November 2021.\nThe pandemic taught us our world is getting increasingly digital out of need.\n\nWe at Sleeq want that change to be as simple as digitalizing the full contents of your wallet while ensuring you retain the safety and comfort feeling of having everything everywhere with you.\n\nSleek. Reliable. Secure.\nSleeq replace the physical wallet with a digital wallet which can store all the document you want in one place or several place like in your phone or your computer\nThanks to Sleeq it is possible to transfer your documents securely and quickly between devices of different platforms.',
+      'es':
+          'Somos un equipo de 9 desarrolladores incubados en EPITECH (Paris Graduate School of Digital Innovation).\nSleeq se originó dentro de nuestro programa de maestría y ha estado continuamente en desarrollo desde noviembre de 2021.\nLa pandemia nos enseñó que nuestro mundo es cada vez más digital por necesidad.\n\nEn Sleeq queremos que ese cambio sea tan sencillo como digitalizar todo el contenido de tu cartera, garantizando al mismo tiempo que conservas la sensación de seguridad y comodidad de llevarlo todo contigo a todas partes.\n\nElegante. Fiable. Segura.\nSleeq sustituye la cartera física por una cartera digital que puede almacenar todos los documentos que desee en un solo lugar o en varios lugares como en su teléfono o en su ordenador.\nGracias a Sleeq es posible transferir tus documentos de forma segura y rápida entre dispositivos de diferentes plataformas.',
+      'fr':
+          'Nous sommes une équipe de 9 développeurs incubés à l\'EPITECH (Paris Graduate School of Digital Innovation).\nSleeq a vu le jour au sein de notre programme de master et est en développement continu depuis novembre 2021.\nLa pandémie nous a appris que notre monde devient de plus en plus numérique par nécessité.\n\nChez Sleeq, nous voulons que ce changement soit aussi simple que de numériser le contenu complet de votre portefeuille tout en vous assurant de conserver le sentiment de sécurité et de confort d\'avoir tout partout avec vous.\n\nÉlégant. Fiable. Sûr.\nSleeq remplace le portefeuille physique par un portefeuille numérique qui peut stocker tous les documents que vous voulez à un ou plusieurs endroits comme dans votre téléphone ou votre ordinateur.\nGrâce à Sleeq, il est possible de transférer vos documents en toute sécurité et rapidement entre des appareils de différentes plateformes.',
+    },
+    'j7x640he': {
+      'en': 'Our Team',
+      'es': 'Nuestro equipo',
+      'fr': 'Notre Équipe',
+    },
+    'uwy1pkya': {
+      'en': 'Mathieu\nBretrandy',
+      'es': 'Mathieu\nBretrandy',
+      'fr': 'Mathieu\nBretrandy',
+    },
+    '2sht2n2s': {
+      'en': 'Ilan\nBenarroche',
+      'es': 'Ilan\nBenarroche',
+      'fr': 'Ilan\nBenarroche',
+    },
+    'gdigf6jw': {
+      'en': 'Julien\nFumey',
+      'es': 'Julien\nFumey',
+      'fr': 'Julien\nFumey',
+    },
+    'owqht94o': {
+      'en': 'Arsene\nMathieu',
+      'es': 'Arsene\nMathieu',
+      'fr': 'Arsene\nMathieu',
+    },
+    'a0gj0cad': {
+      'en': 'Hugo\nDomingues',
+      'es': 'Hugo\nDomingues',
+      'fr': 'Hugo\nDomingues',
+    },
+    '1dft3co8': {
+      'en': 'Titouan\nLoeb',
+      'es': 'Titouan\nLoeb',
+      'fr': 'Titouan\nLoeb',
+    },
+    'muka298r': {
+      'en': 'Thomas\nCamlong',
+      'es': 'Thomas\nCamlong',
+      'fr': 'Thomas\nCamlong',
+    },
+    '3dp7q37p': {
+      'en': 'Vasco\nRibeiro',
+      'es': 'Vasco\nRibeiro',
+      'fr': 'Vasco\nRibeiro',
+    },
+    'j9gng7ma': {
+      'en': 'Settings',
+      'es': 'Casa',
+      'fr': 'Acceuil',
+    },
+  },
+  // fileInformations
+  {
+    '90d8n39p': {
+      'en': 'Informations',
+      'es': 'información',
+      'fr': 'Informations',
+    },
+    'a1iqw8rl': {
+      'en': 'Name :',
+      'es': 'Nombre :',
+      'fr': 'Nom : ',
+    },
+    'cqydfgnk': {
+      'en': 'File Name',
+      'es': 'Nombre de documento',
+      'fr': 'Nom du Fichier',
+    },
+    'uiuo94s4': {
+      'en': 'Type :',
+      'es': 'Tipo :',
+      'fr': 'Type : ',
+    },
+    '1nb12l3g': {
+      'en': '.pdf',
+      'es': '.pdf',
+      'fr': '.pdf',
+    },
+    '3uh5ik4j': {
+      'en': 'Size :',
+      'es': 'Talla :',
+      'fr': 'Taille :',
+    },
+    '0hsomtgg': {
+      'en': '20 MB',
+      'es': '20 MB',
+      'fr': '20 MB',
+    },
+    'vn5bzht6': {
+      'en': 'Creation Date',
+      'es': 'Fecha de creación :',
+      'fr': 'Date de création :',
+    },
+    'ycbwmqug': {
+      'en': 'May 23, 2023 - 14:33',
+      'es': '18 de mayo de 2023 - 14:33',
+      'fr': '23 mai 2023 - 14:33',
+    },
+    'otyglnx0': {
+      'en': 'Home',
+      'es': 'Inicio',
+      'fr': 'Accueil',
+    },
+  },
+  // successfulPayment
+  {
+    'osa4t63e': {
+      'en': 'Payment successful',
+      'es': 'Pago correcto',
+      'fr': 'Paiement réussi',
+    },
+    'gi4un8ri': {
+      'en': 'Go back to home page',
+      'es': 'Volver a la página de inicio',
+      'fr': 'Retour à la page d\'accueil',
+    },
+    'qgnp7enp': {
+      'en': 'Home',
+      'es': 'Inicio',
+      'fr': 'Accueil',
+    },
+  },
+  // cancelPayment
+  {
+    'yrbqd3sp': {
+      'en': 'Operation canceled',
+      'es': 'Cancelar con éxito',
+      'fr': 'Annulation réussie',
+    },
+    'izx9kxnr': {
+      'en': 'Try again',
+      'es': 'Inténtalo de nuevo',
+      'fr': 'Réessayer',
+    },
+    'vamm422r': {
+      'en': 'Go back to home page',
+      'es': 'Volver a la página de inicio',
+      'fr': 'Retour à la page d\'accueil',
+    },
+    'rqlcinw0': {
+      'en': 'Home',
+      'es': 'Inicio',
+      'fr': 'Accueil',
+    },
+  },
+  // feedback
+  {
+    'wwoo368v': {
+      'en': 'Feedback Form',
+      'es': '',
+      'fr': '',
+    },
+    '13ywdpbd': {
+      'en': 'Please provide your feedback on the Sleeq beta program.',
+      'es': '',
+      'fr': '',
+    },
+    '3udtpuuu': {
+      'en': 'Rate the following points:',
+      'es': '',
+      'fr': '',
+    },
+    'uix9u6au': {
+      'en': 'Ease of Use',
+      'es': '',
+      'fr': '',
+    },
+    'fyczl56s': {
+      'en': 'Quality of Features',
+      'es': '',
+      'fr': '',
+    },
+    'g5ceztgx': {
+      'en': 'Bug-Free App',
+      'es': '',
+      'fr': '',
+    },
+    '8ffs53fz': {
+      'en': 'Price of Subscription Models',
+      'es': '',
+      'fr': '',
+    },
+    'xe1lwdot': {
+      'en': 'Have you considered paying for premium?',
+      'es': '',
+      'fr': '',
+    },
+    'bri2xpoq': {
+      'en': 'Reason for not considering premium',
+      'es': '',
+      'fr': '',
+    },
+    '5085jd2h': {
+      'en': 'Enter reason here...',
+      'es': '',
+      'fr': '',
+    },
+    'gxykgt96': {
+      'en': 'Other Comments',
+      'es': '',
+      'fr': '',
+    },
+    'ycq6iivk': {
+      'en': 'Enter any additional comments here...',
+      'es': '',
+      'fr': '',
+    },
+    'mc303noe': {
+      'en': 'Submit',
+      'es': '',
+      'fr': '',
     },
   },
   // newnav
@@ -491,24 +750,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancel',
       'es': 'Cancelar',
       'fr': 'Annuler',
-    },
-  },
-  // newButton
-  {
-    'ggrfcuui': {
-      'en': 'Folder',
-      'es': 'Carpeta',
-      'fr': 'Dossier',
-    },
-    'rzjrnhhh': {
-      'en': 'File',
-      'es': 'Archivo',
-      'fr': 'Fichier',
-    },
-    'blyhydr0': {
-      'en': 'New',
-      'es': 'Nuevo',
-      'fr': 'Nouveau',
     },
   },
   // RenameFolderDialog
@@ -1979,6 +2220,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'You get Sleeq widget for your home screen',
       'es': 'Obtienes el widget Sleeq para tu pantalla de inicio',
       'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+    },
+  },
+  // newButton
+  {
+    'x90ppz22': {
+      'en': 'New',
+      'es': 'Nuevo',
+      'fr': 'Nouveau',
+    },
+  },
+  // NavigationTree
+  {
+    'qzt8poeb': {
+      'en': 'Select a folder',
+      'es': '',
+      'fr': '',
+    },
+    'dhzgkq27': {
+      'en': 'path',
+      'es': '',
+      'fr': '',
+    },
+    'mwjwax1v': {
+      'en': 'Cancel',
+      'es': '',
+      'fr': '',
+    },
+    '9chr0yeh': {
+      'en': 'Select',
+      'es': '',
+      'fr': '',
     },
   },
   // Miscellaneous

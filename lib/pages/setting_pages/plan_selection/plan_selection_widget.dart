@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
@@ -12,6 +13,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -36,12 +39,6 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
   late PlanSelectionModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   final animationsMap = {
     'containerOnActionTriggerAnimation1': AnimationInfo(
@@ -79,6 +76,20 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'PlanSelection'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PLAN_SELECTION_PlanSelection_ON_INIT_STA');
+      setState(() {
+        FFAppState().currentPage = 'PlanSelection';
+      });
+      _model.addToPlanIds('price_1LOIRbBzo7KeiEMEVUtfdh1Q');
+      _model.addToPlanIds('price_1LOISVBzo7KeiEMEVSBv0o6K');
+      _model.addToPlanIds('price_1LOITcBzo7KeiEMEnkarB9Hh');
+      _model.addToPlanIds('price_1LOIS5Bzo7KeiEMEngqF20eT');
+      _model.addToPlanIds('price_1LOITBBzo7KeiEME2Zh9tgvb');
+      _model.addToPlanIds('price_1LOITvBzo7KeiEMEQVSVQRRi');
+    });
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -93,7 +104,6 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -103,13 +113,14 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
 
     return Title(
         title: 'PlanSelection',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,6 +181,11 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                   2.0, 2.0, 2.0, 2.0),
                                           child: AuthUserStreamWidget(
                                             builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'PLAN_SELECTION_Image_i7t833du_ON_TAP');
@@ -296,9 +312,9 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                   alignment: AlignmentDirectional(0.0, 1.0),
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    height: MediaQuery.of(context).size.height *
-                                        1.0,
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
                                     child: Stack(
                                       children: [
                                         Padding(
@@ -405,7 +421,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                     child: BackButtonWidget(),
                                   ),
                                 ),
-                                if ((pageViewCurrentIndex != 5) &&
+                                if ((_model.pageViewCurrentIndex != 5) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
@@ -413,17 +429,22 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                   Align(
                                     alignment: AlignmentDirectional(1.0, 0.0),
                                     child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'PLAN_SELECTION_Container_sc7s6w0b_ON_TAP');
-                                        if (pageViewCurrentIndex != 5) {
+                                        if (_model.pageViewCurrentIndex != 5) {
                                           await _model.pageViewController
                                               ?.nextPage(
                                             duration:
                                                 Duration(milliseconds: 300),
                                             curve: Curves.ease,
                                           );
-                                          if (pageViewCurrentIndex == 5) {
+                                          if (_model.pageViewCurrentIndex ==
+                                              5) {
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation1'] !=
                                                 null) {
@@ -442,7 +463,11 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 20.0,
-                                              color: Color(0x22000000),
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Color(0x22000000)
+                                                  : Colors.white,
                                               offset: Offset(-10.0, 0.0),
                                               spreadRadius: 1.0,
                                             )
@@ -474,7 +499,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 .mouseRegionHovered1 = true);
                                             logFirebaseEvent(
                                                 'PLAN_SELECTION_MouseRegion_4b29cekm_ON_T');
-                                            if (pageViewCurrentIndex != 5) {
+                                            if (_model.pageViewCurrentIndex !=
+                                                5) {
                                               if (animationsMap[
                                                       'containerOnActionTriggerAnimation1'] !=
                                                   null) {
@@ -506,7 +532,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           'containerOnActionTriggerAnimation1']!,
                                     ),
                                   ),
-                                if ((pageViewCurrentIndex != 0) &&
+                                if ((_model.pageViewCurrentIndex != 0) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
@@ -514,17 +540,22 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'PLAN_SELECTION_Container_dlbms5m2_ON_TAP');
-                                        if (pageViewCurrentIndex != 0) {
+                                        if (_model.pageViewCurrentIndex != 0) {
                                           await _model.pageViewController
                                               ?.previousPage(
                                             duration:
                                                 Duration(milliseconds: 300),
                                             curve: Curves.ease,
                                           );
-                                          if (pageViewCurrentIndex == 5) {
+                                          if (_model.pageViewCurrentIndex ==
+                                              5) {
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation1'] !=
                                                 null) {
@@ -543,7 +574,11 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 20.0,
-                                              color: Color(0x22000000),
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.light
+                                                  ? Color(0xFF220000)
+                                                  : Colors.white,
                                               offset: Offset(10.0, 0.0),
                                               spreadRadius: 0.0,
                                             )
@@ -575,7 +610,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 .mouseRegionHovered2 = true);
                                             logFirebaseEvent(
                                                 'PLAN_SELECTION_MouseRegion_88t51mr8_ON_T');
-                                            if (pageViewCurrentIndex != 0) {
+                                            if (_model.pageViewCurrentIndex !=
+                                                0) {
                                               if (animationsMap[
                                                       'containerOnActionTriggerAnimation2'] !=
                                                   null) {
@@ -608,6 +644,73 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                     ),
                                   ),
                               ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 15.0, 15.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'PLAN_SELECTION_PAGE_SUBSCRIBE_BTN_ON_TAP');
+                              _model.apiResult = await StripeAPIGroup
+                                  .createPaymentLinkCall
+                                  .call(
+                                priceId:
+                                    _model.planIds[_model.pageViewCurrentIndex],
+                                successfulUrl: functions.createDynamicLink(
+                                    FFAppState().dynamicLinkDomain,
+                                    FFAppState().packageName,
+                                    'successfulPayment',
+                                    'id=${currentUserUid}&planId=${_model.planIds[_model.pageViewCurrentIndex]}'),
+                                cancelUrl: functions.createDynamicLink(
+                                    FFAppState().dynamicLinkDomain,
+                                    FFAppState().packageName,
+                                    'cancelPayment',
+                                    ''),
+                              );
+                              if ((_model.apiResult?.succeeded ?? true)) {
+                                FFAppState().paymentLink = getJsonField(
+                                  (_model.apiResult?.jsonBody ?? ''),
+                                  r'''$.url''',
+                                ).toString();
+                                await launchURL(getJsonField(
+                                  (_model.apiResult?.jsonBody ?? ''),
+                                  r'''$.url''',
+                                ).toString());
+                              }
+
+                              setState(() {});
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              'tq6yi8cb' /* Subscribe */,
+                            ),
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
+                                    color: Colors.white,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),

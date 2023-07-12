@@ -1,7 +1,7 @@
-import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/components/popups/add_modal/add_modal_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +9,12 @@ import 'new_button_model.dart';
 export 'new_button_model.dart';
 
 class NewButtonWidget extends StatefulWidget {
-  const NewButtonWidget({Key? key}) : super(key: key);
+  const NewButtonWidget({
+    Key? key,
+    required this.currentFolder,
+  }) : super(key: key);
+
+  final DocumentReference? currentFolder;
 
   @override
   _NewButtonWidgetState createState() => _NewButtonWidgetState();
@@ -43,69 +48,98 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FlutterFlowDropDown<String>(
-      controller: _model.dropDownValueController ??=
-          FormFieldController<String>(null),
-      options: [
-        FFLocalizations.of(context).getText(
-          'ggrfcuui' /* Folder */,
-        ),
-        FFLocalizations.of(context).getText(
-          'rzjrnhhh' /* File */,
-        )
-      ],
-      onChanged: (val) async {
-        setState(() => _model.dropDownValue = val);
-        logFirebaseEvent('NEW_BUTTON_DropDown_e4z2ya0e_ON_FORM_WID');
-        if (_model.dropDownValue == 'folder') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Selected folder',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
+    return Visibility(
+      visible: responsiveVisibility(
+        context: context,
+        phone: false,
+        tablet: false,
+      ),
+      child: Align(
+        alignment: AlignmentDirectional(1.0, 1.0),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 20.0),
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              logFirebaseEvent('NEW_BUTTON_Container_g23u7i2l_ON_TAP');
+              await showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                enableDrag: false,
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: AddModalWidget(
+                      currentFolder: widget.currentFolder,
+                    ),
+                  );
+                },
+              ).then((value) => setState(() {}));
+            },
+            child: Material(
+              color: Colors.transparent,
+              elevation: 8.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 100),
+                  curve: Curves.easeIn,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    borderRadius: BorderRadius.circular(25.0),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Icon(
+                            Icons.add_circle,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'x90ppz22' /* New */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'DM Sans',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: Color(0x00000000),
             ),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Selected file',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                ),
-              ),
-              duration: Duration(milliseconds: 4000),
-              backgroundColor: Color(0x00000000),
-            ),
-          );
-        }
-      },
-      textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-            color: FlutterFlowTheme.of(context).primaryText,
-            useGoogleFonts: GoogleFonts.asMap()
-                .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
           ),
-      hintText: FFLocalizations.of(context).getText(
-        'blyhydr0' /* New */,
+        ),
       ),
-      icon: Icon(
-        Icons.add_circle,
-        size: 40.0,
-      ),
-      fillColor: FlutterFlowTheme.of(context).primary,
-      elevation: 2.0,
-      borderColor: Colors.transparent,
-      borderWidth: 0.0,
-      borderRadius: 8.0,
-      margin: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 4.0),
-      hidesUnderline: true,
-      isSearchable: false,
     );
   }
 }

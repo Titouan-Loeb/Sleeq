@@ -11,7 +11,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'add_modal_model.dart';
 export 'add_modal_model.dart';
@@ -108,6 +107,10 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_33pqa2yd_ON_TAP');
@@ -174,6 +177,10 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               ),
                             ),
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_ouc66vor_ON_TAP');
@@ -333,7 +340,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                     Color(0xFFFDFFB6),
                                     Color(0xFFFFD6A5),
                                     Color(0xFFFFADAD)
-                                  ].toList(),
+                                  ],
                                 ),
                               ),
                             ],
@@ -422,7 +429,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                     Color(0xFFFDFFB6),
                                     Color(0xFFFFD6A5),
                                     Color(0xFFFFADAD)
-                                  ].toList(),
+                                  ],
                                 ),
                               ),
                             ],
@@ -472,51 +479,66 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                           logFirebaseEvent('ADD_MODAL_COMP__BTN_ON_TAP');
                           var _shouldSetState = false;
                           if (FFAppState().isEditingFolder) {
-                            final foldersCreateData = createFoldersRecordData(
+                            var foldersRecordReference =
+                                FoldersRecord.createDoc(currentUserReference!);
+                            await foldersRecordReference
+                                .set(createFoldersRecordData(
                               owner: currentUserReference,
                               color: FFAppState().selectedColor,
                               name: _model.textController1.text,
                               parentFolder: widget.currentFolder,
-                            );
-                            var foldersRecordReference =
-                                FoldersRecord.createDoc(currentUserReference!);
-                            await foldersRecordReference.set(foldersCreateData);
+                            ));
                             _model.newFolder =
                                 FoldersRecord.getDocumentFromData(
-                                    foldersCreateData, foldersRecordReference);
+                                    createFoldersRecordData(
+                                      owner: currentUserReference,
+                                      color: FFAppState().selectedColor,
+                                      name: _model.textController1.text,
+                                      parentFolder: widget.currentFolder,
+                                    ),
+                                    foldersRecordReference);
                             _shouldSetState = true;
 
-                            final foldersUpdateData1 = {
+                            await widget.currentFolder!.update({
                               'folders': FieldValue.arrayUnion(
                                   [_model.newFolder!.reference]),
-                            };
-                            await widget.currentFolder!
-                                .update(foldersUpdateData1);
+                            });
                           } else {
-                            final selectedFile =
-                                await selectFile(allowedExtensions: ['pdf']);
-                            if (selectedFile != null) {
+                            final selectedFiles = await selectFiles(
+                              multiFile: false,
+                            );
+                            if (selectedFiles != null) {
                               setState(() => _model.isDataUploading = true);
-                              FFUploadedFile? selectedUploadedFile;
-                              String? downloadUrl;
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+
+                              var downloadUrls = <String>[];
                               try {
-                                selectedUploadedFile = FFUploadedFile(
-                                  name:
-                                      selectedFile.storagePath.split('/').last,
-                                  bytes: selectedFile.bytes,
-                                );
-                                downloadUrl = await uploadData(
-                                    selectedFile.storagePath,
-                                    selectedFile.bytes);
+                                selectedUploadedFiles = selectedFiles
+                                    .map((m) => FFUploadedFile(
+                                          name: m.storagePath.split('/').last,
+                                          bytes: m.bytes,
+                                        ))
+                                    .toList();
+
+                                downloadUrls = (await Future.wait(
+                                  selectedFiles.map(
+                                    (f) async => await uploadData(
+                                        f.storagePath, f.bytes),
+                                  ),
+                                ))
+                                    .where((u) => u != null)
+                                    .map((u) => u!)
+                                    .toList();
                               } finally {
                                 _model.isDataUploading = false;
                               }
-                              if (selectedUploadedFile != null &&
-                                  downloadUrl != null) {
+                              if (selectedUploadedFiles.length ==
+                                      selectedFiles.length &&
+                                  downloadUrls.length == selectedFiles.length) {
                                 setState(() {
                                   _model.uploadedLocalFile =
-                                      selectedUploadedFile!;
-                                  _model.uploadedFileUrl = downloadUrl!;
+                                      selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl = downloadUrls.first;
                                 });
                               } else {
                                 setState(() {});
@@ -528,37 +550,35 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 _model.uploadedFileUrl != '') {
                               HapticFeedback.heavyImpact();
 
-                              final filesCreateData = createFilesRecordData(
+                              var filesRecordReference =
+                                  FilesRecord.createDoc(currentUserReference!);
+                              await filesRecordReference
+                                  .set(createFilesRecordData(
                                 fileUrl: _model.uploadedFileUrl,
                                 owner: currentUserReference,
                                 name: _model.textController2.text,
                                 created: getCurrentTimestamp,
                                 containingFolder: widget.currentFolder,
                                 color: FFAppState().selectedColor,
-                              );
-                              var filesRecordReference =
-                                  FilesRecord.createDoc(currentUserReference!);
-                              await filesRecordReference.set(filesCreateData);
+                              ));
                               _model.fileOut = FilesRecord.getDocumentFromData(
-                                  filesCreateData, filesRecordReference);
+                                  createFilesRecordData(
+                                    fileUrl: _model.uploadedFileUrl,
+                                    owner: currentUserReference,
+                                    name: _model.textController2.text,
+                                    created: getCurrentTimestamp,
+                                    containingFolder: widget.currentFolder,
+                                    color: FFAppState().selectedColor,
+                                  ),
+                                  filesRecordReference);
                               _shouldSetState = true;
 
-                              final foldersUpdateData2 = {
+                              await widget.currentFolder!.update({
                                 'files': FieldValue.arrayUnion(
                                     [_model.fileOut!.reference]),
-                              };
-                              await widget.currentFolder!
-                                  .update(foldersUpdateData2);
-                              _model.soundPlayer ??= AudioPlayer();
-                              if (_model.soundPlayer!.playing) {
-                                await _model.soundPlayer!.stop();
-                              }
-                              _model.soundPlayer!.setVolume(1.0);
-                              _model.soundPlayer!
-                                  .setAsset('assets/audios/vine-boom.mp3')
-                                  .then((_) => _model.soundPlayer!.play());
-
+                              });
                               Navigator.pop(context);
+                              setState(() {});
                             } else {
                               if (_shouldSetState) setState(() {});
                               return;
@@ -570,6 +590,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
 
                           HapticFeedback.heavyImpact();
                           Navigator.pop(context);
+                          setState(() {});
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFAppState().isEditingFolder

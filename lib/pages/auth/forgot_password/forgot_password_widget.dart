@@ -24,7 +24,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
   late ForgotPasswordModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -42,7 +41,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -52,13 +50,14 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
 
     return Title(
         title: 'ForgotPassword',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
                 child: Column(

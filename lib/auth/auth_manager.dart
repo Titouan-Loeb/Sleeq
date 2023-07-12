@@ -7,6 +7,7 @@ abstract class AuthManager {
   Future deleteUser(BuildContext context);
   Future resetPassword({required String email, required BuildContext context});
   Future sendEmailVerification() async => currentUser?.sendEmailVerification();
+  Future refreshUser() async => currentUser?.refreshUser();
 }
 
 mixin EmailSignInManager on AuthManager {
@@ -46,7 +47,7 @@ mixin PhoneSignInManager on AuthManager {
   Future beginPhoneAuth({
     required BuildContext context,
     required String phoneNumber,
-    required VoidCallback onCodeSent,
+    required void Function(BuildContext) onCodeSent,
   });
 
   Future verifySmsCode({
@@ -65,4 +66,8 @@ mixin MicrosoftSignInManager on AuthManager {
     List<String> scopes,
     String tenantId,
   );
+}
+
+mixin GithubSignInManager on AuthManager {
+  Future<BaseAuthUser?> signInWithGithub(BuildContext context);
 }

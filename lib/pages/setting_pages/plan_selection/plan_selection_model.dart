@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
@@ -12,6 +13,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -23,12 +26,27 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class PlanSelectionModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  List<String> planIds = [];
+  void addToPlanIds(String item) => planIds.add(item);
+  void removeFromPlanIds(String item) => planIds.remove(item);
+  void removeAtIndexFromPlanIds(int index) => planIds.removeAt(index);
+  void updatePlanIdsAtIndex(int index, Function(String) updateFn) =>
+      planIds[index] = updateFn(planIds[index]);
+
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for Sidebar component.
   late SidebarModel sidebarModel;
   // State field(s) for PageView widget.
   PageController? pageViewController;
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
   // Model for PlanStarter component.
   late PlanStarterModel planStarterModel;
   // Model for PlanOpen component.
@@ -47,6 +65,8 @@ class PlanSelectionModel extends FlutterFlowModel {
   bool mouseRegionHovered1 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered2 = false;
+  // Stores action output result for [Backend Call - API (Create Payment Link)] action in Button widget.
+  ApiCallResponse? apiResult;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
@@ -65,6 +85,7 @@ class PlanSelectionModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     sidebarModel.dispose();
     planStarterModel.dispose();
     planOpenModel.dispose();
@@ -76,6 +97,7 @@ class PlanSelectionModel extends FlutterFlowModel {
     navBarFlotingModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

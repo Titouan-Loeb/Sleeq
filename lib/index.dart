@@ -14,4 +14,13 @@ export '/pages/setting_pages/account/account_widget.dart' show AccountWidget;
 export '/pages/setting_pages/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/setting_pages/plan_selection/plan_selection_widget.dart'
     show PlanSelectionWidget;
-export '/memo/memo_widget.dart' show MemoWidget;
+export '/pages/memo/memo_widget.dart' show MemoWidget;
+export '/pages/setting_pages/about_sleeq/about_sleeq_widget.dart'
+    show AboutSleeqWidget;
+export '/pages/file_informations/file_informations_widget.dart'
+    show FileInformationsWidget;
+export '/pages/payment/successful_payment/successful_payment_widget.dart'
+    show SuccessfulPaymentWidget;
+export '/pages/payment/cancel_payment/cancel_payment_widget.dart'
+    show CancelPaymentWidget;
+export '/pages/setting_pages/feedback/feedback_widget.dart' show FeedbackWidget;

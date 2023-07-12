@@ -43,7 +43,8 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
 
   @override
   Widget build(BuildContext context) {
-    widget.folderList.insert(0, "Home");
+    if (widget.folderList.length == 0 || widget.folderList[0] != "Home")
+      widget.folderList.insert(0, "Home");
     return BreadCrumb.builder(
       itemCount: widget.folderList.length,
       overflow: ScrollableOverflow(

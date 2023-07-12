@@ -50,7 +50,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
             child: Icon(
               FFIcons.ksleeqLogo,
-              color: Colors.black,
+              color: FlutterFlowTheme.of(context).primaryText,
               size: 120.0,
             ),
           ),
@@ -92,7 +92,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(15.0, 5.0, 15.0, 15.0),
             child: Container(
-              width: MediaQuery.of(context).size.width * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),
@@ -167,7 +167,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
             child: Container(
-              width: MediaQuery.of(context).size.width * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),
@@ -242,7 +242,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
             child: Container(
-              width: MediaQuery.of(context).size.width * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),
@@ -335,7 +335,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
             child: Container(
-              width: MediaQuery.of(context).size.width * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),
@@ -448,7 +448,7 @@ class _PlanOpenWidgetState extends State<PlanOpenWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 15.0),
             child: Container(
-              width: MediaQuery.of(context).size.width * 1.0,
+              width: MediaQuery.sizeOf(context).width * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),

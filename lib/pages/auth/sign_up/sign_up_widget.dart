@@ -24,7 +24,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   late SignUpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -41,7 +40,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -51,13 +49,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
     return Title(
         title: 'SignUp',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                 child: Column(
@@ -79,6 +78,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_Container_ludiwph3_ON_TAP');
@@ -333,25 +336,34 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 return;
                               }
 
-                              final foldersCreateData = createFoldersRecordData(
-                                owner: currentUserReference,
-                                parentFolder: currentUserDocument!.rootFolder,
-                              );
+                              await UsersRecord.collection
+                                  .doc(user.uid)
+                                  .update(createUsersRecordData(
+                                    english: true,
+                                  ));
+
                               var foldersRecordReference =
                                   FoldersRecord.createDoc(
                                       currentUserReference!);
                               await foldersRecordReference
-                                  .set(foldersCreateData);
+                                  .set(createFoldersRecordData(
+                                owner: currentUserReference,
+                                parentFolder: currentUserDocument?.rootFolder,
+                              ));
                               _model.folder = FoldersRecord.getDocumentFromData(
-                                  foldersCreateData, foldersRecordReference);
+                                  createFoldersRecordData(
+                                    owner: currentUserReference,
+                                    parentFolder:
+                                        currentUserDocument?.rootFolder,
+                                  ),
+                                  foldersRecordReference);
 
-                              final usersUpdateData = createUsersRecordData(
-                                rootFolder: _model.folder!.reference,
-                              );
                               await currentUserReference!
-                                  .update(usersUpdateData);
+                                  .update(createUsersRecordData(
+                                rootFolder: _model.folder!.reference,
+                              ));
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('HomePage', context.mounted);
 
                               setState(() {});
                             },
@@ -419,27 +431,29 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 return;
                               }
 
-                              final foldersCreateData = createFoldersRecordData(
-                                owner: currentUserReference,
-                                parentFolder: currentUserDocument!.rootFolder,
-                              );
                               var foldersRecordReference =
                                   FoldersRecord.createDoc(
                                       currentUserReference!);
                               await foldersRecordReference
-                                  .set(foldersCreateData);
+                                  .set(createFoldersRecordData(
+                                owner: currentUserReference,
+                                parentFolder: currentUserDocument?.rootFolder,
+                              ));
                               _model.folderGoogle =
                                   FoldersRecord.getDocumentFromData(
-                                      foldersCreateData,
+                                      createFoldersRecordData(
+                                        owner: currentUserReference,
+                                        parentFolder:
+                                            currentUserDocument?.rootFolder,
+                                      ),
                                       foldersRecordReference);
 
-                              final usersUpdateData = createUsersRecordData(
-                                rootFolder: _model.folderGoogle!.reference,
-                              );
                               await currentUserReference!
-                                  .update(usersUpdateData);
+                                  .update(createUsersRecordData(
+                                rootFolder: _model.folderGoogle!.reference,
+                              ));
 
-                              context.goNamedAuth('HomePage', mounted);
+                              context.goNamedAuth('HomePage', context.mounted);
 
                               setState(() {});
                             },

@@ -23,6 +23,7 @@ import 'package:provider/provider.dart';
 class ProfileModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for Sidebar component.
   late SidebarModel sidebarModel;
   // Model for BackButton component.
@@ -47,12 +48,14 @@ class ProfileModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     sidebarModel.dispose();
     backButtonModel.dispose();
     yourNameController?.dispose();
     navBarFlotingModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

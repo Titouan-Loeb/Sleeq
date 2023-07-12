@@ -100,10 +100,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         buttonSize: 60.0,
                         icon: FaIcon(
                           FontAwesomeIcons.home,
-                          color: ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                      'launch://sleeq.app/') ||
-                                  ('launch://sleeq.app${GoRouter.of(context).location}' ==
-                                      'launch://sleeq.app/homePage')
+                          color: FFAppState().currentPage == 'HomePage'
                               ? FlutterFlowTheme.of(context).tertiary
                               : FlutterFlowTheme.of(context).primaryText,
                           size: 25.0,
@@ -111,10 +108,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_home_ICN_ON_TAP');
-                          if (('launch://sleeq.app${GoRouter.of(context).location}' !=
-                                  'launch://sleeq.app/') &&
-                              ('launch://sleeq.app${GoRouter.of(context).location}' !=
-                                  'launch://sleeq.app/homePage')) {
+                          if (FFAppState().currentPage != 'HomePage') {
                             setState(() {
                               FFAppState().selectedFolders = [];
                               FFAppState().isSelectionMode = false;
@@ -161,11 +155,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     isDismissible: false,
                                     enableDrag: false,
                                     context: context,
-                                    builder: (bottomSheetContext) {
+                                    builder: (context) {
                                       return Padding(
                                         padding:
-                                            MediaQuery.of(bottomSheetContext)
-                                                .viewInsets,
+                                            MediaQuery.viewInsetsOf(context),
                                         child: AddModalWidget(
                                           currentFolder: widget.currentFolder,
                                         ),
@@ -186,18 +179,15 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         buttonSize: 60.0,
                         icon: Icon(
                           Icons.settings,
-                          color:
-                              'launch://sleeq.app${GoRouter.of(context).location}' ==
-                                      'launch://sleeq.app/settings'
-                                  ? FlutterFlowTheme.of(context).tertiary
-                                  : FlutterFlowTheme.of(context).primaryText,
+                          color: FFAppState().currentPage == 'Settings'
+                              ? FlutterFlowTheme.of(context).tertiary
+                              : FlutterFlowTheme.of(context).primaryText,
                           size: 30.0,
                         ),
                         onPressed: () async {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_settings_ICN_ON_TAP');
-                          if ('launch://sleeq.app${GoRouter.of(context).location}' !=
-                              'launch://sleeq.app/settings') {
+                          if (FFAppState().currentPage != 'Settings') {
                             context.pushNamed(
                               'Settings',
                               extra: <String, dynamic>{

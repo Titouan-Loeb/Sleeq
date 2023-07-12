@@ -159,17 +159,15 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                   onPressed: () async {
                     logFirebaseEvent('RENAME_FOLDER_DIALOG_CONFIRM_BTN_ON_TAP');
                     if (widget.isFolder!) {
-                      final foldersUpdateData = createFoldersRecordData(
+                      await widget.folderId!.update(createFoldersRecordData(
                         name: _model.textController.text,
-                      );
-                      await widget.folderId!.update(foldersUpdateData);
+                      ));
                       Navigator.pop(context);
                       return;
                     } else {
-                      final filesUpdateData = createFilesRecordData(
+                      await widget.fileId!.update(createFilesRecordData(
                         name: _model.textController.text,
-                      );
-                      await widget.fileId!.update(filesUpdateData);
+                      ));
                       Navigator.pop(context);
                       return;
                     }

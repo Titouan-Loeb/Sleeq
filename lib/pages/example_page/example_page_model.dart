@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 class ExamplePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for Sidebar component.
   late SidebarModel sidebarModel;
   // Model for NavBarFloting component.
@@ -22,10 +23,12 @@ class ExamplePageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     sidebarModel.dispose();
     navBarFlotingModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

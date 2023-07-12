@@ -24,7 +24,6 @@ class _LoginWidgetState extends State<LoginWidget> {
   late LoginModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -41,7 +40,6 @@ class _LoginWidgetState extends State<LoginWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -51,13 +49,14 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     return Title(
         title: 'Login',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                 child: Column(
@@ -95,6 +94,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent(
                                   'LOGIN_PAGE_Container_xh3ij00h_ON_TAP');
@@ -384,7 +387,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                     context.pushNamed(
                                       'ForgotPassword',
-                                      queryParams: {
+                                      queryParameters: {
                                         'defaultEmail': serializeParam(
                                           _model.emailTextController.text,
                                           ParamType.String,
@@ -460,7 +463,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           }
 
                                           context.goNamedAuth(
-                                              'HomePage', mounted);
+                                              'HomePage', context.mounted);
                                         },
                                   text: FFLocalizations.of(context).getText(
                                     'xt2b21lg' /* Login */,
@@ -529,7 +532,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       return;
                                     }
 
-                                    context.goNamedAuth('HomePage', mounted);
+                                    context.goNamedAuth(
+                                        'HomePage', context.mounted);
                                   },
                                 ),
                               ),

@@ -62,6 +62,10 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
           child: Stack(
             children: [
               InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onLongPress: () async {
                   logFirebaseEvent('FILE_BUTTON_solidFileAlt_ICN_ON_LONG_PRE');
                   FFAppState().update(() {
@@ -101,7 +105,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                     } else {
                       context.pushNamed(
                         'file',
-                        queryParams: {
+                        queryParameters: {
                           'file': serializeParam(
                             widget.file,
                             ParamType.Document,

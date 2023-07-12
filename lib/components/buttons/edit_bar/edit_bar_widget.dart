@@ -1,6 +1,8 @@
+import '/components/navigation_tree_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +10,12 @@ import 'edit_bar_model.dart';
 export 'edit_bar_model.dart';
 
 class EditBarWidget extends StatefulWidget {
-  const EditBarWidget({Key? key}) : super(key: key);
+  const EditBarWidget({
+    Key? key,
+    required this.currentFolder,
+  }) : super(key: key);
+
+  final DocumentReference? currentFolder;
 
   @override
   _EditBarWidgetState createState() => _EditBarWidgetState();
@@ -46,30 +53,67 @@ class _EditBarWidgetState extends State<EditBarWidget> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Material(
-          color: Colors.transparent,
-          elevation: 4.0,
-          shape: const CircleBorder(),
-          child: Container(
-            width: 50.0,
-            height: 50.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30.0,
-              borderWidth: 1.0,
-              buttonSize: 50.0,
-              fillColor: FlutterFlowTheme.of(context).tertiary,
-              icon: Icon(
-                Icons.drive_file_move,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 30.0,
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              logFirebaseEvent('EDIT_BAR_COMP_Container_wc382zl1_ON_TAP');
+              await showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                enableDrag: false,
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: NavigationTreeWidget(),
+                  );
+                },
+              ).then((value) => setState(() {}));
+            },
+            child: Material(
+              color: Colors.transparent,
+              elevation: 4.0,
+              shape: const CircleBorder(),
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 50.0,
+                  fillColor: FlutterFlowTheme.of(context).tertiary,
+                  icon: Icon(
+                    Icons.drive_file_move,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'EDIT_BAR_COMP_drive_file_move_ICN_ON_TAP');
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: NavigationTreeWidget(),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
+                  },
+                ),
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
             ),
           ),
         ),
@@ -92,17 +136,60 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 buttonSize: 50.0,
                 fillColor: FlutterFlowTheme.of(context).tertiary,
                 icon: Icon(
-                  Icons.file_download,
+                  Icons.file_copy,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 30.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  logFirebaseEvent('EDIT_BAR_COMP_file_copy_ICN_ON_TAP');
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    enableDrag: false,
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.viewInsetsOf(context),
+                        child: NavigationTreeWidget(),
+                      );
+                    },
+                  ).then((value) => setState(() {}));
                 },
               ),
             ),
           ),
         ),
+        if (false)
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+            child: Material(
+              color: Colors.transparent,
+              elevation: 4.0,
+              shape: const CircleBorder(),
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 50.0,
+                  fillColor: FlutterFlowTheme.of(context).tertiary,
+                  icon: Icon(
+                    Icons.file_download,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () {
+                    print('IconButton pressed ...');
+                  },
+                ),
+              ),
+            ),
+          ),
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
           child: Material(

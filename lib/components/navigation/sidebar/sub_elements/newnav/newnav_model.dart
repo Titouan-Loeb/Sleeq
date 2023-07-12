@@ -29,6 +29,7 @@ class NewnavModel extends FlutterFlowModel {
     sleeqLogoModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

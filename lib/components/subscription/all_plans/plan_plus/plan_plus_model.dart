@@ -87,6 +87,7 @@ class PlanPlusModel extends FlutterFlowModel {
     featureDescriptionModel14.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

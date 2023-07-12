@@ -49,6 +49,10 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
       child: InkWell(
+        splashColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTap: () async {
           logFirebaseEvent('COLOR_ITEM_Container_vpbc6x5c_ON_TAP');
           FFAppState().update(() {
@@ -57,7 +61,7 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
         },
         child: Container(
           width: widget.color == FFAppState().selectedColor ? 25.0 : 15.0,
-          height: MediaQuery.of(context).size.width * 0.05,
+          height: MediaQuery.sizeOf(context).width * 0.05,
           decoration: BoxDecoration(
             color: widget.color,
             shape: BoxShape.circle,

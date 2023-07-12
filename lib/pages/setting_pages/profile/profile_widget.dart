@@ -34,7 +34,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
   late ProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'containerOnActionTriggerAnimation': AnimationInfo(
@@ -58,6 +57,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
     _model = createModel(context, () => ProfileModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Profile'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PROFILE_PAGE_Profile_ON_INIT_STATE');
+      setState(() {
+        FFAppState().currentPage = 'Profile';
+      });
+    });
+
     _model.yourNameController ??= TextEditingController();
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -73,7 +80,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -83,13 +89,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
 
     return Title(
         title: 'Profile',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -146,6 +153,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   2.0, 2.0, 2.0, 2.0),
                                           child: AuthUserStreamWidget(
                                             builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'PROFILE_PAGE_Image_g942rkoj_ON_TAP');
@@ -319,6 +331,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 4.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'PROFILE_PAGE_Container_zbuskyi4_ON_TAP');
@@ -383,6 +399,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'PROFILE_PAGE_Container_j3l3qrm4_ON_TAP');
@@ -587,6 +607,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               _model.isDataUploading = true);
                                           var selectedUploadedFiles =
                                               <FFUploadedFile>[];
+
                                           var downloadUrls = <String>[];
                                           try {
                                             showUploadMessage(
@@ -605,6 +626,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                               ?.height,
                                                           width: m.dimensions
                                                               ?.width,
+                                                          blurHash: m.blurHash,
                                                         ))
                                                     .toList();
 
@@ -642,12 +664,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                           }
                                         }
 
-                                        final usersUpdateData =
-                                            createUsersRecordData(
-                                          photoUrl: _model.uploadedFileUrl,
-                                        );
                                         await currentUserReference!
-                                            .update(usersUpdateData);
+                                            .update(createUsersRecordData(
+                                          photoUrl: _model.uploadedFileUrl,
+                                        ));
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'zcqg28jj' /* Change photo */,
@@ -693,13 +713,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         logFirebaseEvent(
                                             'PROFILE_PAGE_SAVE_CHANGES_BTN_ON_TAP');
 
-                                        final usersUpdateData =
-                                            createUsersRecordData(
+                                        await currentUserReference!
+                                            .update(createUsersRecordData(
                                           displayName:
                                               _model.yourNameController.text,
-                                        );
-                                        await currentUserReference!
-                                            .update(usersUpdateData);
+                                          english: FFLocalizations.of(context)
+                                                  .languageCode ==
+                                              'en',
+                                        ));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -762,6 +783,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   logFirebaseEvent(
                                       'PROFILE_PAGE_Text_wm8w41nb_ON_TAP');
@@ -770,7 +795,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                   GoRouter.of(context).clearRedirectLocation();
 
                                   context.goNamedAuth(
-                                      'TestOnBoarding', mounted);
+                                      'TestOnBoarding', context.mounted);
                                 },
                                 child: Text(
                                   FFLocalizations.of(context).getText(

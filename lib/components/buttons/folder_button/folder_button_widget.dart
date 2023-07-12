@@ -14,9 +14,9 @@ class FolderButtonWidget extends StatefulWidget {
   const FolderButtonWidget({
     Key? key,
     Color? color,
-    this.name,
-    this.path,
-    this.previousFolderNames,
+    required this.name,
+    required this.path,
+    required this.previousFolderNames,
   })  : this.color = color ?? const Color(0xFFFF0000),
         super(key: key);
 
@@ -65,6 +65,10 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_LONG');
                 FFAppState().update(() {
@@ -104,11 +108,13 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
 
                     context.pushNamed(
                       'folders',
-                      queryParams: {
+                      pathParameters: {
                         'currentFolder': serializeParam(
                           widget.path,
                           ParamType.DocumentReference,
                         ),
+                      }.withoutNulls,
+                      queryParameters: {
                         'folderNames': serializeParam(
                           functions.addFolderToList(
                               widget.previousFolderNames!.toList(),
@@ -132,6 +138,10 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
               ),
             ),
             InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_Text_t15wzz6l_ON_LONG_PRES');
                 await showModalBottomSheet(
@@ -140,9 +150,9 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                   barrierColor: Color(0x00000000),
                   enableDrag: false,
                   context: context,
-                  builder: (bottomSheetContext) {
+                  builder: (context) {
                     return Padding(
-                      padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                      padding: MediaQuery.viewInsetsOf(context),
                       child: RenameFolderDialogWidget(
                         folderId: widget.path,
                         isFolder: true,

@@ -10,8 +10,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'account_model.dart';
 export 'account_model.dart';
@@ -27,7 +29,6 @@ class _AccountWidgetState extends State<AccountWidget> {
   late AccountModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -35,6 +36,14 @@ class _AccountWidgetState extends State<AccountWidget> {
     _model = createModel(context, () => AccountModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Account'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ACCOUNT_PAGE_Account_ON_INIT_STATE');
+      setState(() {
+        FFAppState().currentPage = 'Account';
+      });
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -42,7 +51,6 @@ class _AccountWidgetState extends State<AccountWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -52,13 +60,14 @@ class _AccountWidgetState extends State<AccountWidget> {
 
     return Title(
         title: 'Account',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
+              top: true,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -118,6 +127,14 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                   .fromSTEB(2.0, 2.0, 2.0, 2.0),
                                               child: AuthUserStreamWidget(
                                                 builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
                                                   onTap: () async {
                                                     logFirebaseEvent(
                                                         'ACCOUNT_PAGE_Image_9glj39yd_ON_TAP');
@@ -270,9 +287,83 @@ class _AccountWidgetState extends State<AccountWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 5.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'py7rjozc' /* Storage */,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleSmall,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    child: LinearPercentIndicator(
+                                      percent: 0.02,
+                                      lineHeight: 12.0,
+                                      animation: true,
+                                      progressColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                      padding: EdgeInsets.zero,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'kxhmi35j' /* 0 MB / 250 MB */,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily),
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 12.0, 16.0, 0.0),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width *
+                                      width: MediaQuery.sizeOf(context).width *
                                           1.0,
                                       height: 52.0,
                                       constraints: BoxConstraints(
@@ -286,11 +377,27 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         shape: BoxShape.rectangle,
                                       ),
                                       child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           logFirebaseEvent(
                                               'ACCOUNT_PAGE_Row_v0s40zap_ON_TAP');
 
-                                          context.pushNamed('PlanSelection');
+                                          context.pushNamed(
+                                            'PlanSelection',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -308,10 +415,10 @@ class _AccountWidgetState extends State<AccountWidget> {
                                             ),
                                             Expanded(
                                               child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    1.0,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
                                                 height: 100.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
@@ -380,15 +487,16 @@ class _AccountWidgetState extends State<AccountWidget> {
                                           isDismissible: false,
                                           enableDrag: false,
                                           context: context,
-                                          builder: (bottomSheetContext) {
+                                          builder: (context) {
                                             return GestureDetector(
-                                              onTap: () => FocusScope.of(
-                                                      context)
-                                                  .requestFocus(_unfocusNode),
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode),
                                               child: Padding(
-                                                padding: MediaQuery.of(
-                                                        bottomSheetContext)
-                                                    .viewInsets,
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
                                                 child:
                                                     ResetPasswordPopupWidget(),
                                               ),
@@ -400,7 +508,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         '4ffv07yn' /* Reset password */,
                                       ),
                                       options: FFButtonOptions(
-                                        width: 170.0,
+                                        width: double.infinity,
                                         height: 60.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
@@ -439,6 +547,64 @@ class _AccountWidgetState extends State<AccountWidget> {
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         logFirebaseEvent(
+                                            'ACCOUNT_PAGE_SEND_FEEDBACK_BTN_ON_TAP');
+
+                                        context.pushNamed(
+                                          'feedback',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .bottomToTop,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        'gr36s6e9' /* Send feedback */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 60.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily),
+                                            ),
+                                        elevation: 4.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 20.0, 10.0, 0.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        logFirebaseEvent(
                                             'ACCOUNT_PAGE_DELETE_ACCOUNT_BTN_ON_TAP');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
@@ -447,15 +613,16 @@ class _AccountWidgetState extends State<AccountWidget> {
                                           isDismissible: false,
                                           enableDrag: false,
                                           context: context,
-                                          builder: (bottomSheetContext) {
+                                          builder: (context) {
                                             return GestureDetector(
-                                              onTap: () => FocusScope.of(
-                                                      context)
-                                                  .requestFocus(_unfocusNode),
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode),
                                               child: Padding(
-                                                padding: MediaQuery.of(
-                                                        bottomSheetContext)
-                                                    .viewInsets,
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
                                                 child:
                                                     DeleteAccountPopupWidget(),
                                               ),
@@ -467,7 +634,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         'vo5wj9ol' /* Delete account */,
                                       ),
                                       options: FFButtonOptions(
-                                        width: 170.0,
+                                        width: double.infinity,
                                         height: 60.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),

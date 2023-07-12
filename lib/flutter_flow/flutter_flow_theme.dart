@@ -172,7 +172,7 @@ abstract class FlutterFlowTheme {
 }
 
 DeviceSize getDeviceSize(BuildContext context) {
-  final width = MediaQuery.of(context).size.width;
+  final width = MediaQuery.sizeOf(context).width;
   if (width < 479) {
     return DeviceSize.mobile;
   } else if (width < 991) {
@@ -480,9 +480,12 @@ class TabletTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => '';
+  String get bodyLargeFamily => 'Lexend';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Roboto',
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
       );
   String get bodyMediumFamily => 'DM Sans';
   TextStyle get bodyMedium => GoogleFonts.getFont(
@@ -589,9 +592,12 @@ class DesktopTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
       );
-  String get bodyLargeFamily => '';
+  String get bodyLargeFamily => 'Lexend';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Roboto',
+        'Lexend',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
       );
   String get bodyMediumFamily => 'DM Sans';
   TextStyle get bodyMedium => GoogleFonts.getFont(

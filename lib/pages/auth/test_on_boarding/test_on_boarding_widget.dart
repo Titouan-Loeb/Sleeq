@@ -22,11 +22,6 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
   late TestOnBoardingModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   @override
   void initState() {
@@ -51,7 +46,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
 
     return Title(
         title: 'TestOnBoarding',
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -99,7 +94,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                   Expanded(
                     child: Container(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: MediaQuery.sizeOf(context).height * 0.6,
                       child: Stack(
                         children: [
                           Padding(

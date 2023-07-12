@@ -99,7 +99,7 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
 
-                        context.goNamedAuth('TestOnBoarding', mounted);
+                        context.goNamedAuth('TestOnBoarding', context.mounted);
                       },
                       text: FFLocalizations.of(context).getText(
                         '8k8mcj7g' /* Confirm */,
