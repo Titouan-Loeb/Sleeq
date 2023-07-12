@@ -741,7 +741,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Alto',
       'fr': 'Haut',
     },
-    'vhw17l2r': {
+    'olkdr08i': {
       'en': 'Low',
       'es': '',
       'fr': '',

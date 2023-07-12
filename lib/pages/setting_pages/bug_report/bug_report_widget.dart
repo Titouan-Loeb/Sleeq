@@ -345,7 +345,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                         FormFieldController<List<String>>(
                                   [
                                     FFLocalizations.of(context).getText(
-                                      'vhw17l2r' /* Low */,
+                                      'olkdr08i' /* Low */,
                                     )
                                   ],
                                 ),
