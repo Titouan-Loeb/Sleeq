@@ -55,6 +55,7 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
         highlightColor: Colors.transparent,
         onTap: () async {
           logFirebaseEvent('COLOR_ITEM_Container_vpbc6x5c_ON_TAP');
+          logFirebaseEvent('Container_update_app_state');
           FFAppState().update(() {
             FFAppState().selectedColor = widget.color!;
           });

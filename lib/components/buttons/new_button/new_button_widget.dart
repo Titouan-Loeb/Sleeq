@@ -65,6 +65,7 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('NEW_BUTTON_Container_g23u7i2l_ON_TAP');
+              logFirebaseEvent('Container_bottom_sheet');
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,

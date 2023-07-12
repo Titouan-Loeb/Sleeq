@@ -110,8 +110,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'yjm0b1dl': {
       'en': 'Grid View',
-      'es': 'Cadrícula',
-      'fr': 'Grille',
+      'es': 'Vista en cuadrícula',
+      'fr': 'Vue Grille',
     },
     'xbzplc4s': {
       'en': 'Home',
@@ -272,8 +272,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9z09qn2f': {
       'en': 'About Sleeq',
-      'es': 'Sobre Sleeq',
-      'fr': 'A propos de Sleeq',
+      'es': 'Acerca de Sleeq',
+      'fr': 'À propos de Sleeq',
     },
     'wurg3p18': {
       'en': 'Home',
@@ -285,8 +285,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'w9d5ah2c': {
       'en': 'Grid View',
-      'es': '',
-      'fr': '',
+      'es': 'Vista en cuadrícula',
+      'fr': 'Vue Grille',
     },
     'n0ze2vmk': {
       'en': 'Home',
@@ -360,13 +360,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'py7rjozc': {
       'en': 'Storage',
-      'es': 'almacenamiento',
+      'es': 'Almacenamiento',
       'fr': 'Stockage',
     },
     'kxhmi35j': {
       'en': '0 MB / 250 MB',
       'es': '0 MB / 250 MB',
-      'fr': '0 MB / 250 MB',
+      'fr': '0 Mo / 250 Mo',
     },
     'eakvdt9z': {
       'en': 'Subscription plan',
@@ -378,15 +378,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Restablecer la contraseña',
       'fr': 'Réinitialiser le mot de passe',
     },
-    'gr36s6e9': {
-      'en': 'Send feedback',
-      'es': 'Borrar cuenta',
-      'fr': 'Supprimer le compte',
-    },
     'vo5wj9ol': {
       'en': 'Delete account',
       'es': 'Borrar cuenta',
       'fr': 'Supprimer le compte',
+    },
+    'nc10hive': {
+      'en': 'Send feedback',
+      'es': 'Enviar comentarios',
+      'fr': 'Envoyer des commentaires',
+    },
+    '75lt2syf': {
+      'en': 'Report a bug',
+      'es': 'Enviar comentarios',
+      'fr': 'Envoyer des commentaires',
     },
     'zp5l6n6u': {
       'en': 'Settings',
@@ -431,7 +436,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'tq6yi8cb': {
       'en': 'Subscribe',
-      'es': 'Suscríbase',
+      'es': 'Suscribir',
       'fr': 'S\'abonner',
     },
     'etkn3ot2': {
@@ -457,60 +462,60 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qojrk86o': {
       'en': 'Our Project',
-      'es': 'Nuestro Proyecto',
-      'fr': 'Notre Projet',
+      'es': 'Nuestro proyecto',
+      'fr': 'Notre projet',
     },
     '0filyxh2': {
       'en':
           'We are a team of 9 developers incubated at EPITECH (Paris Graduate School of Digital Innovation).\nSleeq originated within our Masters program and has been continiously in development since November 2021.\nThe pandemic taught us our world is getting increasingly digital out of need.\n\nWe at Sleeq want that change to be as simple as digitalizing the full contents of your wallet while ensuring you retain the safety and comfort feeling of having everything everywhere with you.\n\nSleek. Reliable. Secure.\nSleeq replace the physical wallet with a digital wallet which can store all the document you want in one place or several place like in your phone or your computer\nThanks to Sleeq it is possible to transfer your documents securely and quickly between devices of different platforms.',
       'es':
-          'Somos un equipo de 9 desarrolladores incubados en EPITECH (Paris Graduate School of Digital Innovation).\nSleeq se originó dentro de nuestro programa de maestría y ha estado continuamente en desarrollo desde noviembre de 2021.\nLa pandemia nos enseñó que nuestro mundo es cada vez más digital por necesidad.\n\nEn Sleeq queremos que ese cambio sea tan sencillo como digitalizar todo el contenido de tu cartera, garantizando al mismo tiempo que conservas la sensación de seguridad y comodidad de llevarlo todo contigo a todas partes.\n\nElegante. Fiable. Segura.\nSleeq sustituye la cartera física por una cartera digital que puede almacenar todos los documentos que desee en un solo lugar o en varios lugares como en su teléfono o en su ordenador.\nGracias a Sleeq es posible transferir tus documentos de forma segura y rápida entre dispositivos de diferentes plataformas.',
+          'Somos un equipo de 9 desarrolladores incubados en EPITECH (Escuela Superior de Innovación Digital de París).\nSleeq se originó dentro de nuestro programa de Maestría y ha estado en desarrollo continuo desde noviembre de 2021.\nLa pandemia nos enseñó que nuestro mundo se está volviendo cada vez más digital por necesidad.\n\nEn Sleeq queremos que ese cambio sea tan simple como digitalizar todo el contenido de su billetera y al mismo tiempo garantizarle la sensación de seguridad y comodidad de tener todo con usted en todas partes.\n\nPulcro. Confiable. Seguro.\nSleeq reemplaza la billetera física con una billetera digital que puede almacenar todos los documentos que desee en un lugar o en varios lugares, como en su teléfono o computadora.\nGracias a Sleeq es posible transferir tus documentos de forma segura y rápida entre dispositivos de diferentes plataformas.',
       'fr':
-          'Nous sommes une équipe de 9 développeurs incubés à l\'EPITECH (Paris Graduate School of Digital Innovation).\nSleeq a vu le jour au sein de notre programme de master et est en développement continu depuis novembre 2021.\nLa pandémie nous a appris que notre monde devient de plus en plus numérique par nécessité.\n\nChez Sleeq, nous voulons que ce changement soit aussi simple que de numériser le contenu complet de votre portefeuille tout en vous assurant de conserver le sentiment de sécurité et de confort d\'avoir tout partout avec vous.\n\nÉlégant. Fiable. Sûr.\nSleeq remplace le portefeuille physique par un portefeuille numérique qui peut stocker tous les documents que vous voulez à un ou plusieurs endroits comme dans votre téléphone ou votre ordinateur.\nGrâce à Sleeq, il est possible de transférer vos documents en toute sécurité et rapidement entre des appareils de différentes plateformes.',
+          'Nous sommes une équipe de 9 développeurs incubés à l\'EPITECH (Paris Graduate School of Digital Innovation).\nSleeq est né au sein de notre programme de maîtrise et est en développement continu depuis novembre 2021.\nLa pandémie nous a appris que notre monde devient de plus en plus numérique par nécessité.\n\nChez Sleeq, nous voulons que ce changement soit aussi simple que de numériser tout le contenu de votre portefeuille tout en vous assurant de conserver le sentiment de sécurité et de confort d\'avoir tout partout avec vous.\n\nLisse. Fiable. Sécurisé.\nSleeq remplace le portefeuille physique par un portefeuille numérique qui peut stocker tous les documents que vous voulez à un ou plusieurs endroits comme dans votre téléphone ou votre ordinateur\nGrâce à Sleeq, il est possible de transférer vos documents en toute sécurité et rapidement entre des appareils de différentes plateformes.',
     },
     'j7x640he': {
       'en': 'Our Team',
       'es': 'Nuestro equipo',
-      'fr': 'Notre Équipe',
+      'fr': 'Notre équipe',
     },
     'uwy1pkya': {
       'en': 'Mathieu\nBretrandy',
       'es': 'Mathieu\nBretrandy',
-      'fr': 'Mathieu\nBretrandy',
+      'fr': 'Matthieu\nBretagne',
     },
     '2sht2n2s': {
       'en': 'Ilan\nBenarroche',
-      'es': 'Ilan\nBenarroche',
-      'fr': 'Ilan\nBenarroche',
+      'es': 'Ilán\nBenarroche',
+      'fr': 'Ilan\nBénarroche',
     },
     'gdigf6jw': {
       'en': 'Julien\nFumey',
-      'es': 'Julien\nFumey',
-      'fr': 'Julien\nFumey',
+      'es': 'julián\nFumey',
+      'fr': 'Julien\nFumée',
     },
     'owqht94o': {
       'en': 'Arsene\nMathieu',
-      'es': 'Arsene\nMathieu',
-      'fr': 'Arsene\nMathieu',
+      'es': 'Arsenio\nMathieu',
+      'fr': 'Arsène\nMatthieu',
     },
     'a0gj0cad': {
       'en': 'Hugo\nDomingues',
-      'es': 'Hugo\nDomingues',
+      'es': 'Hugo\ndomingos',
       'fr': 'Hugo\nDomingues',
     },
     '1dft3co8': {
       'en': 'Titouan\nLoeb',
-      'es': 'Titouan\nLoeb',
+      'es': 'Tituán\nLoeb',
       'fr': 'Titouan\nLoeb',
     },
     'muka298r': {
       'en': 'Thomas\nCamlong',
-      'es': 'Thomas\nCamlong',
+      'es': 'Tomás\ncamlong',
       'fr': 'Thomas\nCamlong',
     },
     '3dp7q37p': {
       'en': 'Vasco\nRibeiro',
-      'es': 'Vasco\nRibeiro',
+      'es': 'vasco\nRibeiro',
       'fr': 'Vasco\nRibeiro',
     },
     'j9gng7ma': {
@@ -523,23 +528,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '90d8n39p': {
       'en': 'Informations',
-      'es': 'información',
+      'es': 'Informaciones',
       'fr': 'Informations',
     },
     'a1iqw8rl': {
       'en': 'Name :',
       'es': 'Nombre :',
-      'fr': 'Nom : ',
+      'fr': 'Nom :',
     },
     'cqydfgnk': {
       'en': 'File Name',
-      'es': 'Nombre de documento',
-      'fr': 'Nom du Fichier',
+      'es': 'Nombre del archivo',
+      'fr': 'Nom de fichier',
     },
     'uiuo94s4': {
       'en': 'Type :',
       'es': 'Tipo :',
-      'fr': 'Type : ',
+      'fr': 'Taper :',
     },
     '1nb12l3g': {
       'en': '.pdf',
@@ -548,135 +553,234 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3uh5ik4j': {
       'en': 'Size :',
-      'es': 'Talla :',
+      'es': 'Tamaño :',
       'fr': 'Taille :',
     },
     '0hsomtgg': {
       'en': '20 MB',
       'es': '20 MB',
-      'fr': '20 MB',
+      'fr': '20 Mo',
     },
     'vn5bzht6': {
       'en': 'Creation Date',
-      'es': 'Fecha de creación :',
-      'fr': 'Date de création :',
+      'es': 'Fecha de creación',
+      'fr': 'Date de création',
     },
     'ycbwmqug': {
       'en': 'May 23, 2023 - 14:33',
-      'es': '18 de mayo de 2023 - 14:33',
+      'es': '23 mayo 2023 - 14:33',
       'fr': '23 mai 2023 - 14:33',
     },
     'otyglnx0': {
       'en': 'Home',
-      'es': 'Inicio',
-      'fr': 'Accueil',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // successfulPayment
   {
     'osa4t63e': {
       'en': 'Payment successful',
-      'es': 'Pago correcto',
+      'es': 'Pago exitoso',
       'fr': 'Paiement réussi',
     },
     'gi4un8ri': {
       'en': 'Go back to home page',
-      'es': 'Volver a la página de inicio',
-      'fr': 'Retour à la page d\'accueil',
+      'es': 'Volver a la página principal',
+      'fr': 'Retournez à la page d\'accueil',
     },
     'qgnp7enp': {
       'en': 'Home',
-      'es': 'Inicio',
-      'fr': 'Accueil',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // cancelPayment
   {
     'yrbqd3sp': {
       'en': 'Operation canceled',
-      'es': 'Cancelar con éxito',
-      'fr': 'Annulation réussie',
+      'es': 'Operación cancelada',
+      'fr': 'Opération annulée',
     },
     'izx9kxnr': {
       'en': 'Try again',
-      'es': 'Inténtalo de nuevo',
-      'fr': 'Réessayer',
+      'es': 'Intentar otra vez',
+      'fr': 'Essayer à nouveau',
     },
     'vamm422r': {
       'en': 'Go back to home page',
-      'es': 'Volver a la página de inicio',
-      'fr': 'Retour à la page d\'accueil',
+      'es': 'Volver a la página principal',
+      'fr': 'Retournez à la page d\'accueil',
     },
     'rqlcinw0': {
       'en': 'Home',
-      'es': 'Inicio',
-      'fr': 'Accueil',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // feedback
   {
     'wwoo368v': {
       'en': 'Feedback Form',
-      'es': '',
-      'fr': '',
+      'es': 'Formulario de comentarios',
+      'fr': 'Formulaire de commentaires',
     },
     '13ywdpbd': {
       'en': 'Please provide your feedback on the Sleeq beta program.',
-      'es': '',
-      'fr': '',
+      'es': 'Envíe sus comentarios sobre el programa beta de Sleeq.',
+      'fr':
+          'Veuillez nous faire part de vos commentaires sur le programme bêta de Sleeq.',
     },
     '3udtpuuu': {
       'en': 'Rate the following points:',
-      'es': '',
-      'fr': '',
+      'es': 'Califica los siguientes puntos:',
+      'fr': 'Évaluez les points suivants :',
     },
     'uix9u6au': {
       'en': 'Ease of Use',
-      'es': '',
-      'fr': '',
+      'es': 'Facilidad de uso',
+      'fr': 'Facilité d\'utilisation',
     },
     'fyczl56s': {
       'en': 'Quality of Features',
-      'es': '',
-      'fr': '',
+      'es': 'Calidad de las características',
+      'fr': 'Qualité des fonctionnalités',
     },
     'g5ceztgx': {
       'en': 'Bug-Free App',
-      'es': '',
-      'fr': '',
+      'es': 'Aplicación sin errores',
+      'fr': 'Application sans bogue',
     },
     '8ffs53fz': {
       'en': 'Price of Subscription Models',
-      'es': '',
-      'fr': '',
+      'es': 'Precio de los modelos de suscripción',
+      'fr': 'Prix ​​des modèles d\'abonnement',
     },
     'xe1lwdot': {
       'en': 'Have you considered paying for premium?',
-      'es': '',
-      'fr': '',
+      'es': '¿Ha considerado pagar la prima?',
+      'fr': 'Avez-vous pensé à payer une prime ?',
     },
     'bri2xpoq': {
       'en': 'Reason for not considering premium',
-      'es': '',
-      'fr': '',
+      'es': 'Razón para no considerar la prima',
+      'fr': 'Raison de ne pas considérer la prime',
     },
     '5085jd2h': {
       'en': 'Enter reason here...',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca el motivo aquí...',
+      'fr': 'Entrez la raison ici...',
     },
     'gxykgt96': {
       'en': 'Other Comments',
-      'es': '',
-      'fr': '',
+      'es': 'Otros comentarios',
+      'fr': 'Autres commentaires',
     },
     'ycq6iivk': {
       'en': 'Enter any additional comments here...',
-      'es': '',
-      'fr': '',
+      'es': 'Ingrese cualquier comentario adicional aquí...',
+      'fr': 'Entrez tout commentaire supplémentaire ici...',
     },
     'mc303noe': {
       'en': 'Submit',
+      'es': 'Entregar',
+      'fr': 'Soumettre',
+    },
+  },
+  // bugReport
+  {
+    'zezqvldl': {
+      'en': 'Feedback Form',
+      'es': 'Formulario de comentarios',
+      'fr': 'Formulaire de commentaires',
+    },
+    'oioc8hxs': {
+      'en': 'Enter title',
+      'es': '',
+      'fr': '',
+    },
+    'wmrrsmf6': {
+      'en': 'Bug Description',
+      'es': '',
+      'fr': '',
+    },
+    '38y31tt0': {
+      'en': 'Enter bug description...',
+      'es': '',
+      'fr': '',
+    },
+    'y77a2lsp': {
+      'en': 'Steps to reproduce',
+      'es': '',
+      'fr': '',
+    },
+    '39wcsyu9': {
+      'en': '1 - Open the app\n2 - Upload a file\n3 - Phone explodes',
+      'es': '',
+      'fr': '',
+    },
+    '4vwbugpv': {
+      'en': 'Upload Screenshot',
+      'es': '',
+      'fr': '',
+    },
+    'p7ngh8ou': {
+      'en': 'Priority',
+      'es': '',
+      'fr': '',
+    },
+    'u2jyt38b': {
+      'en': 'Low',
+      'es': '',
+      'fr': '',
+    },
+    'qjwb1x9x': {
+      'en': 'Medium',
+      'es': '',
+      'fr': '',
+    },
+    'gt3hx7gp': {
+      'en': 'High',
+      'es': '',
+      'fr': '',
+    },
+    'xzwcjtce': {
+      'en': 'Notify me of bug fixing progress',
+      'es': '',
+      'fr': '',
+    },
+    'enbd6m6b': {
+      'en': 'Submit',
+      'es': 'Entregar',
+      'fr': 'Soumettre',
+    },
+    '2fnz6jk8': {
+      'en': 'Field is required',
+      'es': '',
+      'fr': '',
+    },
+    '5acqnu2p': {
+      'en': 'Please choose an option from the dropdown',
+      'es': '',
+      'fr': '',
+    },
+    'dnyjldkd': {
+      'en': 'Field is required',
+      'es': '',
+      'fr': '',
+    },
+    '5qqkebdd': {
+      'en': 'Please choose an option from the dropdown',
+      'es': '',
+      'fr': '',
+    },
+    'iyy8m67t': {
+      'en': 'Field is required',
+      'es': '',
+      'fr': '',
+    },
+    '89a1nzdt': {
+      'en': 'Please choose an option from the dropdown',
       'es': '',
       'fr': '',
     },
@@ -2234,27 +2338,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'qzt8poeb': {
       'en': 'Select a folder',
-      'es': '',
-      'fr': '',
+      'es': 'Seleccione una carpeta',
+      'fr': 'Sélectionnez un dossier',
     },
     'dhzgkq27': {
       'en': 'path',
-      'es': '',
-      'fr': '',
+      'es': 'camino',
+      'fr': 'chemin',
     },
     'mwjwax1v': {
       'en': 'Cancel',
-      'es': '',
-      'fr': '',
+      'es': 'Cancelar',
+      'fr': 'Annuler',
     },
     '9chr0yeh': {
       'en': 'Select',
-      'es': '',
-      'fr': '',
+      'es': 'Seleccionar',
+      'fr': 'Sélectionner',
     },
   },
   // Miscellaneous
   {
+    'gbf72djn': {
+      'en': 'Label here...',
+      'es': '',
+      'fr': '',
+    },
     '7sgbm13u': {
       'en': '',
       'es': '',

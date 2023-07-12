@@ -60,6 +60,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PROFILE_PAGE_Profile_ON_INIT_STATE');
+      logFirebaseEvent('Profile_update_app_state');
       setState(() {
         FFAppState().currentPage = 'Profile';
       });
@@ -161,6 +162,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'PROFILE_PAGE_Image_g942rkoj_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_expand_image');
                                                 await Navigator.push(
                                                   context,
                                                   PageTransition(
@@ -338,6 +341,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'PROFILE_PAGE_Container_zbuskyi4_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Container_set_dark_mode_settings');
                                               setDarkModeSetting(
                                                   context, ThemeMode.light);
                                             },
@@ -406,6 +411,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'PROFILE_PAGE_Container_j3l3qrm4_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Container_set_dark_mode_settings');
                                               setDarkModeSetting(
                                                   context, ThemeMode.dark);
                                             },
@@ -592,6 +599,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       onPressed: () async {
                                         logFirebaseEvent(
                                             'PROFILE_PAGE_CHANGE_PHOTO_BTN_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button_upload_media_to_firebase');
                                         final selectedMedia = await selectMedia(
                                           maxWidth: 128.00,
                                           maxHeight: 128.00,
@@ -664,6 +673,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                           }
                                         }
 
+                                        logFirebaseEvent('Button_backend_call');
+
                                         await currentUserReference!
                                             .update(createUsersRecordData(
                                           photoUrl: _model.uploadedFileUrl,
@@ -712,6 +723,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       onPressed: () async {
                                         logFirebaseEvent(
                                             'PROFILE_PAGE_SAVE_CHANGES_BTN_ON_TAP');
+                                        logFirebaseEvent('Button_backend_call');
 
                                         await currentUserReference!
                                             .update(createUsersRecordData(
@@ -721,6 +733,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   .languageCode ==
                                               'en',
                                         ));
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -790,6 +804,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                 onTap: () async {
                                   logFirebaseEvent(
                                       'PROFILE_PAGE_Text_wm8w41nb_ON_TAP');
+                                  logFirebaseEvent('Text_auth');
                                   GoRouter.of(context).prepareAuthEvent();
                                   await authManager.signOut();
                                   GoRouter.of(context).clearRedirectLocation();

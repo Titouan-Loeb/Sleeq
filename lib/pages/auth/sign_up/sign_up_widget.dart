@@ -85,6 +85,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_Container_ludiwph3_ON_TAP');
+                              logFirebaseEvent('Container_navigate_to');
 
                               context.pushNamed(
                                 'Login',
@@ -324,6 +325,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_SIGN_UP_BTN_ON_TAP');
+                              logFirebaseEvent('Button_auth');
                               GoRouter.of(context).prepareAuthEvent();
 
                               final user =
@@ -342,6 +344,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     english: true,
                                   ));
 
+                              logFirebaseEvent('Button_backend_call');
+
                               var foldersRecordReference =
                                   FoldersRecord.createDoc(
                                       currentUserReference!);
@@ -357,6 +361,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         currentUserDocument?.rootFolder,
                                   ),
                                   foldersRecordReference);
+                              logFirebaseEvent('Button_backend_call');
 
                               await currentUserReference!
                                   .update(createUsersRecordData(
@@ -424,12 +429,14 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_google_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               final user =
                                   await authManager.signInWithGoogle(context);
                               if (user == null) {
                                 return;
                               }
+                              logFirebaseEvent('IconButton_backend_call');
 
                               var foldersRecordReference =
                                   FoldersRecord.createDoc(
@@ -447,6 +454,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                             currentUserDocument?.rootFolder,
                                       ),
                                       foldersRecordReference);
+                              logFirebaseEvent('IconButton_backend_call');
 
                               await currentUserReference!
                                   .update(createUsersRecordData(

@@ -29,6 +29,7 @@ class _FileInformationsWidgetState extends State<FileInformationsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('FILE_INFORMATIONS_fileInformations_ON_IN');
+      logFirebaseEvent('fileInformations_update_app_state');
       setState(() {
         FFAppState().currentPage = 'FileInformation';
       });

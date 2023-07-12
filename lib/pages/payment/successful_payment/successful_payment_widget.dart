@@ -123,11 +123,13 @@ class _SuccessfulPaymentWidgetState extends State<SuccessfulPaymentWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SUCCESSFUL_PAYMENT_GO_BACK_TO_HOME_BTN_O');
+                              logFirebaseEvent('Button_backend_call');
 
                               await successfulPaymentUsersRecord!.reference
                                   .update(createUsersRecordData(
                                 subcriptionId: widget.planId,
                               ));
+                              logFirebaseEvent('Button_navigate_to');
 
                               context.goNamed('HomePage');
                             },

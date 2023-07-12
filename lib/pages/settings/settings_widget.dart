@@ -34,6 +34,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SETTINGS_PAGE_Settings_ON_INIT_STATE');
+      logFirebaseEvent('Settings_update_app_state');
       setState(() {
         FFAppState().currentPage = 'Settings';
       });
@@ -117,6 +118,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         onTap: () async {
                                           logFirebaseEvent(
                                               'SETTINGS_PAGE_Image_3j8sut8z_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Image_expand_image');
                                           await Navigator.push(
                                             context,
                                             PageTransition(
@@ -252,6 +255,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SETTINGS_PAGE_Row_laxf7ydp_ON_TAP');
+                                logFirebaseEvent('Row_navigate_to');
 
                                 context.pushNamed(
                                   'Profile',
@@ -322,6 +326,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SETTINGS_PAGE_Row_8vofi31t_ON_TAP');
+                                logFirebaseEvent('Row_navigate_to');
 
                                 context.pushNamed(
                                   'Account',
@@ -397,6 +402,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SETTINGS_PAGE_Row_uwjgca21_ON_TAP');
+                                logFirebaseEvent('Row_navigate_to');
 
                                 context.pushNamed(
                                   'AboutSleeq',

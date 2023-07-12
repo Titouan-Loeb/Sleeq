@@ -155,6 +155,7 @@ class _NavigationTreeWidgetState extends State<NavigationTreeWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'NAVIGATION_TREE_COMP_CANCEL_BTN_ON_TAP');
+                          logFirebaseEvent('Button_close_dialog,_drawer,_etc');
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
@@ -197,6 +198,7 @@ class _NavigationTreeWidgetState extends State<NavigationTreeWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'NAVIGATION_TREE_COMP_SELECT_BTN_ON_TAP');
+                          logFirebaseEvent('Button_close_dialog,_drawer,_etc');
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(

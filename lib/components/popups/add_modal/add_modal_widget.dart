@@ -114,6 +114,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_33pqa2yd_ON_TAP');
+                                logFirebaseEvent('Container_update_app_state');
                                 FFAppState().update(() {
                                   FFAppState().isEditingFolder = true;
                                 });
@@ -184,6 +185,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_ouc66vor_ON_TAP');
+                                logFirebaseEvent('Container_update_app_state');
                                 FFAppState().update(() {
                                   FFAppState().isEditingFolder = false;
                                 });
@@ -447,6 +449,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                       FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent('ADD_MODAL_COMP_CANCEL_BTN_ON_TAP');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
@@ -479,6 +482,8 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                           logFirebaseEvent('ADD_MODAL_COMP__BTN_ON_TAP');
                           var _shouldSetState = false;
                           if (FFAppState().isEditingFolder) {
+                            logFirebaseEvent('Button_backend_call');
+
                             var foldersRecordReference =
                                 FoldersRecord.createDoc(currentUserReference!);
                             await foldersRecordReference
@@ -498,12 +503,14 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                     ),
                                     foldersRecordReference);
                             _shouldSetState = true;
+                            logFirebaseEvent('Button_backend_call');
 
                             await widget.currentFolder!.update({
                               'folders': FieldValue.arrayUnion(
                                   [_model.newFolder!.reference]),
                             });
                           } else {
+                            logFirebaseEvent('Button_upload_file_to_firebase');
                             final selectedFiles = await selectFiles(
                               multiFile: false,
                             );
@@ -548,7 +555,9 @@ class _AddModalWidgetState extends State<AddModalWidget> {
 
                             if (_model.uploadedFileUrl != null &&
                                 _model.uploadedFileUrl != '') {
+                              logFirebaseEvent('Button_haptic_feedback');
                               HapticFeedback.heavyImpact();
+                              logFirebaseEvent('Button_backend_call');
 
                               var filesRecordReference =
                                   FilesRecord.createDoc(currentUserReference!);
@@ -572,12 +581,16 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                   ),
                                   filesRecordReference);
                               _shouldSetState = true;
+                              logFirebaseEvent('Button_backend_call');
 
                               await widget.currentFolder!.update({
                                 'files': FieldValue.arrayUnion(
                                     [_model.fileOut!.reference]),
                               });
+                              logFirebaseEvent(
+                                  'Button_close_dialog,_drawer,_etc');
                               Navigator.pop(context);
+                              logFirebaseEvent('Button_update_app_state');
                               setState(() {});
                             } else {
                               if (_shouldSetState) setState(() {});
@@ -588,8 +601,11 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             return;
                           }
 
+                          logFirebaseEvent('Button_haptic_feedback');
                           HapticFeedback.heavyImpact();
+                          logFirebaseEvent('Button_close_dialog,_drawer,_etc');
                           Navigator.pop(context);
+                          logFirebaseEvent('Button_update_app_state');
                           setState(() {});
                           if (_shouldSetState) setState(() {});
                         },

@@ -38,6 +38,7 @@ class _FileWidgetState extends State<FileWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('FILE_PAGE_file_ON_INIT_STATE');
+      logFirebaseEvent('file_update_app_state');
       setState(() {
         FFAppState().currentPage = 'File';
       });
@@ -94,6 +95,7 @@ class _FileWidgetState extends State<FileWidget> {
                     ),
                     onPressed: () async {
                       logFirebaseEvent('FILE_PAGE_info_outlined_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_navigate_to');
 
                       context.pushNamed('fileInformations');
                     },

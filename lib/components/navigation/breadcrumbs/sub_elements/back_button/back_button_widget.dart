@@ -63,11 +63,13 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
             ),
             onPressed: () async {
               logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
+              logFirebaseEvent('IconButton_update_app_state');
               setState(() {
                 FFAppState().selectedFolders = [];
                 FFAppState().selecteFiles = [];
                 FFAppState().isSelectionMode = false;
               });
+              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),

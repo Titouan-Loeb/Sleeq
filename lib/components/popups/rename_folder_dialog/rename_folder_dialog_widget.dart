@@ -90,6 +90,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                 ),
                 onPressed: () async {
                   logFirebaseEvent('RENAME_FOLDER_DIALOG_close_ICN_ON_TAP');
+                  logFirebaseEvent('IconButton_bottom_sheet');
                   Navigator.pop(context);
                 },
               ),
@@ -159,15 +160,21 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                   onPressed: () async {
                     logFirebaseEvent('RENAME_FOLDER_DIALOG_CONFIRM_BTN_ON_TAP');
                     if (widget.isFolder!) {
+                      logFirebaseEvent('Button_backend_call');
+
                       await widget.folderId!.update(createFoldersRecordData(
                         name: _model.textController.text,
                       ));
+                      logFirebaseEvent('Button_close_dialog,_drawer,_etc');
                       Navigator.pop(context);
                       return;
                     } else {
+                      logFirebaseEvent('Button_backend_call');
+
                       await widget.fileId!.update(createFilesRecordData(
                         name: _model.textController.text,
                       ));
+                      logFirebaseEvent('Button_close_dialog,_drawer,_etc');
                       Navigator.pop(context);
                       return;
                     }

@@ -71,6 +71,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
               highlightColor: Colors.transparent,
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_LONG');
+                logFirebaseEvent('IconButton_update_app_state');
                 FFAppState().update(() {
                   FFAppState().isSelectionMode = true;
                   FFAppState().addToSelectedFolders(widget.path!);
@@ -89,22 +90,26 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                   logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_TAP');
                   if (FFAppState().isSelectionMode) {
                     if (FFAppState().selectedFolders.contains(widget.path)) {
+                      logFirebaseEvent('IconButton_update_app_state');
                       setState(() {
                         FFAppState().removeFromSelectedFolders(widget.path!);
                       });
                       return;
                     } else {
+                      logFirebaseEvent('IconButton_update_app_state');
                       setState(() {
                         FFAppState().addToSelectedFolders(widget.path!);
                       });
                       return;
                     }
                   } else {
+                    logFirebaseEvent('IconButton_update_app_state');
                     setState(() {
                       FFAppState().selectedFolders = [];
                       FFAppState().isSelectionMode = false;
                       FFAppState().selecteFiles = [];
                     });
+                    logFirebaseEvent('IconButton_navigate_to');
 
                     context.pushNamed(
                       'folders',
@@ -144,6 +149,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
               highlightColor: Colors.transparent,
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_Text_t15wzz6l_ON_LONG_PRES');
+                logFirebaseEvent('Text_bottom_sheet');
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,

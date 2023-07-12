@@ -109,11 +109,13 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_home_ICN_ON_TAP');
                           if (FFAppState().currentPage != 'HomePage') {
+                            logFirebaseEvent('IconButton_update_app_state');
                             setState(() {
                               FFAppState().selectedFolders = [];
                               FFAppState().isSelectionMode = false;
                               FFAppState().selecteFiles = [];
                             });
+                            logFirebaseEvent('IconButton_navigate_to');
 
                             context.goNamed(
                               'HomePage',
@@ -149,6 +151,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 logFirebaseEvent(
                                     'NAV_BAR_FLOTING_COMP_add_ICN_ON_TAP');
                                 if (widget.canAddFile) {
+                                  logFirebaseEvent('IconButton_bottom_sheet');
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -188,6 +191,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           logFirebaseEvent(
                               'NAV_BAR_FLOTING_COMP_settings_ICN_ON_TAP');
                           if (FFAppState().currentPage != 'Settings') {
+                            logFirebaseEvent('IconButton_navigate_to');
+
                             context.pushNamed(
                               'Settings',
                               extra: <String, dynamic>{

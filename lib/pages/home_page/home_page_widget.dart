@@ -9,6 +9,7 @@ import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shake/shake.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -30,6 +32,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late ShakeDetector shakeDetector;
+  var shakeActionInProgress = false;
 
   @override
   void initState() {
@@ -40,11 +44,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
+      logFirebaseEvent('HomePage_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('HomePage_update_app_state');
       setState(() {
         FFAppState().currentPage = 'HomePage';
       });
     });
+
+    // On shake action.
+    shakeDetector = ShakeDetector.autoStart(
+      onPhoneShake: () async {
+        if (shakeActionInProgress) {
+          return;
+        }
+        shakeActionInProgress = true;
+        try {
+          logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_PHONE_SHAKE');
+          logFirebaseEvent('HomePage_action_block');
+          await action_blocks.bugReport(context);
+        } finally {
+          shakeActionInProgress = false;
+        }
+      },
+      shakeThresholdGravity: 1.5,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -53,6 +77,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void dispose() {
     _model.dispose();
 
+    shakeDetector.stopListening();
     super.dispose();
   }
 
@@ -148,10 +173,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             if (newValue!) {
                                               logFirebaseEvent(
                                                   'HOME_Switch_42tblfqi_ON_TOGGLE_ON');
+                                              logFirebaseEvent(
+                                                  'Switch_update_app_state');
                                               FFAppState().gridView = true;
                                             } else {
                                               logFirebaseEvent(
                                                   'HOME_Switch_42tblfqi_ON_TOGGLE_OFF');
+                                              logFirebaseEvent(
+                                                  'Switch_update_app_state');
                                               FFAppState().gridView = false;
                                             }
                                           },

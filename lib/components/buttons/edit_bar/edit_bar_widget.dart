@@ -62,6 +62,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               logFirebaseEvent('EDIT_BAR_COMP_Container_wc382zl1_ON_TAP');
+              logFirebaseEvent('Container_bottom_sheet');
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
@@ -99,6 +100,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                   onPressed: () async {
                     logFirebaseEvent(
                         'EDIT_BAR_COMP_drive_file_move_ICN_ON_TAP');
+                    logFirebaseEvent('IconButton_bottom_sheet');
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
@@ -142,6 +144,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 ),
                 onPressed: () async {
                   logFirebaseEvent('EDIT_BAR_COMP_file_copy_ICN_ON_TAP');
+                  logFirebaseEvent('IconButton_bottom_sheet');
                   await showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
@@ -245,6 +248,7 @@ class _EditBarWidgetState extends State<EditBarWidget> {
                 ),
                 onPressed: () async {
                   logFirebaseEvent('EDIT_BAR_COMP_close_ICN_ON_TAP');
+                  logFirebaseEvent('IconButton_update_app_state');
                   _model.updatePage(() {
                     FFAppState().selectedFolders = [];
                     FFAppState().isSelectionMode = false;

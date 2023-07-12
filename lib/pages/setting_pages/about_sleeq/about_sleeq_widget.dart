@@ -35,6 +35,7 @@ class _AboutSleeqWidgetState extends State<AboutSleeqWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('ABOUT_SLEEQ_AboutSleeq_ON_INIT_STATE');
+      logFirebaseEvent('AboutSleeq_update_app_state');
       setState(() {
         FFAppState().currentPage = 'AboutSleeq';
       });
@@ -128,6 +129,8 @@ class _AboutSleeqWidgetState extends State<AboutSleeqWidget> {
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'ABOUT_SLEEQ_PAGE_Image_33fk2fvp_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_expand_image');
                                                 await Navigator.push(
                                                   context,
                                                   PageTransition(

@@ -117,174 +117,165 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'uix9u6au' /* Ease of Use */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'uix9u6au' /* Ease of Use */,
                               ),
-                              RatingBar.builder(
-                                onRatingUpdate: (newValue) => setState(() =>
-                                    _model.easeofuseFeedbackValue = newValue),
-                                itemBuilder: (context, index) => Icon(
-                                  Icons.star_rounded,
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                ),
-                                direction: Axis.horizontal,
-                                initialRating: _model.easeofuseFeedbackValue ??=
-                                    0.0,
-                                unratedColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                itemCount: 5,
-                                itemSize: 25.0,
-                                glowColor:
-                                    FlutterFlowTheme.of(context).tertiary,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
+                            RatingBar.builder(
+                              onRatingUpdate: (newValue) => setState(() =>
+                                  _model.easeofuseFeedbackValue = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'fyczl56s' /* Quality of Features */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
+                              direction: Axis.horizontal,
+                              initialRating: _model.easeofuseFeedbackValue ??=
+                                  0.0,
+                              unratedColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              itemCount: 5,
+                              itemSize: 25.0,
+                              glowColor: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'fyczl56s' /* Quality of Features */,
                               ),
-                              RatingBar.builder(
-                                onRatingUpdate: (newValue) => setState(() =>
-                                    _model.feqtureQualityFeedbackValue =
-                                        newValue),
-                                itemBuilder: (context, index) => Icon(
-                                  Icons.star_rounded,
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                ),
-                                direction: Axis.horizontal,
-                                initialRating:
-                                    _model.feqtureQualityFeedbackValue ??= 0.0,
-                                unratedColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                itemCount: 5,
-                                itemSize: 25.0,
-                                glowColor:
-                                    FlutterFlowTheme.of(context).tertiary,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
+                            RatingBar.builder(
+                              onRatingUpdate: (newValue) => setState(() =>
+                                  _model.feqtureQualityFeedbackValue =
+                                      newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'g5ceztgx' /* Bug-Free App */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
+                              direction: Axis.horizontal,
+                              initialRating:
+                                  _model.feqtureQualityFeedbackValue ??= 0.0,
+                              unratedColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              itemCount: 5,
+                              itemSize: 25.0,
+                              glowColor: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'g5ceztgx' /* Bug-Free App */,
                               ),
-                              RatingBar.builder(
-                                onRatingUpdate: (newValue) => setState(
-                                    () => _model.bugFeedbackValue = newValue),
-                                itemBuilder: (context, index) => Icon(
-                                  Icons.star_rounded,
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                ),
-                                direction: Axis.horizontal,
-                                initialRating: _model.bugFeedbackValue ??= 0.0,
-                                unratedColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                itemCount: 5,
-                                itemSize: 25.0,
-                                glowColor:
-                                    FlutterFlowTheme.of(context).tertiary,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
+                            RatingBar.builder(
+                              onRatingUpdate: (newValue) => setState(
+                                  () => _model.bugFeedbackValue = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '8ffs53fz' /* Price of Subscription Models */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
+                              direction: Axis.horizontal,
+                              initialRating: _model.bugFeedbackValue ??= 0.0,
+                              unratedColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              itemCount: 5,
+                              itemSize: 25.0,
+                              glowColor: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                '8ffs53fz' /* Price of Subscription Models */,
                               ),
-                              RatingBar.builder(
-                                onRatingUpdate: (newValue) => setState(
-                                    () => _model.priceFeedbackValue = newValue),
-                                itemBuilder: (context, index) => Icon(
-                                  Icons.star_rounded,
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                ),
-                                direction: Axis.horizontal,
-                                initialRating: _model.priceFeedbackValue ??=
-                                    0.0,
-                                unratedColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                itemCount: 5,
-                                itemSize: 25.0,
-                                glowColor:
-                                    FlutterFlowTheme.of(context).tertiary,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
+                            RatingBar.builder(
+                              onRatingUpdate: (newValue) => setState(
+                                  () => _model.priceFeedbackValue = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                              direction: Axis.horizontal,
+                              initialRating: _model.priceFeedbackValue ??= 0.0,
+                              unratedColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              itemCount: 5,
+                              itemSize: 25.0,
+                              glowColor: FlutterFlowTheme.of(context).tertiary,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
@@ -440,6 +431,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'FEEDBACK_PAGE_SUBMIT_BTN_ON_TAP');
+                              logFirebaseEvent('Button_backend_call');
                               _model.apiResultp03 = await SendFeedbackCall.call(
                                 username: currentUserDisplayName,
                                 feedback: _model.textController2.text,
@@ -455,7 +447,9 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                                 reasonnopremium: _model.textController1.text,
                               );
                               if ((_model.apiResultp03?.succeeded ?? true)) {
+                                logFirebaseEvent('Button_navigate_back');
                                 context.safePop();
+                                logFirebaseEvent('Button_show_snack_bar');
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(

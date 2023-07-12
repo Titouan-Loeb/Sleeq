@@ -374,6 +374,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'TEST_ON_BOARDING_CONTINUE_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed('Login');
                         },

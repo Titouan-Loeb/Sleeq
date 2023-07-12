@@ -68,6 +68,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                 highlightColor: Colors.transparent,
                 onLongPress: () async {
                   logFirebaseEvent('FILE_BUTTON_solidFileAlt_ICN_ON_LONG_PRE');
+                  logFirebaseEvent('IconButton_update_app_state');
                   FFAppState().update(() {
                     FFAppState().isSelectionMode = true;
                     FFAppState().addToSelecteFiles(widget.file!.reference);
@@ -90,12 +91,14 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                       if (FFAppState()
                           .selecteFiles
                           .contains(widget.file!.reference)) {
+                        logFirebaseEvent('IconButton_update_app_state');
                         setState(() {
                           FFAppState()
                               .removeFromSelecteFiles(widget.file!.reference);
                         });
                         return;
                       } else {
+                        logFirebaseEvent('IconButton_update_app_state');
                         setState(() {
                           FFAppState()
                               .addToSelecteFiles(widget.file!.reference);
@@ -103,6 +106,8 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                         return;
                       }
                     } else {
+                      logFirebaseEvent('IconButton_navigate_to');
+
                       context.pushNamed(
                         'file',
                         queryParameters: {

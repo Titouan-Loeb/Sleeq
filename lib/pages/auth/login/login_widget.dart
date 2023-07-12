@@ -101,6 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'LOGIN_PAGE_Container_xh3ij00h_ON_TAP');
+                              logFirebaseEvent('Container_navigate_to');
 
                               context.pushNamed(
                                 'SignUp',
@@ -384,6 +385,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'LOGIN_PAGE_FORGOT_PASSWORD?_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
 
                                     context.pushNamed(
                                       'ForgotPassword',
@@ -443,12 +445,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       : () async {
                                           logFirebaseEvent(
                                               'LOGIN_PAGE_LOGIN_BTN_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Button_validate_form');
                                           if (_model.formKey.currentState ==
                                                   null ||
                                               !_model.formKey.currentState!
                                                   .validate()) {
                                             return;
                                           }
+                                          logFirebaseEvent('Button_auth');
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
 
@@ -525,6 +530,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'LOGIN_PAGE_google_ICN_ON_TAP');
+                                    logFirebaseEvent('IconButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
                                         .signInWithGoogle(context);

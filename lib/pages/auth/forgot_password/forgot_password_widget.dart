@@ -165,6 +165,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'FORGOT_PASSWORD_SEND_PASSWORD_RESET_EMAI');
+                          logFirebaseEvent('Button_auth');
                           if (_model.emailTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -179,8 +180,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             email: _model.emailTextController.text,
                             context: context,
                           );
+                          logFirebaseEvent('Button_wait__delay');
                           await Future.delayed(
                               const Duration(milliseconds: 500));
+                          logFirebaseEvent('Button_navigate_back');
                           context.pop();
                         },
                         text: FFLocalizations.of(context).getText(
@@ -220,6 +223,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'FORGOT_PASSWORD_BACK_TO_LOGIN_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_back');
                           context.pop();
                         },
                         text: FFLocalizations.of(context).getText(

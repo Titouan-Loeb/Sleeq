@@ -65,11 +65,13 @@ class _FolderButtonListModeWidgetState
         highlightColor: Colors.transparent,
         onTap: () async {
           logFirebaseEvent('FOLDER_BUTTON_LIST_MODE_Container_q48do2');
+          logFirebaseEvent('Container_update_app_state');
           setState(() {
             FFAppState().selectedFolders = [];
             FFAppState().isSelectionMode = false;
             FFAppState().selecteFiles = [];
           });
+          logFirebaseEvent('Container_navigate_to');
 
           context.pushNamed(
             'folders',

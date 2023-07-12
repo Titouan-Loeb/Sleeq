@@ -100,6 +100,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
               if (FFAppState().currentPage != 'HomePage') {
+                logFirebaseEvent('contentView_1_navigate_to');
+
                 context.pushNamed(
                   'HomePage',
                   extra: <String, dynamic>{
@@ -190,6 +192,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
             onTap: () async {
               logFirebaseEvent('NEWNAV_COMP_contentView_1_ON_TAP');
               if (FFAppState().currentPage != 'Settings') {
+                logFirebaseEvent('contentView_1_navigate_to');
+
                 context.pushNamed(
                   'Settings',
                   extra: <String, dynamic>{
@@ -365,6 +369,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                             onTap: () async {
                               logFirebaseEvent(
                                   'NEWNAV_COMP_Container_qi7oooxg_ON_TAP');
+                              logFirebaseEvent(
+                                  'Container_set_dark_mode_settings');
                               setDarkModeSetting(context, ThemeMode.light);
                             },
                             child: Container(
@@ -441,6 +447,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                             onTap: () async {
                               logFirebaseEvent(
                                   'NEWNAV_COMP_Container_dfq5jmd1_ON_TAP');
+                              logFirebaseEvent(
+                                  'Container_set_dark_mode_settings');
                               setDarkModeSetting(context, ThemeMode.dark);
                             },
                             child: Container(
@@ -575,6 +583,7 @@ class _NewnavWidgetState extends State<NewnavWidget>
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'NEWNAV_COMP_Text_bbgazute_ON_TAP');
+                                    logFirebaseEvent('Text_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     await authManager.signOut();
                                     GoRouter.of(context)

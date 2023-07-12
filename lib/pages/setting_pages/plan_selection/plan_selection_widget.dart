@@ -79,14 +79,21 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PLAN_SELECTION_PlanSelection_ON_INIT_STA');
+      logFirebaseEvent('PlanSelection_update_app_state');
       setState(() {
         FFAppState().currentPage = 'PlanSelection';
       });
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOIRbBzo7KeiEMEVUtfdh1Q');
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOISVBzo7KeiEMEVSBv0o6K');
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOITcBzo7KeiEMEnkarB9Hh');
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOIS5Bzo7KeiEMEngqF20eT');
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOITBBzo7KeiEME2Zh9tgvb');
+      logFirebaseEvent('PlanSelection_update_widget_state');
       _model.addToPlanIds('price_1LOITvBzo7KeiEMEQVSVQRRi');
     });
 
@@ -189,6 +196,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'PLAN_SELECTION_Image_i7t833du_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Image_expand_image');
                                                 await Navigator.push(
                                                   context,
                                                   PageTransition(
@@ -437,6 +446,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                         logFirebaseEvent(
                                             'PLAN_SELECTION_Container_sc7s6w0b_ON_TAP');
                                         if (_model.pageViewCurrentIndex != 5) {
+                                          logFirebaseEvent(
+                                              'Container_page_view');
                                           await _model.pageViewController
                                               ?.nextPage(
                                             duration:
@@ -445,6 +456,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           );
                                           if (_model.pageViewCurrentIndex ==
                                               5) {
+                                            logFirebaseEvent(
+                                                'Container_widget_animation');
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation1'] !=
                                                 null) {
@@ -501,6 +514,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 'PLAN_SELECTION_MouseRegion_4b29cekm_ON_T');
                                             if (_model.pageViewCurrentIndex !=
                                                 5) {
+                                              logFirebaseEvent(
+                                                  'MouseRegion_widget_animation');
                                               if (animationsMap[
                                                       'containerOnActionTriggerAnimation1'] !=
                                                   null) {
@@ -516,6 +531,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 .mouseRegionHovered1 = false);
                                             logFirebaseEvent(
                                                 'PLAN_SELECTION_MouseRegion_4b29cekm_ON_T');
+                                            logFirebaseEvent(
+                                                'MouseRegion_widget_animation');
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation1'] !=
                                                 null) {
@@ -548,6 +565,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                         logFirebaseEvent(
                                             'PLAN_SELECTION_Container_dlbms5m2_ON_TAP');
                                         if (_model.pageViewCurrentIndex != 0) {
+                                          logFirebaseEvent(
+                                              'Container_page_view');
                                           await _model.pageViewController
                                               ?.previousPage(
                                             duration:
@@ -556,6 +575,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           );
                                           if (_model.pageViewCurrentIndex ==
                                               5) {
+                                            logFirebaseEvent(
+                                                'Container_widget_animation');
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation1'] !=
                                                 null) {
@@ -612,6 +633,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 'PLAN_SELECTION_MouseRegion_88t51mr8_ON_T');
                                             if (_model.pageViewCurrentIndex !=
                                                 0) {
+                                              logFirebaseEvent(
+                                                  'MouseRegion_widget_animation');
                                               if (animationsMap[
                                                       'containerOnActionTriggerAnimation2'] !=
                                                   null) {
@@ -627,6 +650,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                 .mouseRegionHovered2 = false);
                                             logFirebaseEvent(
                                                 'PLAN_SELECTION_MouseRegion_88t51mr8_ON_T');
+                                            logFirebaseEvent(
+                                                'MouseRegion_widget_animation');
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation2'] !=
                                                 null) {
@@ -654,6 +679,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                             onPressed: () async {
                               logFirebaseEvent(
                                   'PLAN_SELECTION_PAGE_SUBSCRIBE_BTN_ON_TAP');
+                              logFirebaseEvent('Button_backend_call');
                               _model.apiResult = await StripeAPIGroup
                                   .createPaymentLinkCall
                                   .call(
@@ -671,10 +697,12 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                     ''),
                               );
                               if ((_model.apiResult?.succeeded ?? true)) {
+                                logFirebaseEvent('Button_update_app_state');
                                 FFAppState().paymentLink = getJsonField(
                                   (_model.apiResult?.jsonBody ?? ''),
                                   r'''$.url''',
                                 ).toString();
+                                logFirebaseEvent('Button_launch_u_r_l');
                                 await launchURL(getJsonField(
                                   (_model.apiResult?.jsonBody ?? ''),
                                   r'''$.url''',

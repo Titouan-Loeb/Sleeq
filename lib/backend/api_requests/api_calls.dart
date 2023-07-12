@@ -54,6 +54,56 @@ class CreatePaymentLinkCall {
 
 /// End Stripe API Group Code
 
+/// Start Feedback Group Code
+
+class FeedbackGroup {
+  static String baseUrl = 'https://formspree.io/f/';
+  static Map<String, String> headers = {};
+  static BugReportCall bugReportCall = BugReportCall();
+}
+
+class BugReportCall {
+  Future<ApiCallResponse> call({
+    String? userMail = '',
+    String? title = '',
+    String? description = '',
+    String? steps = '',
+    String? screenshot = '',
+    bool? wantsFollowUp,
+    String? priority = '',
+    String? userPlatform = '',
+  }) {
+    final body = '''
+{
+  "userMail": "${userMail}",
+  "title": "${title}",
+  "description": "${description}",
+  "steps": "${steps}",
+  "screenshot": "${screenshot}",
+  "wantsFollowUp": ${wantsFollowUp},
+  "priority": "${priority}",
+  "platform": "${userPlatform}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Bug report',
+      apiUrl: '${FeedbackGroup.baseUrl}xjvqvpza',
+      callType: ApiCallType.POST,
+      headers: {
+        ...FeedbackGroup.headers,
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+/// End Feedback Group Code
+
 class SendFeedbackCall {
   static Future<ApiCallResponse> call({
     String? username = '',

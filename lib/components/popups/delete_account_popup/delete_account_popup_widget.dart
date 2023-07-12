@@ -93,8 +93,11 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                       onPressed: () async {
                         logFirebaseEvent(
                             'DELETE_ACCOUNT_POPUP_CONFIRM_BTN_ON_TAP');
+                        logFirebaseEvent('Button_auth');
                         await authManager.deleteUser(context);
+                        logFirebaseEvent('Button_bottom_sheet');
                         Navigator.pop(context);
+                        logFirebaseEvent('Button_auth');
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
@@ -137,6 +140,7 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'DELETE_ACCOUNT_POPUP_CANCEL_BTN_ON_TAP');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(

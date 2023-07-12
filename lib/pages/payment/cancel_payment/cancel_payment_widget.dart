@@ -80,6 +80,7 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'CANCEL_PAYMENT_PAGE_TRY_AGAIN_BTN_ON_TAP');
+                          logFirebaseEvent('Button_launch_u_r_l');
                           await launchURL(FFAppState().paymentLink);
                         },
                         text: FFLocalizations.of(context).getText(
@@ -118,6 +119,7 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'CANCEL_PAYMENT_GO_BACK_TO_HOME_BTN_ON_TA');
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.goNamed('HomePage');
                         },

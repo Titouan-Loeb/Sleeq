@@ -45,6 +45,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('FOLDERS_PAGE_folders_ON_INIT_STATE');
+      logFirebaseEvent('folders_update_app_state');
       setState(() {
         FFAppState().currentPage = 'Folders';
       });
@@ -152,10 +153,14 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                               if (newValue!) {
                                                 logFirebaseEvent(
                                                     'FOLDERS_Switch_mk7eh8gv_ON_TOGGLE_ON');
+                                                logFirebaseEvent(
+                                                    'Switch_update_app_state');
                                                 FFAppState().gridView = true;
                                               } else {
                                                 logFirebaseEvent(
                                                     'FOLDERS_Switch_mk7eh8gv_ON_TOGGLE_OFF');
+                                                logFirebaseEvent(
+                                                    'Switch_update_app_state');
                                                 FFAppState().gridView = false;
                                               }
                                             },

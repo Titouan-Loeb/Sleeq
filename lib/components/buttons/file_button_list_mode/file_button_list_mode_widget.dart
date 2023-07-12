@@ -62,6 +62,7 @@ class _FileButtonListModeWidgetState extends State<FileButtonListModeWidget> {
         highlightColor: Colors.transparent,
         onTap: () async {
           logFirebaseEvent('FILE_BUTTON_LIST_MODE_Container_e6dhyc7o');
+          logFirebaseEvent('Container_navigate_to');
 
           context.pushNamed(
             'file',

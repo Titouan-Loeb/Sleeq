@@ -93,6 +93,7 @@ class _ResetPasswordPopupWidgetState extends State<ResetPasswordPopupWidget> {
                       onPressed: () async {
                         logFirebaseEvent(
                             'RESET_PASSWORD_POPUP_CONFIRM_BTN_ON_TAP');
+                        logFirebaseEvent('Button_auth');
                         if (currentUserEmail.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -107,6 +108,7 @@ class _ResetPasswordPopupWidgetState extends State<ResetPasswordPopupWidget> {
                           email: currentUserEmail,
                           context: context,
                         );
+                        logFirebaseEvent('Button_bottom_sheet');
                         Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
@@ -145,6 +147,7 @@ class _ResetPasswordPopupWidgetState extends State<ResetPasswordPopupWidget> {
                         onPressed: () async {
                           logFirebaseEvent(
                               'RESET_PASSWORD_POPUP_CANCEL_BTN_ON_TAP');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
