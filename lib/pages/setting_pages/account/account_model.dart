@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/components/popups/delete_account_popup/delete_account_popup_widget.dart';

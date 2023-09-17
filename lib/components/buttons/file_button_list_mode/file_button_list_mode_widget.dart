@@ -100,7 +100,7 @@ class _FileButtonListModeWidgetState extends State<FileButtonListModeWidget> {
                 return Material(
                   color: Colors.transparent,
                   child: RenameFolderDialogWidget(
-                    fileId: widget.document!.reference,
+                    fileId: widget.document?.reference,
                     isFolder: false,
                     name: widget.name!,
                   ),

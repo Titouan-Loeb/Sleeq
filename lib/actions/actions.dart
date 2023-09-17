@@ -2,6 +2,7 @@ import '/backend/api_requests/api_manager.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 Future bugReport(BuildContext context) async {
@@ -35,3 +36,9 @@ Future bugReport(BuildContext context) async {
     return;
   }
 }
+
+Future moveElements(
+  BuildContext context, {
+  required DocumentReference? destFolder,
+  required DocumentReference? sourceFolder,
+}) async {}

@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class NavigationTreeModel extends FlutterFlowModel {
-  ///  State fields for stateful widgets in this component.
+class TermsandconditionsModel extends FlutterFlowModel {
+  ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  final unfocusNode = FocusNode();
+  // State field(s) for Switch widget.
+  bool? switchValue;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    textController?.dispose();
+    unfocusNode.dispose();
   }
 
   /// Action blocks are added here.

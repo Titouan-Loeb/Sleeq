@@ -1,4 +1,4 @@
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/breadcrumbs/sub_elements/bead_crumbs_back_button/bead_crumbs_back_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -9,17 +9,18 @@ import 'package:provider/provider.dart';
 class BreadcrumbsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this component.
 
-  // Model for BackButton component.
-  late BackButtonModel backButtonModel;
+  // Model for BeadCrumbsBackButton component.
+  late BeadCrumbsBackButtonModel beadCrumbsBackButtonModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    backButtonModel = createModel(context, () => BackButtonModel());
+    beadCrumbsBackButtonModel =
+        createModel(context, () => BeadCrumbsBackButtonModel());
   }
 
   void dispose() {
-    backButtonModel.dispose();
+    beadCrumbsBackButtonModel.dispose();
   }
 
   /// Action blocks are added here.

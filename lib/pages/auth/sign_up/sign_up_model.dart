@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +13,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SignUpModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  bool number = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -22,10 +27,15 @@ class SignUpModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for TextField widget.
   TextEditingController? passwordTextController;
-  late bool passwordVisibility;
+  late bool passwordVisibility1;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // State field(s) for TextField widget.
+  TextEditingController? confirmPasswordTextController;
+  late bool passwordVisibility2;
+  String? Function(BuildContext, String?)?
+      confirmPasswordTextControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  FoldersRecord? folder;
+  FoldersRecord? folderCopy;
   // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
   FoldersRecord? folderGoogle;
 
@@ -33,7 +43,8 @@ class SignUpModel extends FlutterFlowModel {
 
   void initState(BuildContext context) {
     sleeqLogoModel = createModel(context, () => SleeqLogoModel());
-    passwordVisibility = false;
+    passwordVisibility1 = false;
+    passwordVisibility2 = false;
   }
 
   void dispose() {
@@ -41,6 +52,7 @@ class SignUpModel extends FlutterFlowModel {
     sleeqLogoModel.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
+    confirmPasswordTextController?.dispose();
   }
 
   /// Action blocks are added here.

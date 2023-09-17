@@ -1,10 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -139,6 +140,14 @@ class _AboutSleeqWidgetState extends State<AboutSleeqWidget> {
                                                     child:
                                                         FlutterFlowExpandedImageView(
                                                       image: CachedNetworkImage(
+                                                        fadeInDuration:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                        fadeOutDuration:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    500),
                                                         imageUrl: currentUserPhoto !=
                                                                     null &&
                                                                 currentUserPhoto !=
@@ -170,6 +179,10 @@ class _AboutSleeqWidgetState extends State<AboutSleeqWidget> {
                                                       BorderRadius.circular(
                                                           12.0),
                                                   child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
                                                     imageUrl: currentUserPhoto !=
                                                                 null &&
                                                             currentUserPhoto !=
@@ -623,7 +636,7 @@ Ribeiro */
                         ))
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.00, 1.00),
                               child: wrapWithModel(
                                 model: _model.navBarFlotingModel,
                                 updateCallback: () => setState(() {}),

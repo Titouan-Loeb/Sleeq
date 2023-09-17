@@ -72,7 +72,7 @@ class BugReportCall {
     String? priority = '',
     String? userPlatform = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "userMail": "${userMail}",
   "title": "${title}",
@@ -90,7 +90,7 @@ class BugReportCall {
         ...FeedbackGroup.headers,
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -115,7 +115,7 @@ class SendFeedbackCall {
     String? feedback = '',
     String? reasonnopremium = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "username": "${username}",
   "email": "${usermail}",
@@ -134,7 +134,7 @@ class SendFeedbackCall {
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

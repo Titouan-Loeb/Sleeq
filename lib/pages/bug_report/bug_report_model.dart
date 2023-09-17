@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/breadcrumbs/sub_elements/bead_crumbs_back_button/bead_crumbs_back_button_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,8 +15,8 @@ class BugReportModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
-  // Model for BackButton component.
-  late BackButtonModel backButtonModel;
+  // Model for BeadCrumbsBackButton component.
+  late BeadCrumbsBackButtonModel beadCrumbsBackButtonModel;
   // State field(s) for TextField widget.
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
@@ -67,7 +67,8 @@ class BugReportModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    backButtonModel = createModel(context, () => BackButtonModel());
+    beadCrumbsBackButtonModel =
+        createModel(context, () => BeadCrumbsBackButtonModel());
     textController1Validator = _textController1Validator;
     textController2Validator = _textController2Validator;
     textController3Validator = _textController3Validator;
@@ -75,7 +76,7 @@ class BugReportModel extends FlutterFlowModel {
 
   void dispose() {
     unfocusNode.dispose();
-    backButtonModel.dispose();
+    beadCrumbsBackButtonModel.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();

@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/components/popups/delete_account_popup/delete_account_popup_widget.dart';
@@ -104,7 +104,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -177,6 +177,14 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                               FlutterFlowExpandedImageView(
                                                             image:
                                                                 CachedNetworkImage(
+                                                              fadeInDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          500),
+                                                              fadeOutDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          500),
                                                               imageUrl: currentUserPhoto !=
                                                                           null &&
                                                                       currentUserPhoto !=
@@ -215,6 +223,14 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                                 .circular(12.0),
                                                         child:
                                                             CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          fadeOutDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
                                                           imageUrl: currentUserPhoto !=
                                                                       null &&
                                                                   currentUserPhoto !=
@@ -300,7 +316,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.00, 0.00),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -339,8 +355,8 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -365,8 +381,8 @@ class _AccountWidgetState extends State<AccountWidget> {
                                             padding: EdgeInsets.zero,
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -397,120 +413,139 @@ class _AccountWidgetState extends State<AccountWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 5.0, 0.0, 5.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    logFirebaseEvent(
-                                                        'ACCOUNT_PAGE_Row_v0s40zap_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Row_navigate_to');
+                                                    0.0, 8.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'ACCOUNT_PAGE_Container_3jvdirmz_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Container_navigate_to');
 
-                                                    context.pushNamed(
-                                                      'PlanSelection',
-                                                      extra: <String, dynamic>{
-                                                        kTransitionInfoKey:
-                                                            TransitionInfo(
-                                                          hasTransition: true,
-                                                          transitionType:
-                                                              PageTransitionType
-                                                                  .fade,
-                                                          duration: Duration(
-                                                              milliseconds: 0),
-                                                        ),
-                                                      },
-                                                    );
+                                                context.pushNamed(
+                                                  'PlanSelection',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
                                                   },
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Icon(
-                                                          Icons.star_sharp,
-                                                          color:
-                                                              Color(0xFFEADB02),
-                                                          size: 24.0,
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                -1.0, 0.0),
-                                                        child: Padding(
+                                                );
+                                              },
+                                              child: Container(
+                                                height: 52.0,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: double.infinity,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  shape: BoxShape.rectangle,
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      12.0,
+                                                                      8.0,
                                                                       0.0,
                                                                       0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'eakvdt9z' /* Subscription plan */,
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleSmall,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      10.0,
                                                                       0.0),
                                                           child: Icon(
-                                                            Icons
-                                                                .arrow_forward_ios_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
+                                                            Icons.star_sharp,
+                                                            color: Color(
+                                                                0xFFEADB02),
                                                             size: 24.0,
                                                           ),
                                                         ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.00, 0.00),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'eakvdt9z' /* Subscription plan */,
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmall,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              1.00, 0.00),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons
+                                                              .arrow_forward_ios_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 5.0, 0.0),
@@ -816,9 +851,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         ),
                                       ),
                                     ),
-                                  ]
-                                      .divide(SizedBox(height: 10.0))
-                                      .around(SizedBox(height: 10.0)),
+                                  ].divide(SizedBox(height: 10.0)),
                                 ),
                               ),
                             ],
@@ -830,7 +863,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                           desktop: false,
                         ))
                           Align(
-                            alignment: AlignmentDirectional(0.0, 1.0),
+                            alignment: AlignmentDirectional(0.00, 1.00),
                             child: wrapWithModel(
                               model: _model.navBarFlotingModel,
                               updateCallback: () => setState(() {}),

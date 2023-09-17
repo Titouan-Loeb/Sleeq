@@ -60,6 +60,8 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
               content: InkWell(
             onTap: () {
               int count = length - 1 - index;
+              FFAppState().currentTreePath =
+                  FFAppState().currentTreePath.sublist(0, index + 1);
               Navigator.popUntil(context, (route) => count-- == 0);
             },
             child:

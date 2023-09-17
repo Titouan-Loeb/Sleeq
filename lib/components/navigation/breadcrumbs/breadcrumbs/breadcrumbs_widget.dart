@@ -1,4 +1,4 @@
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/breadcrumbs/sub_elements/bead_crumbs_back_button/bead_crumbs_back_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -58,9 +58,9 @@ class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
           children: [
             if (!widget.isHomeScreen)
               wrapWithModel(
-                model: _model.backButtonModel,
+                model: _model.beadCrumbsBackButtonModel,
                 updateCallback: () => setState(() {}),
-                child: BackButtonWidget(),
+                child: BeadCrumbsBackButtonWidget(),
               ),
             if (widget.isHomeScreen)
               Container(

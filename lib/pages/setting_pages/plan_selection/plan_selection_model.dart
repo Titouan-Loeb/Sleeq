@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/components/subscription/all_plans/plan_archive/plan_archive_widget.dart';
@@ -42,6 +42,7 @@ class PlanSelectionModel extends FlutterFlowModel {
   late SidebarModel sidebarModel;
   // State field(s) for PageView widget.
   PageController? pageViewController;
+
   int get pageViewCurrentIndex => pageViewController != null &&
           pageViewController!.hasClients &&
           pageViewController!.page != null
@@ -59,12 +60,12 @@ class PlanSelectionModel extends FlutterFlowModel {
   late PlanArchiveModel planArchiveModel;
   // Model for PlanStudent component.
   late PlanStudentModel planStudentModel;
-  // Model for BackButton component.
-  late BackButtonModel backButtonModel;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered1 = false;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered2 = false;
+  // Model for BackButton component.
+  late BackButtonModel backButtonModel;
   // Stores action output result for [Backend Call - API (Create Payment Link)] action in Button widget.
   ApiCallResponse? apiResult;
   // Model for NavBarFloting component.

@@ -58,7 +58,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
         child: Container(
@@ -507,7 +507,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
 
                             await widget.currentFolder!.update({
                               'folders': FieldValue.arrayUnion(
-                                  [_model.newFolder!.reference]),
+                                  [_model.newFolder?.reference]),
                             });
                           } else {
                             logFirebaseEvent('Button_upload_file_to_firebase');
@@ -585,7 +585,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
 
                               await widget.currentFolder!.update({
                                 'files': FieldValue.arrayUnion(
-                                    [_model.fileOut!.reference]),
+                                    [_model.fileOut?.reference]),
                               });
                               logFirebaseEvent(
                                   'Button_close_dialog,_drawer,_etc');

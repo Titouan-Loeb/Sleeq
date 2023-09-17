@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/components/subscription/all_plans/plan_archive/plan_archive_widget.dart';
@@ -206,6 +206,14 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                     child:
                                                         FlutterFlowExpandedImageView(
                                                       image: CachedNetworkImage(
+                                                        fadeInDuration:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                        fadeOutDuration:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    500),
                                                         imageUrl: currentUserPhoto !=
                                                                     null &&
                                                                 currentUserPhoto !=
@@ -237,6 +245,10 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                       BorderRadius.circular(
                                                           12.0),
                                                   child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
                                                     imageUrl: currentUserPhoto !=
                                                                 null &&
                                                             currentUserPhoto !=
@@ -318,7 +330,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                             child: Stack(
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0.00, 1.00),
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
@@ -377,7 +389,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.00, 1.00),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -421,22 +433,13 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 0.0, 16.0),
-                                  child: wrapWithModel(
-                                    model: _model.backButtonModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: BackButtonWidget(),
-                                  ),
-                                ),
                                 if ((_model.pageViewCurrentIndex != 5) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
                                     ))
                                   Align(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.00, 0.00),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -497,8 +500,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           cursor: MouseCursor.defer ??
                                               MouseCursor.defer,
                                           child: Align(
-                                            alignment:
-                                                AlignmentDirectional(1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
                                             child: Icon(
                                               Icons.arrow_forward_ios_rounded,
                                               color:
@@ -555,7 +558,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                       phone: false,
                                     ))
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -616,8 +620,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           cursor: MouseCursor.defer ??
                                               MouseCursor.defer,
                                           child: Align(
-                                            alignment:
-                                                AlignmentDirectional(1.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
                                             child: Icon(
                                               Icons.arrow_back_ios_rounded,
                                               color:
@@ -668,6 +672,15 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           'containerOnActionTriggerAnimation2']!,
                                     ),
                                   ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 16.0, 0.0, 16.0),
+                                  child: wrapWithModel(
+                                    model: _model.backButtonModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: BackButtonWidget(),
+                                  ),
+                                ),
                               ],
                             ),
                           ),

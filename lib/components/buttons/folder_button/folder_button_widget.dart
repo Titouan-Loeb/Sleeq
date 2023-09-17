@@ -133,6 +133,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                       FFAppState().selectedFolders = [];
                       FFAppState().isSelectionMode = false;
                       FFAppState().selecteFiles = [];
+                      FFAppState().addToCurrentTreePath(widget.path!);
                     });
                     logFirebaseEvent('IconButton_navigate_to');
 
@@ -183,7 +184,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
         if (FFAppState().isSelectionMode &&
             FFAppState().selectedFolders.contains(widget.path))
           Align(
-            alignment: AlignmentDirectional(1.0, -0.9),
+            alignment: AlignmentDirectional(1.00, -0.90),
             child: Icon(
               Icons.check_circle_rounded,
               color: FlutterFlowTheme.of(context).primary,
@@ -193,7 +194,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
         if (FFAppState().isSelectionMode &&
             !FFAppState().selectedFolders.contains(widget.path))
           Align(
-            alignment: AlignmentDirectional(1.0, -0.9),
+            alignment: AlignmentDirectional(1.00, -0.90),
             child: Icon(
               Icons.check_circle_outline_rounded,
               color: FlutterFlowTheme.of(context).primary,

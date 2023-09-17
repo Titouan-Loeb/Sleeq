@@ -59,7 +59,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
         child: Container(
@@ -81,7 +81,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.00, 0.00),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       '62s1el54' /* Rename */,
@@ -90,7 +90,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.00, 0.00),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'gx7f6c8b' /* Enter the new name below */,
@@ -104,7 +104,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                     child: TextFormField(
@@ -155,7 +155,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, 1.0),
+                  alignment: AlignmentDirectional(1.00, 1.00),
                   child: FFButtonWidget(
                     onPressed: () async {
                       logFirebaseEvent(

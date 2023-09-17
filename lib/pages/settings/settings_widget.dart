@@ -4,6 +4,7 @@ import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -127,6 +128,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               child:
                                                   FlutterFlowExpandedImageView(
                                                 image: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
                                                   imageUrl: currentUserPhoto !=
                                                               null &&
                                                           currentUserPhoto != ''
@@ -154,6 +159,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                             child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 500),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 500),
                                               imageUrl: currentUserPhoto !=
                                                           null &&
                                                       currentUserPhoto != ''
@@ -274,7 +283,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -345,7 +355,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -421,7 +432,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -457,7 +469,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ))
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.00, 1.00),
                               child: wrapWithModel(
                                 model: _model.navBarFlotingModel,
                                 updateCallback: () => setState(() {}),

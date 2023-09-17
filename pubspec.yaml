@@ -64,8 +64,8 @@ dependencies:
   flutter_cache_manager: 3.3.0
   flutter_plugin_android_lifecycle: 2.0.9
   flutter_rating_bar: 4.0.1
-  flutter_stripe: 9.2.1
-  flutter_stripe_web: 4.1.1
+  flutter_stripe: 9.4.0
+  flutter_stripe_web: 4.4.0
   flutter_svg: 2.0.4
   font_awesome_flutter: 10.1.0
   from_css_color: 2.0.0
@@ -83,7 +83,7 @@ dependencies:
   image_picker_platform_interface: 2.6.2
   internet_file: 1.1.0
   intl: 0.18.0
-  json_path: 0.4.1
+  json_path: 0.6.2
   mime_type: 1.0.0
   page_transition: 2.0.4
   path_provider: 2.0.14
@@ -110,10 +110,10 @@ dependencies:
   smooth_page_indicator: 1.0.1
   sqflite: 2.2.6
   stream_transform: 2.1.0
-  stripe_android: 9.2.1
-  stripe_ios: 9.2.1
-  stripe_js: 3.0.1
-  stripe_platform_interface: 9.2.1
+  stripe_android: 9.4.0
+  stripe_ios: 9.4.1
+  stripe_js: 3.2.0
+  stripe_platform_interface: 9.4.0
   timeago: 3.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27

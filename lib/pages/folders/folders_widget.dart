@@ -1,14 +1,14 @@
 import '/backend/backend.dart';
-import '/components/buttons/edit_bar/edit_bar_widget.dart';
+import '/components/buttons/edit_bar2/edit_bar2_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
-import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +49,7 @@ class _FoldersWidgetState extends State<FoldersWidget> {
       logFirebaseEvent('folders_update_app_state');
       setState(() {
         FFAppState().currentPage = 'Folders';
+        FFAppState().currentFolder = widget.currentFolder;
       });
     });
 
@@ -100,8 +101,10 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                       width: 50.0,
                                       height: 50.0,
                                       child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
                                       ),
                                     ),
                                   );
@@ -195,9 +198,13 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                                   height: 50.0,
                                                   child:
                                                       CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -255,9 +262,13 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                                         height: 50.0,
                                                         child:
                                                             CircularProgressIndicator(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                          ),
                                                         ),
                                                       ),
                                                     );
@@ -307,9 +318,13 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                                         height: 50.0,
                                                         child:
                                                             CircularProgressIndicator(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                          ),
                                                         ),
                                                       ),
                                                     );
@@ -338,57 +353,48 @@ class _FoldersWidgetState extends State<FoldersWidget> {
                                 );
                               },
                             ),
-                            if (FFAppState().isSelectionMode)
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 20.0),
-                                  child: wrapWithModel(
-                                    model: _model.editBarModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: EditBarWidget(
-                                      currentFolder: widget.currentFolder!,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                if (FFAppState().isSelectionMode)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 12.0),
+                                      child: wrapWithModel(
+                                        model: _model.editBar2Model,
+                                        updateCallback: () => setState(() {}),
+                                        child: EditBar2Widget(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            if (responsiveVisibility(
-                              context: context,
-                              tabletLandscape: false,
-                              desktop: false,
-                            ))
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
-                                child: wrapWithModel(
-                                  model: _model.navBarFlotingModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: NavBarFlotingWidget(
-                                    canAddFile: true,
-                                    currentFolder: widget.currentFolder,
+                                if (responsiveVisibility(
+                                  context: context,
+                                  tabletLandscape: false,
+                                  desktop: false,
+                                ))
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: wrapWithModel(
+                                      model: _model.navBarFlotingModel,
+                                      updateCallback: () => setState(() {}),
+                                      child: NavBarFlotingWidget(
+                                        canAddFile: true,
+                                        currentFolder: widget.currentFolder,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            if (FFAppState().pastingMode)
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 20.0),
-                                  child: wrapWithModel(
-                                    model: _model.pasteBarModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: PasteBarWidget(),
-                                  ),
-                                ),
-                              ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(1.0, 1.0),
+                    alignment: AlignmentDirectional(1.00, 1.00),
                     child: wrapWithModel(
                       model: _model.newButtonModel,
                       updateCallback: () => setState(() {}),

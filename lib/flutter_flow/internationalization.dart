@@ -209,6 +209,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Contraseña',
       'fr': 'Mot de passe',
     },
+    'cjp45jcm': {
+      'en': 'Contain at least one lower case',
+      'es': '',
+      'fr': '',
+    },
+    'xive8gvg': {
+      'en': 'Contain at least one number',
+      'es': '',
+      'fr': '',
+    },
+    'av7mvuec': {
+      'en': 'Contain at least one special character',
+      'es': '',
+      'fr': '',
+    },
+    '0haqu219': {
+      'en': 'Contain at least one upper case',
+      'es': '',
+      'fr': '',
+    },
+    '20pmuh66': {
+      'en': 'Confirm Password',
+      'es': 'Contraseña',
+      'fr': 'Mot de passe',
+    },
     'hii8oza0': {
       'en': 'Sign up',
       'es': 'Regístrate',
@@ -741,7 +766,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Alto',
       'fr': 'Haut',
     },
-    'olkdr08i': {
+    'j4e1rll7': {
       'en': 'Low',
       'es': '',
       'fr': '',
@@ -785,6 +810,78 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+  },
+  // Termsandconditions
+  {
+    '5vavpscf': {
+      'en': 'Terms and Conditions',
+      'es': '',
+      'fr': '',
+    },
+    'u3ax0yju': {
+      'en':
+          'By using this app, you agree to the following terms and conditions:',
+      'es': '',
+      'fr': '',
+    },
+    '2loqfytx': {
+      'en': '1. Data Responsibility:',
+      'es': '',
+      'fr': '',
+    },
+    '5j4o9o7w': {
+      'en':
+          'You are solely responsible for the data you upload to this app. We do not take responsibility for any lost or corrupted data.',
+      'es': '',
+      'fr': '',
+    },
+    'dtbvv7cw': {
+      'en': '2. Refunds:',
+      'es': '',
+      'fr': '',
+    },
+    'raob6rrp': {
+      'en':
+          'Refunds are not allowed after using the premium plan for more than 1 week of the paid-for validity.',
+      'es': '',
+      'fr': '',
+    },
+    '7lqc5new': {
+      'en': 'I acknowledge and agree to the Terms and Conditions',
+      'es': '',
+      'fr': '',
+    },
+    'hhdh2qja': {
+      'en': 'Accept',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // MoveSmarphonePage
+  {
+    '6jmjajlj': {
+      'en': 'Move selected elements',
+      'es': '',
+      'fr': '',
+    },
+    'pdzxr0bo': {
+      'en': 'Home',
+      'es': '',
+      'fr': '',
+    },
+  },
+  // CopyPasteSmarphonePage
+  {
+    '7iwe6ghx': {
+      'en': 'Paste selected elements',
+      'es': '',
+      'fr': '',
+    },
+    'tym50gvi': {
+      'en': 'Home',
+      'es': '',
+      'fr': '',
     },
   },
   // newnav
@@ -2346,27 +2443,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Nouveau',
     },
   },
-  // NavigationTree
+  // MovePopup
   {
-    'qzt8poeb': {
-      'en': 'Select a folder',
-      'es': 'Seleccione una carpeta',
-      'fr': 'Sélectionnez un dossier',
+    'ch8g34ya': {
+      'en': 'Move selected elements',
+      'es': '',
+      'fr': '',
     },
-    'dhzgkq27': {
-      'en': 'path',
-      'es': 'camino',
-      'fr': 'chemin',
-    },
-    'mwjwax1v': {
-      'en': 'Cancel',
-      'es': 'Cancelar',
-      'fr': 'Annuler',
-    },
-    '9chr0yeh': {
-      'en': 'Select',
-      'es': 'Seleccionar',
-      'fr': 'Sélectionner',
+  },
+  // CopyPastePopup
+  {
+    '3pr1p7mm': {
+      'en': 'Paste selected elements',
+      'es': '',
+      'fr': '',
     },
   },
   // Miscellaneous

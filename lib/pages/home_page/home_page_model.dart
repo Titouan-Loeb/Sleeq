@@ -1,15 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/buttons/edit_bar/edit_bar_widget.dart';
+import '/components/buttons/edit_bar2/edit_bar2_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
-import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -30,34 +30,30 @@ class HomePageModel extends FlutterFlowModel {
   late BreadcrumbsModel breadcrumbsModel;
   // State field(s) for Switch widget.
   bool? switchValue;
-  // Model for editBar component.
-  late EditBarModel editBarModel;
+  // Model for editBar2 component.
+  late EditBar2Model editBar2Model;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
   // Model for newButton component.
   late NewButtonModel newButtonModel;
-  // Model for pasteBar component.
-  late PasteBarModel pasteBarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sidebarModel = createModel(context, () => SidebarModel());
     breadcrumbsModel = createModel(context, () => BreadcrumbsModel());
-    editBarModel = createModel(context, () => EditBarModel());
+    editBar2Model = createModel(context, () => EditBar2Model());
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
     newButtonModel = createModel(context, () => NewButtonModel());
-    pasteBarModel = createModel(context, () => PasteBarModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sidebarModel.dispose();
     breadcrumbsModel.dispose();
-    editBarModel.dispose();
+    editBar2Model.dispose();
     navBarFlotingModel.dispose();
     newButtonModel.dispose();
-    pasteBarModel.dispose();
   }
 
   /// Action blocks are added here.

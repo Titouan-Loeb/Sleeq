@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
-import '../flutter_flow_theme.dart';
 import '/backend/backend.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 
-import '../../index.dart';
-import '../../main.dart';
-import '../lat_lng.dart';
-import '../place.dart';
+import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -215,6 +216,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'bugReport',
               requireAuth: true,
               builder: (context, params) => BugReportWidget(),
+            ),
+            FFRoute(
+              name: 'Termsandconditions',
+              path: 'termsandconditions',
+              requireAuth: true,
+              builder: (context, params) => TermsandconditionsWidget(),
+            ),
+            FFRoute(
+              name: 'MoveSmarphonePage',
+              path: 'moveSmarphonePage',
+              requireAuth: true,
+              builder: (context, params) => MoveSmarphonePageWidget(),
+            ),
+            FFRoute(
+              name: 'CopyPasteSmarphonePage',
+              path: 'copyPasteSmarphonePage',
+              requireAuth: true,
+              builder: (context, params) => CopyPasteSmarphonePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

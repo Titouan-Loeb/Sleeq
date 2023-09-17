@@ -85,7 +85,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.00, 0.00),
                             child: AutoSizeText(
                               FFLocalizations.of(context).getText(
                                 'hagyvfdy' /* Sign In */,
@@ -120,7 +120,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
                               ),
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'otvb196v' /* Sign Up */,

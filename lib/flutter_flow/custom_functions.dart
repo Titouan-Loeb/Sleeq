@@ -88,3 +88,52 @@ bool endsWith(
 ) {
   return (string.endsWith(end));
 }
+
+bool? numberChecking(String? password) {
+  // Null or empty string is not a number
+  if (password == null || password.isEmpty) {
+    return false;
+  }
+
+  bool found = password.contains(new RegExp(r'[0-9]'));
+
+  return found;
+}
+
+bool? specialChar(String? password) {
+  // Null or empty string is not a number
+  if (password == null || password.isEmpty) {
+    return false;
+  }
+
+  // Special characters allowed
+  final regExp = RegExp(
+      r'[\^*.\[\]{}()?\-"!@#%&/\,><:;_~`+=' // <-- Notice the escaped symbols
+      "'" // <-- ' is added to the expression
+      ']');
+
+  bool found = password.contains(regExp);
+  return found;
+}
+
+bool? upperCase(String? password) {
+  // Null or empty string is not a number
+  if (password == null || password.isEmpty) {
+    return false;
+  }
+
+  bool found = password.contains(new RegExp(r'[A-Z]'));
+
+  return found;
+}
+
+bool? lowerCase(String? password) {
+  // Null or empty string is not a number
+  if (password == null || password.isEmpty) {
+    return false;
+  }
+
+  bool found = password.contains(new RegExp(r'[a-z]'));
+
+  return found;
+}

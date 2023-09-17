@@ -55,7 +55,7 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
         tablet: false,
       ),
       child: Align(
-        alignment: AlignmentDirectional(1.0, 1.0),
+        alignment: AlignmentDirectional(1.00, 1.00),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 20.0),
           child: InkWell(

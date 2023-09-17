@@ -48,7 +48,7 @@ String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
   }
   if (format == 'relative') {
     _setTimeagoLocales();
-    return timeago.format(dateTime, locale: locale);
+    return timeago.format(dateTime, locale: locale, allowFromNow: true);
   }
   return DateFormat(format, locale).format(dateTime);
 }
@@ -293,13 +293,15 @@ extension ListDivideExt<T extends Widget> on Iterable<T> {
       : (enumerate.map((e) => [e.value, t]).expand((i) => i).toList()
         ..removeLast());
 
-  List<T> around(T t) => toList()
-    ..insert(0, t)
-    ..add(t);
+  List<Widget> around(Widget t) => addToStart(t).addToEnd(t);
 
   List<Widget> addToStart(Widget t) =>
       enumerate.map((e) => e.value).toList()..insert(0, t);
 
   List<Widget> addToEnd(Widget t) =>
       enumerate.map((e) => e.value).toList()..add(t);
+
+  List<Padding> paddingTopEach(double val) =>
+      map((w) => Padding(padding: EdgeInsets.only(top: val), child: w))
+          .toList();
 }

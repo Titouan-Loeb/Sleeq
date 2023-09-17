@@ -9,14 +9,24 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future addSelectedElementsToCurrentFolder() async {
-  await FFAppState().currentFolder!.update({
+Future moveElementsToFolder(
+    DocumentReference destFolder, DocumentReference sourceFolder) async {
+  destFolder.update({
     'folders': FieldValue.arrayUnion(FFAppState().selectedFolders),
-  });
-  await FFAppState().currentFolder!.update({
     'files': FieldValue.arrayUnion(FFAppState().selecteFiles),
   });
+  sourceFolder.update({
+    'folders': FieldValue.arrayRemove(FFAppState().selectedFolders),
+    'files': FieldValue.arrayRemove(FFAppState().selecteFiles),
+  });
+  for (final folder in FFAppState().selectedFolders) {
+    folder.update({
+      'parent_folder': destFolder,
+    });
+  }
+  for (final file in FFAppState().selecteFiles) {
+    file.update({
+      'containing_folder': destFolder,
+    });
+  }
 }
-
-// Set your action name, define your arguments and return parameter,
-// and then add the boilerplate code using the button on the right!

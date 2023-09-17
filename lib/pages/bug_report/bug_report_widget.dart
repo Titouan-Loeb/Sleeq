@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/navigation/breadcrumbs/sub_elements/back_button/back_button_widget.dart';
+import '/components/navigation/breadcrumbs/sub_elements/bead_crumbs_back_button/bead_crumbs_back_button_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -70,9 +70,9 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           wrapWithModel(
-                            model: _model.backButtonModel,
+                            model: _model.beadCrumbsBackButtonModel,
                             updateCallback: () => setState(() {}),
-                            child: BackButtonWidget(),
+                            child: BeadCrumbsBackButtonWidget(),
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
@@ -345,10 +345,11 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                         FormFieldController<List<String>>(
                                   [
                                     FFLocalizations.of(context).getText(
-                                      'olkdr08i' /* Low */,
+                                      'j4e1rll7' /* Low */,
                                     )
                                   ],
                                 ),
+                                wrapped: true,
                               ),
                             ),
                           ].divide(SizedBox(width: 15.0)),
@@ -390,7 +391,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                       ),
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.00, 1.00),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 16.0),

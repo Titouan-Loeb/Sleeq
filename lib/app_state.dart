@@ -6,13 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
   FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
@@ -71,6 +75,10 @@ class FFAppState extends ChangeNotifier {
     _selectedFolders[_index] = updateFn(_selectedFolders[_index]);
   }
 
+  void insertAtIndexInSelectedFolders(int _index, DocumentReference _value) {
+    _selectedFolders.insert(_index, _value);
+  }
+
   List<DocumentReference> _selecteFiles = [];
   List<DocumentReference> get selecteFiles => _selecteFiles;
   set selecteFiles(List<DocumentReference> _value) {
@@ -94,6 +102,10 @@ class FFAppState extends ChangeNotifier {
     DocumentReference Function(DocumentReference) updateFn,
   ) {
     _selecteFiles[_index] = updateFn(_selecteFiles[_index]);
+  }
+
+  void insertAtIndexInSelecteFiles(int _index, DocumentReference _value) {
+    _selecteFiles.insert(_index, _value);
   }
 
   double _usedStorage = 0.3;
@@ -143,6 +155,35 @@ class FFAppState extends ChangeNotifier {
   bool get pastingMode => _pastingMode;
   set pastingMode(bool _value) {
     _pastingMode = _value;
+  }
+
+  List<DocumentReference> _currentTreePath = [];
+  List<DocumentReference> get currentTreePath => _currentTreePath;
+  set currentTreePath(List<DocumentReference> _value) {
+    _currentTreePath = _value;
+  }
+
+  void addToCurrentTreePath(DocumentReference _value) {
+    _currentTreePath.add(_value);
+  }
+
+  void removeFromCurrentTreePath(DocumentReference _value) {
+    _currentTreePath.remove(_value);
+  }
+
+  void removeAtIndexFromCurrentTreePath(int _index) {
+    _currentTreePath.removeAt(_index);
+  }
+
+  void updateCurrentTreePathAtIndex(
+    int _index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    _currentTreePath[_index] = updateFn(_currentTreePath[_index]);
+  }
+
+  void insertAtIndexInCurrentTreePath(int _index, DocumentReference _value) {
+    _currentTreePath.insert(_index, _value);
   }
 
   final _homegridManager = FutureRequestManager<FoldersRecord>();

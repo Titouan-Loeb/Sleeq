@@ -1,15 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/buttons/edit_bar/edit_bar_widget.dart';
+import '/components/buttons/edit_bar2/edit_bar2_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
-import '/components/buttons/paste_bar/paste_bar_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -50,6 +50,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       logFirebaseEvent('HomePage_update_app_state');
       setState(() {
         FFAppState().currentPage = 'HomePage';
+        FFAppState().currentFolder = currentUserDocument?.rootFolder;
+        FFAppState().currentTreePath = [];
+      });
+      logFirebaseEvent('HomePage_update_app_state');
+      setState(() {
+        FFAppState().addToCurrentTreePath(currentUserDocument!.rootFolder!);
       });
     });
 
@@ -119,8 +125,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     width: 50.0,
                                     height: 50.0,
                                     child: CircularProgressIndicator(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
                                     ),
                                   ),
                                 );
@@ -220,9 +227,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 height: 50.0,
                                                 child:
                                                     CircularProgressIndicator(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
                                                 ),
                                               ),
                                             );
@@ -275,10 +285,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       height: 50.0,
                                                       child:
                                                           CircularProgressIndicator(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
                                                       ),
                                                     ),
                                                   );
@@ -339,10 +352,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       height: 50.0,
                                                       child:
                                                           CircularProgressIndicator(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
                                                       ),
                                                     ),
                                                   );
@@ -373,27 +389,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.00, 1.00),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               if (FFAppState().isSelectionMode)
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 20.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => wrapWithModel(
-                                        model: _model.editBarModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: EditBarWidget(
-                                          currentFolder:
-                                              currentUserDocument!.rootFolder!,
-                                        ),
-                                      ),
-                                    ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: wrapWithModel(
+                                    model: _model.editBar2Model,
+                                    updateCallback: () => setState(() {}),
+                                    child: EditBar2Widget(),
                                   ),
                                 ),
                               if (responsiveVisibility(
@@ -402,7 +410,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 desktop: false,
                               ))
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0.00, 1.00),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => wrapWithModel(
                                       model: _model.navBarFlotingModel,
@@ -427,19 +435,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                         ),
-                        if (FFAppState().pastingMode)
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 1.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
-                              child: wrapWithModel(
-                                model: _model.pasteBarModel,
-                                updateCallback: () => setState(() {}),
-                                child: PasteBarWidget(),
-                              ),
-                            ),
-                          ),
                       ],
                     ),
                   ),

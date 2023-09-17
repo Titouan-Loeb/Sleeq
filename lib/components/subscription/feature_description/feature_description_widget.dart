@@ -169,7 +169,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                   ),
                 if (widget.useIcon)
                   Align(
-                    alignment: AlignmentDirectional(0.95, -1.0),
+                    alignment: AlignmentDirectional(0.95, -1.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 0.0),

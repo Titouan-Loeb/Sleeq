@@ -4,18 +4,20 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'back_button_model.dart';
-export 'back_button_model.dart';
+import 'bead_crumbs_back_button_model.dart';
+export 'bead_crumbs_back_button_model.dart';
 
-class BackButtonWidget extends StatefulWidget {
-  const BackButtonWidget({Key? key}) : super(key: key);
+class BeadCrumbsBackButtonWidget extends StatefulWidget {
+  const BeadCrumbsBackButtonWidget({Key? key}) : super(key: key);
 
   @override
-  _BackButtonWidgetState createState() => _BackButtonWidgetState();
+  _BeadCrumbsBackButtonWidgetState createState() =>
+      _BeadCrumbsBackButtonWidgetState();
 }
 
-class _BackButtonWidgetState extends State<BackButtonWidget> {
-  late BackButtonModel _model;
+class _BeadCrumbsBackButtonWidgetState
+    extends State<BeadCrumbsBackButtonWidget> {
+  late BeadCrumbsBackButtonModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +28,7 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BackButtonModel());
+    _model = createModel(context, () => BeadCrumbsBackButtonModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -62,12 +64,14 @@ class _BackButtonWidgetState extends State<BackButtonWidget> {
               size: 17.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('BACK_BUTTON_arrow_back_ios_outlined_ICN_');
+              logFirebaseEvent('BEAD_CRUMBS_BACK_BUTTON_arrow_back_ios_o');
               logFirebaseEvent('IconButton_update_app_state');
               setState(() {
                 FFAppState().selectedFolders = [];
                 FFAppState().selecteFiles = [];
                 FFAppState().isSelectionMode = false;
+                FFAppState().removeFromCurrentTreePath(
+                    FFAppState().currentTreePath.last);
               });
               logFirebaseEvent('IconButton_navigate_back');
               context.pop();

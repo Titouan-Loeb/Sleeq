@@ -538,6 +538,8 @@ class _NewnavWidgetState extends State<NewnavWidget>
                         builder: (context) => ClipRRect(
                           borderRadius: BorderRadius.circular(50.0),
                           child: CachedNetworkImage(
+                            fadeInDuration: Duration(milliseconds: 500),
+                            fadeOutDuration: Duration(milliseconds: 500),
                             imageUrl: currentUserPhoto != null &&
                                     currentUserPhoto != ''
                                 ? currentUserPhoto

@@ -76,7 +76,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.00, 0.00),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 16.0, 0.0),

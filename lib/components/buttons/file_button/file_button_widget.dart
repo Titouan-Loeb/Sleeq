@@ -85,7 +85,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                         return Material(
                           color: Colors.transparent,
                           child: RenameFolderDialogWidget(
-                            fileId: widget.file!.reference,
+                            fileId: widget.file?.reference,
                             isFolder: false,
                             name: widget.name!,
                           ),
@@ -118,7 +118,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                       if (FFAppState().isSelectionMode) {
                         if (FFAppState()
                             .selecteFiles
-                            .contains(widget.file!.reference)) {
+                            .contains(widget.file?.reference)) {
                           logFirebaseEvent('IconButton_update_app_state');
                           setState(() {
                             FFAppState()
@@ -170,9 +170,9 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                 ),
               ),
               if (FFAppState().isSelectionMode &&
-                  FFAppState().selecteFiles.contains(widget.file!.reference))
+                  FFAppState().selecteFiles.contains(widget.file?.reference))
                 Align(
-                  alignment: AlignmentDirectional(1.0, -0.9),
+                  alignment: AlignmentDirectional(1.00, -0.90),
                   child: Icon(
                     Icons.check_circle_rounded,
                     color: FlutterFlowTheme.of(context).primary,
@@ -180,9 +180,9 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                   ),
                 ),
               if (FFAppState().isSelectionMode &&
-                  !FFAppState().selecteFiles.contains(widget.file!.reference))
+                  !FFAppState().selecteFiles.contains(widget.file?.reference))
                 Align(
-                  alignment: AlignmentDirectional(1.0, -0.9),
+                  alignment: AlignmentDirectional(1.00, -0.90),
                   child: Icon(
                     Icons.check_circle_outline_rounded,
                     color: FlutterFlowTheme.of(context).primary,

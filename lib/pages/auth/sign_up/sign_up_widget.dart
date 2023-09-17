@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,6 +34,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignUp'});
     _model.emailTextController ??= TextEditingController();
     _model.passwordTextController ??= TextEditingController();
+    _model.confirmPasswordTextController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -54,7 +56,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: Color(0xFFF1F4F8),
             body: SafeArea(
               top: true,
               child: Padding(
@@ -104,7 +106,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
                               ),
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'mcquk0sa' /* Sign In */,
@@ -131,7 +133,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.00, 0.00),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '3a46tknc' /* Sign Up */,
@@ -245,15 +247,254 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           ],
                           borderRadius: BorderRadius.circular(12.0),
                         ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  2.0, 2.0, 2.0, 2.0),
+                              child: TextFormField(
+                                controller: _model.passwordTextController,
+                                obscureText: !_model.passwordVisibility1,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    's3mww27o' /* Password */,
+                                  ),
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).bodySmall,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodySmall,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  filled: true,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 24.0),
+                                  suffixIcon: InkWell(
+                                    onTap: () => setState(
+                                      () => _model.passwordVisibility1 =
+                                          !_model.passwordVisibility1,
+                                    ),
+                                    focusNode: FocusNode(skipTraversal: true),
+                                    child: Icon(
+                                      _model.passwordVisibility1
+                                          ? Icons.visibility_outlined
+                                          : Icons.visibility_off_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 22.0,
+                                    ),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                validator: _model
+                                    .passwordTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      child: Container(
+                        width: 292.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: Color(0x00FFFFFF),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'cjp45jcm' /* Contain at least one lower cas... */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: valueOrDefault<Color>(
+                                          functions.lowerCase(_model
+                                                  .passwordTextController.text)!
+                                              ? FlutterFlowTheme.of(context)
+                                                  .success
+                                              : FlutterFlowTheme.of(context)
+                                                  .error,
+                                          Color(0xFF14181B),
+                                        ),
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'xive8gvg' /* Contain at least one number */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: valueOrDefault<Color>(
+                                          functions.numberChecking(_model
+                                                  .passwordTextController.text)!
+                                              ? FlutterFlowTheme.of(context)
+                                                  .success
+                                              : FlutterFlowTheme.of(context)
+                                                  .error,
+                                          Color(0xFF14181B),
+                                        ),
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'av7mvuec' /* Contain at least one special c... */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: valueOrDefault<Color>(
+                                          functions.specialChar(_model
+                                                  .passwordTextController.text)!
+                                              ? FlutterFlowTheme.of(context)
+                                                  .success
+                                              : FlutterFlowTheme.of(context)
+                                                  .error,
+                                          Color(0xFF14181B),
+                                        ),
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    '0haqu219' /* Contain at least one upper cas... */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: valueOrDefault<Color>(
+                                          functions.upperCase(_model
+                                                  .passwordTextController.text)!
+                                              ? FlutterFlowTheme.of(context)
+                                                  .success
+                                              : FlutterFlowTheme.of(context)
+                                                  .error,
+                                          Color(0xFF14181B),
+                                        ),
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 6.0,
+                              color: Color(0x3416202A),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               2.0, 2.0, 2.0, 2.0),
                           child: TextFormField(
-                            controller: _model.passwordTextController,
-                            obscureText: !_model.passwordVisibility,
+                            controller: _model.confirmPasswordTextController,
+                            obscureText: !_model.passwordVisibility2,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
-                                's3mww27o' /* Password */,
+                                '20pmuh66' /* Confirm Password */,
                               ),
                               labelStyle:
                                   FlutterFlowTheme.of(context).bodySmall,
@@ -293,12 +534,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   20.0, 24.0, 20.0, 24.0),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
-                                  () => _model.passwordVisibility =
-                                      !_model.passwordVisibility,
+                                  () => _model.passwordVisibility2 =
+                                      !_model.passwordVisibility2,
                                 ),
                                 focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
-                                  _model.passwordVisibility
+                                  _model.passwordVisibility2
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: FlutterFlowTheme.of(context)
@@ -308,7 +549,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model.passwordTextControllerValidator
+                            validator: _model
+                                .confirmPasswordTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -325,50 +567,108 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGN_UP_PAGE_SIGN_UP_BTN_ON_TAP');
-                              logFirebaseEvent('Button_auth');
-                              GoRouter.of(context).prepareAuthEvent();
+                              Function() _navigate = () {};
+                              if (functions.numberChecking(
+                                      _model.passwordTextController.text)! &&
+                                  functions.specialChar(
+                                      _model.passwordTextController.text)! &&
+                                  functions.upperCase(
+                                      _model.passwordTextController.text)! &&
+                                  functions.lowerCase(
+                                      _model.passwordTextController.text)!) {
+                                if (_model.passwordTextController.text ==
+                                    _model.confirmPasswordTextController.text) {
+                                  logFirebaseEvent('Button_auth');
+                                  GoRouter.of(context).prepareAuthEvent();
+                                  if (_model.passwordTextController.text !=
+                                      _model
+                                          .confirmPasswordTextController.text) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Passwords don\'t match!',
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
 
-                              final user =
-                                  await authManager.createAccountWithEmail(
-                                context,
-                                _model.emailTextController.text,
-                                _model.passwordTextController.text,
-                              );
-                              if (user == null) {
-                                return;
-                              }
+                                  final user =
+                                      await authManager.createAccountWithEmail(
+                                    context,
+                                    _model.emailTextController.text,
+                                    _model.passwordTextController.text,
+                                  );
+                                  if (user == null) {
+                                    return;
+                                  }
 
-                              await UsersRecord.collection
-                                  .doc(user.uid)
-                                  .update(createUsersRecordData(
-                                    english: true,
-                                  ));
+                                  await UsersRecord.collection
+                                      .doc(user.uid)
+                                      .update(createUsersRecordData(
+                                        english: true,
+                                      ));
 
-                              logFirebaseEvent('Button_backend_call');
+                                  _navigate = () => context.goNamedAuth(
+                                      'HomePage', context.mounted);
+                                  logFirebaseEvent('Button_backend_call');
 
-                              var foldersRecordReference =
-                                  FoldersRecord.createDoc(
-                                      currentUserReference!);
-                              await foldersRecordReference
-                                  .set(createFoldersRecordData(
-                                owner: currentUserReference,
-                                parentFolder: currentUserDocument?.rootFolder,
-                              ));
-                              _model.folder = FoldersRecord.getDocumentFromData(
-                                  createFoldersRecordData(
+                                  var foldersRecordReference =
+                                      FoldersRecord.createDoc(
+                                          currentUserReference!);
+                                  await foldersRecordReference
+                                      .set(createFoldersRecordData(
                                     owner: currentUserReference,
                                     parentFolder:
                                         currentUserDocument?.rootFolder,
+                                  ));
+                                  _model.folderCopy =
+                                      FoldersRecord.getDocumentFromData(
+                                          createFoldersRecordData(
+                                            owner: currentUserReference,
+                                            parentFolder:
+                                                currentUserDocument?.rootFolder,
+                                          ),
+                                          foldersRecordReference);
+                                  logFirebaseEvent('Button_backend_call');
+
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    rootFolder: _model.folderCopy?.reference,
+                                  ));
+                                } else {
+                                  logFirebaseEvent('Button_show_snack_bar');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Not the same password',
+                                        style: TextStyle(
+                                          color: Color(0xFFFF0000),
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor: Color(0xFFF1F4F8),
+                                    ),
+                                  );
+                                }
+                              } else {
+                                logFirebaseEvent('Button_show_snack_bar');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Incomplete password ',
+                                      style: TextStyle(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0xFFF1F4F8),
                                   ),
-                                  foldersRecordReference);
-                              logFirebaseEvent('Button_backend_call');
+                                );
+                              }
 
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                rootFolder: _model.folder!.reference,
-                              ));
-
-                              context.goNamedAuth('HomePage', context.mounted);
+                              _navigate();
 
                               setState(() {});
                             },
@@ -458,7 +758,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
                               await currentUserReference!
                                   .update(createUsersRecordData(
-                                rootFolder: _model.folderGoogle!.reference,
+                                rootFolder: _model.folderGoogle?.reference,
                               ));
 
                               context.goNamedAuth('HomePage', context.mounted);

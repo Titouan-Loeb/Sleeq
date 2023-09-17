@@ -24,5 +24,10 @@ export '/pages/payment/successful_payment/successful_payment_widget.dart'
 export '/pages/payment/cancel_payment/cancel_payment_widget.dart'
     show CancelPaymentWidget;
 export '/pages/setting_pages/feedback/feedback_widget.dart' show FeedbackWidget;
-export '/pages/setting_pages/bug_report/bug_report_widget.dart'
-    show BugReportWidget;
+export '/pages/bug_report/bug_report_widget.dart' show BugReportWidget;
+export '/termsandconditions/termsandconditions_widget.dart'
+    show TermsandconditionsWidget;
+export '/move_smarphone_page/move_smarphone_page_widget.dart'
+    show MoveSmarphonePageWidget;
+export '/copy_paste_smarphone_page/copy_paste_smarphone_page_widget.dart'
+    show CopyPasteSmarphonePageWidget;
