@@ -10,6 +10,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_modal_model.dart';
@@ -79,21 +80,24 @@ class _AddModalWidgetState extends State<AddModalWidget> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                  child: AutoSizeText(
+                    'Add a new ${FFAppState().isEditingFolder ? 'folder' : 'file'}',
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineSmallFamily,
+                          fontSize: 20.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).headlineSmallFamily),
+                        ),
+                  ),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                        child: AutoSizeText(
-                          'Add a new ${FFAppState().isEditingFolder ? 'folder' : 'file'}',
-                          style: FlutterFlowTheme.of(context).headlineSmall,
-                        ),
-                      ),
-                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -114,14 +118,15 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_33pqa2yd_ON_TAP');
-                                logFirebaseEvent('Container_update_app_state');
-                                FFAppState().update(() {
-                                  FFAppState().isEditingFolder = true;
+                                logFirebaseEvent(
+                                    'Container_update_widget_state');
+                                setState(() {
+                                  _model.addSelect = 1;
                                 });
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: !FFAppState().isEditingFolder
+                                  color: _model.addSelect != 1
                                       ? FlutterFlowTheme.of(context)
                                           .primaryBackground
                                       : FlutterFlowTheme.of(context)
@@ -185,14 +190,15 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_ouc66vor_ON_TAP');
-                                logFirebaseEvent('Container_update_app_state');
-                                FFAppState().update(() {
-                                  FFAppState().isEditingFolder = false;
+                                logFirebaseEvent(
+                                    'Container_update_widget_state');
+                                setState(() {
+                                  _model.addSelect = 2;
                                 });
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: FFAppState().isEditingFolder
+                                  color: _model.addSelect != 2
                                       ? FlutterFlowTheme.of(context)
                                           .primaryBackground
                                       : FlutterFlowTheme.of(context)
@@ -233,6 +239,78 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'ADD_MODAL_COMP_Container_5rtvczs5_ON_TAP');
+                                logFirebaseEvent(
+                                    'Container_update_widget_state');
+                                setState(() {
+                                  _model.addSelect = 3;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: _model.addSelect != 3
+                                      ? FlutterFlowTheme.of(context)
+                                          .primaryBackground
+                                      : FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.photo_camera,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 22.0,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            4.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'ebnhvyp6' /* Camera */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color: Theme.of(context)
+                                                            .brightness ==
+                                                        Brightness.light
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -329,20 +407,35 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 validator: _model.textController1Validator
                                     .asValidator(context),
                               ),
-                              wrapWithModel(
-                                model: _model.colorDialModel1,
-                                updateCallback: () => setState(() {}),
-                                child: ColorDialWidget(
-                                  allowedColors: [
-                                    Color(0xFFFFC6FF),
-                                    Color(0xFFBDB2FF),
-                                    Color(0xFFA0C4FF),
-                                    Color(0xFF9BF6FF),
-                                    Color(0xFFCAFFBF),
-                                    Color(0xFFFDFFB6),
-                                    Color(0xFFFFD6A5),
-                                    Color(0xFFFFADAD)
-                                  ],
+                              AuthUserStreamWidget(
+                                builder: (context) => wrapWithModel(
+                                  model: _model.colorDialModel1,
+                                  updateCallback: () => setState(() {}),
+                                  child: ColorDialWidget(
+                                    allowedColors: valueOrDefault<bool>(
+                                            currentUserDocument?.isColorblind,
+                                            false)
+                                        ? ([
+                                            Color(0xFFC600FF),
+                                            Color(0xFFB200FF),
+                                            Color(0xFF0070FF),
+                                            Color(0xFF00A6FF),
+                                            Color(0xFF00FF80),
+                                            Color(0xFF80FF00),
+                                            Color(0xFFFF6A00),
+                                            Color(0xFFFF0000)
+                                          ])
+                                        : ([
+                                            Color(0xFFFFC6FF),
+                                            Color(0xFFBDB2FF),
+                                            Color(0xFFA0C4FF),
+                                            Color(0xFF9BF6FF),
+                                            Color(0xFFCAFFBF),
+                                            Color(0xFFFDFFB6),
+                                            Color(0xFFFFD6A5),
+                                            Color(0xFFFFADAD)
+                                          ]),
+                                  ),
                                 ),
                               ),
                             ],
@@ -481,7 +574,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                         onPressed: () async {
                           logFirebaseEvent('ADD_MODAL_COMP__BTN_ON_TAP');
                           var _shouldSetState = false;
-                          if (FFAppState().isEditingFolder) {
+                          if (_model.addSelect == 1) {
                             logFirebaseEvent('Button_backend_call');
 
                             var foldersRecordReference =
@@ -509,7 +602,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               'folders': FieldValue.arrayUnion(
                                   [_model.newFolder?.reference]),
                             });
-                          } else {
+                          } else if (_model.addSelect == 2) {
                             logFirebaseEvent('Button_upload_file_to_firebase');
                             final selectedFiles = await selectFiles(
                               multiFile: false,
@@ -599,6 +692,9 @@ class _AddModalWidgetState extends State<AddModalWidget> {
 
                             if (_shouldSetState) setState(() {});
                             return;
+                          } else {
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
 
                           logFirebaseEvent('Button_haptic_feedback');
@@ -615,7 +711,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
+                              15.0, 15.0, 15.0, 15.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,

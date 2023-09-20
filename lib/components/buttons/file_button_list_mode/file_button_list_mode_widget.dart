@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -110,7 +111,7 @@ class _FileButtonListModeWidgetState extends State<FileButtonListModeWidget> {
           },
           child: Material(
             color: Colors.transparent,
-            elevation: 5.0,
+            elevation: 1.0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -118,7 +119,7 @@ class _FileButtonListModeWidgetState extends State<FileButtonListModeWidget> {
               width: double.infinity,
               height: 50.0,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).alternate,
+                color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Padding(

@@ -212,27 +212,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'cjp45jcm': {
       'en': 'Contain at least one lower case',
       'es': '',
-      'fr': '',
+      'fr': 'Contient au moins une minuscule',
     },
     'xive8gvg': {
       'en': 'Contain at least one number',
       'es': '',
-      'fr': '',
+      'fr': 'Contient au moins un chiffre',
     },
     'av7mvuec': {
       'en': 'Contain at least one special character',
       'es': '',
-      'fr': '',
+      'fr': 'Contient au moins un caractère spécial',
     },
     '0haqu219': {
       'en': 'Contain at least one upper case',
       'es': '',
-      'fr': '',
+      'fr': 'Contient au moins une majuscule',
     },
     '20pmuh66': {
       'en': 'Confirm Password',
       'es': 'Contraseña',
-      'fr': 'Mot de passe',
+      'fr': 'Confirmez le mot de passe',
     },
     'hii8oza0': {
       'en': 'Sign up',
@@ -285,20 +285,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Ajustes',
       'fr': 'Paramètres',
     },
-    '7ehz86gs': {
-      'en': 'Profile',
-      'es': 'Perfil',
-      'fr': 'Profil',
+    '9z09qn2f': {
+      'en': 'About Sleeq',
+      'es': 'Acerca de Sleeq',
+      'fr': 'À propos de Sleeq',
     },
     '9rby2k2i': {
       'en': 'Account',
       'es': 'Cuenta',
       'fr': 'Compte',
     },
-    '9z09qn2f': {
-      'en': 'About Sleeq',
-      'es': 'Acerca de Sleeq',
-      'fr': 'À propos de Sleeq',
+    '7ehz86gs': {
+      'en': 'Profile',
+      'es': 'Perfil',
+      'fr': 'Profil',
+    },
+    'km7rsucg': {
+      'en': 'Send feedback',
+      'es': 'Enviar comentarios',
+      'fr': 'Envoyer des commentaires',
+    },
+    'mrewls1p': {
+      'en': 'Report a bug',
+      'es': 'Reportar un error',
+      'fr': 'Signaler un bug',
     },
     'wurg3p18': {
       'en': 'Home',
@@ -435,6 +445,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Your Name',
       'es': 'Tu nombre',
       'fr': 'votre nom',
+    },
+    '1i7iv9i5': {
+      'en': 'Enable color blindness',
+      'es': '',
+      'fr': '',
     },
     'zcqg28jj': {
       'en': 'Change photo',
@@ -719,10 +734,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Formulario de comentarios',
       'fr': 'Formulaire de commentaires',
     },
-    'ipxg64jq': {
+    'vqnpk0nj': {
       'en': 'Enter title',
-      'es': 'Introduce el título',
-      'fr': 'Entrez le titre',
+      'es': 'Etiqueta aquí...',
+      'fr': 'Étiquette ici...',
     },
     'edv6fzu8': {
       'en': 'Bug Description',
@@ -929,6 +944,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Archivo',
       'fr': 'Fichier',
     },
+    'ebnhvyp6': {
+      'en': 'Camera',
+      'es': 'Carpeta',
+      'fr': 'Dossier',
+    },
     'sn3q0avy': {
       'en': 'Folder name',
       'es': 'Nombre de la carpeta',
@@ -968,7 +988,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Entrez le nouveau nom ci-dessous',
     },
     'vqnpk0nj': {
-      'en': '',
+      'en': 'Label here...',
       'es': 'Etiqueta aquí...',
       'fr': 'Étiquette ici...',
     },
@@ -2447,29 +2467,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ch8g34ya': {
       'en': 'Move selected elements',
-      'es': '',
-      'fr': '',
+      'es': 'Mover elementos seleccionados',
+      'fr': 'Déplacer les éléments sélectionnés',
     },
   },
   // CopyPastePopup
   {
     '3pr1p7mm': {
       'en': 'Paste selected elements',
-      'es': '',
-      'fr': '',
+      'es': 'Pegar elementos seleccionados',
+      'fr': 'Coller les éléments sélectionnés',
     },
   },
   // Miscellaneous
   {
-    '7sgbm13u': {
-      'en': '',
+    '3zaznyvo': {
+      'en': 'Hello World',
       'es': '',
       'fr': '',
     },
+    '7sgbm13u': {
+      'en':
+          'In order to take a picture or video, this app requires permission to access the camera.',
+      'es':
+          'Para tomar una foto o grabar un video, esta aplicación requiere permiso para acceder a la cámara.',
+      'fr':
+          'Afin de prendre une photo ou une vidéo, cette application nécessite une autorisation pour accéder à la caméra.',
+    },
     'ryi4f0pr': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en':
+          'In order to upload data, this app requires permission to access the photo library.',
+      'es':
+          'Para cargar datos, esta aplicación requiere permiso para acceder a la biblioteca de fotos.',
+      'fr':
+          'Afin de télécharger des données, cette application nécessite l\'autorisation d\'accéder à la photothèque.',
     },
     'p2hrahkk': {
       'en': '',
@@ -2502,6 +2533,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'h4b5z8jl': {
+      'en': '',
+      'es': '',
+      'fr': '',
+    },
+    'omyapxge': {
+      'en': '',
+      'es': '',
+      'fr': '',
+    },
+    'ctxqg4vi': {
       'en': '',
       'es': '',
       'fr': '',

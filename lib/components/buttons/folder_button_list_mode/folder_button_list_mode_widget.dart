@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'folder_button_list_mode_model.dart';
@@ -70,6 +71,7 @@ class _FolderButtonListModeWidgetState
             FFAppState().selectedFolders = [];
             FFAppState().isSelectionMode = false;
             FFAppState().selecteFiles = [];
+            FFAppState().addToCurrentTreePath(widget.path!);
           });
           logFirebaseEvent('Container_navigate_to');
 
@@ -100,7 +102,7 @@ class _FolderButtonListModeWidgetState
         },
         child: Material(
           color: Colors.transparent,
-          elevation: 5.0,
+          elevation: 1.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -108,7 +110,7 @@ class _FolderButtonListModeWidgetState
             width: double.infinity,
             height: 50.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).alternate,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Padding(

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -104,8 +105,7 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                   },
                   child: FlutterFlowIconButton(
                     borderColor: Colors.transparent,
-                    borderRadius: 0.0,
-                    borderWidth: 1.0,
+                    borderRadius: 15.0,
                     buttonSize: 100.0,
                     icon: FaIcon(
                       FontAwesomeIcons.solidFileAlt,

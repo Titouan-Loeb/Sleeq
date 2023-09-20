@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'feedback_model.dart';
@@ -300,7 +301,7 @@ class _FeedbackWidgetState extends State<FeedbackWidget> {
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Switch(
+                            Switch.adaptive(
                               value: _model.switchValue ??= false,
                               onChanged: (newValue) async {
                                 setState(() => _model.switchValue = newValue!);

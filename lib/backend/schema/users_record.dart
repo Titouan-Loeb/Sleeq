@@ -71,6 +71,11 @@ class UsersRecord extends FirestoreRecord {
   String get subcriptionId => _subcriptionId ?? '';
   bool hasSubcriptionId() => _subcriptionId != null;
 
+  // "is_colorblind" field.
+  bool? _isColorblind;
+  bool get isColorblind => _isColorblind ?? false;
+  bool hasIsColorblind() => _isColorblind != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -83,6 +88,7 @@ class UsersRecord extends FirestoreRecord {
     _rootFolder = snapshotData['root_folder'] as DocumentReference?;
     _english = snapshotData['english'] as bool?;
     _subcriptionId = snapshotData['subcription_id'] as String?;
+    _isColorblind = snapshotData['is_colorblind'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +136,7 @@ Map<String, dynamic> createUsersRecordData({
   DocumentReference? rootFolder,
   bool? english,
   String? subcriptionId,
+  bool? isColorblind,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +151,7 @@ Map<String, dynamic> createUsersRecordData({
       'root_folder': rootFolder,
       'english': english,
       'subcription_id': subcriptionId,
+      'is_colorblind': isColorblind,
     }.withoutNulls,
   );
 
@@ -165,7 +173,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isSubscriber == e2?.isSubscriber &&
         e1?.rootFolder == e2?.rootFolder &&
         e1?.english == e2?.english &&
-        e1?.subcriptionId == e2?.subcriptionId;
+        e1?.subcriptionId == e2?.subcriptionId &&
+        e1?.isColorblind == e2?.isColorblind;
   }
 
   @override
@@ -180,7 +189,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isSubscriber,
         e?.rootFolder,
         e?.english,
-        e?.subcriptionId
+        e?.subcriptionId,
+        e?.isColorblind
       ]);
 
   @override

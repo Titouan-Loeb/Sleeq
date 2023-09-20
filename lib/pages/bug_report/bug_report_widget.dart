@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'bug_report_model.dart';
@@ -99,10 +100,28 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'ipxg64jq' /* Enter title */,
+                            'vqnpk0nj' /* Enter title */,
                           ),
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelMediumFamily,
+                                fontSize: 14.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelMediumFamily),
+                              ),
+                          hintStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelMediumFamily,
+                                fontSize: 14.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelMediumFamily),
+                              ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).accent1,
@@ -132,7 +151,15 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                        style: FlutterFlowTheme.of(context).headlineSmall,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineSmallFamily,
+                                  fontSize: 14.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily),
+                                ),
                         validator: _model.textController1Validator
                             .asValidator(context),
                       ),
@@ -355,38 +382,44 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                           ].divide(SizedBox(width: 15.0)),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Switch(
-                              value: _model.switchValue ??= true,
-                              onChanged: (newValue) async {
-                                setState(() => _model.switchValue = newValue!);
-                              },
-                              activeColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                              activeTrackColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              inactiveTrackColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              inactiveThumbColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 8.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'bbphpqhx' /* Notify me of bug fixing progre... */,
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Switch.adaptive(
+                                value: _model.switchValue ??= true,
+                                onChanged: (newValue) async {
+                                  setState(
+                                      () => _model.switchValue = newValue!);
+                                },
+                                activeColor:
+                                    FlutterFlowTheme.of(context).tertiary,
+                                activeTrackColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                inactiveTrackColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                inactiveThumbColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'bbphpqhx' /* Notify me of bug fixing progre... */,
+                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(

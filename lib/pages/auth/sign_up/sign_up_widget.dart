@@ -7,7 +7,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +58,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF1F4F8),
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
               child: Padding(
@@ -255,6 +257,73 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   2.0, 2.0, 2.0, 2.0),
                               child: TextFormField(
                                 controller: _model.passwordTextController,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.passwordTextController',
+                                  Duration(milliseconds: 2000),
+                                  () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_TextField_znxnfo65_ON_TEXTFIELD_');
+                                    if (functions.numberChecking(
+                                        _model.passwordTextController.text)!) {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.number = true;
+                                      });
+                                    } else {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.number = false;
+                                      });
+                                    }
+
+                                    if (functions.specialChar(
+                                        _model.passwordTextController.text)!) {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.speChar = true;
+                                      });
+                                    } else {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.speChar = false;
+                                      });
+                                    }
+
+                                    if (functions.upperCase(
+                                        _model.passwordTextController.text)!) {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.upperCase = true;
+                                      });
+                                    } else {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.upperCase = false;
+                                      });
+                                    }
+
+                                    if (functions.lowerCase(
+                                        _model.passwordTextController.text)!) {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.lowerCase = true;
+                                      });
+                                    } else {
+                                      logFirebaseEvent(
+                                          'TextField_update_widget_state');
+                                      setState(() {
+                                        _model.lowerCase = false;
+                                      });
+                                    }
+                                  },
+                                ),
                                 obscureText: !_model.passwordVisibility1,
                                 decoration: InputDecoration(
                                   labelText:
@@ -353,13 +422,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         color: valueOrDefault<Color>(
-                                          functions.lowerCase(_model
-                                                  .passwordTextController.text)!
+                                          _model.lowerCase
                                               ? FlutterFlowTheme.of(context)
                                                   .success
                                               : FlutterFlowTheme.of(context)
                                                   .error,
-                                          Color(0xFF14181B),
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -385,13 +454,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         color: valueOrDefault<Color>(
-                                          functions.numberChecking(_model
-                                                  .passwordTextController.text)!
+                                          _model.number
                                               ? FlutterFlowTheme.of(context)
                                                   .success
                                               : FlutterFlowTheme.of(context)
                                                   .error,
-                                          Color(0xFF14181B),
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -417,13 +486,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         color: valueOrDefault<Color>(
-                                          functions.specialChar(_model
-                                                  .passwordTextController.text)!
+                                          _model.speChar
                                               ? FlutterFlowTheme.of(context)
                                                   .success
                                               : FlutterFlowTheme.of(context)
                                                   .error,
-                                          Color(0xFF14181B),
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -449,13 +518,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         color: valueOrDefault<Color>(
-                                          functions.upperCase(_model
-                                                  .passwordTextController.text)!
+                                          _model.upperCase
                                               ? FlutterFlowTheme.of(context)
                                                   .success
                                               : FlutterFlowTheme.of(context)
                                                   .error,
-                                          Color(0xFF14181B),
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(

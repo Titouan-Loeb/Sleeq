@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -110,14 +111,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               'NAV_BAR_FLOTING_COMP_home_ICN_ON_TAP');
                           if (FFAppState().currentPage != 'HomePage') {
                             logFirebaseEvent('IconButton_update_app_state');
-                            setState(() {
-                              FFAppState().selectedFolders = [];
-                              FFAppState().isSelectionMode = false;
-                              FFAppState().selecteFiles = [];
-                            });
                             logFirebaseEvent('IconButton_navigate_to');
 
-                            context.goNamed(
+                            context.pushNamed(
                               'HomePage',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
@@ -167,7 +163,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         ),
                                       );
                                     },
-                                  ).then((value) => setState(() {}));
+                                  ).then((value) => safeSetState(() {}));
 
                                   return;
                                 } else {

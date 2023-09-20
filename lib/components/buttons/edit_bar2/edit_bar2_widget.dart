@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_bar2_model.dart';
@@ -137,7 +139,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                             child: MovePopupWidget(),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) => safeSetState(() {}));
                     } else {
                       logFirebaseEvent('IconButton_navigate_to');
 
@@ -181,7 +183,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   ),
                   onPressed: () async {
                     logFirebaseEvent('EDIT_BAR2_COMP_file_copy_ICN_ON_TAP');
-                    if (!isWeb) {
+                    if (isWeb) {
                       logFirebaseEvent('IconButton_bottom_sheet');
                       await showModalBottomSheet(
                         isScrollControlled: true,
@@ -194,7 +196,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                             child: CopyPastePopupWidget(),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) => safeSetState(() {}));
                     } else {
                       logFirebaseEvent('IconButton_navigate_to');
 
@@ -231,14 +233,18 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   borderRadius: 15.0,
                   borderWidth: 1.0,
                   buttonSize: double.infinity,
+                  disabledIconColor: FlutterFlowTheme.of(context).accent3,
                   icon: Icon(
                     Icons.download,
                     color: FlutterFlowTheme.of(context).primaryText,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
+                  onPressed: (FFAppState().selectedFolders.length != 0) ||
+                          (FFAppState().selecteFiles.length == 0)
+                      ? null
+                      : () {
+                          print('IconButton pressed ...');
+                        },
                 ),
               ),
             ),
@@ -265,8 +271,27 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                     color: FlutterFlowTheme.of(context).primaryText,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    logFirebaseEvent('EDIT_BAR2_COMP_delete_ICN_ON_TAP');
+                    logFirebaseEvent('IconButton_custom_action');
+                    await actions.deleteSelectedElements(
+                      FFAppState().currentTreePath.last,
+                      FFAppState().selectedFolders.toList(),
+                      FFAppState().selecteFiles.toList(),
+                    );
+                    logFirebaseEvent('IconButton_widget_animation');
+                    if (animationsMap['containerOnActionTriggerAnimation'] !=
+                        null) {
+                      await animationsMap['containerOnActionTriggerAnimation']!
+                          .controller
+                          .forward(from: 0.0);
+                    }
+                    logFirebaseEvent('IconButton_update_app_state');
+                    FFAppState().update(() {
+                      FFAppState().selectedFolders = [];
+                      FFAppState().selecteFiles = [];
+                      FFAppState().isSelectionMode = false;
+                    });
                   },
                 ),
               ),

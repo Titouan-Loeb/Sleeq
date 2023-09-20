@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
@@ -418,7 +419,7 @@ class FFRoute {
               ? Container(
                   color: FlutterFlowTheme.of(context).primary,
                   child: Image.asset(
-                    'assets/images/sleeq-logo_white.svg',
+                    'assets/images/sleeq-logo_white.png',
                     fit: BoxFit.contain,
                   ),
                 )

@@ -9,6 +9,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'move_smarphone_page_model.dart';
@@ -115,14 +116,12 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                     if (!snapshot.hasData) {
                                       return Center(
                                         child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
+                                          width: 70.0,
+                                          height: 70.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 70.0,
                                           ),
                                         ),
                                       );
@@ -179,17 +178,14 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                               if (!snapshot.hasData) {
                                                 return Center(
                                                   child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
+                                                    width: 70.0,
+                                                    height: 70.0,
+                                                    child: SpinKitChasingDots(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 70.0,
                                                     ),
                                                   ),
                                                 );
@@ -221,7 +217,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                                 },
                                                 child: Material(
                                                   color: Colors.transparent,
-                                                  elevation: 5.0,
+                                                  elevation: 1.0,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -231,10 +227,9 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                                     width: double.infinity,
                                                     height: 50.0,
                                                     decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10.0),

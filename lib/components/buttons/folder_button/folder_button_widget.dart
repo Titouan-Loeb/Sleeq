@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'folder_button_model.dart';
@@ -92,7 +93,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                       ),
                     );
                   },
-                ).then((value) => setState(() {}));
+                ).then((value) => safeSetState(() {}));
               },
               onLongPress: () async {
                 logFirebaseEvent('FOLDER_BUTTON_folder_rounded_ICN_ON_LONG');
@@ -103,8 +104,7 @@ class _FolderButtonWidgetState extends State<FolderButtonWidget> {
                 });
               },
               child: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderWidth: 1.0,
+                borderRadius: 15.0,
                 buttonSize: 100.0,
                 icon: Icon(
                   Icons.folder_rounded,

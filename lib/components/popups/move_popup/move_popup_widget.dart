@@ -7,6 +7,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'move_popup_model.dart';
@@ -72,7 +73,7 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
             maxWidth: 570.0,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: FlutterFlowTheme.of(context).primaryBackground,
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(
               color: FlutterFlowTheme.of(context).lineColor,
@@ -164,12 +165,11 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
+                                width: 70.0,
+                                height: 70.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 70.0,
                                 ),
                               ),
                             );
@@ -227,14 +227,12 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
                                     if (!snapshot.hasData) {
                                       return Center(
                                         child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
+                                          width: 70.0,
+                                          height: 70.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 70.0,
                                           ),
                                         ),
                                       );
@@ -262,7 +260,7 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
                                       },
                                       child: Material(
                                         color: Colors.transparent,
-                                        elevation: 5.0,
+                                        elevation: 1.0,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10.0),
@@ -272,7 +270,7 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
                                           height: 50.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .alternate,
+                                                .secondaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
                                           ),
