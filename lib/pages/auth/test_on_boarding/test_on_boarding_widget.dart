@@ -55,7 +55,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: wrapWithModel(
                   model: _model.sleeqLogoModel,
                   updateCallback: () => setState(() {}),

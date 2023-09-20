@@ -62,7 +62,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 50.0, 12.0, 12.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -398,13 +398,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Container(
-                        width: 292.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0x00FFFFFF),
-                        ),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Align(
                               alignment: AlignmentDirectional(-1.00, 0.00),
