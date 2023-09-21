@@ -47,32 +47,29 @@ class _ColorItemWidgetState extends State<ColorItemWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-      child: InkWell(
-        splashColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () async {
-          logFirebaseEvent('COLOR_ITEM_Container_vpbc6x5c_ON_TAP');
-          logFirebaseEvent('Container_update_app_state');
-          FFAppState().update(() {
-            FFAppState().selectedColor = widget.color!;
-          });
-        },
-        child: Container(
-          width: widget.color == FFAppState().selectedColor ? 25.0 : 15.0,
-          height: MediaQuery.sizeOf(context).width * 0.05,
-          decoration: BoxDecoration(
-            color: widget.color,
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: FFAppState().selectedColor == widget.color
-                  ? FlutterFlowTheme.of(context).primaryText
-                  : Color(0x00000000),
-              width: 2.0,
-            ),
+    return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () async {
+        logFirebaseEvent('COLOR_ITEM_Container_vpbc6x5c_ON_TAP');
+        logFirebaseEvent('Container_update_app_state');
+        FFAppState().update(() {
+          FFAppState().selectedColor = widget.color!;
+        });
+      },
+      child: Container(
+        width: widget.color == FFAppState().selectedColor ? 35.0 : 25.0,
+        height: MediaQuery.sizeOf(context).width * 0.05,
+        decoration: BoxDecoration(
+          color: widget.color,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: FFAppState().selectedColor == widget.color
+                ? FlutterFlowTheme.of(context).primaryText
+                : Color(0x00000000),
+            width: 2.0,
           ),
         ),
       ),

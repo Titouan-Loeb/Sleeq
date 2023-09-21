@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,6 +42,15 @@ class _AddModalWidgetState extends State<AddModalWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AddModalModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ADD_MODAL_COMP_addModal_ON_INIT_STATE');
+      logFirebaseEvent('addModal_update_app_state');
+      setState(() {
+        FFAppState().isEditingFolder = true;
+      });
+    });
 
     _model.textController1 ??= TextEditingController();
     _model.textController2 ??= TextEditingController();
@@ -80,24 +90,32 @@ class _AddModalWidgetState extends State<AddModalWidget> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                  child: AutoSizeText(
-                    'Add a new ${FFAppState().isEditingFolder ? 'folder' : 'file'}',
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).headlineSmallFamily,
-                          fontSize: 20.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).headlineSmallFamily),
-                        ),
-                  ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                Wrap(
+                  spacing: 0.0,
+                  runSpacing: 0.0,
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.start,
+                  direction: Axis.horizontal,
+                  runAlignment: WrapAlignment.spaceAround,
+                  verticalDirection: VerticalDirection.down,
+                  clipBehavior: Clip.none,
                   children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 8.0),
+                      child: AutoSizeText(
+                        'Add a new ${FFAppState().isEditingFolder ? 'folder' : 'file'}',
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineSmallFamily,
+                                  fontSize: 20.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily),
+                                ),
+                      ),
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -122,6 +140,10 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                     'Container_update_widget_state');
                                 setState(() {
                                   _model.addSelect = 1;
+                                });
+                                logFirebaseEvent('Container_update_app_state');
+                                setState(() {
+                                  FFAppState().isEditingFolder = true;
                                 });
                               },
                               child: Container(
@@ -195,6 +217,10 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 setState(() {
                                   _model.addSelect = 2;
                                 });
+                                logFirebaseEvent('Container_update_app_state');
+                                setState(() {
+                                  FFAppState().isEditingFolder = false;
+                                });
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -239,78 +265,6 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'ADD_MODAL_COMP_Container_5rtvczs5_ON_TAP');
-                                logFirebaseEvent(
-                                    'Container_update_widget_state');
-                                setState(() {
-                                  _model.addSelect = 3;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: _model.addSelect != 3
-                                      ? FlutterFlowTheme.of(context)
-                                          .primaryBackground
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.photo_camera,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 22.0,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            4.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'ebnhvyp6' /* Camera */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                color: Theme.of(context)
-                                                            .brightness ==
-                                                        Brightness.light
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText
-                                                    : FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -411,6 +365,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 builder: (context) => wrapWithModel(
                                   model: _model.colorDialModel1,
                                   updateCallback: () => setState(() {}),
+                                  updateOnChange: true,
                                   child: ColorDialWidget(
                                     allowedColors: valueOrDefault<bool>(
                                             currentUserDocument?.isColorblind,

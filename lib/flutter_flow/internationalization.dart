@@ -944,11 +944,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Archivo',
       'fr': 'Fichier',
     },
-    'ebnhvyp6': {
-      'en': 'Camera',
-      'es': 'Carpeta',
-      'fr': 'Dossier',
-    },
     'sn3q0avy': {
       'en': 'Folder name',
       'es': 'Nombre de la carpeta',
