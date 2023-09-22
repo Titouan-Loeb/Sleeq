@@ -943,14 +943,16 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               ),
                             ),
                           ),
-                        FlutterFlowAdBanner(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          showsTestAd: true,
-                          iOSAdUnitID: 'ca-app-pub-9888340167849378~1229910558',
-                          androidAdUnitID:
-                              'ca-app-pub-9888340167849378~5892615269',
-                        ),
+                        if (!isWeb)
+                          FlutterFlowAdBanner(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 100.0,
+                            showsTestAd: true,
+                            iOSAdUnitID:
+                                'ca-app-pub-9888340167849378~1229910558',
+                            androidAdUnitID:
+                                'ca-app-pub-9888340167849378~5892615269',
+                          ),
                       ],
                     ),
                   ),
