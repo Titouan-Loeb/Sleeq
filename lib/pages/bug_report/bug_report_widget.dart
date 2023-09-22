@@ -470,6 +470,23 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                               .secondary,
                                     ),
                                   );
+                                } else {
+                                  logFirebaseEvent('Button_show_snack_bar');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'There has been an error with the bug report',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
                                 }
 
                                 setState(() {});

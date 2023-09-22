@@ -41,11 +41,6 @@ class UsersRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "phone_number" field.
-  String? _phoneNumber;
-  String get phoneNumber => _phoneNumber ?? '';
-  bool hasPhoneNumber() => _phoneNumber != null;
-
   // "occupied_size" field.
   double? _occupiedSize;
   double get occupiedSize => _occupiedSize ?? 0.0;
@@ -76,19 +71,24 @@ class UsersRecord extends FirestoreRecord {
   bool get isColorblind => _isColorblind ?? false;
   bool hasIsColorblind() => _isColorblind != null;
 
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
     _photoUrl = snapshotData['photo_url'] as String?;
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
-    _phoneNumber = snapshotData['phone_number'] as String?;
     _occupiedSize = castToType<double>(snapshotData['occupied_size']);
     _isSubscriber = snapshotData['is_subscriber'] as bool?;
     _rootFolder = snapshotData['root_folder'] as DocumentReference?;
     _english = snapshotData['english'] as bool?;
     _subcriptionId = snapshotData['subcription_id'] as String?;
     _isColorblind = snapshotData['is_colorblind'] as bool?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -130,13 +130,13 @@ Map<String, dynamic> createUsersRecordData({
   String? photoUrl,
   String? uid,
   DateTime? createdTime,
-  String? phoneNumber,
   double? occupiedSize,
   bool? isSubscriber,
   DocumentReference? rootFolder,
   bool? english,
   String? subcriptionId,
   bool? isColorblind,
+  String? phoneNumber,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -145,13 +145,13 @@ Map<String, dynamic> createUsersRecordData({
       'photo_url': photoUrl,
       'uid': uid,
       'created_time': createdTime,
-      'phone_number': phoneNumber,
       'occupied_size': occupiedSize,
       'is_subscriber': isSubscriber,
       'root_folder': rootFolder,
       'english': english,
       'subcription_id': subcriptionId,
       'is_colorblind': isColorblind,
+      'phone_number': phoneNumber,
     }.withoutNulls,
   );
 
@@ -168,13 +168,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber &&
         e1?.occupiedSize == e2?.occupiedSize &&
         e1?.isSubscriber == e2?.isSubscriber &&
         e1?.rootFolder == e2?.rootFolder &&
         e1?.english == e2?.english &&
         e1?.subcriptionId == e2?.subcriptionId &&
-        e1?.isColorblind == e2?.isColorblind;
+        e1?.isColorblind == e2?.isColorblind &&
+        e1?.phoneNumber == e2?.phoneNumber;
   }
 
   @override
@@ -184,13 +184,13 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber,
         e?.occupiedSize,
         e?.isSubscriber,
         e?.rootFolder,
         e?.english,
         e?.subcriptionId,
-        e?.isColorblind
+        e?.isColorblind,
+        e?.phoneNumber
       ]);
 
   @override

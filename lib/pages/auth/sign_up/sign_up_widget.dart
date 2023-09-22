@@ -182,6 +182,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               2.0, 2.0, 2.0, 2.0),
                           child: TextFormField(
+                            key: ValueKey('TextField_8c61'),
                             controller: _model.emailTextController,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -256,6 +257,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   2.0, 2.0, 2.0, 2.0),
                               child: TextFormField(
+                                key: ValueKey('TextField_fz61'),
                                 controller: _model.passwordTextController,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.passwordTextController',
@@ -557,6 +559,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               2.0, 2.0, 2.0, 2.0),
                           child: TextFormField(
+                            key: ValueKey('TextField_iiel'),
                             controller: _model.confirmPasswordTextController,
                             obscureText: !_model.passwordVisibility2,
                             decoration: InputDecoration(

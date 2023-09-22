@@ -47,8 +47,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="sleeq.page.link" />
-                <data android:scheme="https" />
+                <data android:scheme="launch" android:host="sleeq.page.link" />
             </intent-filter>
 
         </activity>
@@ -59,7 +58,9 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9888340167849378~5892615269"/>
         <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
     </application>
 </manifest>

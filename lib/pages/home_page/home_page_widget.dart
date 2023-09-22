@@ -408,6 +408,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       model: _model.navBarFlotingModel,
                                       updateCallback: () => setState(() {}),
                                       child: NavBarFlotingWidget(
+                                        key: ValueKey('NavBarFloting_wocd'),
                                         canAddFile: true,
                                         currentFolder:
                                             currentUserDocument?.rootFolder,

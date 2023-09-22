@@ -21,8 +21,6 @@ import 'index.dart';
 
 import 'backend/stripe/payment_manager.dart';
 
-import '/backend/firebase_dynamic_links/firebase_dynamic_links.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
@@ -77,7 +75,7 @@ class _MyAppState extends State<MyApp> {
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 200),
+      Duration(milliseconds: isWeb ? 0 : 200),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -131,10 +129,6 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       routerConfig: _router,
-      builder: (_, child) => DynamicLinksHandler(
-        router: _router,
-        child: child!,
-      ),
     );
   }
 }

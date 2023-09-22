@@ -4,6 +4,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
+import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
@@ -942,6 +943,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               ),
                             ),
                           ),
+                        FlutterFlowAdBanner(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          showsTestAd: true,
+                          iOSAdUnitID: 'ca-app-pub-9888340167849378~1229910558',
+                          androidAdUnitID:
+                              'ca-app-pub-9888340167849378~5892615269',
+                        ),
                       ],
                     ),
                   ),

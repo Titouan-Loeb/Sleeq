@@ -4,6 +4,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
+import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';

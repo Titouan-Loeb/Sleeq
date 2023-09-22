@@ -535,22 +535,23 @@ class _NewnavWidgetState extends State<NewnavWidget>
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      AuthUserStreamWidget(
-                        builder: (context) => ClipRRect(
-                          borderRadius: BorderRadius.circular(50.0),
-                          child: CachedNetworkImage(
-                            fadeInDuration: Duration(milliseconds: 500),
-                            fadeOutDuration: Duration(milliseconds: 500),
-                            imageUrl: currentUserPhoto != null &&
-                                    currentUserPhoto != ''
-                                ? currentUserPhoto
-                                : 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
-                            width: 44.0,
-                            height: 44.0,
-                            fit: BoxFit.cover,
+                      if (currentUserPhoto != null && currentUserPhoto != '')
+                        AuthUserStreamWidget(
+                          builder: (context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: CachedNetworkImage(
+                              fadeInDuration: Duration(milliseconds: 500),
+                              fadeOutDuration: Duration(milliseconds: 500),
+                              imageUrl: currentUserPhoto != null &&
+                                      currentUserPhoto != ''
+                                  ? currentUserPhoto
+                                  : 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg',
+                              width: 44.0,
+                              height: 44.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
                       Expanded(
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

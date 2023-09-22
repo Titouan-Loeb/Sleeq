@@ -108,7 +108,7 @@ class FFAppState extends ChangeNotifier {
     _selecteFiles.insert(_index, _value);
   }
 
-  double _usedStorage = 0.3;
+  double _usedStorage = 0;
   double get usedStorage => _usedStorage;
   set usedStorage(double _value) {
     _usedStorage = _value;
