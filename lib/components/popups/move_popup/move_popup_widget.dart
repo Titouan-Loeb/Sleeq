@@ -40,7 +40,7 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
       logFirebaseEvent('MovePopup_backend_call');
       _model.rootFolder =
           await FoldersRecord.getDocumentOnce(currentUserDocument!.rootFolder!);
-      logFirebaseEvent('MovePopup_update_widget_state');
+      logFirebaseEvent('MovePopup_update_component_state');
       setState(() {
         _model.folderList =
             _model.rootFolder!.folders.toList().cast<DocumentReference>();
@@ -248,7 +248,7 @@ class _MovePopupWidgetState extends State<MovePopupWidget> {
                                         logFirebaseEvent(
                                             'MOVE_POPUP_Container_nzx70z63_ON_TAP');
                                         logFirebaseEvent(
-                                            'Container_update_widget_state');
+                                            'Container_update_component_state');
                                         setState(() {
                                           _model.folderList =
                                               containerFoldersRecord.folders

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import '../../flutter_flow/flutter_flow_util.dart';
-
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -31,7 +30,6 @@ class CreatePaymentLinkCall {
       apiUrl: '${StripeAPIGroup.baseUrl}checkout/sessions',
       callType: ApiCallType.POST,
       headers: {
-        ...StripeAPIGroup.headers,
         'Authorization': 'Bearer ${key}',
       },
       params: {
@@ -86,9 +84,7 @@ class BugReportCall {
       callName: 'Bug report',
       apiUrl: '${FeedbackGroup.baseUrl}f/xjvqvpza',
       callType: ApiCallType.POST,
-      headers: {
-        ...FeedbackGroup.headers,
-      },
+      headers: {},
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,

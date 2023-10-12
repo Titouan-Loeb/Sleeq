@@ -137,7 +137,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_33pqa2yd_ON_TAP');
                                 logFirebaseEvent(
-                                    'Container_update_widget_state');
+                                    'Container_update_component_state');
                                 setState(() {
                                   _model.addSelect = 1;
                                 });
@@ -213,7 +213,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 logFirebaseEvent(
                                     'ADD_MODAL_COMP_Container_ouc66vor_ON_TAP');
                                 logFirebaseEvent(
-                                    'Container_update_widget_state');
+                                    'Container_update_component_state');
                                 setState(() {
                                   _model.addSelect = 2;
                                 });
@@ -554,8 +554,12 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             logFirebaseEvent('Button_backend_call');
 
                             await widget.currentFolder!.update({
-                              'folders': FieldValue.arrayUnion(
-                                  [_model.newFolder?.reference]),
+                              ...mapToFirestore(
+                                {
+                                  'folders': FieldValue.arrayUnion(
+                                      [_model.newFolder?.reference]),
+                                },
+                              ),
                             });
                           } else if (_model.addSelect == 2) {
                             logFirebaseEvent('Button_upload_file_to_firebase');
@@ -632,8 +636,12 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               logFirebaseEvent('Button_backend_call');
 
                               await widget.currentFolder!.update({
-                                'files': FieldValue.arrayUnion(
-                                    [_model.fileOut?.reference]),
+                                ...mapToFirestore(
+                                  {
+                                    'files': FieldValue.arrayUnion(
+                                        [_model.fileOut?.reference]),
+                                  },
+                                ),
                               });
                               logFirebaseEvent(
                                   'Button_close_dialog,_drawer,_etc');

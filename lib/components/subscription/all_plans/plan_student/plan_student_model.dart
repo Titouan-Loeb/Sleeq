@@ -1,12 +1,13 @@
 import '/components/subscription/feature_description/feature_description_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'plan_student_widget.dart' show PlanStudentWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class PlanStudentModel extends FlutterFlowModel {
+class PlanStudentModel extends FlutterFlowModel<PlanStudentWidget> {
   ///  State fields for stateful widgets in this component.
 
   // Model for featureDescription component.

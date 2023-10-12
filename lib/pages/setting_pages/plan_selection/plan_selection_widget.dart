@@ -84,17 +84,17 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
       setState(() {
         FFAppState().currentPage = 'PlanSelection';
       });
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOIRbBzo7KeiEMEVUtfdh1Q');
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOISVBzo7KeiEMEVSBv0o6K');
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOITcBzo7KeiEMEnkarB9Hh');
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOIS5Bzo7KeiEMEngqF20eT');
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOITBBzo7KeiEME2Zh9tgvb');
-      logFirebaseEvent('PlanSelection_update_widget_state');
+      logFirebaseEvent('PlanSelection_update_page_state');
       _model.addToPlanIds('price_1LOITvBzo7KeiEMEQVSVQRRi');
     });
 
@@ -123,7 +123,9 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
         title: 'PlanSelection',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

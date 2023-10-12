@@ -113,7 +113,7 @@ class _RenameFolderDialogWidgetState extends State<RenameFolderDialogWidget> {
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: FFLocalizations.of(context).getText(
-                          'vqnpk0nj' /* Label here... */,
+                          'b7er5pp3' /* Label here... */,
                         ),
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(

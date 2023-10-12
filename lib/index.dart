@@ -31,3 +31,4 @@ export '/move_smarphone_page/move_smarphone_page_widget.dart'
     show MoveSmarphonePageWidget;
 export '/copy_paste_smarphone_page/copy_paste_smarphone_page_widget.dart'
     show CopyPasteSmarphonePageWidget;
+export '/search/search_widget.dart' show SearchWidget;

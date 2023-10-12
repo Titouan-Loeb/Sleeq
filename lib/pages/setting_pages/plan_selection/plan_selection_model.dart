@@ -17,6 +17,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'plan_selection_widget.dart' show PlanSelectionWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -26,13 +27,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-class PlanSelectionModel extends FlutterFlowModel {
+class PlanSelectionModel extends FlutterFlowModel<PlanSelectionWidget> {
   ///  Local state fields for this page.
 
   List<String> planIds = [];
   void addToPlanIds(String item) => planIds.add(item);
   void removeFromPlanIds(String item) => planIds.remove(item);
   void removeAtIndexFromPlanIds(int index) => planIds.removeAt(index);
+  void insertAtIndexInPlanIds(int index, String item) =>
+      planIds.insert(index, item);
   void updatePlanIdsAtIndex(int index, Function(String) updateFn) =>
       planIds[index] = updateFn(planIds[index]);
 

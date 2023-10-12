@@ -41,7 +41,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
       logFirebaseEvent('MoveSmarphonePage_backend_call');
       _model.rootFolder =
           await FoldersRecord.getDocumentOnce(currentUserDocument!.rootFolder!);
-      logFirebaseEvent('MoveSmarphonePage_update_widget_state');
+      logFirebaseEvent('MoveSmarphonePage_update_page_state');
       setState(() {
         _model.currentPageFolder = _model.rootFolder?.reference;
         _model.folderList =
@@ -67,7 +67,9 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
         title: 'MoveSmarphonePage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -202,7 +204,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                                   logFirebaseEvent(
                                                       'MOVE_SMARPHONE_Container_n1glfij2_ON_TAP');
                                                   logFirebaseEvent(
-                                                      'Container_update_widget_state');
+                                                      'Container_update_page_state');
                                                   setState(() {
                                                     _model.currentPageFolder =
                                                         containerFoldersRecord

@@ -55,7 +55,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
         title: 'SignUp',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -268,13 +270,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     if (functions.numberChecking(
                                         _model.passwordTextController.text)!) {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.number = true;
                                       });
                                     } else {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.number = false;
                                       });
@@ -283,13 +285,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     if (functions.specialChar(
                                         _model.passwordTextController.text)!) {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.speChar = true;
                                       });
                                     } else {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.speChar = false;
                                       });
@@ -298,13 +300,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     if (functions.upperCase(
                                         _model.passwordTextController.text)!) {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.upperCase = true;
                                       });
                                     } else {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.upperCase = false;
                                       });
@@ -313,13 +315,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     if (functions.lowerCase(
                                         _model.passwordTextController.text)!) {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.lowerCase = true;
                                       });
                                     } else {
                                       logFirebaseEvent(
-                                          'TextField_update_widget_state');
+                                          'TextField_update_page_state');
                                       setState(() {
                                         _model.lowerCase = false;
                                       });

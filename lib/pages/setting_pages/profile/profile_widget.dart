@@ -94,7 +94,9 @@ class _ProfileWidgetState extends State<ProfileWidget>
         title: 'Profile',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -943,16 +945,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               ),
                             ),
                           ),
-                        if (!isWeb)
-                          FlutterFlowAdBanner(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 100.0,
-                            showsTestAd: true,
-                            iOSAdUnitID:
-                                'ca-app-pub-9888340167849378~1229910558',
-                            androidAdUnitID:
-                                'ca-app-pub-9888340167849378~5892615269',
-                          ),
+                        FlutterFlowAdBanner(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          showsTestAd: true,
+                          iOSAdUnitID: 'ca-app-pub-9888340167849378~1229910558',
+                          androidAdUnitID:
+                              'ca-app-pub-9888340167849378~5892615269',
+                        ),
                       ],
                     ),
                   ),

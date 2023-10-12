@@ -734,10 +734,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Formulario de comentarios',
       'fr': 'Formulaire de commentaires',
     },
-    'vqnpk0nj': {
+    'elbpjfvc': {
       'en': 'Enter title',
-      'es': 'Etiqueta aquí...',
-      'fr': 'Étiquette ici...',
+      'es': '',
+      'fr': '',
     },
     'edv6fzu8': {
       'en': 'Bug Description',
@@ -899,6 +899,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // search
+  {
+    '1qh4c4pz': {
+      'en': 'Edit Header 1',
+      'es': '',
+      'fr': '',
+    },
+    'c0bd5b9s': {
+      'en': 'Edit Header 2',
+      'es': '',
+      'fr': '',
+    },
+    '4l9jvtay': {
+      'en': 'Edit Column 1',
+      'es': '',
+      'fr': '',
+    },
+    'z30dokjd': {
+      'en': 'Edit Column 2',
+      'es': '',
+      'fr': '',
+    },
+    '6gy37qi1': {
+      'en': 'Home',
+      'es': '',
+      'fr': '',
+    },
+  },
   // newnav
   {
     '6dt9sj2x': {
@@ -982,10 +1010,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Introduzca el nuevo nombre a continuación',
       'fr': 'Entrez le nouveau nom ci-dessous',
     },
-    'vqnpk0nj': {
+    'b7er5pp3': {
       'en': 'Label here...',
-      'es': 'Etiqueta aquí...',
-      'fr': 'Étiquette ici...',
+      'es': '',
+      'fr': '',
     },
     'kds0ysdx': {
       'en': 'Confirm',
@@ -2476,6 +2504,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Miscellaneous
   {
+    'vqnpk0nj': {
+      'en': 'Label here...',
+      'es': 'Etiqueta aquí...',
+      'fr': 'Étiquette ici...',
+    },
     '3zaznyvo': {
       'en': 'Hello World',
       'es': '',

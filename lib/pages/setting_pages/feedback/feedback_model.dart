@@ -4,13 +4,14 @@ import '/components/navigation/back_button/back_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'feedback_widget.dart' show FeedbackWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class FeedbackModel extends FlutterFlowModel {
+class FeedbackModel extends FlutterFlowModel<FeedbackWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

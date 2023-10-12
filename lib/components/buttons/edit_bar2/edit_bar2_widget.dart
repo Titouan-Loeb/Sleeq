@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/components/popups/copy_paste_popup/copy_paste_popup_widget.dart';
 import '/components/popups/move_popup/move_popup_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -5,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -242,8 +245,20 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   onPressed: (FFAppState().selectedFolders.length != 0) ||
                           (FFAppState().selecteFiles.length == 0)
                       ? null
-                      : () {
-                          print('IconButton pressed ...');
+                      : () async {
+                          logFirebaseEvent(
+                              'EDIT_BAR2_COMP_download_ICN_ON_TAP');
+                          if ((FFAppState().selectedFolders.length == 0) &&
+                              (FFAppState().selecteFiles.length == 1)) {
+                            logFirebaseEvent('IconButton_backend_call');
+                            _model.documentToDownload =
+                                await FilesRecord.getDocumentOnce(
+                                    FFAppState().selecteFiles.first);
+                            logFirebaseEvent('IconButton_launch_u_r_l');
+                            await launchURL(_model.documentToDownload!.fileUrl);
+                          }
+
+                          setState(() {});
                         },
                 ),
               ),

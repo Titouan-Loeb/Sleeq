@@ -52,7 +52,9 @@ class _BugReportWidgetState extends State<BugReportWidget> {
         title: 'bugReport',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -100,7 +102,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'vqnpk0nj' /* Enter title */,
+                            'elbpjfvc' /* Enter title */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context)
                               .labelMedium

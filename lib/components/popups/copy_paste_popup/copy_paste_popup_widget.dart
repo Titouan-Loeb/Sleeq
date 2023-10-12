@@ -40,7 +40,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
       logFirebaseEvent('CopyPastePopup_backend_call');
       _model.rootFolder =
           await FoldersRecord.getDocumentOnce(currentUserDocument!.rootFolder!);
-      logFirebaseEvent('CopyPastePopup_update_widget_state');
+      logFirebaseEvent('CopyPastePopup_update_component_state');
       setState(() {
         _model.folderList =
             _model.rootFolder!.folders.toList().cast<DocumentReference>();
@@ -248,7 +248,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                                         logFirebaseEvent(
                                             'COPY_PASTE_POPUP_Container_j7hgk8p4_ON_T');
                                         logFirebaseEvent(
-                                            'Container_update_widget_state');
+                                            'Container_update_component_state');
                                         setState(() {
                                           _model.folderList =
                                               containerFoldersRecord.folders
