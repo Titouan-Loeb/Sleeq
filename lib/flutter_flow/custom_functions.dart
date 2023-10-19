@@ -137,3 +137,8 @@ bool? lowerCase(String? password) {
 
   return found;
 }
+
+bool findpkpass(String string) {
+  var result = [".pkpass"].any(string.contains);
+  return (result);
+}

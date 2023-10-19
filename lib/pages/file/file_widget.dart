@@ -140,6 +140,41 @@ class _FileWidgetState extends State<FileWidget> {
                         ),
                       ),
                     ),
+                  if (functions.findpkpass(widget.file!.fileUrl))
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: MediaQuery.sizeOf(context).height * 0.3,
+                        decoration: BoxDecoration(
+                          color: Color(0x00FFFFFF),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'FILE_PAGE_Image_gispvjh1_ON_TAP');
+                              logFirebaseEvent('Image_launch_u_r_l');
+                              await launchURL(widget.file!.fileUrl);
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/unnamed.png',
+                                width: 455.0,
+                                height: 370.0,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
