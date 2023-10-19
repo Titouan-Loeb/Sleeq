@@ -160,7 +160,8 @@ class _FileWidgetState extends State<FileWidget> {
                               logFirebaseEvent(
                                   'FILE_PAGE_Image_gispvjh1_ON_TAP');
                               logFirebaseEvent('Image_launch_u_r_l');
-                              await launchURL(widget.file!.fileUrl);
+                              await launchURL(
+                                  'https://passwallet.page.link/?apn=com.attidomobile.passwallet&link=${widget.file?.fileUrl}');
                             },
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
