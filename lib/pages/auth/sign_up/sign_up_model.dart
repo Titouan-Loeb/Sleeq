@@ -10,6 +10,7 @@ import 'sign_up_widget.dart' show SignUpWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,13 +33,16 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   // Model for sleeqLogo component.
   late SleeqLogoModel sleeqLogoModel;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
   TextEditingController? passwordTextController;
   late bool passwordVisibility1;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
   TextEditingController? confirmPasswordTextController;
   late bool passwordVisibility2;
   String? Function(BuildContext, String?)?
@@ -59,8 +63,13 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   void dispose() {
     unfocusNode.dispose();
     sleeqLogoModel.dispose();
+    textFieldFocusNode1?.dispose();
     emailTextController?.dispose();
+
+    textFieldFocusNode2?.dispose();
     passwordTextController?.dispose();
+
+    textFieldFocusNode3?.dispose();
     confirmPasswordTextController?.dispose();
   }
 

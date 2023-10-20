@@ -4,7 +4,6 @@ import '/backend/firebase_storage/storage.dart';
 import '/components/navigation/back_button/back_button_widget.dart';
 import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
-import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
@@ -17,6 +16,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,6 +32,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   // Model for BackButton component.
   late BackButtonModel backButtonModel;
   // State field(s) for yourName widget.
+  FocusNode? yourNameFocusNode;
   TextEditingController? yourNameController;
   String? Function(BuildContext, String?)? yourNameControllerValidator;
   // State field(s) for Switch widget.
@@ -56,7 +57,9 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
     unfocusNode.dispose();
     sidebarModel.dispose();
     backButtonModel.dispose();
+    yourNameFocusNode?.dispose();
     yourNameController?.dispose();
+
     navBarFlotingModel.dispose();
   }
 

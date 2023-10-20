@@ -53,7 +53,9 @@ class _AddModalWidgetState extends State<AddModalWidget> {
     });
 
     _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -304,6 +306,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             children: [
                               TextFormField(
                                 controller: _model.textController1,
+                                focusNode: _model.textFieldFocusNode1,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -409,6 +412,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                             children: [
                               TextFormField(
                                 controller: _model.textController2,
+                                focusNode: _model.textFieldFocusNode2,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +34,9 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
     _model.emailTextController ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.passwordTextController ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -46,6 +49,15 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return Title(
@@ -192,6 +204,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     2.0, 2.0, 2.0, 2.0),
                                 child: TextFormField(
                                   controller: _model.emailTextController,
+                                  focusNode: _model.textFieldFocusNode1,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.emailTextController',
                                     Duration(milliseconds: 100),
@@ -296,6 +309,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     2.0, 2.0, 2.0, 2.0),
                                 child: TextFormField(
                                   controller: _model.passwordTextController,
+                                  focusNode: _model.textFieldFocusNode2,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.passwordTextController',
                                     Duration(milliseconds: 100),

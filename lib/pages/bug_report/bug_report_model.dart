@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'bug_report_widget.dart' show BugReportWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
   // Model for BeadCrumbsBackButton component.
   late BeadCrumbsBackButtonModel beadCrumbsBackButtonModel;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   String? _textController1Validator(BuildContext context, String? val) {
@@ -33,6 +35,7 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
   }
 
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   String? _textController2Validator(BuildContext context, String? val) {
@@ -46,6 +49,7 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
   }
 
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
   String? _textController3Validator(BuildContext context, String? val) {
@@ -79,8 +83,13 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
   void dispose() {
     unfocusNode.dispose();
     beadCrumbsBackButtonModel.dispose();
+    textFieldFocusNode1?.dispose();
     textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
     textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
     textController3?.dispose();
   }
 

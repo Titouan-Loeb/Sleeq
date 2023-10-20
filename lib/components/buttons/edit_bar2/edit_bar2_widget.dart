@@ -10,10 +10,12 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'edit_bar2_model.dart';
 export 'edit_bar2_model.dart';
 
@@ -118,7 +120,58 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   borderRadius: BorderRadius.circular(15.0),
                   shape: BoxShape.rectangle,
                 ),
+                child: Builder(
+                  builder: (context) => FlutterFlowIconButton(
+                    borderRadius: 15.0,
+                    borderWidth: 1.0,
+                    buttonSize: double.infinity,
+                    icon: Icon(
+                      Icons.share,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent('EDIT_BAR2_COMP_share_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_backend_call');
+                      _model.file = await FilesRecord.getDocumentOnce(
+                          FFAppState().selecteFiles.first);
+                      if (isWeb) {
+                        logFirebaseEvent('IconButton_copy_to_clipboard');
+                        await Clipboard.setData(
+                            ClipboardData(text: _model.file!.fileUrl));
+                      } else {
+                        logFirebaseEvent('IconButton_share');
+                        await Share.share(
+                          _model.file!.fileUrl,
+                          sharePositionOrigin: getWidgetBoundingBox(context),
+                        );
+                      }
+
+                      logFirebaseEvent('IconButton_haptic_feedback');
+                      HapticFeedback.lightImpact();
+
+                      setState(() {});
+                    },
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              color: Colors.transparent,
+              elevation: 4.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  borderRadius: BorderRadius.circular(15.0),
+                  shape: BoxShape.rectangle,
+                ),
                 child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
                   borderRadius: 15.0,
                   borderWidth: 1.0,
                   buttonSize: double.infinity,

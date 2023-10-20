@@ -7,7 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
-import '../../auth/base_auth_user_provider.dart';
+import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
@@ -236,6 +236,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => SearchWidget(
                 query: params.getParam('query', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'fileCard',
+              path: 'fileCard',
+              requireAuth: true,
+              asyncParams: {
+                'file': getDoc(['users', 'files'], FilesRecord.fromSnapshot),
+              },
+              builder: (context, params) => FileCardWidget(
+                file: params.getParam('file', ParamType.Document),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

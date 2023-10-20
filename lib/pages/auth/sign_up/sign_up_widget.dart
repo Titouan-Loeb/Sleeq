@@ -9,6 +9,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,8 +36,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignUp'});
     _model.emailTextController ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
     _model.passwordTextController ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     _model.confirmPasswordTextController ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -49,6 +53,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return Title(
@@ -186,6 +199,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           child: TextFormField(
                             key: ValueKey('TextField_8c61'),
                             controller: _model.emailTextController,
+                            focusNode: _model.textFieldFocusNode1,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
@@ -261,6 +275,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                               child: TextFormField(
                                 key: ValueKey('TextField_fz61'),
                                 controller: _model.passwordTextController,
+                                focusNode: _model.textFieldFocusNode2,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.passwordTextController',
                                   Duration(milliseconds: 2000),
@@ -563,6 +578,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           child: TextFormField(
                             key: ValueKey('TextField_iiel'),
                             controller: _model.confirmPasswordTextController,
+                            focusNode: _model.textFieldFocusNode3,
                             obscureText: !_model.passwordVisibility2,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(

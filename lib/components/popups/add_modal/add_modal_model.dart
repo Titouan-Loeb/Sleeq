@@ -26,11 +26,13 @@ class AddModalModel extends FlutterFlowModel<AddModalWidget> {
   final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
   // Model for ColorDial component.
   late ColorDialModel colorDialModel1;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // Model for ColorDial component.
@@ -53,9 +55,13 @@ class AddModalModel extends FlutterFlowModel<AddModalWidget> {
   }
 
   void dispose() {
+    textFieldFocusNode1?.dispose();
     textController1?.dispose();
+
     colorDialModel1.dispose();
+    textFieldFocusNode2?.dispose();
     textController2?.dispose();
+
     colorDialModel2.dispose();
   }
 

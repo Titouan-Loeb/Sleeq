@@ -8,6 +8,7 @@ import 'login_widget.dart' show LoginWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +22,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   // Model for sleeqLogo component.
   late SleeqLogoModel sleeqLogoModel;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   String? _emailTextControllerValidator(BuildContext context, String? val) {
@@ -37,6 +39,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   }
 
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
@@ -62,7 +65,10 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   void dispose() {
     unfocusNode.dispose();
     sleeqLogoModel.dispose();
+    textFieldFocusNode1?.dispose();
     emailTextController?.dispose();
+
+    textFieldFocusNode2?.dispose();
     passwordTextController?.dispose();
   }
 

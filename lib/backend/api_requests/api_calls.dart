@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -24,7 +24,7 @@ class CreatePaymentLinkCall {
     String? mode = 'subscription',
     String? key =
         'sk_test_51LOI2XBzo7KeiEMEvMq1t4V17K7RdiB5CiEFLG0TNRKwde13Sqz7K70y0uM61OGKZyJTzyLsu8K3GQwlDLue4wmL00KlJfUgZo',
-  }) {
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Create Payment Link',
       apiUrl: '${StripeAPIGroup.baseUrl}checkout/sessions',
@@ -69,7 +69,7 @@ class BugReportCall {
     bool? wantsFollowUp,
     String? priority = '',
     String? userPlatform = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "userMail": "${userMail}",
@@ -110,7 +110,7 @@ class SendFeedbackCall {
     bool? premium,
     String? feedback = '',
     String? reasonnopremium = '',
-  }) {
+  }) async {
     final ffApiRequestBody = '''
 {
   "username": "${username}",

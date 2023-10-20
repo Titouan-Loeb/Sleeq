@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -134,25 +135,51 @@ class _FileButtonWidgetState extends State<FileButtonWidget> {
                           return;
                         }
                       } else {
-                        logFirebaseEvent('IconButton_navigate_to');
+                        if (widget.name == 'id') {
+                          logFirebaseEvent('IconButton_navigate_to');
 
-                        context.pushNamed(
-                          'file',
-                          queryParameters: {
-                            'file': serializeParam(
-                              widget.file,
-                              ParamType.Document,
-                            ),
-                          }.withoutNulls,
-                          extra: <String, dynamic>{
-                            'file': widget.file,
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.leftToRight,
-                              duration: Duration(milliseconds: 200),
-                            ),
-                          },
-                        );
+                          context.pushNamed(
+                            'fileCard',
+                            queryParameters: {
+                              'file': serializeParam(
+                                widget.file,
+                                ParamType.Document,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              'file': widget.file,
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                                duration: Duration(milliseconds: 200),
+                              ),
+                            },
+                          );
+
+                          return;
+                        } else {
+                          logFirebaseEvent('IconButton_navigate_to');
+
+                          context.pushNamed(
+                            'file',
+                            queryParameters: {
+                              'file': serializeParam(
+                                widget.file,
+                                ParamType.Document,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              'file': widget.file,
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                                duration: Duration(milliseconds: 200),
+                              ),
+                            },
+                          );
+
+                          return;
+                        }
                       }
                     },
                   ),
