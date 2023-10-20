@@ -2053,55 +2053,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // VCard
   {
-    'aurrqa4i': {
+    'uw3fxbwl': {
       'en': 'CARTE NATIONALE D\'ITENTITE',
       'fr': '',
     },
-    'b5p53jgm': {
+    'eokls5wb': {
       'en': 'Nom:',
       'fr': '',
     },
-    'qcske1cg': {
+    'jthp8k49': {
       'en': 'BENARROCHE',
       'fr': '',
     },
-    'zua7f72u': {
+    'phxud9aq': {
       'en': 'Prénoms:',
       'fr': '',
     },
-    '8zgt49n4': {
+    'y3h4tb5m': {
       'en': 'Ilan Isaac',
       'fr': '',
     },
-    'wbtj1a32': {
+    'q74zobul': {
       'en': 'Sexe:',
       'fr': '',
     },
-    '7uyeo2lq': {
+    'ez915roy': {
       'en': 'H',
       'fr': '',
     },
-    '66hqryi0': {
+    '6tm13qng': {
       'en': 'Nationalité:',
       'fr': '',
     },
-    'bfoqz6pd': {
+    'ay2q5x64': {
       'en': 'FRA',
       'fr': '',
     },
-    '6xr4eiib': {
+    'c7his602': {
       'en': 'Date de naiss:',
       'fr': '',
     },
-    '09k0w4r6': {
+    'mwispnsx': {
       'en': '30 07 1999',
       'fr': '',
     },
-    '6p8wchph': {
+    'w43mi3iy': {
       'en': 'N°',
       'fr': '',
     },
-    'vbi1cjma': {
+    'xnvb0zua': {
       'en': '180695358957',
       'fr': '',
     },

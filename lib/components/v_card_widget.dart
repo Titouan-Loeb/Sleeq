@@ -87,11 +87,12 @@ class _VCardWidgetState extends State<VCardWidget> {
                   ),
                   Text(
                     FFLocalizations.of(context).getText(
-                      'aurrqa4i' /* CARTE NATIONALE D'ITENTITE */,
+                      'uw3fxbwl' /* CARTE NATIONALE D'ITENTITE */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
@@ -161,7 +162,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'b5p53jgm' /* Nom: */,
+                                    'eokls5wb' /* Nom: */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -177,7 +178,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'qcske1cg' /* BENARROCHE */,
+                                    'jthp8k49' /* BENARROCHE */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -199,7 +200,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'zua7f72u' /* Prénoms: */,
+                                    'phxud9aq' /* Prénoms: */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -216,7 +217,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '8zgt49n4' /* Ilan Isaac */,
+                                    'y3h4tb5m' /* Ilan Isaac */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -242,14 +243,14 @@ class _VCardWidgetState extends State<VCardWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'wbtj1a32' /* Sexe: */,
+                                        'q74zobul' /* Sexe: */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        '7uyeo2lq' /* H */,
+                                        'ez915roy' /* H */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -272,7 +273,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        '66hqryi0' /* Nationalité: */,
+                                        '6tm13qng' /* Nationalité: */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -289,7 +290,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'bfoqz6pd' /* FRA */,
+                                        'ay2q5x64' /* FRA */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -314,7 +315,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '6xr4eiib' /* Date de naiss: */,
+                                    'c7his602' /* Date de naiss: */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -330,7 +331,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '09k0w4r6' /* 30 07 1999 */,
+                                    'mwispnsx' /* 30 07 1999 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -352,7 +353,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '6p8wchph' /* N° */,
+                                    'w43mi3iy' /* N° */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -368,7 +369,7 @@ class _VCardWidgetState extends State<VCardWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'vbi1cjma' /* 180695358957 */,
+                                    'xnvb0zua' /* 180695358957 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

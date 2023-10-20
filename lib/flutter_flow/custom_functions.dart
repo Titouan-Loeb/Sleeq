@@ -142,3 +142,7 @@ bool findpkpass(String string) {
   var result = [".pkpass"].any(string.contains);
   return (result);
 }
+
+String strToLowerCase(String str) {
+  return str.toLowerCase();
+}
