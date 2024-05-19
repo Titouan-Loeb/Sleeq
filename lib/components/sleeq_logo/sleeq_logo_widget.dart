@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,16 +9,16 @@ export 'sleeq_logo_model.dart';
 
 class SleeqLogoWidget extends StatefulWidget {
   const SleeqLogoWidget({
-    Key? key,
+    super.key,
     this.color,
     this.withText,
-  }) : super(key: key);
+  });
 
   final Color? color;
   final bool? withText;
 
   @override
-  _SleeqLogoWidgetState createState() => _SleeqLogoWidgetState();
+  State<SleeqLogoWidget> createState() => _SleeqLogoWidgetState();
 }
 
 class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
@@ -48,8 +47,6 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       height: 50.0,
       decoration: BoxDecoration(),
@@ -70,7 +67,7 @@ class _SleeqLogoWidgetState extends State<SleeqLogoWidget> {
             false,
           ))
             Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Icon(
                 FFIcons.ksleeqTextVector,
                 color: widget.color,

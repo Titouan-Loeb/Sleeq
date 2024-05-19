@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
+import '/cards/fr_id_card/fr_id_card_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
-import '/components/v_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +16,14 @@ export 'file_card_model.dart';
 
 class FileCardWidget extends StatefulWidget {
   const FileCardWidget({
-    Key? key,
+    super.key,
     this.file,
-  }) : super(key: key);
+  });
 
   final FilesRecord? file;
 
   @override
-  _FileCardWidgetState createState() => _FileCardWidgetState();
+  State<FileCardWidget> createState() => _FileCardWidgetState();
 }
 
 class _FileCardWidgetState extends State<FileCardWidget> {
@@ -59,15 +58,6 @@ class _FileCardWidgetState extends State<FileCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -89,6 +79,7 @@ class _FileCardWidgetState extends State<FileCardWidget> {
                       fontFamily:
                           FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: Colors.white,
+                      letterSpacing: 0.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).headlineMediumFamily),
                     ),
@@ -112,7 +103,18 @@ class _FileCardWidgetState extends State<FileCardWidget> {
                           'FILE_CARD_PAGE_info_outlined_ICN_ON_TAP');
                       logFirebaseEvent('IconButton_navigate_to');
 
-                      context.pushNamed('fileInformations');
+                      context.pushNamed(
+                        'fileInformations',
+                        queryParameters: {
+                          'file': serializeParam(
+                            widget.file,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'file': widget.file,
+                        },
+                      );
                     },
                   ),
                 ),
@@ -130,39 +132,45 @@ class _FileCardWidgetState extends State<FileCardWidget> {
                     updateCallback: () => setState(() {}),
                     child: SidebarWidget(),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.vCardModel,
-                          updateCallback: () => setState(() {}),
-                          child: VCardWidget(),
-                        ),
-                      ),
-                      Expanded(
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 4.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.frIdCardModel,
+                            updateCallback: () => setState(() {}),
+                            child: FrIdCardWidget(),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              functions.urlToImgPath(widget.file!.fileUrl),
-                              width: 300.0,
-                              height: 180.0,
-                              fit: BoxFit.contain,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 20.0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  functions.urlToImgPath(widget.file!.fileUrl),
+                                  width: 300.0,
+                                  height: 180.0,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ].divide(SizedBox(height: 20.0)),
+                      ].divide(SizedBox(height: 20.0)),
+                    ),
                   ),
                 ],
               ),

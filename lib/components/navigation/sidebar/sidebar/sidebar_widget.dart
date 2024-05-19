@@ -2,7 +2,6 @@ import '/components/navigation/sidebar/sub_elements/newnav/newnav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'sidebar_model.dart';
 export 'sidebar_model.dart';
 
 class SidebarWidget extends StatefulWidget {
-  const SidebarWidget({Key? key}) : super(key: key);
+  const SidebarWidget({super.key});
 
   @override
-  _SidebarWidgetState createState() => _SidebarWidgetState();
+  State<SidebarWidget> createState() => _SidebarWidgetState();
 }
 
 class _SidebarWidgetState extends State<SidebarWidget> {
@@ -42,8 +41,6 @@ class _SidebarWidgetState extends State<SidebarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Visibility(
       visible: responsiveVisibility(
         context: context,

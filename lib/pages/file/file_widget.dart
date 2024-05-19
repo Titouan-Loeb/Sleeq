@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +16,14 @@ export 'file_model.dart';
 
 class FileWidget extends StatefulWidget {
   const FileWidget({
-    Key? key,
+    super.key,
     this.file,
-  }) : super(key: key);
+  });
 
   final FilesRecord? file;
 
   @override
-  _FileWidgetState createState() => _FileWidgetState();
+  State<FileWidget> createState() => _FileWidgetState();
 }
 
 class _FileWidgetState extends State<FileWidget> {
@@ -59,15 +58,6 @@ class _FileWidgetState extends State<FileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -89,6 +79,7 @@ class _FileWidgetState extends State<FileWidget> {
                       fontFamily:
                           FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: Colors.white,
+                      letterSpacing: 0.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).headlineMediumFamily),
                     ),
@@ -111,7 +102,18 @@ class _FileWidgetState extends State<FileWidget> {
                       logFirebaseEvent('FILE_PAGE_info_outlined_ICN_ON_TAP');
                       logFirebaseEvent('IconButton_navigate_to');
 
-                      context.pushNamed('fileInformations');
+                      context.pushNamed(
+                        'fileInformations',
+                        queryParameters: {
+                          'file': serializeParam(
+                            widget.file,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'file': widget.file,
+                        },
+                      );
                     },
                   ),
                 ),
@@ -152,7 +154,7 @@ class _FileWidgetState extends State<FileWidget> {
                     ),
                   if (functions.findpkpass(widget.file!.fileUrl))
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 0.3,
@@ -160,7 +162,7 @@ class _FileWidgetState extends State<FileWidget> {
                           color: Color(0x00FFFFFF),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -170,8 +172,7 @@ class _FileWidgetState extends State<FileWidget> {
                               logFirebaseEvent(
                                   'FILE_PAGE_Image_gispvjh1_ON_TAP');
                               logFirebaseEvent('Image_launch_u_r_l');
-                              await launchURL(
-                                  'https://passwallet.page.link/?apn=com.attidomobile.passwallet&link=${widget.file?.fileUrl}');
+                              await launchURL('${widget.file?.fileUrl}');
                             },
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),

@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/back_button/back_button_widget.dart';
-import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/components/popups/delete_account_popup/delete_account_popup_widget.dart';
 import '/components/popups/reset_password_popup/reset_password_popup_widget.dart';
@@ -9,24 +9,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:shake/shake.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'account_model.dart';
 export 'account_model.dart';
 
 class AccountWidget extends StatefulWidget {
-  const AccountWidget({Key? key}) : super(key: key);
+  const AccountWidget({super.key});
 
   @override
-  _AccountWidgetState createState() => _AccountWidgetState();
+  State<AccountWidget> createState() => _AccountWidgetState();
 }
 
 class _AccountWidgetState extends State<AccountWidget> {
@@ -82,15 +83,6 @@ class _AccountWidgetState extends State<AccountWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -117,7 +109,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -137,7 +129,10 @@ class _AccountWidgetState extends State<AccountWidget> {
                                             blurRadius: 1.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
-                                            offset: Offset(0.0, 0.0),
+                                            offset: Offset(
+                                              0.0,
+                                              0.0,
+                                            ),
                                           )
                                         ],
                                       ),
@@ -162,9 +157,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 2.0, 2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: AuthUserStreamWidget(
                                                   builder: (context) => InkWell(
                                                     splashColor:
@@ -280,7 +273,19 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .headlineSmall,
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
                                                     ),
                                                   ),
                                                   Padding(
@@ -301,14 +306,15 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                                         context)
                                                                     .primary,
                                                                 fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                        'Lexend'),
                                                               ),
                                                     ),
                                                   ),
@@ -329,7 +335,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -355,21 +361,33 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleMedium,
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily),
+                                                      ),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 16.0, 16.0, 16.0),
+                                      padding: EdgeInsets.all(16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -378,50 +396,87 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleSmall,
-                                            ),
-                                          ),
-                                          LinearPercentIndicator(
-                                            percent: 0.02,
-                                            lineHeight: 12.0,
-                                            animation: true,
-                                            animateFromLastPercent: true,
-                                            progressColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBtnText,
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.00, 0.00),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'kxhmi35j' /* 0 MB / 250 MB */,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
+                                                      .titleSmall
                                                       .override(
                                                         fontFamily:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
+                                                                .titleSmallFamily,
+                                                        letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelSmallFamily),
+                                                                    .titleSmallFamily),
                                                       ),
+                                            ),
+                                          ),
+                                          AuthUserStreamWidget(
+                                            builder: (context) =>
+                                                LinearPercentIndicator(
+                                              percent: valueOrDefault<double>(
+                                                functions.getStorageOccupiedRatio(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.occupiedStorage,
+                                                        0.0),
+                                                    functions
+                                                        .getPlanMaxStorageInMB(
+                                                            valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.subcriptionId,
+                                                                ''))
+                                                        .toDouble()),
+                                                0.0,
+                                              ),
+                                              lineHeight: 12.0,
+                                              animation: true,
+                                              animateFromLastPercent: true,
+                                              progressColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              padding: EdgeInsets.zero,
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                '${formatNumber(
+                                                  valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.occupiedStorage,
+                                                      0.0),
+                                                  formatType: FormatType.custom,
+                                                  format: '0.00',
+                                                  locale: '',
+                                                )} / ${functions.getPlanMaxStorageInMB(valueOrDefault(currentUserDocument?.subcriptionId, '')).toString()} MB',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily),
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                           Padding(
@@ -501,7 +556,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                         Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  -1.00, 0.00),
+                                                                  -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -510,18 +565,38 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'eakvdt9z' /* Subscription plan */,
+                                                            child:
+                                                                AuthUserStreamWidget(
+                                                              builder:
+                                                                  (context) =>
+                                                                      Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  functions.getPlanName(
+                                                                      valueOrDefault(
+                                                                          currentUserDocument
+                                                                              ?.subcriptionId,
+                                                                          '')),
+                                                                  'Sleeq FREE',
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
                                                               ),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleSmall,
                                                             ),
                                                           ),
                                                         ),
@@ -530,7 +605,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              1.00, 0.00),
+                                                              1.0, 0.0),
                                                       child: Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -558,8 +633,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 5.0, 0.0),
@@ -591,23 +665,25 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                   enableDrag: false,
                                                   context: context,
                                                   builder: (context) {
-                                                    return GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            DeleteAccountPopupWidget(),
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              DeleteAccountPopupWidget(),
+                                                        ),
                                                       ),
                                                     );
                                                   },
@@ -642,6 +718,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBtnText,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -672,23 +749,25 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                   enableDrag: false,
                                                   context: context,
                                                   builder: (context) {
-                                                    return GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            ResetPasswordPopupWidget(),
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              ResetPasswordPopupWidget(),
+                                                        ),
                                                       ),
                                                     );
                                                   },
@@ -723,6 +802,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBtnText,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -789,6 +869,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBtnText,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -857,6 +938,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBtnText,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -889,7 +971,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                           desktop: false,
                         ))
                           Align(
-                            alignment: AlignmentDirectional(0.00, 1.00),
+                            alignment: AlignmentDirectional(0.0, 1.0),
                             child: wrapWithModel(
                               model: _model.navBarFlotingModel,
                               updateCallback: () => setState(() {}),

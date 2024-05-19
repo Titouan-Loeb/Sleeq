@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,7 @@ export 'feature_description_model.dart';
 
 class FeatureDescriptionWidget extends StatefulWidget {
   const FeatureDescriptionWidget({
-    Key? key,
+    super.key,
     this.title,
     this.description,
     this.value,
@@ -18,8 +17,7 @@ class FeatureDescriptionWidget extends StatefulWidget {
     this.icon,
     bool? useIcon,
   })  : this.strikethrought = strikethrought ?? false,
-        this.useIcon = useIcon ?? false,
-        super(key: key);
+        this.useIcon = useIcon ?? false;
 
   final String? title;
   final String? description;
@@ -29,7 +27,7 @@ class FeatureDescriptionWidget extends StatefulWidget {
   final bool useIcon;
 
   @override
-  _FeatureDescriptionWidgetState createState() =>
+  State<FeatureDescriptionWidget> createState() =>
       _FeatureDescriptionWidgetState();
 }
 
@@ -59,8 +57,6 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: MediaQuery.sizeOf(context).width * 1.0,
       decoration: BoxDecoration(),
@@ -82,7 +78,14 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                           EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 0.0),
                       child: Text(
                         widget.title!,
-                        style: FlutterFlowTheme.of(context).labelLarge,
+                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).labelLargeFamily,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .labelLargeFamily),
+                            ),
                       ),
                     ),
                   if (!widget.strikethrought)
@@ -95,6 +98,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -111,6 +115,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).labelLargeFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                               decoration: TextDecoration.lineThrough,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -128,6 +133,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -139,6 +145,9 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
             ),
           ),
           Container(
+            constraints: BoxConstraints(
+              minWidth: 70.0,
+            ),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
             ),
@@ -151,7 +160,13 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 20.0, 0.0),
                     child: Text(
                       widget.value!,
-                      style: FlutterFlowTheme.of(context).labelLarge,
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelLargeFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelLargeFamily),
+                          ),
                     ),
                   ),
                 if (!widget.useIcon && widget.strikethrought)
@@ -164,6 +179,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelLargeFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelLargeFamily),
                           ),
@@ -171,7 +187,7 @@ class _FeatureDescriptionWidgetState extends State<FeatureDescriptionWidget> {
                   ),
                 if (widget.useIcon)
                   Align(
-                    alignment: AlignmentDirectional(0.95, -1.00),
+                    alignment: AlignmentDirectional(0.95, -1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 8.0, 20.0, 0.0),

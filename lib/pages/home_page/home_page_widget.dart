@@ -1,21 +1,24 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/cards/card_slider/card_slider_widget.dart';
+import '/cards/card_slider_horizontal/card_slider_horizontal_widget.dart';
 import '/components/buttons/edit_bar2/edit_bar2_widget.dart';
 import '/components/buttons/file_button_list_mode/file_button_list_mode_widget.dart';
 import '/components/buttons/folder_button_list_mode/folder_button_list_mode_widget.dart';
 import '/components/buttons/new_button/new_button_widget.dart';
+import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/breadcrumbs/breadcrumbs/breadcrumbs_widget.dart';
-import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -23,10 +26,10 @@ import 'home_page_model.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+  const HomePageWidget({super.key});
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
@@ -69,15 +72,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -92,115 +86,294 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+              child: Stack(
                 children: [
-                  wrapWithModel(
-                    model: _model.sidebarModel,
-                    updateCallback: () => setState(() {}),
-                    child: SidebarWidget(),
-                  ),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        AuthUserStreamWidget(
-                          builder: (context) => StreamBuilder<FoldersRecord>(
-                            stream: FoldersRecord.getDocument(
-                                currentUserDocument!.rootFolder!),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 70.0,
-                                    height: 70.0,
-                                    child: SpinKitChasingDots(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 70.0,
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      wrapWithModel(
+                        model: _model.sidebarModel,
+                        updateCallback: () => setState(() {}),
+                        child: SidebarWidget(),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 0.0),
+                              child: wrapWithModel(
+                                model: _model.breadcrumbsModel,
+                                updateCallback: () => setState(() {}),
+                                updateOnChange: true,
+                                child: BreadcrumbsWidget(
+                                  folderNames: functions.addFolderToList(
+                                      List.generate(
+                                          random_data.randomInteger(0, 0),
+                                          (index) => random_data.randomName(
+                                              true, true)).toList(),
+                                      'Home'),
+                                  allowGoBack: false,
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'yjm0b1dl' /* Grid View */,
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
                                   ),
-                                );
-                              }
-                              final columnFoldersRecord = snapshot.data!;
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 0.0),
-                                    child: wrapWithModel(
-                                      model: _model.breadcrumbsModel,
-                                      updateCallback: () => setState(() {}),
-                                      updateOnChange: true,
-                                      child: BreadcrumbsWidget(
-                                        isHomeScreen: true,
-                                        folderNames: List.generate(
-                                            random_data.randomInteger(0, 0),
-                                            (index) => random_data.randomName(
-                                                true, true)),
-                                      ),
-                                    ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: Switch.adaptive(
+                                    value: _model.switchValue ??=
+                                        FFAppState().gridView,
+                                    onChanged: (newValue) async {
+                                      setState(
+                                          () => _model.switchValue = newValue!);
+                                      if (newValue!) {
+                                        logFirebaseEvent(
+                                            'HOME_Switch_42tblfqi_ON_TOGGLE_ON');
+                                        logFirebaseEvent(
+                                            'Switch_update_app_state');
+                                        FFAppState().gridView = true;
+                                      } else {
+                                        logFirebaseEvent(
+                                            'HOME_Switch_42tblfqi_ON_TOGGLE_OFF');
+                                        logFirebaseEvent(
+                                            'Switch_update_app_state');
+                                        FFAppState().gridView = false;
+                                      }
+                                    },
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    activeTrackColor:
+                                        FlutterFlowTheme.of(context).accent1,
+                                    inactiveTrackColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    inactiveThumbColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'yjm0b1dl' /* Grid View */,
+                                ),
+                              ],
+                            ),
+                            if (responsiveVisibility(
+                              context: context,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              AuthUserStreamWidget(
+                                builder: (context) =>
+                                    StreamBuilder<List<FilesRecord>>(
+                                  stream: queryFilesRecord(
+                                    parent: currentUserReference,
+                                    queryBuilder: (filesRecord) => filesRecord
+                                        .whereIn(
+                                            'typeId',
+                                            functions.getCardIds() != ''
+                                                ? functions.getCardIds()
+                                                : null)
+                                        .where(
+                                          'containing_folder',
+                                          isEqualTo:
+                                              currentUserDocument?.rootFolder,
+                                        ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 70.0,
+                                          height: 70.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 70.0,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                        ),
+                                      );
+                                    }
+                                    List<FilesRecord> containerFilesRecordList =
+                                        snapshot.data!;
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Visibility(
+                                        visible:
+                                            containerFilesRecordList.length !=
+                                                0,
+                                        child: wrapWithModel(
+                                          model:
+                                              _model.cardSliderHorizontalModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: CardSliderHorizontalWidget(
+                                            cards: containerFilesRecordList
+                                                .map((e) => e.reference)
+                                                .toList(),
+                                          ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Switch.adaptive(
-                                          value: _model.switchValue ??=
-                                              FFAppState().gridView,
-                                          onChanged: (newValue) async {
-                                            setState(() =>
-                                                _model.switchValue = newValue!);
-                                            if (newValue!) {
-                                              logFirebaseEvent(
-                                                  'HOME_Switch_42tblfqi_ON_TOGGLE_ON');
-                                              logFirebaseEvent(
-                                                  'Switch_update_app_state');
-                                              FFAppState().gridView = true;
-                                            } else {
-                                              logFirebaseEvent(
-                                                  'HOME_Switch_42tblfqi_ON_TOGGLE_OFF');
-                                              logFirebaseEvent(
-                                                  'Switch_update_app_state');
-                                              FFAppState().gridView = false;
-                                            }
-                                          },
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          activeTrackColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent1,
-                                          inactiveTrackColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          inactiveThumbColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
+                                    );
+                                  },
+                                ),
+                              ),
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                            ))
+                              AuthUserStreamWidget(
+                                builder: (context) =>
+                                    StreamBuilder<List<FilesRecord>>(
+                                  stream: queryFilesRecord(
+                                    parent: currentUserReference,
+                                    queryBuilder: (filesRecord) => filesRecord
+                                        .whereIn(
+                                            'typeId',
+                                            functions.getCardIds() != ''
+                                                ? functions.getCardIds()
+                                                : null)
+                                        .where(
+                                          'containing_folder',
+                                          isEqualTo:
+                                              currentUserDocument?.rootFolder,
                                         ),
-                                      ),
-                                    ],
                                   ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 70.0,
+                                          height: 70.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 70.0,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<FilesRecord> containerFilesRecordList =
+                                        snapshot.data!;
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Visibility(
+                                        visible:
+                                            containerFilesRecordList.length !=
+                                                0,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 0.0, 0.0),
+                                          child: wrapWithModel(
+                                            model: _model.cardSliderModel,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: CardSliderWidget(
+                                              cards: containerFilesRecordList
+                                                  .map((e) => e.reference)
+                                                  .toList(),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            Expanded(
+                              child: Stack(
+                                children: [
                                   if (_model.switchValue ?? true)
-                                    Expanded(
-                                      child: FutureBuilder<FoldersRecord>(
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 100.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) =>
+                                            FutureBuilder<FoldersRecord>(
+                                          future: FFAppState().homegrid(
+                                            overrideCache: true,
+                                            requestFn: () =>
+                                                FoldersRecord.getDocumentOnce(
+                                                    currentUserDocument!
+                                                        .rootFolder!),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 70.0,
+                                                  height: 70.0,
+                                                  child: SpinKitChasingDots(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 70.0,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            final responsiveGridFoldersRecord =
+                                                snapshot.data!;
+                                            return Container(
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              child:
+                                                  custom_widgets.ResponsiveGrid(
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                folders:
+                                                    responsiveGridFoldersRecord
+                                                        .folders,
+                                                files:
+                                                    responsiveGridFoldersRecord
+                                                        .files,
+                                                folderNamesList:
+                                                    functions.addFolderToList(
+                                                        List.generate(
+                                                            random_data
+                                                                .randomInteger(
+                                                                    0, 0),
+                                                            (index) => random_data
+                                                                .randomName(
+                                                                    true,
+                                                                    true)).toList(),
+                                                        'Home'),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  if (!_model.switchValue!)
+                                    AuthUserStreamWidget(
+                                      builder: (context) =>
+                                          FutureBuilder<FoldersRecord>(
                                         future: FFAppState().homegrid(
                                           overrideCache: true,
                                           requestFn: () =>
@@ -224,199 +397,216 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               ),
                                             );
                                           }
-                                          final responsiveGridFoldersRecord =
+                                          final columnFoldersRecord =
                                               snapshot.data!;
-                                          return Container(
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            child:
-                                                custom_widgets.ResponsiveGrid(
-                                              width: double.infinity,
-                                              height: double.infinity,
-                                              folders:
-                                                  responsiveGridFoldersRecord
-                                                      .folders,
-                                              files: responsiveGridFoldersRecord
-                                                  .files,
-                                              folderNamesList: List.generate(
-                                                  random_data.randomInteger(
-                                                      0, 0),
-                                                  (index) => random_data
-                                                      .randomName(true, true)),
+                                          return SingleChildScrollView(
+                                            primary: false,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Builder(
+                                                  builder: (context) {
+                                                    final folder =
+                                                        columnFoldersRecord
+                                                            .folders
+                                                            .toList();
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: List.generate(
+                                                          folder.length,
+                                                          (folderIndex) {
+                                                        final folderItem =
+                                                            folder[folderIndex];
+                                                        return StreamBuilder<
+                                                            FoldersRecord>(
+                                                          stream: FoldersRecord
+                                                              .getDocument(
+                                                                  folderItem),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 70.0,
+                                                                  height: 70.0,
+                                                                  child:
+                                                                      SpinKitChasingDots(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 70.0,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            final folderButtonListModeFoldersRecord =
+                                                                snapshot.data!;
+                                                            return FolderButtonListModeWidget(
+                                                              key: Key(
+                                                                  'Keyuml_${folderIndex}_of_${folder.length}'),
+                                                              name:
+                                                                  folderButtonListModeFoldersRecord
+                                                                      .name,
+                                                              color:
+                                                                  folderButtonListModeFoldersRecord
+                                                                      .color!,
+                                                              path:
+                                                                  folderButtonListModeFoldersRecord
+                                                                      .reference,
+                                                              previousFolders: functions.addFolderToList(
+                                                                  List.generate(
+                                                                      random_data.randomInteger(0, 0),
+                                                                      (index) => random_data.randomString(
+                                                                            0,
+                                                                            0,
+                                                                            true,
+                                                                            false,
+                                                                            false,
+                                                                          )).toList(),
+                                                                  'Home'),
+                                                            );
+                                                          },
+                                                        );
+                                                      }),
+                                                    );
+                                                  },
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 100.0),
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final file =
+                                                          columnFoldersRecord
+                                                              .files
+                                                              .toList();
+                                                      return Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: List.generate(
+                                                            file.length,
+                                                            (fileIndex) {
+                                                          final fileItem =
+                                                              file[fileIndex];
+                                                          return StreamBuilder<
+                                                              FilesRecord>(
+                                                            stream: FilesRecord
+                                                                .getDocument(
+                                                                    fileItem),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 70.0,
+                                                                    height:
+                                                                        70.0,
+                                                                    child:
+                                                                        SpinKitChasingDots(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          70.0,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              final fileButtonListModeFilesRecord =
+                                                                  snapshot
+                                                                      .data!;
+                                                              return FileButtonListModeWidget(
+                                                                key: Key(
+                                                                    'Keyqyc_${fileIndex}_of_${file.length}'),
+                                                                name:
+                                                                    fileButtonListModeFilesRecord
+                                                                        .name,
+                                                                color:
+                                                                    fileButtonListModeFilesRecord
+                                                                        .color!,
+                                                                document:
+                                                                    fileButtonListModeFilesRecord,
+                                                              );
+                                                            },
+                                                          );
+                                                        }),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           );
                                         },
                                       ),
                                     ),
-                                  if (!_model.switchValue!)
-                                    Builder(
-                                      builder: (context) {
-                                        final folder = columnFoldersRecord
-                                            .folders
-                                            .toList();
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(folder.length,
-                                              (folderIndex) {
-                                            final folderItem =
-                                                folder[folderIndex];
-                                            return StreamBuilder<FoldersRecord>(
-                                              stream: FoldersRecord.getDocument(
-                                                  folderItem),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 70.0,
-                                                      height: 70.0,
-                                                      child: SpinKitChasingDots(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 70.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                final folderButtonListModeFoldersRecord =
-                                                    snapshot.data!;
-                                                return FolderButtonListModeWidget(
-                                                  key: Key(
-                                                      'Keyuml_${folderIndex}_of_${folder.length}'),
-                                                  name:
-                                                      folderButtonListModeFoldersRecord
-                                                          .name,
-                                                  color:
-                                                      folderButtonListModeFoldersRecord
-                                                          .color!,
-                                                  path:
-                                                      folderButtonListModeFoldersRecord
-                                                          .reference,
-                                                  previousFolders:
-                                                      List.generate(
-                                                          random_data
-                                                              .randomInteger(
-                                                                  0, 0),
-                                                          (index) => random_data
-                                                                  .randomString(
-                                                                0,
-                                                                0,
-                                                                true,
-                                                                false,
-                                                                false,
-                                                              )),
-                                                );
-                                              },
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    ),
-                                  if (!_model.switchValue!)
-                                    Builder(
-                                      builder: (context) {
-                                        final file =
-                                            columnFoldersRecord.files.toList();
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(file.length,
-                                              (fileIndex) {
-                                            final fileItem = file[fileIndex];
-                                            return StreamBuilder<FilesRecord>(
-                                              stream: FilesRecord.getDocument(
-                                                  fileItem),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 70.0,
-                                                      height: 70.0,
-                                                      child: SpinKitChasingDots(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 70.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                final fileButtonListModeFilesRecord =
-                                                    snapshot.data!;
-                                                return FileButtonListModeWidget(
-                                                  key: Key(
-                                                      'Keyqyc_${fileIndex}_of_${file.length}'),
-                                                  name:
-                                                      fileButtonListModeFilesRecord
-                                                          .name,
-                                                  color:
-                                                      fileButtonListModeFilesRecord
-                                                          .color!,
-                                                  document:
-                                                      fileButtonListModeFilesRecord,
-                                                );
-                                              },
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    ),
                                 ],
-                              );
-                            },
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 1.00),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              if (FFAppState().isSelectionMode)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: wrapWithModel(
-                                    model: _model.editBar2Model,
-                                    updateCallback: () => setState(() {}),
-                                    child: EditBar2Widget(),
-                                  ),
+                      ),
+                    ],
+                  ),
+                  AuthUserStreamWidget(
+                    builder: (context) => wrapWithModel(
+                      model: _model.newButtonModel,
+                      updateCallback: () => setState(() {}),
+                      child: NewButtonWidget(
+                        currentFolder: currentUserDocument!.rootFolder!,
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (FFAppState().isSelectionMode)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => wrapWithModel(
+                                model: _model.editBar2Model,
+                                updateCallback: () => setState(() {}),
+                                child: EditBar2Widget(
+                                  currentFolder:
+                                      currentUserDocument!.rootFolder!,
                                 ),
-                              if (responsiveVisibility(
-                                context: context,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => wrapWithModel(
-                                      model: _model.navBarFlotingModel,
-                                      updateCallback: () => setState(() {}),
-                                      child: NavBarFlotingWidget(
-                                        key: ValueKey('NavBarFloting_wocd'),
-                                        canAddFile: true,
-                                        currentFolder:
-                                            currentUserDocument?.rootFolder,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                        AuthUserStreamWidget(
-                          builder: (context) => wrapWithModel(
-                            model: _model.newButtonModel,
-                            updateCallback: () => setState(() {}),
-                            child: NewButtonWidget(
-                              currentFolder: currentUserDocument!.rootFolder!,
+                              ),
                             ),
                           ),
-                        ),
+                        if (responsiveVisibility(
+                          context: context,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 1.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => wrapWithModel(
+                                model: _model.navBarFlotingModel,
+                                updateCallback: () => setState(() {}),
+                                child: NavBarFlotingWidget(
+                                  key: ValueKey('NavBarFloting_wocd'),
+                                  canAddFile: true,
+                                  currentFolder:
+                                      currentUserDocument?.rootFolder,
+                                ),
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),

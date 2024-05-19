@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,10 +13,10 @@ import 'test_on_boarding_model.dart';
 export 'test_on_boarding_model.dart';
 
 class TestOnBoardingWidget extends StatefulWidget {
-  const TestOnBoardingWidget({Key? key}) : super(key: key);
+  const TestOnBoardingWidget({super.key});
 
   @override
-  _TestOnBoardingWidgetState createState() => _TestOnBoardingWidgetState();
+  State<TestOnBoardingWidget> createState() => _TestOnBoardingWidgetState();
 }
 
 class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
@@ -44,17 +43,6 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'TestOnBoarding',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -157,7 +145,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .displaySmall,
+                                                        .displaySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .displaySmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -178,7 +179,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmall,
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -228,7 +242,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .displaySmall,
+                                                        .displaySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .displaySmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -249,7 +276,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmall,
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -299,7 +339,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .displaySmall,
+                                                        .displaySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .displaySmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .displaySmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -320,7 +373,20 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmall,
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -333,7 +399,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.00, 1.00),
+                            alignment: AlignmentDirectional(0.0, 1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 10.0),
@@ -349,6 +415,7 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                     duration: Duration(milliseconds: 500),
                                     curve: Curves.ease,
                                   );
+                                  setState(() {});
                                 },
                                 effect:
                                     smooth_page_indicator.ExpandingDotsEffect(
@@ -406,10 +473,10 @@ class _TestOnBoardingWidgetState extends State<TestOnBoardingWidget> {
                                 fontFamily: 'Lexend Deca',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 18.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleMediumFamily),
+                                useGoogleFonts: GoogleFonts.asMap()
+                                    .containsKey('Lexend Deca'),
                               ),
                           elevation: 2.0,
                           borderSide: BorderSide(

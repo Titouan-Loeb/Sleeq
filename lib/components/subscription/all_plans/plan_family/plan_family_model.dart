@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'plan_family_widget.dart' show PlanFamilyWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -40,8 +39,7 @@ class PlanFamilyModel extends FlutterFlowModel<PlanFamilyWidget> {
   // Model for featureDescription component.
   late FeatureDescriptionModel featureDescriptionModel14;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     featureDescriptionModel1 =
         createModel(context, () => FeatureDescriptionModel());
@@ -73,6 +71,7 @@ class PlanFamilyModel extends FlutterFlowModel<PlanFamilyWidget> {
         createModel(context, () => FeatureDescriptionModel());
   }
 
+  @override
   void dispose() {
     featureDescriptionModel1.dispose();
     featureDescriptionModel2.dispose();
@@ -89,8 +88,4 @@ class PlanFamilyModel extends FlutterFlowModel<PlanFamilyWidget> {
     featureDescriptionModel13.dispose();
     featureDescriptionModel14.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

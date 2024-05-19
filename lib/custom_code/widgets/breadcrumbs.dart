@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -44,8 +45,8 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.folderList.length == 0 || widget.folderList[0] != "Home")
-      widget.folderList.insert(0, "Home");
+    // if (widget.folderList.length == 0)
+    //   widget.folderList.insert(0, widget.rootName);
     return BreadCrumb.builder(
       itemCount: widget.folderList.length,
       overflow: ScrollableOverflow(
@@ -64,17 +65,17 @@ class _BreadcrumbsState extends State<Breadcrumbs> {
                   FFAppState().currentTreePath.sublist(0, index + 1);
               Navigator.popUntil(context, (route) => count-- == 0);
             },
-            child:
-                BreadcrumbElementWidget(folderName: widget.folderList[index]),
+            child: BreadcrumbElementWidget(
+                folderName: widget.folderList[index], clickable: true),
           ));
         }
         return BreadCrumbItem(
-            content:
-                BreadcrumbElementWidget(folderName: widget.folderList[index]));
+            content: BreadcrumbElementWidget(
+                folderName: widget.folderList[index], clickable: false));
       },
       divider: Icon(
         Icons.chevron_right,
-        color: FlutterFlowTheme.of(context).primary,
+        color: FlutterFlowTheme.of(context).primaryText,
       ),
     );
   }

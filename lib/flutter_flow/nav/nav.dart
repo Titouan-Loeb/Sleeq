@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -75,18 +76,20 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : TestOnBoardingWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? HomePageWidget()
+          : TestOnBoardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? HomePageWidget()
+              ? entryPage ?? HomePageWidget()
               : TestOnBoardingWidget(),
           routes: [
             FFRoute(
@@ -109,7 +112,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ForgotPassword',
               path: 'forgotPassword',
               builder: (context, params) => ForgotPasswordWidget(
-                defaultEmail: params.getParam('defaultEmail', ParamType.String),
+                defaultEmail: params.getParam(
+                  'defaultEmail',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -123,10 +129,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'folders/:currentFolder',
               requireAuth: true,
               builder: (context, params) => FoldersWidget(
-                currentFolder: params.getParam('currentFolder',
-                    ParamType.DocumentReference, false, ['users', 'folders']),
+                currentFolder: params.getParam(
+                  'currentFolder',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['users', 'folders'],
+                ),
                 folderNames: params.getParam<String>(
-                    'folderNames', ParamType.String, true),
+                  'folderNames',
+                  ParamType.String,
+                  isList: true,
+                ),
               ),
             ),
             FFRoute(
@@ -143,7 +156,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'file': getDoc(['users', 'files'], FilesRecord.fromSnapshot),
               },
               builder: (context, params) => FileWidget(
-                file: params.getParam('file', ParamType.Document),
+                file: params.getParam(
+                  'file',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
@@ -185,15 +201,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'fileInformations',
               path: 'fileInformations',
               requireAuth: true,
-              builder: (context, params) => FileInformationsWidget(),
+              asyncParams: {
+                'file': getDoc(['users', 'files'], FilesRecord.fromSnapshot),
+              },
+              builder: (context, params) => FileInformationsWidget(
+                file: params.getParam(
+                  'file',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'successfulPayment',
               path: 'successfulPayment',
-              builder: (context, params) => SuccessfulPaymentWidget(
-                id: params.getParam('id', ParamType.String),
-                planId: params.getParam('planId', ParamType.String),
-              ),
+              requireAuth: true,
+              builder: (context, params) => SuccessfulPaymentWidget(),
             ),
             FFRoute(
               name: 'cancelPayment',
@@ -235,7 +257,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 's/:query',
               requireAuth: true,
               builder: (context, params) => SearchWidget(
-                query: params.getParam('query', ParamType.String),
+                query: params.getParam(
+                  'query',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -246,7 +271,41 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'file': getDoc(['users', 'files'], FilesRecord.fromSnapshot),
               },
               builder: (context, params) => FileCardWidget(
-                file: params.getParam('file', ParamType.Document),
+                file: params.getParam(
+                  'file',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'favorites',
+              path: 'favorites',
+              requireAuth: true,
+              builder: (context, params) => FavoritesWidget(),
+            ),
+            FFRoute(
+              name: 'ScanPage',
+              path: 'ScanPage',
+              requireAuth: true,
+              builder: (context, params) => ScanPageWidget(),
+            ),
+            FFRoute(
+              name: 'CovidPass',
+              path: 'covidPass',
+              requireAuth: true,
+              builder: (context, params) => CovidPassWidget(),
+            ),
+            FFRoute(
+              name: 'SearchResults',
+              path: 'SearchResults',
+              requireAuth: true,
+              builder: (context, params) => SearchResultsWidget(
+                files: params.getParam<DocumentReference>(
+                  'files',
+                  ParamType.DocumentReference,
+                  isList: true,
+                  collectionNamePath: ['users', 'files'],
+                ),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -326,7 +385,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -345,7 +404,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -366,10 +425,11 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+    StructBuilder<T>? structBuilder,
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -382,8 +442,13 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
+    );
   }
 }
 
@@ -415,12 +480,13 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/testOnBoarding';
           }
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -446,13 +512,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },
@@ -484,7 +557,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -494,4 +567,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

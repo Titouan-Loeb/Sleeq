@@ -1,11 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/popups/sub_elements/color_dial/color_dial_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -19,14 +23,14 @@ export 'add_modal_model.dart';
 
 class AddModalWidget extends StatefulWidget {
   const AddModalWidget({
-    Key? key,
+    super.key,
     this.currentFolder,
-  }) : super(key: key);
+  });
 
   final DocumentReference? currentFolder;
 
   @override
-  _AddModalWidgetState createState() => _AddModalWidgetState();
+  State<AddModalWidget> createState() => _AddModalWidgetState();
 }
 
 class _AddModalWidgetState extends State<AddModalWidget> {
@@ -52,10 +56,9 @@ class _AddModalWidgetState extends State<AddModalWidget> {
       });
     });
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -71,9 +74,9 @@ class _AddModalWidgetState extends State<AddModalWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsets.all(16.0),
         child: Container(
           width: double.infinity,
           constraints: BoxConstraints(
@@ -87,7 +90,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,6 +115,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineSmallFamily,
                                   fontSize: 20.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .headlineSmallFamily),
@@ -124,8 +128,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+                        padding: EdgeInsets.all(4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -158,8 +161,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -192,6 +194,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                                     : FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -239,8 +242,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -267,6 +269,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -294,79 +297,99 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                 ),
                 Stack(
                   children: [
-                    if (FFAppState().isEditingFolder)
-                      Container(
-                        width: double.infinity,
-                        child: Form(
-                          key: _model.formKey2,
-                          autovalidateMode: AutovalidateMode.always,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextFormField(
-                                controller: _model.textController1,
-                                focusNode: _model.textFieldFocusNode1,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'sn3q0avy' /* Folder name */,
+                    Container(
+                      width: double.infinity,
+                      child: Form(
+                        key: _model.formKey,
+                        autovalidateMode: AutovalidateMode.always,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFormField(
+                              controller: _model.textController,
+                              focusNode: _model.textFieldFocusNode,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: FFAppState().isEditingFolder
+                                    ? 'Folder name'
+                                    : 'File name',
+                                hintText: FFAppState().isEditingFolder
+                                    ? '[folder name]'
+                                    : '[file name]',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodySmallFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily),
+                                    ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
                                   ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'r4n3gt7h' /* [folder name] */,
-                                  ),
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).bodySmall,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textController1Validator
-                                    .asValidator(context),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                errorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
                               ),
-                              AuthUserStreamWidget(
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                              validator: _model.textControllerValidator
+                                  .asValidator(context),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 5.0),
+                              child: AuthUserStreamWidget(
                                 builder: (context) => wrapWithModel(
-                                  model: _model.colorDialModel1,
+                                  model: _model.colorDialModel,
                                   updateCallback: () => setState(() {}),
                                   updateOnChange: true,
                                   child: ColorDialWidget(
@@ -396,100 +419,11 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                    if (!FFAppState().isEditingFolder)
-                      Container(
-                        width: double.infinity,
-                        child: Form(
-                          key: _model.formKey1,
-                          autovalidateMode: AutovalidateMode.always,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextFormField(
-                                controller: _model.textController2,
-                                focusNode: _model.textFieldFocusNode2,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'vb8p8k2k' /* File name */,
-                                  ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    't1jrn4o0' /* [file.pdf] */,
-                                  ),
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).bodySmall,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(4.0),
-                                      topRight: Radius.circular(4.0),
-                                    ),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textController2Validator
-                                    .asValidator(context),
-                              ),
-                              wrapWithModel(
-                                model: _model.colorDialModel2,
-                                updateCallback: () => setState(() {}),
-                                child: ColorDialWidget(
-                                  allowedColors: [
-                                    Color(0xFFFFC6FF),
-                                    Color(0xFFBDB2FF),
-                                    Color(0xFFA0C4FF),
-                                    Color(0xFF9BF6FF),
-                                    Color(0xFFCAFFBF),
-                                    Color(0xFFFDFFB6),
-                                    Color(0xFFFFD6A5),
-                                    Color(0xFFFFADAD)
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    ),
                   ],
                 ),
                 Padding(
@@ -515,7 +449,16 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          textStyle: FlutterFlowTheme.of(context).bodySmall,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodySmallFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodySmallFamily),
+                              ),
                           elevation: 0.0,
                           borderSide: BorderSide(
                             color:
@@ -542,7 +485,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                 .set(createFoldersRecordData(
                               owner: currentUserReference,
                               color: FFAppState().selectedColor,
-                              name: _model.textController1.text,
+                              name: _model.textController.text,
                               parentFolder: widget.currentFolder,
                             ));
                             _model.newFolder =
@@ -550,7 +493,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                                     createFoldersRecordData(
                                       owner: currentUserReference,
                                       color: FFAppState().selectedColor,
-                                      name: _model.textController1.text,
+                                      name: _model.textController.text,
                                       parentFolder: widget.currentFolder,
                                     ),
                                     foldersRecordReference);
@@ -566,99 +509,159 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               ),
                             });
                           } else if (_model.addSelect == 2) {
-                            logFirebaseEvent('Button_upload_file_to_firebase');
-                            final selectedFiles = await selectFiles(
-                              multiFile: false,
-                            );
-                            if (selectedFiles != null) {
-                              setState(() => _model.isDataUploading = true);
-                              var selectedUploadedFiles = <FFUploadedFile>[];
+                            if (valueOrDefault(
+                                    currentUserDocument?.occupiedStorage, 0.0) <
+                                functions.getPlanMaxStorageInMB(valueOrDefault(
+                                    currentUserDocument?.subcriptionId, ''))) {
+                              logFirebaseEvent(
+                                  'Button_upload_media_to_firebase');
+                              final selectedMedia =
+                                  await selectMediaWithSourceBottomSheet(
+                                context: context,
+                                allowPhoto: true,
+                              );
+                              if (selectedMedia != null &&
+                                  selectedMedia.every((m) => validateFileFormat(
+                                      m.storagePath, context))) {
+                                setState(() => _model.isDataUploading = true);
+                                var selectedUploadedFiles = <FFUploadedFile>[];
 
-                              var downloadUrls = <String>[];
-                              try {
-                                selectedUploadedFiles = selectedFiles
-                                    .map((m) => FFUploadedFile(
-                                          name: m.storagePath.split('/').last,
-                                          bytes: m.bytes,
-                                        ))
-                                    .toList();
+                                var downloadUrls = <String>[];
+                                try {
+                                  selectedUploadedFiles = selectedMedia
+                                      .map((m) => FFUploadedFile(
+                                            name: m.storagePath.split('/').last,
+                                            bytes: m.bytes,
+                                            height: m.dimensions?.height,
+                                            width: m.dimensions?.width,
+                                            blurHash: m.blurHash,
+                                          ))
+                                      .toList();
 
-                                downloadUrls = (await Future.wait(
-                                  selectedFiles.map(
-                                    (f) async => await uploadData(
-                                        f.storagePath, f.bytes),
-                                  ),
-                                ))
-                                    .where((u) => u != null)
-                                    .map((u) => u!)
-                                    .toList();
-                              } finally {
-                                _model.isDataUploading = false;
+                                  downloadUrls = (await Future.wait(
+                                    selectedMedia.map(
+                                      (m) async => await uploadData(
+                                          m.storagePath, m.bytes),
+                                    ),
+                                  ))
+                                      .where((u) => u != null)
+                                      .map((u) => u!)
+                                      .toList();
+                                } finally {
+                                  _model.isDataUploading = false;
+                                }
+                                if (selectedUploadedFiles.length ==
+                                        selectedMedia.length &&
+                                    downloadUrls.length ==
+                                        selectedMedia.length) {
+                                  setState(() {
+                                    _model.uploadedLocalFile =
+                                        selectedUploadedFiles.first;
+                                    _model.uploadedFileUrl = downloadUrls.first;
+                                  });
+                                } else {
+                                  setState(() {});
+                                  return;
+                                }
                               }
-                              if (selectedUploadedFiles.length ==
-                                      selectedFiles.length &&
-                                  downloadUrls.length == selectedFiles.length) {
-                                setState(() {
-                                  _model.uploadedLocalFile =
-                                      selectedUploadedFiles.first;
-                                  _model.uploadedFileUrl = downloadUrls.first;
+
+                              if (_model.uploadedFileUrl != null &&
+                                  _model.uploadedFileUrl != '') {
+                                logFirebaseEvent('Button_haptic_feedback');
+                                HapticFeedback.heavyImpact();
+                                logFirebaseEvent('Button_backend_call');
+
+                                var filesRecordReference =
+                                    FilesRecord.createDoc(
+                                        currentUserReference!);
+                                await filesRecordReference
+                                    .set(createFilesRecordData(
+                                  fileUrl: _model.uploadedFileUrl,
+                                  owner: currentUserReference,
+                                  name: _model.textController.text,
+                                  created: getCurrentTimestamp,
+                                  containingFolder: widget.currentFolder,
+                                  color: FFAppState().selectedColor,
+                                ));
+                                _model.fileOut =
+                                    FilesRecord.getDocumentFromData(
+                                        createFilesRecordData(
+                                          fileUrl: _model.uploadedFileUrl,
+                                          owner: currentUserReference,
+                                          name: _model.textController.text,
+                                          created: getCurrentTimestamp,
+                                          containingFolder:
+                                              widget.currentFolder,
+                                          color: FFAppState().selectedColor,
+                                        ),
+                                        filesRecordReference);
+                                _shouldSetState = true;
+                                logFirebaseEvent('Button_backend_call');
+
+                                await widget.currentFolder!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'files': FieldValue.arrayUnion(
+                                          [_model.fileOut?.reference]),
+                                    },
+                                  ),
                                 });
-                              } else {
+                                logFirebaseEvent(
+                                    'Button_close_dialog,_drawer,_etc');
+                                Navigator.pop(context);
+                                logFirebaseEvent('Button_update_app_state');
                                 setState(() {});
+                                logFirebaseEvent('Button_custom_action');
+                                _model.tagList = await actions.getTagsFromOCR(
+                                  _model.uploadedFileUrl,
+                                );
+                                _shouldSetState = true;
+                                logFirebaseEvent('Button_backend_call');
+                                unawaited(
+                                  () async {
+                                    await _model.fileOut!.reference.update({
+                                      ...createFilesRecordData(
+                                        typeId: _model.tagList?.first?.name,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'tags': getTagsListFirestoreData(
+                                            _model.tagList,
+                                          ),
+                                        },
+                                      ),
+                                    });
+                                  }(),
+                                );
+                              } else {
+                                if (_shouldSetState) setState(() {});
                                 return;
                               }
-                            }
 
-                            if (_model.uploadedFileUrl != null &&
-                                _model.uploadedFileUrl != '') {
-                              logFirebaseEvent('Button_haptic_feedback');
-                              HapticFeedback.heavyImpact();
-                              logFirebaseEvent('Button_backend_call');
-
-                              var filesRecordReference =
-                                  FilesRecord.createDoc(currentUserReference!);
-                              await filesRecordReference
-                                  .set(createFilesRecordData(
-                                fileUrl: _model.uploadedFileUrl,
-                                owner: currentUserReference,
-                                name: _model.textController2.text,
-                                created: getCurrentTimestamp,
-                                containingFolder: widget.currentFolder,
-                                color: FFAppState().selectedColor,
-                              ));
-                              _model.fileOut = FilesRecord.getDocumentFromData(
-                                  createFilesRecordData(
-                                    fileUrl: _model.uploadedFileUrl,
-                                    owner: currentUserReference,
-                                    name: _model.textController2.text,
-                                    created: getCurrentTimestamp,
-                                    containingFolder: widget.currentFolder,
-                                    color: FFAppState().selectedColor,
-                                  ),
-                                  filesRecordReference);
-                              _shouldSetState = true;
-                              logFirebaseEvent('Button_backend_call');
-
-                              await widget.currentFolder!.update({
-                                ...mapToFirestore(
-                                  {
-                                    'files': FieldValue.arrayUnion(
-                                        [_model.fileOut?.reference]),
-                                  },
-                                ),
-                              });
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            } else {
                               logFirebaseEvent(
                                   'Button_close_dialog,_drawer,_etc');
                               Navigator.pop(context);
-                              logFirebaseEvent('Button_update_app_state');
-                              setState(() {});
-                            } else {
+                              logFirebaseEvent('Button_show_snack_bar');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Not enough space. Subscribe to a higher plan.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
                               if (_shouldSetState) setState(() {});
                               return;
                             }
-
-                            if (_shouldSetState) setState(() {});
-                            return;
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;
@@ -678,7 +681,7 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 15.0, 15.0, 15.0),
+                              24.0, 0.0, 24.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
@@ -687,7 +690,8 @@ class _AddModalWidgetState extends State<AddModalWidget> {
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .titleSmallFamily),

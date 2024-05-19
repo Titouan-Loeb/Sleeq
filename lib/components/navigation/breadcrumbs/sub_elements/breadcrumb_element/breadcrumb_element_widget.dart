@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,14 +9,16 @@ export 'breadcrumb_element_model.dart';
 
 class BreadcrumbElementWidget extends StatefulWidget {
   const BreadcrumbElementWidget({
-    Key? key,
+    super.key,
     this.folderName,
-  }) : super(key: key);
+    bool? clickable,
+  }) : this.clickable = clickable ?? true;
 
   final String? folderName;
+  final bool clickable;
 
   @override
-  _BreadcrumbElementWidgetState createState() =>
+  State<BreadcrumbElementWidget> createState() =>
       _BreadcrumbElementWidgetState();
 }
 
@@ -47,12 +48,26 @@ class _BreadcrumbElementWidgetState extends State<BreadcrumbElementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
-    return Text(
-      widget.folderName!,
-      textAlign: TextAlign.center,
-      style: FlutterFlowTheme.of(context).titleSmall,
+    return Container(
+      decoration: BoxDecoration(
+        color: widget.clickable
+            ? FlutterFlowTheme.of(context).secondaryBackground
+            : Color(0x00000000),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+        child: Text(
+          widget.folderName!,
+          textAlign: TextAlign.center,
+          style: FlutterFlowTheme.of(context).titleSmall.override(
+                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                letterSpacing: 0.0,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+              ),
+        ),
+      ),
     );
   }
 }

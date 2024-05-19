@@ -2,26 +2,40 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:sleeq/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:sleeq/flutter_flow/flutter_flow_widgets.dart';
+import 'package:sleeq/flutter_flow/flutter_flow_theme.dart';
+import 'package:sleeq/index.dart';
 import 'package:sleeq/main.dart';
 import 'package:sleeq/flutter_flow/flutter_flow_util.dart';
 
 import 'package:provider/provider.dart';
 import 'package:sleeq/backend/firebase/firebase_config.dart';
+import 'package:sleeq/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('Create test account', (WidgetTester tester) async {
+  setUpAll(() async {
     _overrideOnError();
     await initFirebase();
-    await FirebaseAuth.instance.signOut();
+
+    await FlutterFlowTheme.initialize();
+
+    await FFLocalizations.initialize();
+  });
+
+  setUp(() async {
+    await authManager.signOut();
     FFAppState.reset();
     final appState = FFAppState();
     await appState.initializePersistedState();
+  });
 
+  testWidgets('Create test account', (WidgetTester tester) async {
     await tester.pumpWidget(ChangeNotifierProvider(
-      create: (context) => appState,
+      create: (context) => FFAppState(),
       child: MyApp(),
     ));
 

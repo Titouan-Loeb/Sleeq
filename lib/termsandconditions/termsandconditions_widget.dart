@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'termsandconditions_model.dart';
 export 'termsandconditions_model.dart';
 
 class TermsandconditionsWidget extends StatefulWidget {
-  const TermsandconditionsWidget({Key? key}) : super(key: key);
+  const TermsandconditionsWidget({super.key});
 
   @override
-  _TermsandconditionsWidgetState createState() =>
+  State<TermsandconditionsWidget> createState() =>
       _TermsandconditionsWidgetState();
 }
 
@@ -41,17 +40,6 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'Termsandconditions',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -65,7 +53,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -78,6 +66,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -95,6 +84,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -114,6 +104,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily: FlutterFlowTheme.of(context)
                                   .titleMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -132,6 +123,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -151,6 +143,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily: FlutterFlowTheme.of(context)
                                   .titleMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -169,6 +162,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -203,6 +197,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -233,6 +228,7 @@ class _TermsandconditionsWidgetState extends State<TermsandconditionsWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .titleMediumFamily),

@@ -1,63 +1,39 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/components/popups/copy_paste_popup/copy_paste_popup_widget.dart';
 import '/components/popups/move_popup/move_popup_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_bar2_model.dart';
 export 'edit_bar2_model.dart';
 
 class EditBar2Widget extends StatefulWidget {
-  const EditBar2Widget({Key? key}) : super(key: key);
+  const EditBar2Widget({
+    super.key,
+    required this.currentFolder,
+  });
+
+  final DocumentReference? currentFolder;
 
   @override
-  _EditBar2WidgetState createState() => _EditBar2WidgetState();
+  State<EditBar2Widget> createState() => _EditBar2WidgetState();
 }
 
 class _EditBar2WidgetState extends State<EditBar2Widget>
     with TickerProviderStateMixin {
   late EditBar2Model _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 100.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -70,6 +46,34 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
     super.initState();
     _model = createModel(context, () => EditBar2Model());
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, 100.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -91,78 +95,24 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Material(
-      color: Colors.transparent,
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: Container(
-        height: 66.0,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+      child: Material(
+        color: Colors.transparent,
+        elevation: 4.0,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  borderRadius: BorderRadius.circular(15.0),
-                  shape: BoxShape.rectangle,
-                ),
-                child: Builder(
-                  builder: (context) => FlutterFlowIconButton(
-                    borderRadius: 15.0,
-                    borderWidth: 1.0,
-                    buttonSize: double.infinity,
-                    icon: Icon(
-                      Icons.share,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
-                    ),
-                    onPressed: () async {
-                      logFirebaseEvent('EDIT_BAR2_COMP_share_ICN_ON_TAP');
-                      logFirebaseEvent('IconButton_backend_call');
-                      _model.file = await FilesRecord.getDocumentOnce(
-                          FFAppState().selecteFiles.first);
-                      if (isWeb) {
-                        logFirebaseEvent('IconButton_copy_to_clipboard');
-                        await Clipboard.setData(
-                            ClipboardData(text: _model.file!.fileUrl));
-                      } else {
-                        logFirebaseEvent('IconButton_share');
-                        await Share.share(
-                          _model.file!.fileUrl,
-                          sharePositionOrigin: getWidgetBoundingBox(context),
-                        );
-                      }
-
-                      logFirebaseEvent('IconButton_haptic_feedback');
-                      HapticFeedback.lightImpact();
-
-                      setState(() {});
-                    },
-                  ),
-                ),
-              ),
-            ),
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
+        child: Container(
+          height: 66.0,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
                 width: 50.0,
                 height: 50.0,
                 decoration: BoxDecoration(
@@ -190,9 +140,11 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                         enableDrag: false,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: MovePopupWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: MovePopupWidget(),
+                            ),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -213,14 +165,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   },
                 ),
               ),
-            ),
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
+              Container(
                 width: 50.0,
                 height: 50.0,
                 decoration: BoxDecoration(
@@ -247,9 +192,11 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                         enableDrag: false,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: CopyPastePopupWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: CopyPastePopupWidget(),
+                            ),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -270,59 +217,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   },
                 ),
               ),
-            ),
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  borderRadius: BorderRadius.circular(15.0),
-                  shape: BoxShape.rectangle,
-                ),
-                child: FlutterFlowIconButton(
-                  borderRadius: 15.0,
-                  borderWidth: 1.0,
-                  buttonSize: double.infinity,
-                  disabledIconColor: FlutterFlowTheme.of(context).accent3,
-                  icon: Icon(
-                    Icons.download,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 30.0,
-                  ),
-                  onPressed: (FFAppState().selectedFolders.length != 0) ||
-                          (FFAppState().selecteFiles.length == 0)
-                      ? null
-                      : () async {
-                          logFirebaseEvent(
-                              'EDIT_BAR2_COMP_download_ICN_ON_TAP');
-                          if ((FFAppState().selectedFolders.length == 0) &&
-                              (FFAppState().selecteFiles.length == 1)) {
-                            logFirebaseEvent('IconButton_backend_call');
-                            _model.documentToDownload =
-                                await FilesRecord.getDocumentOnce(
-                                    FFAppState().selecteFiles.first);
-                            logFirebaseEvent('IconButton_launch_u_r_l');
-                            await launchURL(_model.documentToDownload!.fileUrl);
-                          }
-
-                          setState(() {});
-                        },
-                ),
-              ),
-            ),
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
+              Container(
                 width: 50.0,
                 height: 50.0,
                 decoration: BoxDecoration(
@@ -343,7 +238,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                     logFirebaseEvent('EDIT_BAR2_COMP_delete_ICN_ON_TAP');
                     logFirebaseEvent('IconButton_custom_action');
                     await actions.deleteSelectedElements(
-                      FFAppState().currentTreePath.last,
+                      widget.currentFolder!,
                       FFAppState().selectedFolders.toList(),
                       FFAppState().selecteFiles.toList(),
                     );
@@ -363,14 +258,7 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   },
                 ),
               ),
-            ),
-            Material(
-              color: Colors.transparent,
-              elevation: 4.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Container(
+              Container(
                 width: 50.0,
                 height: 50.0,
                 decoration: BoxDecoration(
@@ -405,14 +293,14 @@ class _EditBar2WidgetState extends State<EditBar2Widget>
                   },
                 ),
               ),
-            ),
-          ].divide(SizedBox(width: 8.0)).around(SizedBox(width: 8.0)),
+            ].divide(SizedBox(width: 8.0)).around(SizedBox(width: 8.0)),
+          ),
         ),
-      ),
-    )
-        .animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!)
-        .animateOnActionTrigger(
-          animationsMap['containerOnActionTriggerAnimation']!,
-        );
+      )
+          .animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!)
+          .animateOnActionTrigger(
+            animationsMap['containerOnActionTriggerAnimation']!,
+          ),
+    );
   }
 }

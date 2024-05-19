@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'color_dial_widget.dart' show ColorDialWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,8 +27,7 @@ class ColorDialModel extends FlutterFlowModel<ColorDialWidget> {
   // Model for colorItem component.
   late ColorItemModel colorItemModel8;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     colorItemModel1 = createModel(context, () => ColorItemModel());
     colorItemModel2 = createModel(context, () => ColorItemModel());
@@ -41,6 +39,7 @@ class ColorDialModel extends FlutterFlowModel<ColorDialWidget> {
     colorItemModel8 = createModel(context, () => ColorItemModel());
   }
 
+  @override
   void dispose() {
     colorItemModel1.dispose();
     colorItemModel2.dispose();
@@ -51,8 +50,4 @@ class ColorDialModel extends FlutterFlowModel<ColorDialWidget> {
     colorItemModel7.dispose();
     colorItemModel8.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

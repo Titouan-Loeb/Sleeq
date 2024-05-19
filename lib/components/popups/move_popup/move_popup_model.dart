@@ -8,7 +8,6 @@ import 'move_popup_widget.dart' show MovePopupWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -33,13 +32,9 @@ class MovePopupModel extends FlutterFlowModel<MovePopupWidget> {
   // Stores action output result for [Backend Call - Read Document] action in MovePopup widget.
   FoldersRecord? rootFolder;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

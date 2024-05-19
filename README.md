@@ -5,6 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 FlutterFlow projects are built to run on the Flutter _stable_ release.
+
 ## Integration Tests
 
 To test on a real iOS / Android device, first connect the device and run the following command from the root of the project:
@@ -27,3 +28,5 @@ flutter drive \
 ```
 
 Find more information about running Flutter integration tests [here](https://docs.flutter.dev/cookbook/testing/integration/introduction#5-run-the-integration-test).
+
+Refer to this guide for instructions on running the tests on [Firebase Test Lab](https://github.com/flutter/flutter/tree/main/packages/integration_test#firebase-test-lab).

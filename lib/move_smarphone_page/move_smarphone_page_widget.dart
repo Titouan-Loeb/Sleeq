@@ -9,7 +9,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +16,10 @@ import 'move_smarphone_page_model.dart';
 export 'move_smarphone_page_model.dart';
 
 class MoveSmarphonePageWidget extends StatefulWidget {
-  const MoveSmarphonePageWidget({Key? key}) : super(key: key);
+  const MoveSmarphonePageWidget({super.key});
 
   @override
-  _MoveSmarphonePageWidgetState createState() =>
+  State<MoveSmarphonePageWidget> createState() =>
       _MoveSmarphonePageWidgetState();
 }
 
@@ -62,15 +61,6 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -86,7 +76,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                padding: EdgeInsets.all(12.0),
                 child: Stack(
                   children: [
                     Column(
@@ -102,6 +92,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 fontSize: 17.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -117,7 +108,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                               child: BackButtonWidget(),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) =>
                                     StreamBuilder<FoldersRecord>(
@@ -151,6 +142,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMediumFamily,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
@@ -279,7 +271,18 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                                                                   .name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
                                                           ),
                                                           Spacer(),
@@ -311,7 +314,7 @@ class _MoveSmarphonePageWidgetState extends State<MoveSmarphonePageWidget> {
                       ].divide(SizedBox(height: 8.0)),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),

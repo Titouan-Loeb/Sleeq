@@ -1,11 +1,12 @@
-import '/backend/backend.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/request_manager.dart';
+
 import 'search_widget.dart' show SearchWidget;
-import 'package:data_table_2/data_table_2.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,17 +16,32 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   final unfocusNode = FocusNode();
 
-  /// Initialization and disposal methods.
+  /// Query cache managers for this widget.
 
-  void initState(BuildContext context) {
-    dataTableShowLogs = false; // Disables noisy DataTable2 debug statements.
-  }
+  final _algoliaSearchManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> algoliaSearch({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _algoliaSearchManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearAlgoliaSearchCache() => _algoliaSearchManager.clear();
+  void clearAlgoliaSearchCacheKey(String? uniqueKey) =>
+      _algoliaSearchManager.clearRequest(uniqueKey);
 
+  @override
+  void initState(BuildContext context) {}
+
+  @override
   void dispose() {
     unfocusNode.dispose();
+
+    /// Dispose query cache managers for this widget.
+
+    clearAlgoliaSearchCache();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

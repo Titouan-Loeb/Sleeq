@@ -1,10 +1,9 @@
-import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +11,10 @@ import 'example_page_model.dart';
 export 'example_page_model.dart';
 
 class ExamplePageWidget extends StatefulWidget {
-  const ExamplePageWidget({Key? key}) : super(key: key);
+  const ExamplePageWidget({super.key});
 
   @override
-  _ExamplePageWidgetState createState() => _ExamplePageWidgetState();
+  State<ExamplePageWidget> createState() => _ExamplePageWidgetState();
 }
 
 class _ExamplePageWidgetState extends State<ExamplePageWidget> {
@@ -41,17 +40,6 @@ class _ExamplePageWidgetState extends State<ExamplePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'examplePage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -85,7 +73,7 @@ class _ExamplePageWidgetState extends State<ExamplePageWidget> {
                         ))
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional(0.00, 1.00),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: wrapWithModel(
                                 model: _model.navBarFlotingModel,
                                 updateCallback: () => setState(() {}),

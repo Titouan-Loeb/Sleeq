@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -108,7 +109,7 @@ class FFAppState extends ChangeNotifier {
     _selecteFiles.insert(_index, _value);
   }
 
-  double _usedStorage = 0;
+  double _usedStorage = 0.0;
   double get usedStorage => _usedStorage;
   set usedStorage(double _value) {
     _usedStorage = _value;
@@ -186,6 +187,18 @@ class FFAppState extends ChangeNotifier {
     _currentTreePath.insert(_index, _value);
   }
 
+  bool _editSingleFile = false;
+  bool get editSingleFile => _editSingleFile;
+  set editSingleFile(bool _value) {
+    _editSingleFile = _value;
+  }
+
+  bool _editSingleFolder = false;
+  bool get editSingleFolder => _editSingleFolder;
+  set editSingleFolder(bool _value) {
+    _editSingleFolder = _value;
+  }
+
   final _homegridManager = FutureRequestManager<FoldersRecord>();
   Future<FoldersRecord> homegrid({
     String? uniqueQueryKey,
@@ -200,16 +213,6 @@ class FFAppState extends ChangeNotifier {
   void clearHomegridCache() => _homegridManager.clear();
   void clearHomegridCacheKey(String? uniqueKey) =>
       _homegridManager.clearRequest(uniqueKey);
-}
-
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
-  }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
 }
 
 void _safeInit(Function() initializeField) {

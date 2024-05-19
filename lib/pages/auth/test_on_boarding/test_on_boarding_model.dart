@@ -6,7 +6,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'test_on_boarding_widget.dart' show TestOnBoardingWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,17 +25,13 @@ class TestOnBoardingModel extends FlutterFlowModel<TestOnBoardingWidget> {
       ? pageViewController!.page!.round()
       : 0;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     sleeqLogoModel = createModel(context, () => SleeqLogoModel());
   }
 
+  @override
   void dispose() {
     sleeqLogoModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

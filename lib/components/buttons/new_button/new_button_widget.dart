@@ -3,23 +3,23 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'new_button_model.dart';
 export 'new_button_model.dart';
 
 class NewButtonWidget extends StatefulWidget {
   const NewButtonWidget({
-    Key? key,
+    super.key,
     required this.currentFolder,
-  }) : super(key: key);
+  });
 
   final DocumentReference? currentFolder;
 
   @override
-  _NewButtonWidgetState createState() => _NewButtonWidgetState();
+  State<NewButtonWidget> createState() => _NewButtonWidgetState();
 }
 
 class _NewButtonWidgetState extends State<NewButtonWidget> {
@@ -48,8 +48,6 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Visibility(
       visible: responsiveVisibility(
         context: context,
@@ -57,7 +55,7 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
         tablet: false,
       ),
       child: Align(
-        alignment: AlignmentDirectional(1.00, 1.00),
+        alignment: AlignmentDirectional(1.0, 1.0),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 20.0),
           child: InkWell(
@@ -74,10 +72,12 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
                 enableDrag: false,
                 context: context,
                 builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: AddModalWidget(
-                      currentFolder: widget.currentFolder,
+                  return WebViewAware(
+                    child: Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: AddModalWidget(
+                        currentFolder: widget.currentFolder,
+                      ),
                     ),
                   );
                 },
@@ -96,7 +96,7 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
                   curve: Curves.easeIn,
                   height: 50.0,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiary,
+                    color: FlutterFlowTheme.of(context).secondaryText,
                     borderRadius: BorderRadius.circular(25.0),
                     shape: BoxShape.rectangle,
                   ),
@@ -127,10 +127,10 @@ class _NewButtonWidgetState extends State<NewButtonWidget> {
                                   fontFamily: 'DM Sans',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                      .containsKey('DM Sans'),
                                 ),
                           ),
                         ),

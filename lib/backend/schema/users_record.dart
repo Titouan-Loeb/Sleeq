@@ -79,6 +79,11 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "occupied_storage" field.
+  double? _occupiedStorage;
+  double get occupiedStorage => _occupiedStorage ?? 0.0;
+  bool hasOccupiedStorage() => _occupiedStorage != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -92,6 +97,7 @@ class UsersRecord extends FirestoreRecord {
     _subcriptionId = snapshotData['subcription_id'] as String?;
     _isColorblind = snapshotData['is_colorblind'] as bool?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _occupiedStorage = castToType<double>(snapshotData['occupied_storage']);
   }
 
   static CollectionReference get collection =>
@@ -141,6 +147,11 @@ class UsersRecord extends FirestoreRecord {
           'subcription_id': snapshot.data['subcription_id'],
           'is_colorblind': snapshot.data['is_colorblind'],
           'phone_number': snapshot.data['phone_number'],
+          'occupied_storage': convertAlgoliaParam(
+            snapshot.data['occupied_storage'],
+            ParamType.double,
+            false,
+          ),
         },
         UsersRecord.collection.doc(snapshot.objectID),
       );
@@ -189,6 +200,7 @@ Map<String, dynamic> createUsersRecordData({
   String? subcriptionId,
   bool? isColorblind,
   String? phoneNumber,
+  double? occupiedStorage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -204,6 +216,7 @@ Map<String, dynamic> createUsersRecordData({
       'subcription_id': subcriptionId,
       'is_colorblind': isColorblind,
       'phone_number': phoneNumber,
+      'occupied_storage': occupiedStorage,
     }.withoutNulls,
   );
 
@@ -226,7 +239,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.english == e2?.english &&
         e1?.subcriptionId == e2?.subcriptionId &&
         e1?.isColorblind == e2?.isColorblind &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.occupiedStorage == e2?.occupiedStorage;
   }
 
   @override
@@ -242,7 +256,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.english,
         e?.subcriptionId,
         e?.isColorblind,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.occupiedStorage
       ]);
 
   @override

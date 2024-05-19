@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'bug_report_widget.dart' show BugReportWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -63,15 +62,17 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
   }
 
   // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
   FormFieldController<List<String>>? choiceChipsValueController;
+  String? get choiceChipsValue =>
+      choiceChipsValueController?.value?.firstOrNull;
+  set choiceChipsValue(String? val) =>
+      choiceChipsValueController?.value = val != null ? [val] : [];
   // State field(s) for Switch widget.
   bool? switchValue;
   // Stores action output result for [Backend Call - API (Bug report)] action in Button widget.
   ApiCallResponse? apiResultp03;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     beadCrumbsBackButtonModel =
         createModel(context, () => BeadCrumbsBackButtonModel());
@@ -80,6 +81,7 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
     textController3Validator = _textController3Validator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     beadCrumbsBackButtonModel.dispose();
@@ -92,8 +94,4 @@ class BugReportModel extends FlutterFlowModel<BugReportWidget> {
     textFieldFocusNode3?.dispose();
     textController3?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

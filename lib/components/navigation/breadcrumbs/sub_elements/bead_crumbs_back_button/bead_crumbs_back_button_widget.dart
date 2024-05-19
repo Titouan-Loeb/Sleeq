@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'bead_crumbs_back_button_model.dart';
 export 'bead_crumbs_back_button_model.dart';
 
 class BeadCrumbsBackButtonWidget extends StatefulWidget {
-  const BeadCrumbsBackButtonWidget({Key? key}) : super(key: key);
+  const BeadCrumbsBackButtonWidget({super.key});
 
   @override
-  _BeadCrumbsBackButtonWidgetState createState() =>
+  State<BeadCrumbsBackButtonWidget> createState() =>
       _BeadCrumbsBackButtonWidgetState();
 }
 
@@ -62,7 +61,7 @@ class _BeadCrumbsBackButtonWidgetState
             buttonSize: 35.0,
             icon: Icon(
               Icons.arrow_back_ios_outlined,
-              color: FlutterFlowTheme.of(context).primaryText,
+              color: FlutterFlowTheme.of(context).primary,
               size: 17.0,
             ),
             onPressed: () async {

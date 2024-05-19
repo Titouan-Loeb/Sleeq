@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,10 +10,10 @@ import 'delete_account_popup_model.dart';
 export 'delete_account_popup_model.dart';
 
 class DeleteAccountPopupWidget extends StatefulWidget {
-  const DeleteAccountPopupWidget({Key? key}) : super(key: key);
+  const DeleteAccountPopupWidget({super.key});
 
   @override
-  _DeleteAccountPopupWidgetState createState() =>
+  State<DeleteAccountPopupWidget> createState() =>
       _DeleteAccountPopupWidgetState();
 }
 
@@ -44,12 +43,10 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsets.all(16.0),
         child: Container(
           width: double.infinity,
           constraints: BoxConstraints(
@@ -79,6 +76,7 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           fontSize: 18.0,
+                          letterSpacing: 0.0,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
@@ -123,6 +121,7 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).titleSmallFamily,
                               color: Colors.white,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .titleSmallFamily),
@@ -162,6 +161,7 @@ class _DeleteAccountPopupWidgetState extends State<DeleteAccountPopupWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .titleSmallFamily),

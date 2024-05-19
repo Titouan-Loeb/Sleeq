@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'cancel_payment_model.dart';
 export 'cancel_payment_model.dart';
 
 class CancelPaymentWidget extends StatefulWidget {
-  const CancelPaymentWidget({Key? key}) : super(key: key);
+  const CancelPaymentWidget({super.key});
 
   @override
-  _CancelPaymentWidgetState createState() => _CancelPaymentWidgetState();
+  State<CancelPaymentWidget> createState() => _CancelPaymentWidgetState();
 }
 
 class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
@@ -40,17 +39,6 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'cancelPayment',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -64,7 +52,7 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -84,50 +72,19 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
                         'yrbqd3sp' /* Operation canceled */,
                       ),
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).headlineLarge,
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineLargeFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily),
+                              ),
                     ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          logFirebaseEvent(
-                              'CANCEL_PAYMENT_PAGE_TRY_AGAIN_BTN_ON_TAP');
-                          logFirebaseEvent('Button_launch_u_r_l');
-                          await launchURL(FFAppState().paymentLink);
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'izx9kxnr' /* Try again */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleSmallFamily,
-                                color: Colors.white,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
-                              ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent(
@@ -152,6 +109,7 @@ class _CancelPaymentWidgetState extends State<CancelPaymentWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .titleSmallFamily),

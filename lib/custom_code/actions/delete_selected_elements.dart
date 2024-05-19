@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,39 +18,20 @@ Future deleteSelectedElements(
   List<DocumentReference>? selectedFiles,
 ) async {
   // Add your function code here!
-  final FirebaseStorage storage = FirebaseStorage.instance;
   if (selectedFolders != null) {
     sourceFolder.update({
-      'folders': FieldValue.arrayRemove(FFAppState().selectedFolders),
+      'folders': FieldValue.arrayRemove(selectedFolders),
     });
-    for (final folder in FFAppState().selectedFolders) {
-      deleteFolderAndItsContent(folder);
-      // final folderSnapshot = await folder.get();
-      // if (folderSnapshot.exists) {
-      //   List<DocumentReference>? subFolders = null;
-      //   List<DocumentReference>? subFiles = null;
-      //   if (folderSnapshot.data.containsKey("folder"))
-      //     subFolders = await folderSnapshot.get("folder");
-      //   if (folderSnapshot.data().containsKey("files"))
-      //     subFiles = await folderSnapshot.get("files");
-      //   deleteSelectedElements(folder, subFolder, subFiles);
-      // }
-      // folder.delete();
+    for (final folder in selectedFolders) {
+      folder.delete();
     }
   }
   if (selectedFiles != null) {
     sourceFolder.update({
-      'files': FieldValue.arrayRemove(FFAppState().selecteFiles),
+      'files': FieldValue.arrayRemove(selectedFiles),
     });
-    for (final file in FFAppState().selecteFiles) {
-      final fileSnapshot = await file.get();
-      if (fileSnapshot.exists) {
-        final fileUrl = fileSnapshot.get("file_url");
-        file.delete().then((_) {
-          Reference fileReference = storage.refFromURL(fileUrl);
-          fileReference.delete();
-        });
-      }
+    for (final file in selectedFiles) {
+      file.delete();
     }
   }
 }

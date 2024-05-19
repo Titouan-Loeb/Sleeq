@@ -2,7 +2,6 @@ import '/components/subscription/feature_description/feature_description_widget.
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'plan_starter_model.dart';
 export 'plan_starter_model.dart';
 
 class PlanStarterWidget extends StatefulWidget {
-  const PlanStarterWidget({Key? key}) : super(key: key);
+  const PlanStarterWidget({super.key});
 
   @override
-  _PlanStarterWidgetState createState() => _PlanStarterWidgetState();
+  State<PlanStarterWidget> createState() => _PlanStarterWidgetState();
 }
 
 class _PlanStarterWidgetState extends State<PlanStarterWidget> {
@@ -42,8 +41,6 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -62,7 +59,12 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
               FFLocalizations.of(context).getText(
                 'fp935rcz' /* Sleeq Starter */,
               ),
-              style: FlutterFlowTheme.of(context).titleLarge,
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                    letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).titleLargeFamily),
+                  ),
             ),
           ),
           Padding(
@@ -71,11 +73,16 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
               FFLocalizations.of(context).getText(
                 'dg89lsg2' /* To discover Sleeq */,
               ),
-              style: FlutterFlowTheme.of(context).bodyMedium,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                    letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyMediumFamily),
+                  ),
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(-1.00, 0.00),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 0.0, 0.0),
               child: Text(
@@ -85,6 +92,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                       fontSize: 18.0,
+                      letterSpacing: 0.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).titleSmallFamily),
                     ),
@@ -115,6 +123,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -190,6 +199,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -265,6 +275,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -358,6 +369,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -471,6 +483,7 @@ class _PlanStarterWidgetState extends State<PlanStarterWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),

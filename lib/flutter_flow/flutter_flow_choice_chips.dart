@@ -71,13 +71,12 @@ class FlutterFlowChoiceChips extends StatefulWidget {
 
 class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
   late List<String> choiceChipValues;
-  ValueListenable<List<String>?> get changeSelectedValues => widget.controller;
   List<String> get selectedValues => widget.controller.value ?? [];
 
   @override
   void initState() {
     super.initState();
-    choiceChipValues = selectedValues;
+    choiceChipValues = List.from(selectedValues);
     if (!widget.initialized && choiceChipValues.isNotEmpty) {
       SchedulerBinding.instance.addPostFrameCallback(
         (_) {
@@ -87,16 +86,10 @@ class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
         },
       );
     }
-    changeSelectedValues.addListener(() {
-      if (widget.onChanged != null) {
-        widget.onChanged!(selectedValues);
-      }
-    });
   }
 
   @override
   void dispose() {
-    changeSelectedValues.removeListener(() {});
     super.dispose();
   }
 
@@ -104,7 +97,7 @@ class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
   Widget build(BuildContext context) {
     final children = widget.options.map<Widget>(
       (option) {
-        final selected = choiceChipValues.contains(option.label);
+        final selected = selectedValues.contains(option.label);
         final style =
             selected ? widget.selectedChipStyle : widget.unselectedChipStyle;
         return Theme(
@@ -113,6 +106,7 @@ class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
             selected: selected,
             onSelected: widget.onChanged != null
                 ? (isSelected) {
+                    choiceChipValues = List.from(selectedValues);
                     if (isSelected) {
                       widget.multiselect
                           ? choiceChipValues.add(option.label)
@@ -126,6 +120,7 @@ class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
                         setState(() {});
                       }
                     }
+                    widget.onChanged!(choiceChipValues);
                   }
                 : null,
             label: Text(

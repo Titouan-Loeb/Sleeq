@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,10 +14,10 @@ import 'bug_report_model.dart';
 export 'bug_report_model.dart';
 
 class BugReportWidget extends StatefulWidget {
-  const BugReportWidget({Key? key}) : super(key: key);
+  const BugReportWidget({super.key});
 
   @override
-  _BugReportWidgetState createState() => _BugReportWidgetState();
+  State<BugReportWidget> createState() => _BugReportWidgetState();
 }
 
 class _BugReportWidgetState extends State<BugReportWidget> {
@@ -34,10 +33,13 @@ class _BugReportWidgetState extends State<BugReportWidget> {
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'bugReport'});
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -50,17 +52,6 @@ class _BugReportWidgetState extends State<BugReportWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'bugReport',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -77,8 +68,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.always,
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -101,6 +91,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                       .headlineMediumFamily,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
@@ -124,6 +115,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .labelMediumFamily,
                                 fontSize: 14.0,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .labelMediumFamily),
@@ -134,6 +126,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .labelMediumFamily,
                                 fontSize: 14.0,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .labelMediumFamily),
@@ -172,6 +165,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineSmallFamily,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .headlineSmallFamily),
@@ -185,8 +179,10 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         child: TextFormField(
                           controller: _model.textController2,
                           focusNode: _model.textFieldFocusNode2,
+                          autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
+                            isDense: false,
                             labelText: FFLocalizations.of(context).getText(
                               'edv6fzu8' /* Bug Description */,
                             ),
@@ -196,6 +192,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
@@ -232,7 +229,16 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
                           maxLines: 5,
                           minLines: 2,
                           validator: _model.textController2Validator
@@ -245,6 +251,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         child: TextFormField(
                           controller: _model.textController3,
                           focusNode: _model.textFieldFocusNode3,
+                          autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
@@ -256,6 +263,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
@@ -300,6 +308,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 fontSize: 14.0,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
@@ -321,7 +330,17 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                               FFLocalizations.of(context).getText(
                                 'xb00grmv' /* Priority */,
                               ),
-                              style: FlutterFlowTheme.of(context).headlineSmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineSmallFamily),
+                                  ),
                             ),
                             Expanded(
                               child: FlutterFlowChoiceChips(
@@ -336,11 +355,11 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                     'qt3ecft4' /* High */,
                                   ))
                                 ],
-                                onChanged: (val) => setState(
-                                    () => _model.choiceChipsValue = val?.first),
+                                onChanged: (val) => setState(() =>
+                                    _model.choiceChipsValue = val?.firstOrNull),
                                 selectedChipStyle: ChipStyle(
                                   backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
+                                      FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -348,6 +367,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                             .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -369,6 +389,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                             .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -401,7 +422,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
@@ -417,7 +438,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                       () => _model.switchValue = newValue!);
                                 },
                                 activeColor:
-                                    FlutterFlowTheme.of(context).tertiary,
+                                    FlutterFlowTheme.of(context).primary,
                                 activeTrackColor:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 inactiveTrackColor:
@@ -432,8 +453,17 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                   FFLocalizations.of(context).getText(
                                     'bbphpqhx' /* Notify me of bug fixing progre... */,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
                                 ),
                               ),
                             ],
@@ -442,10 +472,9 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                       ),
                       Expanded(
                         child: Align(
-                          alignment: AlignmentDirectional(0.00, 1.00),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 16.0),
+                            padding: EdgeInsets.all(16.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 logFirebaseEvent(
@@ -526,6 +555,7 @@ class _BugReportWidgetState extends State<BugReportWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleMediumFamily,
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)

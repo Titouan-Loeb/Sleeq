@@ -9,7 +9,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +16,10 @@ import 'copy_paste_smarphone_page_model.dart';
 export 'copy_paste_smarphone_page_model.dart';
 
 class CopyPasteSmarphonePageWidget extends StatefulWidget {
-  const CopyPasteSmarphonePageWidget({Key? key}) : super(key: key);
+  const CopyPasteSmarphonePageWidget({super.key});
 
   @override
-  _CopyPasteSmarphonePageWidgetState createState() =>
+  State<CopyPasteSmarphonePageWidget> createState() =>
       _CopyPasteSmarphonePageWidgetState();
 }
 
@@ -63,17 +62,6 @@ class _CopyPasteSmarphonePageWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return Title(
         title: 'CopyPasteSmarphonePage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -87,7 +75,7 @@ class _CopyPasteSmarphonePageWidgetState
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                padding: EdgeInsets.all(12.0),
                 child: Stack(
                   children: [
                     Column(
@@ -103,6 +91,7 @@ class _CopyPasteSmarphonePageWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 fontSize: 17.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -118,7 +107,7 @@ class _CopyPasteSmarphonePageWidgetState
                               child: BackButtonWidget(),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) =>
                                     StreamBuilder<FoldersRecord>(
@@ -152,6 +141,7 @@ class _CopyPasteSmarphonePageWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMediumFamily,
                                             fontSize: 18.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
@@ -280,7 +270,18 @@ class _CopyPasteSmarphonePageWidgetState
                                                                   .name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
                                                           ),
                                                           Spacer(),
@@ -312,7 +313,7 @@ class _CopyPasteSmarphonePageWidgetState
                       ].divide(SizedBox(height: 8.0)),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),

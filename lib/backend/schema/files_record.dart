@@ -31,11 +31,6 @@ class FilesRecord extends FirestoreRecord {
   Color? get color => _color;
   bool hasColor() => _color != null;
 
-  // "tags" field.
-  List<String>? _tags;
-  List<String> get tags => _tags ?? const [];
-  bool hasTags() => _tags != null;
-
   // "created" field.
   DateTime? _created;
   DateTime? get created => _created;
@@ -51,16 +46,48 @@ class FilesRecord extends FirestoreRecord {
   DocumentReference? get containingFolder => _containingFolder;
   bool hasContainingFolder() => _containingFolder != null;
 
+  // "favorite" field.
+  bool? _favorite;
+  bool get favorite => _favorite ?? false;
+  bool hasFavorite() => _favorite != null;
+
+  // "is_bookmarked" field.
+  bool? _isBookmarked;
+  bool get isBookmarked => _isBookmarked ?? false;
+  bool hasIsBookmarked() => _isBookmarked != null;
+
+  // "size_mb" field.
+  double? _sizeMb;
+  double get sizeMb => _sizeMb ?? 0.0;
+  bool hasSizeMb() => _sizeMb != null;
+
+  // "tags" field.
+  List<TagsStruct>? _tags;
+  List<TagsStruct> get tags => _tags ?? const [];
+  bool hasTags() => _tags != null;
+
+  // "typeId" field.
+  String? _typeId;
+  String get typeId => _typeId ?? '';
+  bool hasTypeId() => _typeId != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _owner = snapshotData['owner'] as DocumentReference?;
     _name = snapshotData['name'] as String?;
     _color = getSchemaColor(snapshotData['color']);
-    _tags = getDataList(snapshotData['tags']);
     _created = snapshotData['created'] as DateTime?;
     _fileUrl = snapshotData['file_url'] as String?;
     _containingFolder = snapshotData['containing_folder'] as DocumentReference?;
+    _favorite = snapshotData['favorite'] as bool?;
+    _isBookmarked = snapshotData['is_bookmarked'] as bool?;
+    _sizeMb = castToType<double>(snapshotData['size_mb']);
+    _tags = getStructList(
+      snapshotData['tags'],
+      TagsStruct.fromMap,
+    );
+    _typeId = snapshotData['typeId'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -68,8 +95,8 @@ class FilesRecord extends FirestoreRecord {
           ? parent.collection('files')
           : FirebaseFirestore.instance.collectionGroup('files');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('files').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('files').doc(id);
 
   static Stream<FilesRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => FilesRecord.fromSnapshot(s));
@@ -108,6 +135,10 @@ Map<String, dynamic> createFilesRecordData({
   DateTime? created,
   String? fileUrl,
   DocumentReference? containingFolder,
+  bool? favorite,
+  bool? isBookmarked,
+  double? sizeMb,
+  String? typeId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -117,6 +148,10 @@ Map<String, dynamic> createFilesRecordData({
       'created': created,
       'file_url': fileUrl,
       'containing_folder': containingFolder,
+      'favorite': favorite,
+      'is_bookmarked': isBookmarked,
+      'size_mb': sizeMb,
+      'typeId': typeId,
     }.withoutNulls,
   );
 
@@ -132,10 +167,14 @@ class FilesRecordDocumentEquality implements Equality<FilesRecord> {
     return e1?.owner == e2?.owner &&
         e1?.name == e2?.name &&
         e1?.color == e2?.color &&
-        listEquality.equals(e1?.tags, e2?.tags) &&
         e1?.created == e2?.created &&
         e1?.fileUrl == e2?.fileUrl &&
-        e1?.containingFolder == e2?.containingFolder;
+        e1?.containingFolder == e2?.containingFolder &&
+        e1?.favorite == e2?.favorite &&
+        e1?.isBookmarked == e2?.isBookmarked &&
+        e1?.sizeMb == e2?.sizeMb &&
+        listEquality.equals(e1?.tags, e2?.tags) &&
+        e1?.typeId == e2?.typeId;
   }
 
   @override
@@ -143,10 +182,14 @@ class FilesRecordDocumentEquality implements Equality<FilesRecord> {
         e?.owner,
         e?.name,
         e?.color,
-        e?.tags,
         e?.created,
         e?.fileUrl,
-        e?.containingFolder
+        e?.containingFolder,
+        e?.favorite,
+        e?.isBookmarked,
+        e?.sizeMb,
+        e?.tags,
+        e?.typeId
       ]);
 
   @override

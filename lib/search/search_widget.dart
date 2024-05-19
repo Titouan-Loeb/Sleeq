@@ -1,10 +1,9 @@
-import '/backend/backend.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:data_table_2/data_table_2.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +12,14 @@ export 'search_model.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({
-    Key? key,
+    super.key,
     required this.query,
-  }) : super(key: key);
+  });
 
   final String? query;
 
   @override
-  _SearchWidgetState createState() => _SearchWidgetState();
+  State<SearchWidget> createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
@@ -46,21 +45,12 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
+    return FutureBuilder<ApiCallResponse>(
+      future: _model.algoliaSearch(
+        uniqueQueryKey: widget.query,
+        requestFn: () => AlogliaSearchCall.call(
+          query: widget.query,
         ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
-    return FutureBuilder<List<UsersRecord>>(
-      future: UsersRecord.search(
-        term: widget.query,
-        maxResults: 5,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -79,7 +69,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             ),
           );
         }
-        List<UsersRecord> searchUsersRecordList = snapshot.data!;
+        final searchAlogliaSearchResponse = snapshot.data!;
         return Title(
             title: 'search',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -96,86 +86,27 @@ class _SearchWidgetState extends State<SearchWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        child: Builder(
-                          builder: (context) {
-                            if (searchUsersRecordList.map((e) => e).toList() ==
-                                null) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 70.0,
-                                  height: 70.0,
-                                  child: SpinKitChasingDots(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 70.0,
-                                  ),
+                        child: RichText(
+                          textScaler: MediaQuery.of(context).textScaler,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: searchAlogliaSearchResponse.jsonBody
+                                    .toString(),
+                                style: TextStyle(),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
                                 ),
-                              );
-                            }
-                            final items =
-                                searchUsersRecordList.map((e) => e).toList();
-                            return DataTable2(
-                              columns: [
-                                DataColumn2(
-                                  label: DefaultTextStyle.merge(
-                                    softWrap: true,
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '1qh4c4pz' /* Edit Header 1 */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge,
-                                    ),
-                                  ),
-                                ),
-                                DataColumn2(
-                                  label: DefaultTextStyle.merge(
-                                    softWrap: true,
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'c0bd5b9s' /* Edit Header 2 */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              rows: items
-                                  .mapIndexed((itemsIndex, itemsItem) => [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '4l9jvtay' /* Edit Column 1 */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'z30dokjd' /* Edit Column 2 */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ].map((c) => DataCell(c)).toList())
-                                  .map((e) => DataRow(cells: e))
-                                  .toList(),
-                              headingRowColor: MaterialStateProperty.all(
-                                FlutterFlowTheme.of(context).primaryBackground,
-                              ),
-                              headingRowHeight: 56.0,
-                              dataRowColor: MaterialStateProperty.all(
-                                FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              dataRowHeight: 56.0,
-                              border: TableBorder(
-                                borderRadius: BorderRadius.circular(0.0),
-                              ),
-                              dividerThickness: 1.0,
-                              showBottomBorder: true,
-                              minWidth: 49.0,
-                            );
-                          },
+                          ),
                         ),
                       ),
                     ],

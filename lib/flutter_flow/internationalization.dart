@@ -109,7 +109,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'yjm0b1dl': {
       'en': 'Grid View',
-      'fr': 'Vue Grille',
+      'fr': ' Grille',
     },
     'xbzplc4s': {
       'en': 'Home',
@@ -280,7 +280,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'w9d5ah2c': {
       'en': 'Grid View',
-      'fr': 'Vue Grille',
+      'fr': 'Grille',
     },
     'n0ze2vmk': {
       'en': 'Home',
@@ -291,14 +291,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'rc9x2s09': {
       'en': 'Home',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // file
   {
     'frc8wftl': {
       'en': 'Home',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
     },
   },
   // TestOnBoarding
@@ -344,14 +344,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Storage',
       'fr': 'Stockage',
     },
-    'kxhmi35j': {
-      'en': '0 MB / 250 MB',
-      'fr': '0 Mo / 250 Mo',
-    },
-    'eakvdt9z': {
-      'en': 'Subscription plan',
-      'fr': 'Formule d\'abonnement',
-    },
     'vo5wj9ol': {
       'en': 'Delete account',
       'fr': 'Supprimer le compte',
@@ -385,7 +377,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1i7iv9i5': {
       'en': 'Enable color blindness',
-      'fr': '',
+      'fr': 'Activer le daltonisme',
     },
     'zcqg28jj': {
       'en': 'Change photo',
@@ -401,7 +393,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'r41az8sf': {
       'en': 'Settings',
-      'fr': 'Acceuil',
+      'fr': 'Paramètres',
     },
   },
   // PlanSelection
@@ -410,16 +402,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Subscribe',
       'fr': 'S\'abonner',
     },
+    'a0iufsbo': {
+      'en': 'Cancel',
+      'fr': 'Annuler',
+    },
     'etkn3ot2': {
       'en': 'Home',
-      'fr': 'Maison',
+      'fr': 'Acceuil',
     },
   },
   // Memo
   {
     '87ckfjne': {
       'en': 'Home',
-      'fr': 'Maison',
+      'fr': 'Acceuil',
     },
   },
   // AboutSleeq
@@ -436,7 +432,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'We are a team of 9 developers incubated at EPITECH (Paris Graduate School of Digital Innovation).\nSleeq originated within our Masters program and has been continiously in development since November 2021.\nThe pandemic taught us our world is getting increasingly digital out of need.\n\nWe at Sleeq want that change to be as simple as digitalizing the full contents of your wallet while ensuring you retain the safety and comfort feeling of having everything everywhere with you.\n\nSleek. Reliable. Secure.\nSleeq replace the physical wallet with a digital wallet which can store all the document you want in one place or several place like in your phone or your computer\nThanks to Sleeq it is possible to transfer your documents securely and quickly between devices of different platforms.',
       'fr':
-          'Nous sommes une équipe de 9 développeurs incubés à l\'EPITECH (Paris Graduate School of Digital Innovation).\nSleeq est né au sein de notre programme de maîtrise et est en développement continu depuis novembre 2021.\nLa pandémie nous a appris que notre monde devient de plus en plus numérique par nécessité.\n\nChez Sleeq, nous voulons que ce changement soit aussi simple que de numériser tout le contenu de votre portefeuille tout en vous assurant de conserver le sentiment de sécurité et de confort d\'avoir tout partout avec vous.\n\nLisse. Fiable. Sécurisé.\nSleeq remplace le portefeuille physique par un portefeuille numérique qui peut stocker tous les documents que vous voulez à un ou plusieurs endroits comme dans votre téléphone ou votre ordinateur\nGrâce à Sleeq, il est possible de transférer vos documents en toute sécurité et rapidement entre des appareils de différentes plateformes.',
+          'Nous sommes une équipe de 9 développeurs incubés à l\'EPITECH (Paris Graduate School of Digital Innovation).\nSleeq est né au sein de notre programme Master et est en développement continu depuis novembre 2021.\nLa pandémie nous a appris que notre monde devient de plus en plus numérique par nécessité.\n\nChez Sleeq, nous souhaitons que ce changement soit aussi simple que de numériser l\'intégralité du contenu de votre portefeuille tout en vous assurant de conserver le sentiment de sécurité et de confort d\'avoir tout partout avec vous.\n\nLisse. Fiable. Sécurisé.\nSleeq remplace le portefeuille physique par un portefeuille numérique qui peut stocker tous les documents que vous souhaitez en un ou plusieurs endroits comme dans votre téléphone ou votre ordinateur\nGrâce à Sleeq, il est possible de transférer vos documents de manière sécurisée et rapide entre des appareils de différentes plateformes.',
     },
     'j7x640he': {
       'en': 'Our Team',
@@ -444,19 +440,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'uwy1pkya': {
       'en': 'Mathieu\nBretrandy',
-      'fr': 'Matthieu\nBretagne',
+      'fr': 'Mathieu\nBretrandy',
     },
     '2sht2n2s': {
       'en': 'Ilan\nBenarroche',
-      'fr': 'Ilan\nBénarroche',
+      'fr': 'Ilan\nBenarroche',
     },
     'gdigf6jw': {
       'en': 'Julien\nFumey',
-      'fr': 'Julien\nFumée',
+      'fr': 'Julien\nFumey',
     },
     'owqht94o': {
       'en': 'Arsene\nMathieu',
-      'fr': 'Arsène\nMatthieu',
+      'fr': 'Arsène\nMathieu',
     },
     'a0gj0cad': {
       'en': 'Hugo\nDomingues',
@@ -476,7 +472,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j9gng7ma': {
       'en': 'Settings',
-      'fr': 'Acceuil',
+      'fr': 'Paramètres',
     },
   },
   // fileInformations
@@ -486,40 +482,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Informations',
     },
     'a1iqw8rl': {
-      'en': 'Name :',
+      'en': 'Name:',
       'fr': 'Nom :',
     },
-    'cqydfgnk': {
-      'en': 'File Name',
-      'fr': 'Nom de fichier',
-    },
     'uiuo94s4': {
-      'en': 'Type :',
-      'fr': 'Taper :',
-    },
-    '1nb12l3g': {
-      'en': '.pdf',
-      'fr': '.pdf',
+      'en': 'Type:',
+      'fr': 'Type :',
     },
     '3uh5ik4j': {
-      'en': 'Size :',
+      'en': 'Size:',
       'fr': 'Taille :',
-    },
-    '0hsomtgg': {
-      'en': '20 MB',
-      'fr': '20 Mo',
     },
     'vn5bzht6': {
       'en': 'Creation Date',
       'fr': 'Date de création',
     },
-    'ycbwmqug': {
-      'en': 'May 23, 2023 - 14:33',
-      'fr': '23 mai 2023 - 14:33',
+    'd55nb3z2': {
+      'en': 'Tags',
+      'fr': 'Tag',
     },
     'otyglnx0': {
       'en': 'Home',
-      'fr': 'Maison',
+      'fr': 'Acceuil',
     },
   },
   // successfulPayment
@@ -534,7 +518,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qgnp7enp': {
       'en': 'Home',
-      'fr': 'Maison',
+      'fr': 'Acceuil',
     },
   },
   // cancelPayment
@@ -543,17 +527,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Operation canceled',
       'fr': 'Opération annulée',
     },
-    'izx9kxnr': {
-      'en': 'Try again',
-      'fr': 'Essayer à nouveau',
-    },
     'vamm422r': {
       'en': 'Go back to home page',
       'fr': 'Retournez à la page d\'accueil',
     },
     'rqlcinw0': {
       'en': 'Home',
-      'fr': 'Maison',
+      'fr': 'Acceuil',
     },
   },
   // feedback
@@ -581,7 +561,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'g5ceztgx': {
       'en': 'Bug-Free App',
-      'fr': 'Application sans bogue',
+      'fr': 'Application sans bug',
     },
     '8ffs53fz': {
       'en': 'Price of Subscription Models',
@@ -593,7 +573,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bri2xpoq': {
       'en': 'Reason for not considering premium',
-      'fr': 'Raison de ne pas considérer la prime',
+      'fr': 'Raison pour ne pas envisager la prime',
     },
     '5085jd2h': {
       'en': 'Enter reason here...',
@@ -616,11 +596,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'zezqvldl': {
       'en': 'Bug report form',
-      'fr': 'Formulaire de commentaires',
+      'fr': 'Formulaire de rapport de bug',
     },
     'elbpjfvc': {
       'en': 'Enter title',
-      'fr': '',
+      'fr': 'Entrez le titre',
     },
     'edv6fzu8': {
       'en': 'Bug Description',
@@ -628,16 +608,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ap7gnrbf': {
       'en': 'Enter bug description...',
-      'fr': 'Entrez la description du bogue...',
+      'fr': 'Entrez la description du bug...',
     },
     't6mqh36z': {
       'en': 'Steps to reproduce',
-      'fr': 'Étapes à reproduire',
+      'fr': 'Étapes pour reproduire',
     },
     'ygq00bnb': {
       'en': '1 - Open the app\n2 - Upload a file\n3 - Phone explodes',
       'fr':
-          '1 - Ouvrez l\'application\n2 - Télécharger un fichier\n3 - Le téléphone explose',
+          '1 - Ouvrez l\'application\n2 - Téléchargez un fichier\n3 - Le téléphone explose',
     },
     'xb00grmv': {
       'en': 'Priority',
@@ -657,11 +637,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j4e1rll7': {
       'en': 'Low',
-      'fr': '',
+      'fr': 'Faible',
     },
     'bbphpqhx': {
       'en': 'Notify me of bug fixing progress',
-      'fr': 'M\'avertir de l\'avancement de la correction des bogues',
+      'fr': 'Informez-moi de la progression de la correction des bugs',
     },
     'enbd6m6b': {
       'en': 'Submit',
@@ -696,90 +676,117 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '5vavpscf': {
       'en': 'Terms and Conditions',
-      'fr': '',
+      'fr': 'Termes et conditions',
     },
     'u3ax0yju': {
       'en':
           'By using this app, you agree to the following terms and conditions:',
-      'fr': '',
+      'fr':
+          'En utilisant cette application, vous acceptez les termes et conditions suivants :',
     },
     '2loqfytx': {
       'en': '1. Data Responsibility:',
-      'fr': '',
+      'fr': '1. Responsabilité des données :',
     },
     '5j4o9o7w': {
       'en':
           'You are solely responsible for the data you upload to this app. We do not take responsibility for any lost or corrupted data.',
-      'fr': '',
+      'fr':
+          'Vous êtes seul responsable des données que vous téléchargez sur cette application. Nous déclinons toute responsabilité en cas de perte ou de corruption de données.',
     },
     'dtbvv7cw': {
       'en': '2. Refunds:',
-      'fr': '',
+      'fr': '2. Remboursements :',
     },
     'raob6rrp': {
       'en':
           'Refunds are not allowed after using the premium plan for more than 1 week of the paid-for validity.',
-      'fr': '',
+      'fr':
+          'Les remboursements ne sont pas autorisés après avoir utilisé le plan premium pendant plus d\'une semaine de validité payante.',
     },
     '7lqc5new': {
       'en': 'I acknowledge and agree to the Terms and Conditions',
-      'fr': '',
+      'fr': 'Je reconnais et j\'accepte les termes et conditions',
     },
     'hhdh2qja': {
       'en': 'Accept',
-      'fr': '',
+      'fr': 'Accepter',
     },
   },
   // MoveSmarphonePage
   {
     '6jmjajlj': {
       'en': 'Move selected elements',
-      'fr': '',
+      'fr': 'Déplacer les éléments sélectionnés',
     },
     'pdzxr0bo': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Maison',
     },
   },
   // CopyPasteSmarphonePage
   {
     '7iwe6ghx': {
       'en': 'Paste selected elements',
-      'fr': '',
+      'fr': 'Coller les éléments sélectionnés',
     },
     'tym50gvi': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Acceuil',
     },
   },
   // search
   {
-    '1qh4c4pz': {
-      'en': 'Edit Header 1',
-      'fr': '',
-    },
-    'c0bd5b9s': {
-      'en': 'Edit Header 2',
-      'fr': '',
-    },
-    '4l9jvtay': {
-      'en': 'Edit Column 1',
-      'fr': '',
-    },
-    'z30dokjd': {
-      'en': 'Edit Column 2',
-      'fr': '',
-    },
     '6gy37qi1': {
       'en': 'Home',
-      'fr': '',
+      'fr': 'Acceuil',
     },
   },
   // fileCard
   {
     '7hms8kmo': {
       'en': 'Home',
-      'fr': 'Domicile',
+      'fr': 'Acceuil',
+    },
+  },
+  // favorites
+  {
+    'jdtyqm2r': {
+      'en': 'Grid View',
+      'fr': 'Grille',
+    },
+    '8lqarx0w': {
+      'en': 'Home',
+      'fr': 'Acceuil',
+    },
+  },
+  // ScanPage
+  {
+    'kwo0zai4': {
+      'en': 'Add a EU COVID Pass to sleeq',
+      'fr': 'Ajouter un Pass COVID UE à sleeq',
+    },
+    '9er9doon': {
+      'en': 'Scan my COVID Pass',
+      'fr': 'Scanner mon Pass COVID',
+    },
+    'xyn78a2h': {
+      'en': 'Home',
+      'fr': 'Acceuil',
+    },
+  },
+  // CovidPass
+  {
+    'amiizkag': {
+      'en': 'Home',
+      'fr': 'Acceuil',
+    },
+  },
+  // SearchResults
+  {
+    'bia2cb3r': {
+      'en': 'Home',
+      'fr': 'Acceuil',
     },
   },
   // newnav
@@ -789,20 +796,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Acceuil',
     },
     'rdg8q5en': {
+      'en': 'Favorites',
+      'fr': 'Favoris',
+    },
+    'q37hvr5h': {
       'en': 'Settings',
       'fr': 'Paramètres',
     },
+    'fk942nxr': {
+      'en': 'Covid pass',
+      'fr': 'Paramètres',
+    },
+    'n70z9n3j': {
+      'en': 'Search',
+      'fr': 'Rechercher',
+    },
     'joolq3hb': {
       'en': 'Upload a file',
-      'fr': 'Télécharger un fichier',
-    },
-    'wzfdn71s': {
-      'en': 'Light Mode',
-      'fr': 'Mode lumière',
-    },
-    'b82qzcwq': {
-      'en': 'Dark Mode',
-      'fr': 'Mode sombre',
+      'fr': 'Ajouter un fichier',
     },
     'ho44eh4t': {
       'en': 'Logout',
@@ -818,22 +829,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'pzkk6o4a': {
       'en': 'File',
       'fr': 'Fichier',
-    },
-    'sn3q0avy': {
-      'en': 'Folder name',
-      'fr': 'Nom de dossier',
-    },
-    'r4n3gt7h': {
-      'en': '[folder name]',
-      'fr': '[nom de dossier]',
-    },
-    'vb8p8k2k': {
-      'en': 'File name',
-      'fr': 'Nom de fichier',
-    },
-    't1jrn4o0': {
-      'en': '[file.pdf]',
-      'fr': '[fichier.pdf]',
     },
     'j7nwknqr': {
       'en': 'Cancel',
@@ -852,7 +847,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b7er5pp3': {
       'en': 'Label here...',
-      'fr': '',
+      'fr': 'Étiquetez ici...',
+    },
+    'kmvite4a': {
+      'en': 'Cancel',
+      'fr': 'Annuler',
     },
     'kds0ysdx': {
       'en': 'Confirm',
@@ -897,7 +896,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'wszriotl': {
       'en': 'Sleeq Starter',
-      'fr': 'Démarreur élégant',
+      'fr': 'Sleeq Starter',
     },
     '4rajon4b': {
       'en': 'To discover Sleeq',
@@ -937,11 +936,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4x4gjabo': {
       'en': 'Smartphone',
-      'fr': 'Téléphone intelligent',
+      'fr': 'Téléphone',
     },
     'e9v9j74e': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     '10p2rw7v': {
       'en': '5 MD',
@@ -953,7 +952,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9anzvjk1': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     '29is3om7': {
       'en': 'Import from',
@@ -965,7 +964,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ieu222cg': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'p5mm061p': {
       'en': 'Camera',
@@ -982,7 +981,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'eebhi0sm': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     '2wtmltbr': {
       'en': 'Export to',
@@ -994,7 +993,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vqhzst3f': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'a29pwlsz': {
       'en': 'Email',
@@ -1005,8 +1004,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Exportez des documents vers vos e-mails',
     },
     'y2qj1noi': {
-      'en': 'Calender ',
-      'fr': 'Calandre',
+      'en': 'Calendar ',
+      'fr': 'Agenda',
     },
     'nyykm8u8': {
       'en': 'Export your documents to your calender',
@@ -1051,14 +1050,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tjmhlsuw': {
       'en': 'You get Sleeq widget for your home screen',
-      'fr': 'Vous obtenez le widget Sleeq pour votre écran d\'accueil',
+      'fr': 'Vous obtenez les widgets Sleeq pour votre écran d\'accueil',
     },
   },
   // PlanStarter
   {
     'fp935rcz': {
       'en': 'Sleeq Starter',
-      'fr': 'Démarreur élégant',
+      'fr': 'Sleeq Starter',
     },
     'dg89lsg2': {
       'en': 'To discover Sleeq',
@@ -1102,7 +1101,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b20kcrn9': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     'lm3gfmhr': {
       'en': '5 MD',
@@ -1114,7 +1113,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2719e7v5': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     'v4kfhhbg': {
       'en': 'Import from',
@@ -1126,7 +1125,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '94k6qg9i': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'hz1h1il8': {
       'en': 'Camera',
@@ -1143,7 +1142,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'd256rrvh': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     'nujgw3s8': {
       'en': 'Export to',
@@ -1155,7 +1154,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w2siv5ep': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'jfxwhvz6': {
       'en': 'Email',
@@ -1219,11 +1218,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'b4jn9bha': {
       'en': 'Sleeq Open',
-      'fr': 'Sleeq ouvert',
+      'fr': 'Ouverture élégante',
     },
     '61mzqpdg': {
       'en': 'Unlock the full experience',
-      'fr': 'Débloquez l\'expérience complète',
+      'fr': 'Bénéficiez de l\'expérience complète',
     },
     'zk9xb0w0': {
       'en': '14.99 € per month',
@@ -1263,7 +1262,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b6gvdeb4': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     'duzazgdm': {
       'en': '5 MD',
@@ -1275,7 +1274,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'd3b2k42e': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     'l4yfa6xk': {
       'en': 'Import from',
@@ -1287,7 +1286,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vl2i1l17': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'ngqru57y': {
       'en': 'Camera',
@@ -1304,7 +1303,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '8w9e2tv8': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     '2ja7c6ur': {
       'en': 'Export to',
@@ -1316,7 +1315,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9hdefl1j': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'xxf0kc0t': {
       'en': 'Email',
@@ -1382,7 +1381,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'bo4f0xl2': {
       'en': 'Sleeq Family',
-      'fr': 'Famille Sleeq',
+      'fr': 'Famille élégante',
     },
     '5cp455ub': {
       'en': 'For 4 members of the family',
@@ -1426,7 +1425,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4k3zq5gk': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     '5ugj395m': {
       'en': '5 MD',
@@ -1438,7 +1437,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'kexupvum': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     'czfx1lv6': {
       'en': 'Import from',
@@ -1450,7 +1449,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '56gywn16': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'jgd99lpe': {
       'en': 'Camera',
@@ -1467,7 +1466,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'cbhqgow9': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     'jcvzav3q': {
       'en': 'Export to',
@@ -1479,7 +1478,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rbhvua7o': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'jw7rayt2': {
       'en': 'Email',
@@ -1545,11 +1544,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '3bmwaqdo': {
       'en': 'Sleeq Plus',
-      'fr': 'Sleeq Plus',
+      'fr': 'SleeqPlus',
     },
     'un4s5v2h': {
       'en': 'For storage fans',
-      'fr': 'Pour les ventilateurs de stockage',
+      'fr': 'Pour les fans de stockage',
     },
     'hwl466l9': {
       'en': '10.99 € per month',
@@ -1589,7 +1588,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pevy9qwl': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     '6rgevgae': {
       'en': '5 MD',
@@ -1601,7 +1600,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1bp1m3aj': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     '5f4v1b7g': {
       'en': 'Import from',
@@ -1613,7 +1612,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o20ryzgf': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'qbords3x': {
       'en': 'Camera',
@@ -1630,7 +1629,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '3yzb3g7m': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     'an9ij6vt': {
       'en': 'Export to',
@@ -1642,7 +1641,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7slc315w': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     '7jds73k6': {
       'en': 'Email',
@@ -1708,11 +1707,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     're3qvhr4': {
       'en': 'Sleeq Archive',
-      'fr': 'Archives Sleeq',
+      'fr': 'Archives élégantes',
     },
     'r5g5f2lz': {
       'en': 'Decent storage for a small price',
-      'fr': 'Stockage décent pour un petit prix',
+      'fr': 'Un stockage décent pour un petit prix',
     },
     '2b1lz4ye': {
       'en': '4.99 € per month',
@@ -1752,7 +1751,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'euze2v5a': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     'ks70ydqf': {
       'en': '5 MD',
@@ -1764,7 +1763,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0s0wclvb': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     '92fnqc1f': {
       'en': 'Import from',
@@ -1776,7 +1775,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2jnbi3st': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'ncmbarke': {
       'en': 'Camera',
@@ -1793,7 +1792,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'dv9f17rt': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     '5bk7nrji': {
       'en': 'Export to',
@@ -1805,7 +1804,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'lvwe4utf': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     'cuefj49n': {
       'en': 'Email',
@@ -1915,7 +1914,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pbeh9iii': {
       'en': 'Access and upload you documents from a smartphone',
-      'fr': 'Accéder et télécharger vos documents depuis un smartphone',
+      'fr': 'Accédez et téléchargez vos documents depuis un smartphone',
     },
     'ebv8n144': {
       'en': '5 MD',
@@ -1927,7 +1926,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7sovou5s': {
       'en': 'Access and upload you documents from a computer',
-      'fr': 'Accéder et télécharger vos documents depuis un ordinateur',
+      'fr': 'Accédez et téléchargez vos documents depuis un ordinateur',
     },
     'k5ag7fe4': {
       'en': 'Import from',
@@ -1939,7 +1938,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1m2xj6oh': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     '1gglv62l': {
       'en': 'Camera',
@@ -1956,7 +1955,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     's4wqv3pq': {
       'en': 'Apply optical character recognition on your documents ',
       'fr':
-          'Appliquez la reconnaissance optique des caractères sur vos documents',
+          'Appliquez la reconnaissance optique de caractères sur vos documents',
     },
     '5uaipt2p': {
       'en': 'Export to',
@@ -1968,7 +1967,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fceqwbsp': {
       'en': 'Import documents from your folder',
-      'fr': 'Importer des documents depuis votre dossier',
+      'fr': 'Importez des documents depuis votre dossier',
     },
     '3fxzcrbv': {
       'en': 'Email',
@@ -2051,70 +2050,284 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Coller les éléments sélectionnés',
     },
   },
-  // VCard
+  // FR_ID_CARD
   {
     'uw3fxbwl': {
       'en': 'CARTE NATIONALE D\'ITENTITE',
+      'fr': 'CARTE NATIONALE D\'ITENTITE',
+    },
+  },
+  // searchBar
+  {
+    '60y7ze1y': {
+      'en': 'Enter your search query',
+      'fr': 'Entrez votre requête de recherche',
+    },
+    'yuu3um0s': {
+      'en': 'File',
+      'fr': 'Fichier',
+    },
+  },
+  // favFolderButton
+  {
+    '2zmq6vhp': {
+      'en': 'Favorites',
+      'fr': 'Favoris',
+    },
+  },
+  // NewPremiumPlanSleeqAdvanced
+  {
+    '9kg7d4rw': {
+      'en': 'Sleeq Advanced',
+      'fr': 'Sleeq Advanced',
+    },
+    'jhn0l2qb': {
+      'en': 'For storage fans',
+      'fr': 'Pour les fans de stockage',
+    },
+    '3jg3nsz0': {
+      'en': '5,99€',
+      'fr': '5,99€',
+    },
+    'kgb004eo': {
+      'en': 'Storage',
+      'fr': 'Stockage',
+    },
+    'bvxqyenv': {
+      'en': 'Max upload size',
+      'fr': 'Taille maximale de téléchargement',
+    },
+    't183nkfg': {
+      'en': 'Total storage',
+      'fr': 'Stockage total',
+    },
+    '8vw9puej': {
+      'en': 'Features',
+      'fr': 'Caractéristiques',
+    },
+    '1zeqdhpc': {
+      'en': 'Optical Charactere Recognition (OCR)',
+      'fr': 'Reconnaissance optique de caractères (OCR)',
+    },
+    'ikn1p8v5': {
+      'en': 'Benefit from our OCR to find your files more easilly',
+      'fr':
+          'Bénéficiez de notre OCR pour retrouver plus facilement vos fichiers',
+    },
+    '866ho34d': {
+      'en': 'Add document in wallet',
+      'fr': 'Ajouter un document dans le portefeuille',
+    },
+  },
+  // NewPremiumPlanSleeqFamily
+  {
+    '9hb7xi06': {
+      'en': 'Sleeq Family',
+      'fr': 'Famille élégante',
+    },
+    'uqoa29gh': {
+      'en': 'All unlocked for 4 family members ',
+      'fr': 'Tout débloqué pour 4 membres de la famille',
+    },
+    '2yqvp0ak': {
+      'en': '14,99€',
+      'fr': '14,99€',
+    },
+    '9u017lif': {
+      'en': 'Storage',
+      'fr': 'Stockage',
+    },
+    'y65ak6we': {
+      'en': 'Max upload size',
+      'fr': 'Taille maximale de téléchargement',
+    },
+    'ay8emwu5': {
+      'en': 'Total storage',
+      'fr': 'Stockage total',
+    },
+    'oiauic8r': {
+      'en': 'Features',
+      'fr': 'Fonctionalités',
+    },
+    'mzsqkh52': {
+      'en': 'Optical Charactere Recognition (OCR)',
+      'fr': 'Reconnaissance optique de caractères (OCR)',
+    },
+    'zm4vmf2q': {
+      'en': 'Benefit from our OCR to find your files more easilly',
+      'fr':
+          'Bénéficiez de notre OCR pour retrouver plus facilement vos fichiers',
+    },
+    'hbwsymq3': {
+      'en': 'Add document in wallet',
+      'fr': 'Ajouter un document dans le portefeuille',
+    },
+  },
+  // NewPremiumPlanSleeqPlus
+  {
+    'gius1m53': {
+      'en': 'Sleeq+',
+      'fr': 'Sleeq+',
+    },
+    'ae48cea7': {
+      'en': 'For storage fans',
+      'fr': 'Pour les fans de stockage',
+    },
+    'r8z0yzxf': {
+      'en': '2,99€',
+      'fr': '2,99€',
+    },
+    'msxgev42': {
+      'en': 'Storage',
+      'fr': 'Stockage',
+    },
+    'o6i9yn8e': {
+      'en': 'Max upload size',
+      'fr': 'Taille maximale de téléchargement',
+    },
+    'wx85rdd7': {
+      'en': 'Total storage',
+      'fr': 'Stockage total',
+    },
+    'lj84q3vv': {
+      'en': 'Features',
+      'fr': 'Fonctionalités',
+    },
+    'myo6ituo': {
+      'en': 'Optical Charactere Recognition (OCR)',
+      'fr': 'Reconnaissance optique de caractères (OCR)',
+    },
+    'adpeyucb': {
+      'en': 'Benefit from our OCR to find your files more easilly',
+      'fr':
+          'Bénéficiez de notre OCR pour retrouver plus facilement vos fichiers',
+    },
+    '17tils8t': {
+      'en': 'Add document in wallet',
+      'fr': 'Ajouter un document dans le portefeuille',
+    },
+  },
+  // NewPremiumPlanSleeqStarter
+  {
+    'emanceyn': {
+      'en': 'Sleeq FREE',
+      'fr': 'Sleeq FREE',
+    },
+    'ez71psru': {
+      'en': 'To discover Sleeq',
+      'fr': 'Pour découvrir Sleeq',
+    },
+    '2885z6qt': {
+      'en': 'Free',
+      'fr': 'Gratuit',
+    },
+    'szth3fan': {
+      'en': 'Storage',
+      'fr': 'Stockage',
+    },
+    '1tekg46u': {
+      'en': 'Max upload size',
+      'fr': 'Taille maximale de téléchargement',
+    },
+    '77idtd1u': {
+      'en': '2 Mo',
+      'fr': '2 Mo',
+    },
+    'z4v6x5c2': {
+      'en': 'Total storage',
+      'fr': 'Stockage total',
+    },
+    'f7ym9uvf': {
+      'en': 'Features',
+      'fr': 'Fonctionalités',
+    },
+    'n6c1ymp0': {
+      'en': 'Optical Charactere Recognition (OCR)',
+      'fr': 'Reconnaissance optique de caractères (OCR)',
+    },
+    '3t9bz8wx': {
+      'en': 'Benefit from our OCR to find your files more easilly',
+      'fr':
+          'Bénéficiez de notre OCR pour retrouver plus facilement vos fichiers',
+    },
+    'ihutz002': {
+      'en': 'Add document in wallet',
+      'fr': 'Ajouter un document dans le portefeuille',
+    },
+  },
+  // searchPopup
+  {
+    'y59s6yl3': {
+      'en': 'Search...',
+      'fr': 'Rechercher...',
+    },
+    'wnv0cu01': {
+      'en': 'Search',
+      'fr': 'Rechercher',
+    },
+    'u1ru7ryv': {
+      'en': 'Close',
+      'fr': 'Fermer',
+    },
+  },
+  // addTagModal
+  {
+    'vk9o4zlx': {
+      'en': 'Add a new Tag',
+      'fr': 'Ajouter un tag',
+    },
+    'gr2ic6ff': {
+      'en': 'Tag Name',
+      'fr': 'Nom u tag',
+    },
+    'qjpjket9': {
+      'en': '[tag name]',
+      'fr': '[nom du tag]',
+    },
+    'x7z0wxls': {
+      'en': 'File name',
+      'fr': 'Nom du fichier',
+    },
+    'zp3hwu5f': {
+      'en': '[file.pdf]',
+      'fr': '[fichier.pdf]',
+    },
+    'u4qtwl1j': {
+      'en': 'Cancel',
+      'fr': 'Annuler',
+    },
+    'j62wgwa3': {
+      'en': 'Add',
+      'fr': 'Ajouter',
+    },
+  },
+  // FR_VITALE_CARD
+  {
+    't62mg57d': {
+      'en': 'Vitale',
       'fr': '',
     },
-    'eokls5wb': {
-      'en': 'Nom:',
-      'fr': '',
+  },
+  // FR_DRIVING_LICENSE
+  {
+    's6ofufi4': {
+      'en': 'Permis de Conduire',
+      'fr': 'CARTE NATIONALE D\'ITENTITE',
     },
-    'jthp8k49': {
-      'en': 'BENARROCHE',
-      'fr': '',
-    },
-    'phxud9aq': {
-      'en': 'Prénoms:',
-      'fr': '',
-    },
-    'y3h4tb5m': {
-      'en': 'Ilan Isaac',
-      'fr': '',
-    },
-    'q74zobul': {
-      'en': 'Sexe:',
-      'fr': '',
-    },
-    'ez915roy': {
-      'en': 'H',
-      'fr': '',
-    },
-    '6tm13qng': {
-      'en': 'Nationalité:',
-      'fr': '',
-    },
-    'ay2q5x64': {
-      'en': 'FRA',
-      'fr': '',
-    },
-    'c7his602': {
-      'en': 'Date de naiss:',
-      'fr': '',
-    },
-    'mwispnsx': {
-      'en': '30 07 1999',
-      'fr': '',
-    },
-    'w43mi3iy': {
-      'en': 'N°',
-      'fr': '',
-    },
-    'xnvb0zua': {
-      'en': '180695358957',
-      'fr': '',
+    '5a2wb4tx': {
+      'en': 'REPUBLIQUE FRANCAISE',
+      'fr': 'CARTE NATIONALE D\'ITENTITE',
     },
   },
   // Miscellaneous
   {
     'vqnpk0nj': {
       'en': 'Label here...',
-      'fr': 'Étiquette ici...',
+      'fr': 'Étiquetez ici...',
     },
     '3zaznyvo': {
       'en': 'Hello World',
-      'fr': '',
+      'fr': 'Bonjour le monde',
     },
     '7sgbm13u': {
       'en':
@@ -2161,6 +2374,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'ctxqg4vi': {
+      'en': '',
+      'fr': '',
+    },
+    'e1twzaju': {
       'en': '',
       'fr': '',
     },

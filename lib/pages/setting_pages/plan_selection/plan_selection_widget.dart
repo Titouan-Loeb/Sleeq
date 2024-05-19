@@ -1,26 +1,26 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/back_button/back_button_widget.dart';
-import '/components/navigation/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/components/navigation/sidebar/sidebar/sidebar_widget.dart';
-import '/components/subscription/all_plans/plan_archive/plan_archive_widget.dart';
-import '/components/subscription/all_plans/plan_family/plan_family_widget.dart';
-import '/components/subscription/all_plans/plan_open/plan_open_widget.dart';
-import '/components/subscription/all_plans/plan_plus/plan_plus_widget.dart';
-import '/components/subscription/all_plans/plan_starter/plan_starter_widget.dart';
-import '/components/subscription/all_plans/plan_student/plan_student_widget.dart';
+import '/components/subscription/new_plans/new_premium_plan_sleeq_advanced/new_premium_plan_sleeq_advanced_widget.dart';
+import '/components/subscription/new_plans/new_premium_plan_sleeq_family/new_premium_plan_sleeq_family_widget.dart';
+import '/components/subscription/new_plans/new_premium_plan_sleeq_plus/new_premium_plan_sleeq_plus_widget.dart';
+import '/components/subscription/new_plans/new_premium_plan_sleeq_starter/new_premium_plan_sleeq_starter_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,10 +30,10 @@ import 'plan_selection_model.dart';
 export 'plan_selection_model.dart';
 
 class PlanSelectionWidget extends StatefulWidget {
-  const PlanSelectionWidget({Key? key}) : super(key: key);
+  const PlanSelectionWidget({super.key});
 
   @override
-  _PlanSelectionWidgetState createState() => _PlanSelectionWidgetState();
+  State<PlanSelectionWidget> createState() => _PlanSelectionWidgetState();
 }
 
 class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
@@ -42,34 +42,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.linear,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.linear,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -86,19 +59,43 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
         FFAppState().currentPage = 'PlanSelection';
       });
       logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOIRbBzo7KeiEMEVUtfdh1Q');
+      _model.addToPlanIds('price_1O0OIABzo7KeiEME0flVyvmz');
       logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOISVBzo7KeiEMEVSBv0o6K');
+      _model.addToPlanIds('price_1O0Lx5Bzo7KeiEME7XG2SbWh');
       logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOITcBzo7KeiEMEnkarB9Hh');
+      _model.addToPlanIds('price_1O0LviBzo7KeiEMExFgYZvmf');
       logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOIS5Bzo7KeiEMEngqF20eT');
-      logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOITBBzo7KeiEME2Zh9tgvb');
-      logFirebaseEvent('PlanSelection_update_page_state');
-      _model.addToPlanIds('price_1LOITvBzo7KeiEMEQVSVQRRi');
+      _model.addToPlanIds('price_1O0LqPBzo7KeiEME3h4HMsYz');
     });
 
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.linear,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.linear,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -118,15 +115,6 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Title(
@@ -173,7 +161,10 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                       blurRadius: 1.0,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                      offset: Offset(0.0, 0.0),
+                                      offset: Offset(
+                                        0.0,
+                                        0.0,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -196,9 +187,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                               BorderRadius.circular(12.0),
                                         ),
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  2.0, 2.0, 2.0, 2.0),
+                                          padding: EdgeInsets.all(2.0),
                                           child: AuthUserStreamWidget(
                                             builder: (context) => InkWell(
                                               splashColor: Colors.transparent,
@@ -296,7 +285,20 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                     : currentUserEmail,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineSmall,
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily),
+                                                        ),
                                               ),
                                             ),
                                             Padding(
@@ -304,24 +306,24 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 currentUserEmail,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primary,
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          GoogleFonts.asMap()
                                                               .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodySmallFamily),
-                                                        ),
+                                                                  'Lexend'),
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -343,116 +345,120 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                             child: Stack(
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height:
-                                        MediaQuery.sizeOf(context).height * 1.0,
-                                    child: Stack(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 24.0),
-                                          child: PageView(
-                                            controller: _model
-                                                    .pageViewController ??=
-                                                PageController(initialPage: 0),
-                                            scrollDirection: Axis.horizontal,
-                                            children: [
-                                              wrapWithModel(
-                                                model: _model.planStarterModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanStarterWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.planOpenModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanOpenWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.planFamilyModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanFamilyWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.planPlusModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanPlusWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.planArchiveModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanArchiveWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.planStudentModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: PlanStudentWidget(),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.00, 1.00),
-                                          child: Padding(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              1.0,
+                                      child: Stack(
+                                        children: [
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
-                                            child: smooth_page_indicator
-                                                .SmoothPageIndicator(
+                                                    0.0, 0.0, 0.0, 24.0),
+                                            child: PageView(
                                               controller:
                                                   _model.pageViewController ??=
                                                       PageController(
                                                           initialPage: 0),
-                                              count: 6,
-                                              axisDirection: Axis.horizontal,
-                                              onDotClicked: (i) async {
-                                                await _model.pageViewController!
-                                                    .animateToPage(
-                                                  i,
-                                                  duration: Duration(
-                                                      milliseconds: 500),
-                                                  curve: Curves.ease,
-                                                );
-                                              },
-                                              effect: smooth_page_indicator
-                                                  .ExpandingDotsEffect(
-                                                expansionFactor: 2.0,
-                                                spacing: 8.0,
-                                                radius: 16.0,
-                                                dotWidth: 16.0,
-                                                dotHeight: 4.0,
-                                                dotColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent2,
-                                                activeDotColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                paintStyle: PaintingStyle.fill,
+                                              scrollDirection: Axis.horizontal,
+                                              children: [
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .newPremiumPlanSleeqStarterModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      NewPremiumPlanSleeqStarterWidget(),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .newPremiumPlanSleeqFamilyModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      NewPremiumPlanSleeqFamilyWidget(),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .newPremiumPlanSleeqAdvancedModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      NewPremiumPlanSleeqAdvancedWidget(),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .newPremiumPlanSleeqPlusModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      NewPremiumPlanSleeqPlusWidget(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 1.0),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: smooth_page_indicator
+                                                  .SmoothPageIndicator(
+                                                controller: _model
+                                                        .pageViewController ??=
+                                                    PageController(
+                                                        initialPage: 0),
+                                                count: 4,
+                                                axisDirection: Axis.horizontal,
+                                                onDotClicked: (i) async {
+                                                  await _model
+                                                      .pageViewController!
+                                                      .animateToPage(
+                                                    i,
+                                                    duration: Duration(
+                                                        milliseconds: 500),
+                                                    curve: Curves.ease,
+                                                  );
+                                                  setState(() {});
+                                                },
+                                                effect: smooth_page_indicator
+                                                    .ExpandingDotsEffect(
+                                                  expansionFactor: 2.0,
+                                                  spacing: 8.0,
+                                                  radius: 16.0,
+                                                  dotWidth: 16.0,
+                                                  dotHeight: 4.0,
+                                                  dotColor: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent2,
+                                                  activeDotColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  paintStyle:
+                                                      PaintingStyle.fill,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                                if ((_model.pageViewCurrentIndex != 5) &&
+                                if ((_model.pageViewCurrentIndex != 3) &&
                                     responsiveVisibility(
                                       context: context,
                                       phone: false,
                                     ))
                                   Align(
-                                    alignment: AlignmentDirectional(1.00, 0.00),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -492,12 +498,11 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 20.0,
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light
-                                                  ? Color(0x22000000)
-                                                  : Colors.white,
-                                              offset: Offset(-10.0, 0.0),
+                                              color: Color(0x22000000),
+                                              offset: Offset(
+                                                -10.0,
+                                                0.0,
+                                              ),
                                               spreadRadius: 1.0,
                                             )
                                           ],
@@ -513,8 +518,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           cursor: MouseCursor.defer ??
                                               MouseCursor.defer,
                                           child: Align(
-                                            alignment: AlignmentDirectional(
-                                                1.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Icon(
                                               Icons.arrow_forward_ios_rounded,
                                               color:
@@ -571,8 +576,7 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                       phone: false,
                                     ))
                                   Align(
-                                    alignment:
-                                        AlignmentDirectional(-1.00, 0.00),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -612,12 +616,11 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 20.0,
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light
-                                                  ? Color(0xFF220000)
-                                                  : Colors.white,
-                                              offset: Offset(10.0, 0.0),
+                                              color: Color(0x22000000),
+                                              offset: Offset(
+                                                10.0,
+                                                0.0,
+                                              ),
                                               spreadRadius: 0.0,
                                             )
                                           ],
@@ -633,8 +636,8 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                                           cursor: MouseCursor.defer ??
                                               MouseCursor.defer,
                                           child: Align(
-                                            alignment: AlignmentDirectional(
-                                                1.00, 0.00),
+                                            alignment:
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Icon(
                                               Icons.arrow_back_ios_rounded,
                                               color:
@@ -698,76 +701,152 @@ class _PlanSelectionWidgetState extends State<PlanSelectionWidget>
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 15.0, 15.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'PLAN_SELECTION_PAGE_SUBSCRIBE_BTN_ON_TAP');
-                              logFirebaseEvent('Button_backend_call');
-                              _model.apiResult = await StripeAPIGroup
-                                  .createPaymentLinkCall
-                                  .call(
-                                priceId:
-                                    _model.planIds[_model.pageViewCurrentIndex],
-                                successfulUrl: functions.createDynamicLink(
-                                    FFAppState().dynamicLinkDomain,
-                                    FFAppState().packageName,
-                                    'successfulPayment',
-                                    'id=${currentUserUid}&planId=${_model.planIds[_model.pageViewCurrentIndex]}'),
-                                cancelUrl: functions.createDynamicLink(
-                                    FFAppState().dynamicLinkDomain,
-                                    FFAppState().packageName,
-                                    'cancelPayment',
-                                    ''),
-                              );
-                              if ((_model.apiResult?.succeeded ?? true)) {
-                                logFirebaseEvent('Button_update_app_state');
-                                FFAppState().paymentLink = getJsonField(
-                                  (_model.apiResult?.jsonBody ?? ''),
-                                  r'''$.url''',
-                                ).toString();
-                                logFirebaseEvent('Button_launch_u_r_l');
-                                await launchURL(getJsonField(
-                                  (_model.apiResult?.jsonBody ?? ''),
-                                  r'''$.url''',
-                                ).toString());
-                              }
-
-                              setState(() {});
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'tq6yi8cb' /* Subscribe */,
-                            ),
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: Colors.white,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
+                        if (valueOrDefault(
+                                currentUserDocument?.subcriptionId, '') !=
+                            _model.planIds[_model.pageViewCurrentIndex])
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 15.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'PLAN_SELECTION_PAGE_SUBSCRIBE_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_backend_call');
+                                  _model.apiResult = await StripeAPIGroup
+                                      .createPaymentLinkCall
+                                      .call(
+                                    priceId: _model
+                                        .planIds[_model.pageViewCurrentIndex],
+                                    successfulUrl: functions.createDynamicLink(
+                                        FFAppState().dynamicLinkDomain,
+                                        FFAppState().packageName,
+                                        'successfulPayment',
+                                        ''),
+                                    cancelUrl: functions.createDynamicLink(
+                                        FFAppState().dynamicLinkDomain,
+                                        FFAppState().packageName,
+                                        'cancelPayment',
+                                        ''),
+                                  );
+                                  if ((_model.apiResult?.succeeded ?? true)) {
+                                    logFirebaseEvent('Button_update_app_state');
+                                    FFAppState().paymentLink = getJsonField(
+                                      (_model.apiResult?.jsonBody ?? ''),
+                                      r'''$.url''',
+                                    ).toString();
+                                    logFirebaseEvent('Button_launch_u_r_l');
+                                    await launchURL(getJsonField(
+                                      (_model.apiResult?.jsonBody ?? ''),
+                                      r'''$.url''',
+                                    ).toString());
+                                  } else {
+                                    logFirebaseEvent('Button_show_snack_bar');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Something went wrong',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
                                             FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                                .secondary,
+                                      ),
+                                    );
+                                  }
+
+                                  setState(() {});
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'tq6yi8cb' /* Subscribe */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 40.0,
+                                  padding: EdgeInsets.all(0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
                                   ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ),
+                        if (valueOrDefault(
+                                currentUserDocument?.subcriptionId, '') ==
+                            _model.planIds[_model.pageViewCurrentIndex])
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 15.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'PLAN_SELECTION_PAGE_CANCEL_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_backend_call');
+
+                                  await currentUserReference!.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'subcription_id': FieldValue.delete(),
+                                      },
+                                    ),
+                                  });
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'a0iufsbo' /* Cancel */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 40.0,
+                                  padding: EdgeInsets.all(0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).customColor3,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                            ),
+                          ),
                         if (responsiveVisibility(
                           context: context,
                           tablet: false,

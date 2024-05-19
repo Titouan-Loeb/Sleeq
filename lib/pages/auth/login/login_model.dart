@@ -8,7 +8,6 @@ import 'login_widget.dart' show LoginWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,8 +52,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     return null;
   }
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     sleeqLogoModel = createModel(context, () => SleeqLogoModel());
     emailTextControllerValidator = _emailTextControllerValidator;
@@ -62,6 +60,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     passwordTextControllerValidator = _passwordTextControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sleeqLogoModel.dispose();
@@ -71,8 +70,4 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     textFieldFocusNode2?.dispose();
     passwordTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

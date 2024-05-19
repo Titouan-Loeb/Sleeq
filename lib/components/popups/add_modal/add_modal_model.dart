@@ -1,11 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/popups/sub_elements/color_dial/color_dial_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'add_modal_widget.dart' show AddModalWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -23,20 +27,13 @@ class AddModalModel extends FlutterFlowModel<AddModalWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  final formKey2 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for ColorDial component.
-  late ColorDialModel colorDialModel1;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // Model for ColorDial component.
-  late ColorDialModel colorDialModel2;
+  late ColorDialModel colorDialModel;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   FoldersRecord? newFolder;
   bool isDataUploading = false;
@@ -46,26 +43,19 @@ class AddModalModel extends FlutterFlowModel<AddModalWidget> {
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   FilesRecord? fileOut;
+  // Stores action output result for [Custom Action - getTagsFromOCR] action in Button widget.
+  List<TagsStruct>? tagList;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
-    colorDialModel1 = createModel(context, () => ColorDialModel());
-    colorDialModel2 = createModel(context, () => ColorDialModel());
+    colorDialModel = createModel(context, () => ColorDialModel());
   }
 
+  @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
 
-    colorDialModel1.dispose();
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
-
-    colorDialModel2.dispose();
+    colorDialModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

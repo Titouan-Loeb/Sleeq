@@ -15,8 +15,7 @@ export '/pages/setting_pages/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/setting_pages/plan_selection/plan_selection_widget.dart'
     show PlanSelectionWidget;
 export '/pages/memo/memo_widget.dart' show MemoWidget;
-export '/pages/setting_pages/about_sleeq/about_sleeq_widget.dart'
-    show AboutSleeqWidget;
+export '/pages/about_sleeq/about_sleeq_widget.dart' show AboutSleeqWidget;
 export '/pages/file_informations/file_informations_widget.dart'
     show FileInformationsWidget;
 export '/pages/payment/successful_payment/successful_payment_widget.dart'
@@ -33,3 +32,8 @@ export '/copy_paste_smarphone_page/copy_paste_smarphone_page_widget.dart'
     show CopyPasteSmarphonePageWidget;
 export '/search/search_widget.dart' show SearchWidget;
 export '/pages/file_card/file_card_widget.dart' show FileCardWidget;
+export '/pages/favorites/favorites_widget.dart' show FavoritesWidget;
+export '/pages/scan_page/scan_page_widget.dart' show ScanPageWidget;
+export '/covid_pass/covid_pass_widget.dart' show CovidPassWidget;
+export '/pages/search_results/search_results_widget.dart'
+    show SearchResultsWidget;

@@ -10,7 +10,6 @@ import 'sign_up_widget.dart' show SignUpWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,14 +51,14 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
   FoldersRecord? folderGoogle;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     sleeqLogoModel = createModel(context, () => SleeqLogoModel());
     passwordVisibility1 = false;
     passwordVisibility2 = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sleeqLogoModel.dispose();
@@ -72,8 +71,4 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     textFieldFocusNode3?.dispose();
     confirmPasswordTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

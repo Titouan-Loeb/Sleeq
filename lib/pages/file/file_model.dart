@@ -9,7 +9,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'file_widget.dart' show FileWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,18 +20,14 @@ class FileModel extends FlutterFlowModel<FileWidget> {
   // Model for Sidebar component.
   late SidebarModel sidebarModel;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     sidebarModel = createModel(context, () => SidebarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sidebarModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

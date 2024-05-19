@@ -2,7 +2,6 @@ import '/components/popups/sub_elements/color_item/color_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,14 +10,14 @@ export 'color_dial_model.dart';
 
 class ColorDialWidget extends StatefulWidget {
   const ColorDialWidget({
-    Key? key,
+    super.key,
     this.allowedColors,
-  }) : super(key: key);
+  });
 
   final List<Color>? allowedColors;
 
   @override
-  _ColorDialWidgetState createState() => _ColorDialWidgetState();
+  State<ColorDialWidget> createState() => _ColorDialWidgetState();
 }
 
 class _ColorDialWidgetState extends State<ColorDialWidget> {
@@ -47,8 +46,6 @@ class _ColorDialWidgetState extends State<ColorDialWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Wrap(
       spacing: 0.0,
       runSpacing: 0.0,

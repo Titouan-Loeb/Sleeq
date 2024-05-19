@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,20 +11,22 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:sleeq/components/buttons/fav_folder_button/fav_folder_button_widget.dart';
+
 import 'package:provider/provider.dart';
 import '../../components/buttons/folder_button/folder_button_widget.dart';
 import '../../components/buttons/file_button/file_button_widget.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class ResponsiveGrid extends StatefulWidget {
-  const ResponsiveGrid({
-    Key? key,
-    this.width,
-    this.height,
-    required this.folders,
-    required this.files,
-    required this.folderNamesList,
-  }) : super(key: key);
+  const ResponsiveGrid(
+      {Key? key,
+      this.width,
+      this.height,
+      required this.folders,
+      required this.files,
+      required this.folderNamesList})
+      : super(key: key);
 
   final double? width;
   final double? height;

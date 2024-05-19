@@ -46,6 +46,16 @@ class FoldersRecord extends FirestoreRecord {
   List<DocumentReference> get files => _files ?? const [];
   bool hasFiles() => _files != null;
 
+  // "favorite" field.
+  bool? _favorite;
+  bool get favorite => _favorite ?? false;
+  bool hasFavorite() => _favorite != null;
+
+  // "is_bookmarked" field.
+  bool? _isBookmarked;
+  bool get isBookmarked => _isBookmarked ?? false;
+  bool hasIsBookmarked() => _isBookmarked != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -55,6 +65,8 @@ class FoldersRecord extends FirestoreRecord {
     _folders = getDataList(snapshotData['folders']);
     _parentFolder = snapshotData['parent_folder'] as DocumentReference?;
     _files = getDataList(snapshotData['files']);
+    _favorite = snapshotData['favorite'] as bool?;
+    _isBookmarked = snapshotData['is_bookmarked'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -62,8 +74,8 @@ class FoldersRecord extends FirestoreRecord {
           ? parent.collection('folders')
           : FirebaseFirestore.instance.collectionGroup('folders');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('folders').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('folders').doc(id);
 
   static Stream<FoldersRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => FoldersRecord.fromSnapshot(s));
@@ -101,6 +113,8 @@ Map<String, dynamic> createFoldersRecordData({
   Color? color,
   String? name,
   DocumentReference? parentFolder,
+  bool? favorite,
+  bool? isBookmarked,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -108,6 +122,8 @@ Map<String, dynamic> createFoldersRecordData({
       'color': color,
       'name': name,
       'parent_folder': parentFolder,
+      'favorite': favorite,
+      'is_bookmarked': isBookmarked,
     }.withoutNulls,
   );
 
@@ -125,12 +141,22 @@ class FoldersRecordDocumentEquality implements Equality<FoldersRecord> {
         e1?.name == e2?.name &&
         listEquality.equals(e1?.folders, e2?.folders) &&
         e1?.parentFolder == e2?.parentFolder &&
-        listEquality.equals(e1?.files, e2?.files);
+        listEquality.equals(e1?.files, e2?.files) &&
+        e1?.favorite == e2?.favorite &&
+        e1?.isBookmarked == e2?.isBookmarked;
   }
 
   @override
-  int hash(FoldersRecord? e) => const ListEquality().hash(
-      [e?.owner, e?.color, e?.name, e?.folders, e?.parentFolder, e?.files]);
+  int hash(FoldersRecord? e) => const ListEquality().hash([
+        e?.owner,
+        e?.color,
+        e?.name,
+        e?.folders,
+        e?.parentFolder,
+        e?.files,
+        e?.favorite,
+        e?.isBookmarked
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is FoldersRecord;

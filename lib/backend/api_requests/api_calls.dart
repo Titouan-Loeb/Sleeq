@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
+
+import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -11,7 +14,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start Stripe API Group Code
 
 class StripeAPIGroup {
-  static String baseUrl = 'https://api.stripe.com/v1/';
+  static String getBaseUrl() => 'https://api.stripe.com/v1/';
   static Map<String, String> headers = {};
   static CreatePaymentLinkCall createPaymentLinkCall = CreatePaymentLinkCall();
 }
@@ -22,15 +25,17 @@ class CreatePaymentLinkCall {
     String? cancelUrl = '',
     String? priceId = '',
     String? mode = 'subscription',
-    String? key =
-        'sk_test_51LOI2XBzo7KeiEMEvMq1t4V17K7RdiB5CiEFLG0TNRKwde13Sqz7K70y0uM61OGKZyJTzyLsu8K3GQwlDLue4wmL00KlJfUgZo',
+    String? key = '',
   }) async {
+    final baseUrl = StripeAPIGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Create Payment Link',
-      apiUrl: '${StripeAPIGroup.baseUrl}checkout/sessions',
+      apiUrl: '${baseUrl}checkout/sessions',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${key}',
+        'Authorization':
+            'Bearer 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',
       },
       params: {
         'payment_method_types[]': "card",
@@ -46,6 +51,7 @@ class CreatePaymentLinkCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -55,7 +61,7 @@ class CreatePaymentLinkCall {
 /// Start Feedback Group Code
 
 class FeedbackGroup {
-  static String baseUrl = 'https://formspree.io/';
+  static String getBaseUrl() => 'https://formspree.io/';
   static Map<String, String> headers = {};
   static BugReportCall bugReportCall = BugReportCall();
 }
@@ -70,6 +76,8 @@ class BugReportCall {
     String? priority = '',
     String? userPlatform = '',
   }) async {
+    final baseUrl = FeedbackGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "userMail": "${userMail}",
@@ -82,7 +90,7 @@ class BugReportCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Bug report',
-      apiUrl: '${FeedbackGroup.baseUrl}f/xjvqvpza',
+      apiUrl: '${baseUrl}f/xjvqvpza',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -92,6 +100,7 @@ class BugReportCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -136,6 +145,65 @@ class SendFeedbackCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AlogliaSearchCall {
+  static Future<ApiCallResponse> call({
+    String? query = '',
+    String? userId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "filters": "owner:'users/${userId}'",
+  "facetFilters": [],
+  "optionalFilters": [],
+  "numericFilters": [],
+  "tagFilters": [],
+  "query": "${query}",
+  "hitsPerPage": 5
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Aloglia search',
+      apiUrl: 'https://eld5f2vq4j.algolia.net/1/indexes/sleeq/query',
+      callType: ApiCallType.POST,
+      headers: {
+        'X-Algolia-Api-Key': '85f7b7fcaadd9378c0e743c3d9006b56',
+        'X-Algolia-Application-Id': 'ELD5F2VQ4J',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CovidCall {
+  static Future<ApiCallResponse> call({
+    String? text = '',
+  }) async {
+    final ffApiRequestBody = '''
+${text}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'COVID',
+      apiUrl: 'https://app.getcovidpass.eu/cert',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.TEXT,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -161,6 +229,9 @@ String _serializeList(List? list) {
   try {
     return json.encode(list);
   } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
     return '[]';
   }
 }
@@ -170,6 +241,9 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   try {
     return json.encode(jsonVar);
   } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
     return isList ? '[]' : '{}';
   }
 }

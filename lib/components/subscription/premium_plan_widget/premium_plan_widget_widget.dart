@@ -2,7 +2,6 @@ import '/components/subscription/feature_description/feature_description_widget.
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'premium_plan_widget_model.dart';
 export 'premium_plan_widget_model.dart';
 
 class PremiumPlanWidgetWidget extends StatefulWidget {
-  const PremiumPlanWidgetWidget({Key? key}) : super(key: key);
+  const PremiumPlanWidgetWidget({super.key});
 
   @override
-  _PremiumPlanWidgetWidgetState createState() =>
+  State<PremiumPlanWidgetWidget> createState() =>
       _PremiumPlanWidgetWidgetState();
 }
 
@@ -43,8 +42,6 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -60,7 +57,12 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
               FFLocalizations.of(context).getText(
                 'wszriotl' /* Sleeq Starter */,
               ),
-              style: FlutterFlowTheme.of(context).titleLarge,
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                    letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).titleLargeFamily),
+                  ),
             ),
           ),
           Padding(
@@ -69,11 +71,16 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
               FFLocalizations.of(context).getText(
                 '4rajon4b' /* To discover Sleeq */,
               ),
-              style: FlutterFlowTheme.of(context).bodyMedium,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                    letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyMediumFamily),
+                  ),
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(-1.00, 0.00),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 0.0, 0.0),
               child: Text(
@@ -83,6 +90,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                       fontSize: 18.0,
+                      letterSpacing: 0.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).titleSmallFamily),
                     ),
@@ -113,6 +121,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -188,6 +197,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -263,6 +273,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -356,6 +367,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
@@ -406,7 +418,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                     updateCallback: () => setState(() {}),
                     child: FeatureDescriptionWidget(
                       title: FFLocalizations.of(context).getText(
-                        'y2qj1noi' /* Calender  */,
+                        'y2qj1noi' /* Calendar  */,
                       ),
                       description: FFLocalizations.of(context).getText(
                         'nyykm8u8' /* Export your documents to your ... */,
@@ -469,6 +481,7 @@ class _PremiumPlanWidgetWidgetState extends State<PremiumPlanWidgetWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
                             fontSize: 12.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
                           ),

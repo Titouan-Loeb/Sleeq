@@ -2,8 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,10 +11,10 @@ import 'array_viewer_model.dart';
 export 'array_viewer_model.dart';
 
 class ArrayViewerWidget extends StatefulWidget {
-  const ArrayViewerWidget({Key? key}) : super(key: key);
+  const ArrayViewerWidget({super.key});
 
   @override
-  _ArrayViewerWidgetState createState() => _ArrayViewerWidgetState();
+  State<ArrayViewerWidget> createState() => _ArrayViewerWidgetState();
 }
 
 class _ArrayViewerWidgetState extends State<ArrayViewerWidget> {
@@ -79,6 +79,7 @@ class _ArrayViewerWidgetState extends State<ArrayViewerWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           fontSize: 30.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),

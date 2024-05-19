@@ -7,7 +7,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,10 +14,10 @@ import 'copy_paste_popup_model.dart';
 export 'copy_paste_popup_model.dart';
 
 class CopyPastePopupWidget extends StatefulWidget {
-  const CopyPastePopupWidget({Key? key}) : super(key: key);
+  const CopyPastePopupWidget({super.key});
 
   @override
-  _CopyPastePopupWidgetState createState() => _CopyPastePopupWidgetState();
+  State<CopyPastePopupWidget> createState() => _CopyPastePopupWidgetState();
 }
 
 class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
@@ -61,12 +60,10 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsets.all(16.0),
         child: Container(
           width: 500.0,
           height: 552.0,
@@ -91,7 +88,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(1.00, 0.00),
+                        alignment: AlignmentDirectional(1.0, 0.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 4.0,
@@ -108,7 +105,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                               shape: BoxShape.rectangle,
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(-1.00, -1.00),
+                              alignment: AlignmentDirectional(-1.0, -1.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 9.0,
@@ -132,7 +129,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '3pr1p7mm' /* Paste selected elements */,
@@ -143,6 +140,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 fontSize: 17.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -154,7 +152,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                     child: AuthUserStreamWidget(
@@ -187,6 +185,7 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
                                   fontSize: 18.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
@@ -296,7 +295,20 @@ class _CopyPastePopupWidgetState extends State<CopyPastePopupWidget> {
                                                     containerFoldersRecord.name,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
                                                   ),
                                                 ),
                                                 Spacer(),

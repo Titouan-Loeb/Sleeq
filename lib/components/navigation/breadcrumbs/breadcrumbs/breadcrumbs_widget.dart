@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,17 +11,16 @@ export 'breadcrumbs_model.dart';
 
 class BreadcrumbsWidget extends StatefulWidget {
   const BreadcrumbsWidget({
-    Key? key,
+    super.key,
     this.folderNames,
-    bool? isHomeScreen,
-  })  : this.isHomeScreen = isHomeScreen ?? true,
-        super(key: key);
+    bool? allowGoBack,
+  }) : this.allowGoBack = allowGoBack ?? true;
 
   final List<String>? folderNames;
-  final bool isHomeScreen;
+  final bool allowGoBack;
 
   @override
-  _BreadcrumbsWidgetState createState() => _BreadcrumbsWidgetState();
+  State<BreadcrumbsWidget> createState() => _BreadcrumbsWidgetState();
 }
 
 class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
@@ -51,20 +49,18 @@ class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Row(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Stack(
           children: [
-            if (!widget.isHomeScreen)
+            if (widget.allowGoBack)
               wrapWithModel(
                 model: _model.beadCrumbsBackButtonModel,
                 updateCallback: () => setState(() {}),
                 child: BeadCrumbsBackButtonWidget(),
               ),
-            if (widget.isHomeScreen)
+            if (!widget.allowGoBack)
               Container(
                 width: 35.0,
                 height: 35.0,
@@ -73,13 +69,13 @@ class _BreadcrumbsWidgetState extends State<BreadcrumbsWidget> {
                 ),
                 child: Icon(
                   Icons.home_filled,
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
               ),
           ],
         ),
-        Expanded(
+        Flexible(
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
             child: Container(
