@@ -1,6 +1,16 @@
 # Sleeq
+## What is Sleeq?
+Sleeq the final project of 8 Epitech students, it is a cross-platform intelligent e-wallet.
 
-A new Flutter project.
+Gather all your documents and carry them everywhere you go.
+
+Sleeq utilize the OCR (Optical Character Recognition) technology to identify the type of your documents, categorize them, and present them to you in an intelligent way.
+
+Thanks to Sleeq it is surprisingly easy to find all you documents anytime, anywhere. Just search for a word that is in you document/picture with Sleeq's searching engine and you will find it right away.
+
+Access to Sleeq throught our [website](https://beta.sleeq.app/), or download our [browser extension](https://chromewebstore.google.com/detail/sleeq/gakadacpdfdocifoikebpcmcfihbfice?hl=en-US&utm_source=ext_sidebar)
+
+*Unfortunatly the mobile app is not available yet in the public stores.*
 
 ## Getting Started
 
